@@ -1,0 +1,39 @@
+narrator "Let's test some choices{c}Are you ready?"
+
+choice "Are u ready?"
+{
+	-Yes
+		"Great! Let's get started!"
+	-No
+		"Too bad,I'am doing it anyway!"
+}
+
+narrator "Here is another choice."
+
+choice "What pet do you prefer?"
+{
+	-Dogs
+		Raelin "Dogs are wonderfull"
+		<mainChar> "Do you have a dog?"
+		Raelin "No,But one day....."
+	-Cats
+		Raelin "I love cats! {a}Well,{wa 0.5} whe they are not knocking anything"
+		"But they can be so gracefull sometime"
+	-Arachnids
+		Raelin "EWWWWWW! - Why spiders?!"
+		choice "Why Spiders?"
+		{
+			-Have you ever seen a baby jumping spider?
+				Raelin "Oh - yeah, you are right"
+			-Spiders aren't only arachnids, you know?
+				Raelin "if it's got 8 lesgs that no matter"
+			-Theay are coooooool.
+				Raelin "Well we can be a friend as long as you keept them away from me"
+		}
+		<mainChar> "Say what you will, I like them."
+		Raelin "Everyones got the are preferences"
+	-I prefer Chinchilas
+		Raelin "Oh,they are cute."
+		"Did you know they are take sand bath"
+
+}

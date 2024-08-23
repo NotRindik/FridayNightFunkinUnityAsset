@@ -1,0 +1,367 @@
+fileFormatVersion: 2
+guid: 5f8add072cbefd74590f5b568443a191
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: checkboxanim_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 348
+        width: 111
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 999418e15f494bc468ed5644cdcd6c28
+      internalID: -1184507358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_1
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 323
+        width: 200
+        height: 109
+      alignment: 9
+      pivot: {x: 0.4671331, y: 0.49834394}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde5554155940054f86a4a39c2892727
+      internalID: 1925296142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_2
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 314
+        width: 134
+        height: 116
+      alignment: 9
+      pivot: {x: 0.5928042, y: 0.49512693}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94098332119a1e84fbc5d1ea0f010ce2
+      internalID: 1769012255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_3
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 324
+        width: 126
+        height: 107
+      alignment: 9
+      pivot: {x: 0.5593446, y: 0.48835313}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7976735e8ee14c340ba4f9ca814d46d8
+      internalID: -712844173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_4
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 321
+        width: 144
+        height: 136
+      alignment: 9
+      pivot: {x: 0.4154362, y: 0.41900164}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f2311a8732165468f1b0c401d73b54
+      internalID: 76870784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_5
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 157
+        width: 156
+        height: 143
+      alignment: 9
+      pivot: {x: 0.46275407, y: 0.5040632}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ecc1db7e3bd3974eb2a5e7636eafeb7
+      internalID: 1351153679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_8
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 171
+        width: 138
+        height: 126
+      alignment: 9
+      pivot: {x: 0.43106306, y: 0.4573248}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd348780a3ac1604f8cc7437a43eba06
+      internalID: 1864347224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_9
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 146
+        width: 175
+        height: 163
+      alignment: 9
+      pivot: {x: 0.46171317, y: 0.49683806}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b70864cabd399384299bb161c540730b
+      internalID: 1002376338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_10
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 143
+        width: 177
+        height: 167
+      alignment: 9
+      pivot: {x: 0.4744649, y: 0.51804274}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4607d983efc5385418f27535ca354657
+      internalID: -1831544789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_12
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 173
+        width: 111
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2af0e50cd39aea419c61777a45c674b
+      internalID: 377807549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkboxanim_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 14
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356f15359a7d0464fadb88732a61d0af
+      internalID: -591023305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      checkboxanim_0: -1184507358
+      checkboxanim_1: 1925296142
+      checkboxanim_10: -1831544789
+      checkboxanim_11: 915864503
+      checkboxanim_12: 377807549
+      checkboxanim_13: 716189732
+      checkboxanim_14: 859613667
+      checkboxanim_15: -994530563
+      checkboxanim_16: -354453762
+      checkboxanim_17: -993619749
+      checkboxanim_18: -584535516
+      checkboxanim_19: -1804373650
+      checkboxanim_2: 1769012255
+      checkboxanim_20: -1566673738
+      checkboxanim_21: -591023305
+      checkboxanim_3: -712844173
+      checkboxanim_4: 76870784
+      checkboxanim_5: 1351153679
+      checkboxanim_6: 754706697
+      checkboxanim_7: -261834329
+      checkboxanim_8: 1864347224
+      checkboxanim_9: 1002376338
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

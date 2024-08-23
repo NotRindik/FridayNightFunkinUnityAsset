@@ -1,0 +1,30 @@
+SetLayerMedia(background villagenight)
+CreateCharacter(Raelin)
+Raelin.Show(),Raelin.SetPosition(0.5)
+Raelin [0:A1,1:A_Scared] "Hello boy"
+PlayAmbience(RainyMood),wait(1)
+Raelin.FaceRight()
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+"Where we should go?"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+Raelin "Oh fuck the rain is starting.{wa 0.5}We need to go somewhere"
+"Where we should go?"
+"Where we should go?"
+"Where we should go?"
+"Where we should go?"
+"Where we should go?"
+"Where we should go?"
+"Where we should go?"
+"Where we should go?"
+HideDB(-spd 1)
+Raelin.Move(1.5 -spd 2), Raelin.Hide()
+wait(0.75)
+ClearLayerMedia(background), wait(1) 
+StopAmbience()
+wait(1)

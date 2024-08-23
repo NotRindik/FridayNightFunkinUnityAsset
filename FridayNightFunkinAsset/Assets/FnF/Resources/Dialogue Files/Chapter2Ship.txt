@@ -1,0 +1,6 @@
+SetLayerMedia(background -m 5)
+Raelin.Show(),Raelin.SetPosition(-0.5)
+Raelin.Move(0 -spd 1.5)
+wait(1)
+ShowDB(-i true)
+Raelin "Finaly, out of that shtorm, But this place is uncumfortable"

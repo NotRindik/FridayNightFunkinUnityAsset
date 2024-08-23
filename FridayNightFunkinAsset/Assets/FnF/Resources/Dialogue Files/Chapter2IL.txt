@@ -1,0 +1,5 @@
+SetLayerMedia(background Inn_night)
+Raelin.Show(),Raelin.SetPosition(-0.5)
+Raelin.Move(0 -spd 1.5)
+wait(1)
+Raelin "Finaly, out of that shtorm, Good place for that"
