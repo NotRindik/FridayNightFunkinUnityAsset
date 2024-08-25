@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: J
+  m_text: "\u041E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: F
+  m_text: "\u0410"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -4540,6 +4540,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1050122688}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FromUpToDownBlack
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &453205037
 GameObject:
   m_ObjectHideFlags: 0
@@ -6194,7 +6206,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.15
+  m_fontSize: 81.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10159,7 +10171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: K
+  m_text: "\u041B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -12196,7 +12208,6 @@ GameObject:
   - component: {fileID: 1389115414}
   - component: {fileID: 1389115417}
   - component: {fileID: 1389115418}
-  - component: {fileID: 1389115419}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -12241,7 +12252,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 454489662}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12253,7 +12264,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1786392462}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12390,22 +12401,6 @@ MonoBehaviour:
   Select: Idle
   Pressed: Pressed
   Disabled: Idle
---- !u!114 &1389115419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389115412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54f7b74a0c2840418e03bc516924ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Idle: 
-  Select: 
-  Pressed: 
-  Disabled: 
 --- !u!1 &1389762131
 GameObject:
   m_ObjectHideFlags: 0
@@ -18074,7 +18069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: D
+  m_text: "\u0412"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}

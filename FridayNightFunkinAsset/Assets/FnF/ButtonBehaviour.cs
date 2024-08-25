@@ -29,11 +29,11 @@ public class ButtonBehaviour : MonoBehaviour
     {
         if(scaleMultiplierInSelecting != 1 && EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            transform.localScale = new Vector2(startXScale * scaleMultiplierInSelecting, startYScale * scaleMultiplierInSelecting);
+            transform.localScale = new Vector3(startXScale * scaleMultiplierInSelecting, startYScale * scaleMultiplierInSelecting,1);
         }
         else
         {
-            transform.localScale = new Vector2(startXScale ,startYScale);
+            transform.localScale = new Vector3(startXScale ,startYScale,1);
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(AnimationName) && !isAnimationStart)

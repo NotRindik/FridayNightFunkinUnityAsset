@@ -22,7 +22,7 @@ public class MenuScroller : MonoBehaviour
 
     private float startPosScroll;
 
-    private Button[] buttons;
+    private Selectable[] selectables;
 
     private GameObject lastSelectedGameObject;
 
@@ -36,9 +36,9 @@ public class MenuScroller : MonoBehaviour
     {
         contentContainer = GetComponent<RectTransform>();
         startPosScroll = contentContainer.anchoredPosition.y;
-        buttons = contentContainer.GetComponentsInChildren<Button>(false);
-        scrollPos = new float[buttons.Length];
-        for (int i = 0; i < buttons.Length; i++)
+        selectables = contentContainer.GetComponentsInChildren<Selectable>(false);
+        scrollPos = new float[selectables.Length];
+        for (int i = 0; i < selectables.Length; i++)
         {
             scrollPos[i] = startPosScroll + scrollOffset * i;
         }
@@ -58,9 +58,9 @@ public class MenuScroller : MonoBehaviour
        GameObject currentGameObject = EventSystem.current.currentSelectedGameObject;
         if (lastSelectedGameObject != currentGameObject && !Input.GetKeyDown(KeyCode.Return) && (lastSelectedGameObject))
         {
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < selectables.Length; i++)
             {
-                if(buttons[i].gameObject == currentGameObject)
+                if(selectables[i].gameObject == currentGameObject)
                 {
                     var distance = Vector2.Distance(new Vector2(0,lastSelectedGameObject.transform.position.y), new Vector2(0, currentGameObject.transform.position.y));
                     if (distance < 0.1f)
@@ -77,9 +77,9 @@ public class MenuScroller : MonoBehaviour
 
     private void GetSpaceBetweenButtons()
     {
-        if (buttons.Length > 2 && MaxDistanceBetweenButton <= 1)
+        if (selectables.Length > 2 && MaxDistanceBetweenButton <= 1)
         {
-            MaxDistanceBetweenButton += Vector2.Distance(buttons[1].transform.position, buttons[0].transform.position);
+            MaxDistanceBetweenButton += Vector2.Distance(selectables[1].transform.position, selectables[0].transform.position);
         }
     }
 
