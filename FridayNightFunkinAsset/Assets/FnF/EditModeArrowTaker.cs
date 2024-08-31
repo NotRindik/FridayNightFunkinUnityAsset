@@ -1,4 +1,5 @@
 using DIALOGUE;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,39 +11,24 @@ namespace FridayNightFunkin.Editor
     [ExecuteInEditMode]
     public class EditModeArrowTaker : MonoBehaviour
     {
-        public Image saveArrow;
         public float distanceForTakearrow;
-        private Collider2D[] overlapCircle;
         public static EditModeArrowTaker instance;
 
         public Sprite[] TakeSprite;
         public Sprite[] DefaultSprite;
 
-        public List<Arrow> lastArrowRef = new List<Arrow>();
         private LevelSettings levelSettings => LevelSettings.instance;
 
-        private void Start()
-        {
-            for (int i = 0; i < levelSettings.arrowsPlayer.Length; i++)
-            {
-                saveArrow = levelSettings.arrowsPlayer[i];
+        [SerializeField] private float arrowDetectRadius = 0.8f;
 
-                saveArrow.sprite = DefaultSprite[i];
-
-                if (levelSettings.arrowsPlayer.Length == levelSettings.arrowsEnemy.Length)
-                {
-                    saveArrow = levelSettings.arrowsEnemy[i];
-
-                    saveArrow.sprite = DefaultSprite[i];
-                }
-            }
-        }
+        private float arrowDetectRadiusCalcualted;
 
 #if UNITY_EDITOR
         [ExecuteInEditMode]
 
         private void Update()
         {
+            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
             if (instance == null)
             {
                 instance = this;
@@ -50,74 +36,64 @@ namespace FridayNightFunkin.Editor
 
             if (!EditorApplication.isPlayingOrWillChangePlaymode && levelSettings != null)
             {
-                VisualiseTakingArrow(levelSettings.arrowsPlayer);
-                VisualiseTakingArrow(levelSettings.arrowsEnemy);
+                VisualiseTakingArrow(levelSettings.arrowsPlayer, CharacterSide.Player);
+                VisualiseTakingArrow(levelSettings.arrowsEnemy, CharacterSide.Enemy);
             }
         }
 
         private void OnDrawGizmos()
         {
+            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
             if (levelSettings != null)
             {
-                for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
-                {
-                    Gizmos.DrawWireSphere(levelSettings.arrowsEnemy[i].transform.position, levelSettings.arrowDetectRadiusCalcualted);
-                }
+                DrawDetectRadius(levelSettings.arrowsPlayer,Color.green);
+                DrawDetectRadius(levelSettings.arrowsEnemy,Color.red);
             }
         }
-        private void VisualiseTakingArrow(Image[] arrows)
+
+        private void DrawDetectRadius(Image[] arrowTakers,Color color)
         {
-            for (int i = 0; i < arrows.Length; i++)
+            for (int i = 0; i < arrowTakers.Length; i++)
             {
-                overlapCircle = Physics2D.OverlapCircleAll(arrows[i].transform.position, levelSettings.arrowDetectRadiusCalcualted, levelSettings.arrowLayer);
-
-                if (overlapCircle.Length != 0)
-                {
-                    if (overlapCircle[0].TryGetComponent(out Arrow arrow) && TakeSprite != null)
-                    {
-                        float distance = arrows[i].transform.position.y - arrow.transform.position.y;
-                        if (Mathf.Abs(distance) > 0 && Mathf.Abs(distance) < distanceForTakearrow)
-                        {
-                            saveArrow = arrows[i];
-
-                            saveArrow.sprite = TakeSprite[i];   
-                            lastArrowRef.Add(arrow);
-                        }
-
-                    }
-                }
-                else if (lastArrowRef.Count != 0 )
-                {
-                    for (int j = 0; j < lastArrowRef.Count; j++)
-                    {
-                        if (lastArrowRef[j].distanceCount == 0)
-                        {
-                            saveArrow = arrows[i];
-
-                            saveArrow.sprite = DefaultSprite[i];
-                            lastArrowRef.RemoveAt(lastArrowRef.Count - 1);
-                        }
-                        else if (!lastArrowRef[0].IsTakerUnderArrow())
-                        {
-                            saveArrow = arrows[i];
-
-                            saveArrow.sprite = DefaultSprite[i];
-                            lastArrowRef.RemoveAt(lastArrowRef.Count - 1);
-                        }
-                    }
-                }
-                else
-                {
-                    saveArrow = arrows[i];
-
-                    saveArrow.sprite = DefaultSprite[i];
-                }
+                Gizmos.color = color;
+                Gizmos.DrawWireSphere(arrowTakers[i].transform.position, arrowDetectRadiusCalcualted);
             }
         }
 
-        public void ResetLists()
+        private void VisualiseTakingArrow(Image[] arrowTakers, CharacterSide characterSide)
         {
-            lastArrowRef = new List<Arrow>();
+            for (int i = 0; i < arrowTakers.Length; i++)
+            {
+                foreach (var arrow in levelSettings.arrowsList)
+                {
+                    if (arrow.characterSide != characterSide) continue;
+
+                    if (i == (int)arrow.arrowSide && arrow.isWork && arrow.gameObject.activeInHierarchy)
+                    { 
+                        var distance = Vector2.Distance(arrowTakers[i].transform.position, arrow.transform.position);
+
+                        if (distance <= arrowDetectRadiusCalcualted)
+                        {
+                            arrowTakers[i].sprite = TakeSprite[i];
+                            break;
+                        }
+                        else
+                        {
+                            if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
+                            {
+                                arrowTakers[i].sprite = TakeSprite[i];
+                                break;
+                            }
+
+                            arrowTakers[i].sprite = DefaultSprite[i];
+                        }
+                    }
+                    else
+                    {
+                        arrowTakers[i].sprite = DefaultSprite[i];
+                    }
+                }
+            }
         }
 #endif
     }

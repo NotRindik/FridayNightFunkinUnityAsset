@@ -16,6 +16,11 @@ namespace FridayNightFunkin.CHARACTERS
         private float lockTillCharacter;
         private Arrow currentArrow;
 
+
+        [SerializeField] private float arrowDetectRadius = 0.8f;
+
+        private float arrowDetectRadiusCalcualted;
+
         private void Start()
         {
             levelSettings = LevelSettings.instance;
@@ -23,15 +28,17 @@ namespace FridayNightFunkin.CHARACTERS
 
         public void Update()
         {
+            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
             BotPlay(levelSettings.arrowsEnemy);
         }
 
         private void OnDrawGizmos()
         {
+            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
             for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(new Vector3(levelSettings.arrowsEnemy[i].transform.position.x, levelSettings.arrowsEnemy[i].transform.position.y + EnemyArrowTakeHeight * (Camera.main.orthographicSize/5), levelSettings.arrowsEnemy[i].transform.position.z), levelSettings.arrowDetectRadiusCalcualted);
+                Gizmos.DrawWireSphere(new Vector3(levelSettings.arrowsEnemy[i].transform.position.x, levelSettings.arrowsEnemy[i].transform.position.y + EnemyArrowTakeHeight * (Camera.main.orthographicSize/5), levelSettings.arrowsEnemy[i].transform.position.z),arrowDetectRadiusCalcualted);
             }
         }
 
@@ -40,7 +47,7 @@ namespace FridayNightFunkin.CHARACTERS
             for (int i = 0; i < arrows.Length; i++)
             {
                 Animator animator = levelSettings.arrowsEnemy[i].gameObject.GetComponent<Animator>();
-                overlapCircle = Physics2D.OverlapCircleAll(new Vector3(arrows[i].transform.position.x, levelSettings.arrowsEnemy[i].transform.position.y + EnemyArrowTakeHeight, arrows[i].transform.position.z), levelSettings.arrowDetectRadiusCalcualted, levelSettings.arrowLayer);
+                overlapCircle = Physics2D.OverlapCircleAll(new Vector3(arrows[i].transform.position.x, levelSettings.arrowsEnemy[i].transform.position.y + EnemyArrowTakeHeight, arrows[i].transform.position.z), arrowDetectRadiusCalcualted, levelSettings.arrowLayer);
 
                 for (int j = 0; j < overlapCircle.Length; j++)
                 {
@@ -55,7 +62,7 @@ namespace FridayNightFunkin.CHARACTERS
                         }
                         else if (!LastArrowReference.Contains(arrow))
                         {
-                            MaskManager.instance.ActivateMask(i,CharacterSide.Enemy);
+                            ArrowMask.instance.ActivateMask(i,CharacterSide.Enemy);
                             arrow.spriteRendererOfArrow.color = new Color(arrow.spriteRendererOfArrow.color.r, arrow.spriteRendererOfArrow.color.g, arrow.spriteRendererOfArrow.color.b, 0f);
                             LastArrowReference.Add(arrow);
                         }
@@ -72,7 +79,7 @@ namespace FridayNightFunkin.CHARACTERS
                     {
                         if (LastArrowReference[j] != currentArrow)
                         {
-                            LastArrowReference[j].TakeLongArrow(true, LastArrowReference);
+                            //LastArrowReference[j].TakeLongArrow(true, LastArrowReference);
                             animator.CrossFade(LockAnimation("Idle", 0.1f), 0.5f);
                             base.animator.CrossFade(LockAnimationCharacter(IDLE, 0.8f), 0f);
                         }

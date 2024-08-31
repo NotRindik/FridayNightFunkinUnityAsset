@@ -1,0 +1,34 @@
+Arrow
+{
+	background-image: resource("Assets/FnF/Editor/Right.png");
+	width: 20px;
+	height: 20px; 
+}
+
+RightArrow
+{
+	background-image: resource("Assets/FnF/Editor/Right.png");
+	width: 20px;
+	height: 20px; 
+}
+
+UpArrow
+{
+	background-image: resource("Assets/FnF/Editor/Up.png");
+	width: 20px;
+	height: 20px; 
+}
+
+DownArrow
+{
+	background-image: resource("Assets/FnF/Editor/Down.png");
+	width: 20px;
+	height: 20px; 
+}
+
+LeftArrow
+{
+	background-image: resource("Assets/FnF/Editor/Left.png");
+	width: 20px;
+	height: 20px; 
+}

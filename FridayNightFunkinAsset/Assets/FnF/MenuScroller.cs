@@ -55,7 +55,7 @@ public class MenuScroller : MonoBehaviour
     public void Update()
     {
         GetSpaceBetweenButtons();
-       GameObject currentGameObject = EventSystem.current.currentSelectedGameObject;
+        GameObject currentGameObject = EventSystem.current.currentSelectedGameObject;
         if (lastSelectedGameObject != currentGameObject && !Input.GetKeyDown(KeyCode.Return) && (lastSelectedGameObject))
         {
             for (int i = 0; i < selectables.Length; i++)

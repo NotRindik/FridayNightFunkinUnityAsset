@@ -19,6 +19,8 @@ namespace FridayNightFunkin
 
         public List<int> accuracyList = new List<int>();
 
+        internal bool isDead;
+
         private void Awake()
         {
             if (instance == null)

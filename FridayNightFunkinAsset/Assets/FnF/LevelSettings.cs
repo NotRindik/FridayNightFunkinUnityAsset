@@ -31,11 +31,6 @@ namespace FridayNightFunkin
 
         public Image[] arrowsEnemy;
 
-        public float arrowDetectRadius;
-
-        internal float arrowDetectRadiusCalcualted;
-
-
         public LayerMask arrowLayer;
 
         public Animator[] splashAnim;
@@ -63,8 +58,6 @@ namespace FridayNightFunkin
         }
         private void Update()
         {
-            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize/ 5);
-
             if (arrowsPlayerPos.Count == 0 || arrowsEnemyPos.Count == 0)
             {
                 arrowsEnemyPos = new List<Vector3>();

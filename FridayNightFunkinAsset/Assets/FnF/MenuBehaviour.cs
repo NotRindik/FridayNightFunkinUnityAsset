@@ -20,7 +20,7 @@ public class MenuBehaviour : MonoBehaviour
             Escape();
         }
     }
-    protected virtual void Escape()
+    public virtual void Escape()
     {
         OnEscapePressed?.Invoke();
     }

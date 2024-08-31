@@ -14,9 +14,10 @@ namespace FridayNightFunkin.CHARACTERS
         protected const string IDLE = "Idle";
         protected const string ARROW_PRESSED = "Pressed";
 
-        private void Awake()
+        protected void Awake()
         {
             animator = GetComponent<Animator>();
+            GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
         public void PlayNote(ArrowSide arrowSide)
         {
@@ -29,6 +30,16 @@ namespace FridayNightFunkin.CHARACTERS
         public string ReturnNote(int arrowSide)
         {
             return SING_NOTES[arrowSide];
+        }
+
+        private void OnGameStateChanged(GameState newGameState)
+        {
+            animator.speed = newGameState == GameState.Paused? 0 : 1;
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
         }
     }
 }

@@ -32,6 +32,15 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private float speedCofency;
 
+        
+        private void Start()
+        {
+            if (Application.isPlaying)
+            {
+                GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
+            }   
+        }
+
         private void Update()
         {
             time = playableDirector.time;
@@ -46,13 +55,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                     {
                         if (arrow.characterSide == CharacterSide.Player)
                         {
-                            arrow.startPos = new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5));
-                            arrow.endPos = new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y);
+                            arrow.SetStartPos(new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5)));
+                            arrow.SetEndPos(new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y));
                         }
                         else
                         {
-                            arrow.startPos = new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5));
-                            arrow.endPos = new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y);
+                            arrow.SetStartPos(new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5)));
+                            arrow.SetEndPos(new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y));
                         }
 
                         arrow.transform.position = new ArrowArchitect(arrow.arrowSide, time).CalculateArrowPos(arrow.startPos, arrow.endPos, arrow.startTime, arrow.endTime);
@@ -68,11 +77,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 {
                     if (isSaveCharts)
                     {
-                        if (editModeArrow)
-                        {
-                            editModeArrow.ResetLists();
-                        }
-
                         for (int i = 0; i < transform.childCount;)
                         {
                             DestroyImmediate(transform.GetChild(i).gameObject);
@@ -312,6 +316,22 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 return true;
             }
             return false;
+        }
+
+        private void OnGameStateChanged(GameState currenState)
+        {
+            if (currenState == GameState.Paused) 
+                playableDirector.Pause(); 
+            else 
+                playableDirector.Resume();
+        }
+
+        private void OnDestroy()
+        {
+            if (Application.isPlaying)
+            {
+                GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
+            }
         }
     }
 }

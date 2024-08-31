@@ -30,17 +30,25 @@ public class Arrow : MonoBehaviour
     public bool isWork = true;
     public bool isViewedOnce = false;
 
-    public Vector2 startPos;
+    public Vector2 startPos { get; private set; }
 
-    public Vector2 endPos;
+    public Vector2 endPos { get; private set; }
 
-    public double startTime;
+    public double startTime { get; private set; }
 
-    public double endTime;
+    public double endTime { get; private set; }
+
 
     public int arrowIndex;
 
-    public void Intialize(SpriteRenderer spriteRenderer,uint distanceCount,Vector2 startPos, Vector2 endPos, double startTime, double endTime,int arrowIndex)
+
+    internal SpriteRenderer tail;
+
+
+    public float tailDistanceToArrowTakerRaw { get; private set; }
+    public float tailDistance { get; private set; }
+
+    public void Intialize(SpriteRenderer spriteRenderer, uint distanceCount, Vector2 startPos, Vector2 endPos, double startTime, double endTime, int arrowIndex)
     {
         isWork = true;
         isViewedOnce = false;
@@ -53,10 +61,19 @@ public class Arrow : MonoBehaviour
         this.startTime = startTime;
         this.endTime = endTime;
     }
-    internal SpriteRenderer tail;
 
 #if UNITY_EDITOR
     private void Update()
+    {
+        GenerateTail();
+        if (tailDistanceToArrowTakerRaw > 0 && isHold && distanceCount > 0)
+        {
+            isWork = false;
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void GenerateTail()
     {
         if (distanceCount > 0)
         {
@@ -75,14 +92,11 @@ public class Arrow : MonoBehaviour
                     var instance = Instantiate(holdTrack, transform.position, Quaternion.identity, transform);
                     instance.transform.localPosition = new Vector2(0, distance);
                     instance.sprite = holdTrackSprite;
-                    distance -= 0.20f;  
+                    distance -= 0.20f;
                     instances.Add(instance);
                 }
-                tail = Instantiate(holdTrack, transform.position, Quaternion.identity, instances[instances.Count-1].transform);
+                tail = Instantiate(holdTrack, transform.position, Quaternion.identity, instances[instances.Count - 1].transform);
                 tail.transform.localPosition = new Vector2(0, -0.255f);
-                tail.gameObject.layer = LayerMask.NameToLayer("EndOfArrow");
-                var collider = tail.gameObject.AddComponent(typeof(BoxCollider2D)) as BoxCollider2D;
-                collider.size = new Vector2(0.25f, 0.25f);
                 tail.sprite = endHoldTrackSprie;
             }
             else if (distanceCount < instances.Count)
@@ -91,16 +105,17 @@ public class Arrow : MonoBehaviour
                 for (int i = 0; i < baseInstancesCount - distanceCount; i++)
                 {
                     instances.RemoveAt(instances.Count - 1);
-                    DestroyImmediate(transform.GetChild(transform.childCount-1).gameObject);
+                    DestroyImmediate(transform.GetChild(transform.childCount - 1).gameObject);
                 }
                 tail = Instantiate(holdTrack, transform.position, Quaternion.identity, instances[instances.Count - 1].transform);
                 tail.transform.localPosition = new Vector2(0, -0.255f);
-
-                tail.gameObject.layer = LayerMask.NameToLayer("EndOfArrow");
                 tail.sprite = endHoldTrackSprie;
             }
+
+            tailDistanceToArrowTakerRaw = endPos.y - tail.transform.position.y;
+            tailDistance = Mathf.Abs(tail.transform.position.y - transform.position.y);
         }
-        else if(distanceCount == 0)
+        else if (distanceCount == 0)
         {
             var baseChildCount = instances.Count;
             instances = new List<SpriteRenderer>();
@@ -130,83 +145,96 @@ public class Arrow : MonoBehaviour
     }
 
 #endif
-    public void TakeArrow()
-    {
-        isWork = false;
-        gameObject.SetActive(false);
-    }
-    public void TakeLongArrow(float distanceForAccurancy, bool isHold)
+    public void TakeArrow(bool isHold)
     {
         this.isHold = isHold;
-        isWork = false;
-        IsTakingLongArrow(); 
-    }
-    public void TakeLongArrow(bool isHold, List<Arrow> arrowsRef)
-    {
-        isWork = false;
-        this.isHold = isHold;
-        IsTakingLongArrow(arrowsRef);
-    }
-
-    public bool IsTakingLongArrow()
-    {
-        if (isHold)
+        if (distanceCount == 0)
         {
-            if (!IsTakerUnderArrow())
-            {
-                isWork = false;
-                isHold = false;
-                ScoreManager.instance.AddCombo();
-                ScoreManager.instance.AddValueToSlider(LevelSettings.instance.playerForce + distanceCount);
-                FNFUIElement.instance.UpdateUI();
-                gameObject.SetActive(false);
-
-                return true; 
-            }
-            else
-            {
-                spriteRendererOfArrow.color = new Color(spriteRendererOfArrow.color.r, spriteRendererOfArrow.color.g, spriteRendererOfArrow.color.b, 0f);
-            }
+            isWork = false;
+            gameObject.SetActive(false);
         }
-
-        return false;
     }
 
-    public bool IsTakingLongArrow(List<Arrow> arrowsRef)
+    public void SetStartPos(Vector2 pos)
     {
-        if (isHold)
-        {
-            if (!IsTakerUnderArrow())
-            {
-                isHold = false;
-                isWork = false;
-                ScoreManager.instance.ReduceValueToSliderEnemy(LevelSettings.instance.enemyForce);
-                arrowsRef.Remove(this);
-                gameObject.SetActive(false);
-
-                return true;
-            }
-            else
-            {
-                spriteRendererOfArrow.color = new Color(spriteRendererOfArrow.color.r, spriteRendererOfArrow.color.g, spriteRendererOfArrow.color.b, 0f);
-            }
-        }
-
-        return false;
+        startPos = pos;
     }
-    public bool IsTakerUnderArrow()
+    public void SetEndPos(Vector2 pos)
     {
-        Collider2D hit =  Physics2D.OverlapCircle(transform.position, takerCheakRadius, arrowTakerLayer);
-
-        if (distanceCount != 0 && tail != null)
-            hit = Physics2D.OverlapArea(transform.position + new Vector3(0, 0.0001f, 0), tail.transform.position + new Vector3(0, -0.38f, 0), arrowTakerLayer);
-
-
-        if (hit != null)
-        {
-            return true;
-        }
-
-        return false;
+        endPos = pos;
     }
+    //public void TakeLongArrow(float distanceForAccurancy, bool isHold)
+    //{
+    //    this.isHold = isHold;
+    //    isWork = false;
+    //    IsTakingLongArrow(); 
+    //}
+    //public void TakeLongArrow(bool isHold, List<Arrow> arrowsRef)
+    //{
+    //    isWork = false;
+    //    this.isHold = isHold;
+    //    IsTakingLongArrow(arrowsRef);
+    //}
+
+    //public bool IsTakingLongArrow()
+    //{
+    //    if (isHold)
+    //    {
+    //        if (!IsTakerUnderArrow())
+    //        {
+    //            isWork = false;
+    //            isHold = false;
+    //            ScoreManager.instance.AddCombo();
+    //            ScoreManager.instance.AddValueToSlider(LevelSettings.instance.playerForce + distanceCount);
+    //            FNFUIElement.instance.UpdateUI();
+    //            gameObject.SetActive(false);
+
+    //            return true; 
+    //        }
+    //        else
+    //        {
+    //            spriteRendererOfArrow.color = new Color(spriteRendererOfArrow.color.r, spriteRendererOfArrow.color.g, spriteRendererOfArrow.color.b, 0f);
+    //        }
+    //    }
+
+    //    return false;
+    //}
+
+    //public bool IsTakingLongArrow(List<Arrow> arrowsRef)
+    //{
+    //    if (isHold)
+    //    {
+    //        if (!IsTakerUnderArrow())
+    //        {
+    //            isHold = false;
+    //            isWork = false;
+    //            ScoreManager.instance.ReduceValueToSliderEnemy(LevelSettings.instance.enemyForce);
+    //            arrowsRef.Remove(this);
+    //            gameObject.SetActive(false);
+
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            spriteRendererOfArrow.color = new Color(spriteRendererOfArrow.color.r, spriteRendererOfArrow.color.g, spriteRendererOfArrow.color.b, 0f);
+    //        }
+    //    }
+
+    //    return false;
+    //}
+    //public bool IsTakerUnderArrow()
+    //{
+    //    Collider2D hit =  Physics2D.OverlapCircle(transform.position, takerCheakRadius, arrowTakerLayer);
+
+    //    if (distanceCount != 0 && tail != null)
+    //        hit = Physics2D.OverlapArea(transform.position + new Vector3(0, 0.0001f, 0), tail.transform.position + new Vector3(0, -0.38f, 0), arrowTakerLayer);
+
+
+    //    if (hit != null)
+    //    {
+    //        return true;
+    //    }
+
+    //    return false;
+    //}
 }

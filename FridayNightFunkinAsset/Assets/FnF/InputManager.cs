@@ -8,20 +8,28 @@ using TMPro;
 
 public class InputManager : MonoBehaviour
 {
-    public static FnfInput inputActions;
+    private static FnfInput _inputActions;
+    public static FnfInput inputActions 
+    {
+        get
+        {
+            if (_inputActions == null)
+            {
+                _inputActions = new FnfInput();
+            }
+
+            return _inputActions;
+        }
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     public static event Action rebindComplete;
     public static event Action rebindCanceled;
     public static event Action<InputAction, int> rebindStarted;
-
-    private void Awake()
-    {
-        if (inputActions == null)
-        {
-            inputActions = new FnfInput();
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 
     public static void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText,Image overlay, bool excludeMouse)
     {
@@ -92,8 +100,8 @@ public class InputManager : MonoBehaviour
 
     public static string GetBindingName(string actionName, int bindingIndex)
     {
-        if (inputActions == null)
-            inputActions = new FnfInput();
+        if (_inputActions == null)
+            _inputActions = new FnfInput();
 
         InputAction action = inputActions.asset.FindAction(actionName);
         return action.GetBindingDisplayString(bindingIndex);
@@ -112,8 +120,8 @@ public class InputManager : MonoBehaviour
         if (actionName == null)
             return;
 
-        if (inputActions == null)
-            inputActions = new FnfInput();
+        if (_inputActions == null)
+            _inputActions = new FnfInput();
 
         InputAction action = inputActions.asset.FindAction(actionName);
 

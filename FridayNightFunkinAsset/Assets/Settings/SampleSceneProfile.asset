@@ -240,22 +240,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
-    m_Value: -1
+    m_Value: 0
   xMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   yMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   center:
-    m_OverrideState: 0
-    m_Value: {x: -35.11, y: 66.78}
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
   scale:
     m_OverrideState: 1
-    m_Value: 1.53
+    m_Value: 1
 --- !u!114 &-1171833174525829473
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 1
@@ -404,7 +404,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.76
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -413,7 +413,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 1, b: 0.7289455, a: 1}
+    m_Value: {r: 0, g: 0.31799448, b: 0.5188679, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 1

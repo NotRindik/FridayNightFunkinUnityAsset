@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace FridayNightFunkin.UI
 {
-    public class MaskManager : MonoBehaviour
+    public class ArrowMask : MonoBehaviour
     {
         public SpriteMask[] playerMask;
         public SpriteMask[] EnemyMask;
-        public static MaskManager instance { get; private set; }
+        public static ArrowMask instance { get; private set; }
         private void Awake()
         {
             if (instance == null)
