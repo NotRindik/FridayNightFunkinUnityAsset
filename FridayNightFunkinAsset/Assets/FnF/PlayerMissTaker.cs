@@ -1,59 +1,61 @@
-using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-namespace FridayNightFunkin.Editor
+namespace FridayNightFunkin
 {
-    public class TurnOnArrowOnCameraView : MonoBehaviour
+    public class PlayerMissTaker : MonoBehaviour
     {
-        private Vector2 detectSize;
-        public float size;
-        public Transform canvasPosition;
+        [SerializeField] private float size;
+        [SerializeField] private Transform canvasPosition;
         private LevelSettings levelSettings => LevelSettings.instance;
-        private Camera mainCamera;
+        private ScoreManager scoreManager => ScoreManager.instance;
+        private Vector2 detectSize;
+        private Camera mainCamera => Camera.main;
 
-        private void OnDrawGizmos()
+        void Update()
         {
-            if (!mainCamera)
-                mainCamera = Camera.main;
-            if (!canvasPosition || !gameObject.activeInHierarchy || !levelSettings) return;
-
             float camHeight = 2f * mainCamera.orthographicSize;
             float camWidth = camHeight * mainCamera.aspect;
 
             detectSize = new Vector2(camWidth, camHeight) + new Vector2(size * (mainCamera.orthographicSize / 5), size * (mainCamera.orthographicSize / 5));
 
-            if(!Application.isPlaying)
-                SwithArrows();
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(canvasPosition.position, detectSize);
-        }
-        private void SwithArrows()
-        {
-            foreach (var arrow in LevelSettings.instance.arrowsList)
+            foreach (var arrow in levelSettings.arrowsList)
             {
                 if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                 {
                     arrow.gameObject.SetActive(true);
+                    arrow.isViewedOnce = true;
                 }
-                else
+                else if (arrow.isViewedOnce && !IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                 {
-                    if (arrow.distanceCount > 0 && arrow.tail)
+                    if (arrow.distanceCount > 0)
                     {
                         if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize))
                         {
-                            arrow.gameObject.SetActive(true);
                             continue;
                         }
                     }
-
+                    arrow.isWork = false;
                     arrow.gameObject.SetActive(false);
+                    levelSettings.player.PlayMissAnimation(arrow);
+                    scoreManager.ReduceValueToSlider(levelSettings.missForce);
+                    scoreManager.AddMiss();
+                    scoreManager.ÑalculateAccuracy(1);
+                    scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
+                    scoreManager.ResetCombo();
                 }
             }
+
         }
+        private void OnDrawGizmos()
+        {
+            if (!canvasPosition || !gameObject.activeInHierarchy) return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(canvasPosition.position, detectSize);
+        }
+
 
         private bool IsArrowInsideCube(Vector3 point, Vector3 cubeCenter, Vector3 cubeSize)
         {

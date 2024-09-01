@@ -28,7 +28,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private bool isMarkerCountChange;
         private LevelSettings levelSettings;
-        private EditModeArrowTaker editModeArrow => EditModeArrowTaker.instance;
 
         private float speedCofency;
 
@@ -73,7 +72,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 }
 
                 SaveChartFromTimeLine(playableDirector, "BF", markers);
-                if (!EditorApplication.isPlayingOrWillChangePlaymode)
+                if (!Application.isPlaying)
                 {
                     if (isSaveCharts)
                     {
