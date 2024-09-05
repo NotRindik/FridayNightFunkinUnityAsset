@@ -11,7 +11,13 @@ namespace FridayNightFunkin
         private FnfInput inputActions;
         private ScoreManager scoreManager => ScoreManager.instance;
         private float distanceFromArrowToTaker;
-        private bool isHold;
+        public bool isHold { get; private set; }
+
+        public delegate void OnArrowTakeHandler(ArrowSide arrow);
+        public event OnArrowTakeHandler OnArrowTake;
+
+        public delegate void OnArrowUnTakeHandler(ArrowSide arrow);
+        public event OnArrowUnTakeHandler OnArrowUnTake;
 
         protected override void OnEnable()
         {
@@ -28,26 +34,24 @@ namespace FridayNightFunkin
             {
                 if (overlapCircle[0].TryGetComponent(out Arrow arrow))
                 {
-                    isHold = true;
                     if (arrowSide == arrow.arrowSide)
                     {
+                        isHold = true;
                         ActivateSplash(arrowSide);
                         distanceFromArrowToTaker = Vector2.Distance(transform.position, arrow.transform.position);
-                        if (arrow.distanceCount == 0)
-                        {
-                            int accuracy = scoreManager.ÑalculateAccuracy(distanceFromArrowToTaker);
-                            scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
-                            float scoreByAccuracy = (levelSettings.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
 
-                            scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
-                            scoreManager.AddCombo();
+                        int accuracy = scoreManager.ÑalculateAccuracy(distanceFromArrowToTaker);
+                        scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
+                        float scoreByAccuracy = (levelSettings.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
 
-                            FNFUIElement.instance.UpdateUI();
-                            scoreManager.AddValueToSlider(levelSettings.playerForce);
+                        scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
+                        scoreManager.AddCombo();
+                        OnArrowTake?.Invoke(arrowSide);
 
-                            arrow.TakeArrow(isHold);
-                            arrow = null;
-                        }
+                        FNFUIElement.instance.UpdateUI();
+                        scoreManager.AddValueToSlider(levelSettings.playerForce);
+                        ArrowMask.instance.ActivateMask((int)arrowSide);
+                        arrow.TakeArrow(isHold);
                     }
                 }
             }
@@ -59,7 +63,12 @@ namespace FridayNightFunkin
         private void OnArrowUnPressed()
         {
             animator.CrossFade("Idle", 0);
-            isHold = false;
+            ArrowMask.instance.DisActivateMask((int)arrowSide);
+            if (isHold)
+            {
+                isHold = false;
+                OnArrowUnTake?.Invoke(arrowSide);
+            }
         }
 
 

@@ -18,18 +18,17 @@ public class PlayAnimPerBeat : MonoBehaviour
 
     private bool isPlayer;
 
-    private Character_Fnf_PlayAble player;
+    private bool isBlock;
     protected void Awake()
     {
         BPS = BPM / 60;
         animator = GetComponent<Animator>();
-        isPlayer = TryGetComponent(out Character_Fnf_PlayAble character_Fnf_Play);
-        player = character_Fnf_Play;
         GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
     }
     protected void Update()
     {
-        if(!isPause) time += Time.deltaTime;
+        if(!isPause) 
+            if(!isBlock) time += Time.deltaTime;
         PlayAnimation();
     }
 
@@ -53,23 +52,18 @@ public class PlayAnimPerBeat : MonoBehaviour
         BPS = BPM / 60;
     }
 
+    public void SetBlock(bool setBlock)
+    {
+        isBlock = setBlock;
+    }
+
     protected virtual void PlayAnimation()
     {
-        if (isPlayer)
+
+        if (time >= 1 / BPS)
         {
-            if (time >= 1 / BPS /*&& !player.isHold*/)
-            {
-                time = 0;
-                animator.Play(beatAnimation);
-            }
-        }
-        else
-        {
-            if (time >= 1 / BPS)
-            {
-                time = 0;
-                animator.Play(beatAnimation);
-            }
+            time = 0;
+            animator.Play(beatAnimation);
         }
     }
 }

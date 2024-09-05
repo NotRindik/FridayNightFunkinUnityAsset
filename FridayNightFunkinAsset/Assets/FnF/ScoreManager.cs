@@ -40,8 +40,25 @@ namespace FridayNightFunkin
                 Debug.LogWarning("Bro, this shit is ADD VALUE, NOT REDUSE U FUCKING SHIT!!, DONT PUT NEGATIVE NUMBERS");
                 return;
             }
-            FNFUIElement.instance.versusSlider.value += value;
+
+            StartCoroutine(MoveSliderSmoothly(FNFUIElement.instance.versusSlider.value + value, 1f));
         }
+
+        public IEnumerator MoveSliderSmoothly(float targetValue, float initialAdder)
+        {
+            while (true)
+            {
+                yield return new WaitForFixedUpdate();
+
+                FNFUIElement.instance.versusSlider.value = Mathf.MoveTowards(FNFUIElement.instance.versusSlider.value, targetValue, initialAdder);
+
+                if (FNFUIElement.instance.versusSlider.value == targetValue)
+                {
+                    break;
+                }
+            }
+        }
+
         public void ReduceValueToSlider(float value)
         {
             if (value < 0)
@@ -49,7 +66,7 @@ namespace FridayNightFunkin
                 Debug.LogWarning("AAAAAAAAAAAAAAAAA!!!!! FUCKIN LITLE SHIT, THIS METHOD IS REDUCE VALUE, REDUCE!!! U KNOW WHEN - to - equals +!! - to - is +, SO WHY U PUT NEGATIVE MUMBER");
                 return;
             }
-            FNFUIElement.instance.versusSlider.value -= value;
+            StartCoroutine(MoveSliderSmoothly(FNFUIElement.instance.versusSlider.value - value, 1f));
         }
         public void ReduceValueToSliderEnemy(float value)
         {

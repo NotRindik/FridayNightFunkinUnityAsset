@@ -1,6 +1,9 @@
+using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum ArrowSide
 {
@@ -19,7 +22,7 @@ namespace FridayNightFunkin
         [SerializeField] SpriteRenderer holdTrack;
         [SerializeField] Sprite holdTrackSprite;
         [SerializeField] Sprite endHoldTrackSprie;
-        List<SpriteRenderer> instances = new List<SpriteRenderer>();
+        List<SpriteRenderer> Tails = new List<SpriteRenderer>();
         public float takerCheakRadius;
         public LayerMask arrowTakerLayer;
         public SpriteRenderer spriteRendererOfArrow;
@@ -65,10 +68,26 @@ namespace FridayNightFunkin
         private void Update()
         {
             GenerateTail();
+
+            if (!Application.isPlaying)
+                return;
             if (tailDistanceToArrowTakerRaw < 0 && isHold && distanceCount > 0)
             {
                 isWork = false;
                 gameObject.SetActive(false);
+            }
+            if (isHold)
+            {
+                foreach (var tail in Tails)
+                {
+                    if (!tail.gameObject.activeInHierarchy)
+                        continue;
+                    var distance = endPos.y + 4 - tail.transform.position.y;
+                    if(distance < tail.transform.position.y)
+                    {
+                        tail.gameObject.SetActive(false);
+                    }
+                }
             }
         }
 
@@ -76,10 +95,10 @@ namespace FridayNightFunkin
         {
             if (distanceCount > 0)
             {
-                if (distanceCount > instances.Count)
+                if (distanceCount > Tails.Count)
                 {
                     var distance = -0.20f;
-                    instances = new List<SpriteRenderer>();
+                    Tails = new List<SpriteRenderer>();
                     var baseChildCount = transform.childCount;
                     for (int i = 0; i < baseChildCount; i++)
                     {
@@ -92,21 +111,21 @@ namespace FridayNightFunkin
                         instance.transform.localPosition = new Vector2(0, distance);
                         instance.sprite = holdTrackSprite;
                         distance -= 0.20f;
-                        instances.Add(instance);
+                        Tails.Add(instance);
                     }
-                    tail = Instantiate(holdTrack, transform.position, Quaternion.identity, instances[instances.Count - 1].transform);
+                    tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
                     tail.transform.localPosition = new Vector2(0, -0.255f);
                     tail.sprite = endHoldTrackSprie;
                 }
-                else if (distanceCount < instances.Count)
+                else if (distanceCount < Tails.Count)
                 {
-                    var baseInstancesCount = instances.Count;
+                    var baseInstancesCount = Tails.Count;
                     for (int i = 0; i < baseInstancesCount - distanceCount; i++)
                     {
-                        instances.RemoveAt(instances.Count - 1);
+                        Tails.RemoveAt(Tails.Count - 1);
                         DestroyImmediate(transform.GetChild(transform.childCount - 1).gameObject);
                     }
-                    tail = Instantiate(holdTrack, transform.position, Quaternion.identity, instances[instances.Count - 1].transform);
+                    tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
                     tail.transform.localPosition = new Vector2(0, -0.255f);
                     tail.sprite = endHoldTrackSprie;
                 }
@@ -116,8 +135,8 @@ namespace FridayNightFunkin
             }
             else if (distanceCount == 0)
             {
-                var baseChildCount = instances.Count;
-                instances = new List<SpriteRenderer>();
+                var baseChildCount = Tails.Count;
+                Tails = new List<SpriteRenderer>();
                 for (int i = 0; i < baseChildCount; i++)
                 {
                     DestroyImmediate(transform.GetChild(0).gameObject);
@@ -156,8 +175,23 @@ namespace FridayNightFunkin
                     break;
                 default:
                     spriteRendererOfArrow.color = new Color(255, 255, 255, 0);
+                    StartCoroutine(GiveScoreByLongArrows());
                     break;
             }
+        }
+
+        private IEnumerator GiveScoreByLongArrows()
+        {
+            while (isHold || isWork)
+            {
+                yield return new WaitForSecondsRealtime(0.1f);
+                if (characterSide == CharacterSide.Player)
+                {
+                    ScoreManager.instance.AddScore(LevelSettings.instance.addMaxScoreInLongArrow);
+                    ScoreManager.instance.AddValueToSlider(LevelSettings.instance.playerForce / 2);
+                    FNFUIElement.instance.UpdateUI();
+                }
+            } 
         }
 
         public void SetStartPos(Vector2 pos)

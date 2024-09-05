@@ -33,7 +33,7 @@ namespace FridayNightFunkin.UI
 
         public void UpdateUI()
         {
-            if(scoreManager.accuracyList.Count == 0)
+            if (scoreManager.accuracyList.Count == 0)
             {
                 hud.text = $"misses:{scoreManager.misses}|Combo:{scoreManager.combo}|Score:{scoreManager.score}|Rating:?)";
             }

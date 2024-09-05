@@ -45,6 +45,7 @@ namespace FridayNightFunkin
         public List<Vector3> arrowsEnemyPos { private set; get; } = new List<Vector3>();
 
         [SerializeField] public uint addMaxScore;
+        [SerializeField] public uint addMaxScoreInLongArrow;
 
         public bool IsArrowPositionSaved;
 

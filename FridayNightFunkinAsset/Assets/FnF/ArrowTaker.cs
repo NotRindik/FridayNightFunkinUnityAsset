@@ -13,7 +13,6 @@ namespace FridayNightFunkin
 
         protected Animator animator;
 
-
         protected float arrowDetectRadiusCalcualted;
 
         protected virtual void OnEnable()

@@ -10,7 +10,7 @@ namespace FridayNightFunkin.CHARACTERS
         public Animator animator;
         protected string currentAnimationState;
 
-        private string[] SING_NOTES = { "Left", "Down", "Up", "Right" };
+        protected string[] SING_NOTES = { "Left", "Down", "Up", "Right" };
         protected const string IDLE = "Idle";
         protected const string ARROW_PRESSED = "Pressed";
 
