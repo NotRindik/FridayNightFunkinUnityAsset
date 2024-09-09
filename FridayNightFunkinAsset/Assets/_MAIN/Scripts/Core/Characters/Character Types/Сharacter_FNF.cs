@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public class Сharacter_FNF : MonoBehaviour
+    public abstract class Сharacter_FNF : MonoBehaviour
     {
-        public Animator animator;
+        protected Animator animator;
         protected string currentAnimationState;
 
         protected string[] SING_NOTES = { "Left", "Down", "Up", "Right" };
         protected const string IDLE = "Idle";
         protected const string ARROW_PRESSED = "Pressed";
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             animator = GetComponent<Animator>();
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;

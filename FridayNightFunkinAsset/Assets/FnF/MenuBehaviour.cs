@@ -15,7 +15,7 @@ public class MenuBehaviour : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (inputActions.MenuNavigation.Escape.WasPressedThisFrame())
+        if (inputActions.MenuNavigation.Escape.WasPerformedThisFrame())
         {
             Escape();
         }

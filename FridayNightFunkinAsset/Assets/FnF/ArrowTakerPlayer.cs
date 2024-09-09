@@ -8,7 +8,7 @@ namespace FridayNightFunkin
 {
     public class ArrowTakerPlayer : ArrowTaker
     {
-        private FnfInput inputActions;
+        private FnfInput inputActions => InputManager.inputActions;
         private ScoreManager scoreManager => ScoreManager.instance;
         private float distanceFromArrowToTaker;
         public bool isHold { get; private set; }
@@ -19,14 +19,20 @@ namespace FridayNightFunkin
         public delegate void OnArrowUnTakeHandler(ArrowSide arrow);
         public event OnArrowUnTakeHandler OnArrowUnTake;
 
-        protected override void OnEnable()
+        protected void Start()
         {
-            base.OnEnable();
-            inputActions = InputManager.inputActions;
-            GetInputFromSide(arrowSide).performed += arrow => OnArrowPressed();
-            GetInputFromSide(arrowSide).canceled += arrow => OnArrowUnPressed();
+            inputActions.Enable();
+            GetInputFromSide(arrowSide).performed += OnArrowPressed;
+            GetInputFromSide(arrowSide).canceled += OnArrowUnPressed;
         }
-        private void OnArrowPressed()
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            GetInputFromSide(arrowSide).performed -=  OnArrowPressed;
+            GetInputFromSide(arrowSide).canceled -=  OnArrowUnPressed;
+            inputActions.Disable();
+        }
+        private void OnArrowPressed(InputAction.CallbackContext context)
         {
             animator.CrossFade("Pressed", 0);
             Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, arrowDetectRadiusCalcualted, levelSettings.arrowLayer);
@@ -60,7 +66,7 @@ namespace FridayNightFunkin
                 animator.CrossFade("NoArrowPress", 0);
             }
         }
-        private void OnArrowUnPressed()
+        private void OnArrowUnPressed(InputAction.CallbackContext context)
         {
             animator.CrossFade("Idle", 0);
             ArrowMask.instance.DisActivateMask((int)arrowSide);

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using FridayNightFunkin.CHARACTERS;
 using UnityEditor;
-using DIALOGUE;
+using UnityEngine.Timeline;
 
 namespace FridayNightFunkin
 {
@@ -23,9 +23,12 @@ namespace FridayNightFunkin
 
         public Character_Fnf_PlayAble player;
 
-        public PlayerInputManager playerInput;
-
-        public static LevelSettings instance { get; private set; }
+        public TimelineAsset[] chartVariants;
+        private static LevelSettings _instance;
+        public static LevelSettings instance 
+        {
+            get; private set;
+        }
 
         public Image[] arrowsPlayer;
 

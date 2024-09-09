@@ -9,7 +9,15 @@ namespace FridayNightFunkin
     {
         private float distanceFromArrowToTaker;
 
-        private float timeToIdle = 0.1f;
+        [SerializeField] private float timeToIdle = 0.3f;
+
+        public delegate void OnArrowTakeHandler(ArrowSide arrow);
+        public event OnArrowTakeHandler OnArrowTake;
+
+        public delegate void OnArrowUnTakeHandler(ArrowSide arrow);
+        public event OnArrowUnTakeHandler OnArrowUnTake;
+
+        public bool isHold { get; private set; }
 
         private void Update()
         {
@@ -23,7 +31,8 @@ namespace FridayNightFunkin
                 {
                     animator.CrossFade("Pressed", 0);
 
-                    bool isHold = false;
+                    isHold = false;
+                    OnArrowTake?.Invoke(arrowSide);
                     if (arrow.tailDistance > 0)
                     {
                         isHold = true;
@@ -43,6 +52,7 @@ namespace FridayNightFunkin
         {
             yield return new WaitForSeconds(time);
             animator.CrossFade(anim, 0);
+            OnArrowUnTake?.Invoke(arrowSide);
         }
 
         private IEnumerator PlayAnimWithDelayWithCondition(string anim, float time,Arrow arrow)
@@ -53,6 +63,7 @@ namespace FridayNightFunkin
                 if (arrow.tailDistanceToArrowTakerRaw < 0)
                 {
                     yield return new WaitForSeconds(time);
+                    OnArrowUnTake?.Invoke(arrowSide);
                     animator.CrossFade(anim, 0);
                     break;
                 }

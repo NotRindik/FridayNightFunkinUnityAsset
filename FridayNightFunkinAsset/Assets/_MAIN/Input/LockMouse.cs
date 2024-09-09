@@ -10,7 +10,6 @@ public class LockMouse : MonoBehaviour
 {
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

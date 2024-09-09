@@ -1,8 +1,8 @@
-using COMMANDS;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonBehaviour : MonoBehaviour
 {
@@ -17,6 +17,8 @@ public class ButtonBehaviour : MonoBehaviour
 
     private float startXScale;
     private float startYScale;
+
+    private Button button;
     
 
     private void Start()
@@ -24,6 +26,7 @@ public class ButtonBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         startXScale = transform.localScale.x;
         startYScale = transform.localScale.y;
+        button = GetComponent<Button>();
     }
     private void Update()
     {
@@ -39,12 +42,15 @@ public class ButtonBehaviour : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(AnimationName) && !isAnimationStart)
         {
             timeToEndAnimation = animator.GetCurrentAnimatorStateInfo(0).length;
+            button.interactable = false;
+            EventSystem.current.SetSelectedGameObject(gameObject);
             isAnimationStart = true;
         }
 
         if(timeToEndAnimation <= 0 && isAnimationStart)
         {
             isAnimationStart = false;
+            button.interactable = true;
             onAnimationEnd?.Invoke();
         }
     }
@@ -58,19 +64,14 @@ public class ButtonBehaviour : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
-    public void SetPanel(string mediaName)
-    {
-        CommandManager.instance.Execute("setlayermedia",$"-p Fade", $"-m {mediaName}");
-    }
-
     private void FixedUpdate()
     {
-        timeToEndAnimation -= Time.deltaTime;
+        timeToEndAnimation -= Time.fixedDeltaTime;
     }
 
     public void PlayAnimation(string animation)
     {
-        animator.Play(animation);
+        animator.Play(animation,0);
     }
     public void PlayAudioClip(AudioClip audioClip)
     {
@@ -95,8 +96,4 @@ public class ButtonBehaviour : MonoBehaviour
         AudioManager.instance.StopTrack(audioName);
     }
 
-    public void TestButtonPressed()
-    {
-        Debug.Log("Test");
-    }
 }

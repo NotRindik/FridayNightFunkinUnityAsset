@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            transform.SetParent(null);
             DontDestroyOnLoad(gameObject);
 
         }
@@ -34,7 +35,6 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(instance.gameObject);
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         sfxRoot = new GameObject(SFX_PARENT_NAME).transform;

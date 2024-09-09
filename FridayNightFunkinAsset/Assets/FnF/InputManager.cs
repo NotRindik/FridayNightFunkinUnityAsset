@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,28 +6,23 @@ using TMPro;
 
 public class InputManager : MonoBehaviour
 {
-    private static FnfInput _inputActions;
-    public static FnfInput inputActions 
-    {
-        get
-        {
-            if (_inputActions == null)
-            {
-                _inputActions = new FnfInput();
-            }
-
-            return _inputActions;
-        }
-    }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    public static FnfInput inputActions { get; private set; }
 
     public static event Action rebindComplete;
     public static event Action rebindCanceled;
     public static event Action<InputAction, int> rebindStarted;
+
+    private void OnEnable()
+    {
+        if (inputActions == null)
+        {
+            inputActions = new FnfInput();
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
+    }
 
     public static void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText,Image overlay, bool excludeMouse)
     {
@@ -100,8 +93,8 @@ public class InputManager : MonoBehaviour
 
     public static string GetBindingName(string actionName, int bindingIndex)
     {
-        if (_inputActions == null)
-            _inputActions = new FnfInput();
+        if (inputActions == null)
+            inputActions = new FnfInput();
 
         InputAction action = inputActions.asset.FindAction(actionName);
         return action.GetBindingDisplayString(bindingIndex);
@@ -120,8 +113,8 @@ public class InputManager : MonoBehaviour
         if (actionName == null)
             return;
 
-        if (_inputActions == null)
-            _inputActions = new FnfInput();
+        if (inputActions == null)
+            inputActions = new FnfInput();
 
         InputAction action = inputActions.asset.FindAction(actionName);
 

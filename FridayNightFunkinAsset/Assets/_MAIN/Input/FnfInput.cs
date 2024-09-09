@@ -203,6 +203,15 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RestartAfterDie"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac59ce1a-27c2-4399-8f91-236fab016c90"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -304,6 +313,39 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
                     ""action"": ""SkipCutscene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bae8f05-8f3c-4a00-a69d-9652c0d526be"",
+                    ""path"": ""<Keyboard>/numpadEnter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartAfterDie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e80763d-a628-4eee-99d6-9ff84483b0bb"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartAfterDie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2de272f-2f03-46b5-834f-e907a4b75c44"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartAfterDie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -329,6 +371,7 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
         m_MenuNavigation_Mute = m_MenuNavigation.FindAction("Mute", throwIfNotFound: true);
         m_MenuNavigation_Escape = m_MenuNavigation.FindAction("Escape", throwIfNotFound: true);
         m_MenuNavigation_SkipCutscene = m_MenuNavigation.FindAction("SkipCutscene", throwIfNotFound: true);
+        m_MenuNavigation_RestartAfterDie = m_MenuNavigation.FindAction("RestartAfterDie", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -465,6 +508,7 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_MenuNavigation_Mute;
     private readonly InputAction m_MenuNavigation_Escape;
     private readonly InputAction m_MenuNavigation_SkipCutscene;
+    private readonly InputAction m_MenuNavigation_RestartAfterDie;
     public struct MenuNavigationActions
     {
         private @FnfInput m_Wrapper;
@@ -474,6 +518,7 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
         public InputAction @Mute => m_Wrapper.m_MenuNavigation_Mute;
         public InputAction @Escape => m_Wrapper.m_MenuNavigation_Escape;
         public InputAction @SkipCutscene => m_Wrapper.m_MenuNavigation_SkipCutscene;
+        public InputAction @RestartAfterDie => m_Wrapper.m_MenuNavigation_RestartAfterDie;
         public InputActionMap Get() { return m_Wrapper.m_MenuNavigation; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -498,6 +543,9 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
             @SkipCutscene.started += instance.OnSkipCutscene;
             @SkipCutscene.performed += instance.OnSkipCutscene;
             @SkipCutscene.canceled += instance.OnSkipCutscene;
+            @RestartAfterDie.started += instance.OnRestartAfterDie;
+            @RestartAfterDie.performed += instance.OnRestartAfterDie;
+            @RestartAfterDie.canceled += instance.OnRestartAfterDie;
         }
 
         private void UnregisterCallbacks(IMenuNavigationActions instance)
@@ -517,6 +565,9 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
             @SkipCutscene.started -= instance.OnSkipCutscene;
             @SkipCutscene.performed -= instance.OnSkipCutscene;
             @SkipCutscene.canceled -= instance.OnSkipCutscene;
+            @RestartAfterDie.started -= instance.OnRestartAfterDie;
+            @RestartAfterDie.performed -= instance.OnRestartAfterDie;
+            @RestartAfterDie.canceled -= instance.OnRestartAfterDie;
         }
 
         public void RemoveCallbacks(IMenuNavigationActions instance)
@@ -557,5 +608,6 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
         void OnMute(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnSkipCutscene(InputAction.CallbackContext context);
+        void OnRestartAfterDie(InputAction.CallbackContext context);
     }
 }

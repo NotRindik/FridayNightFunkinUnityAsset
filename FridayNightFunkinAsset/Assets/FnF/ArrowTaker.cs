@@ -19,7 +19,7 @@ namespace FridayNightFunkin
         {
             GameStateManager.instance.OnGameStateChanged += OnGameStateChange;
         }
-        private void Awake()
+        protected void Awake()
         {
             animator = GetComponent<Animator>();
         }
@@ -58,7 +58,7 @@ namespace FridayNightFunkin
             Gizmos.DrawWireSphere(transform.position, arrowDetectRadiusCalcualted);
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             GameStateManager.instance.OnGameStateChanged -= OnGameStateChange;
         }

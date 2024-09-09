@@ -41,10 +41,15 @@ public class StoryModeMenu : MenuBehaviour
 
     private Transform[] characterPos;
 
-    private Button[] buttons;
+    public Button[] buttons { get; private set; }
 
     private int difficultIndex = 1;
     private void Awake()
+    {
+        Initialize();
+    }
+
+    public void Initialize()
     {
         buttons = levelButtonContainer.GetComponentsInChildren<Button>(true);
         difficultIndex = 1;
@@ -87,6 +92,7 @@ public class StoryModeMenu : MenuBehaviour
         if ((int)difficult != difficultIndex)
         {
             difficult = (DifficultLevel)difficultIndex;
+            PlayerPrefs.SetInt("Difficult", difficultIndex);
             difficultImage.sprite = difficultImages[difficult];
             difficultImage.SetNativeSize();
             AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}scrollMenu");

@@ -1,7 +1,4 @@
-using DIALOGUE;
-using FridayNightFunkin.CHARACTERS;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayAnimPerBeat : MonoBehaviour
@@ -40,6 +37,17 @@ public class PlayAnimPerBeat : MonoBehaviour
     public void SetPause(bool isPause)
     {
         this.isPause = isPause;
+    }
+
+    public void SetBlockTimer(bool isBlock, float time)
+    {
+        StartCoroutine(SetBlockTimerCoroutine(isBlock, time));
+    }
+
+    private IEnumerator SetBlockTimerCoroutine(bool isBlock, float time)
+    {
+        yield return new WaitForSeconds(time);
+        SetBlock(isBlock);
     }
 
     public void ChangeAnimation(string animation)

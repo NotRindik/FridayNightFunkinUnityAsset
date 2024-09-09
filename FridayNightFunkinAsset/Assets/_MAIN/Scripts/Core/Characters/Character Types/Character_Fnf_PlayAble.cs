@@ -1,10 +1,8 @@
 using FridayNightFunkin.UI;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace FridayNightFunkin.CHARACTERS
 {
@@ -27,8 +25,6 @@ namespace FridayNightFunkin.CHARACTERS
         private float timeToEndAnimation;
 
         private FnfInput inputActions;
-
-        public Character_Fnf_PlayAble character;
         public LevelSettings levelSettings => LevelSettings.instance;
 
         private ArrowTakerPlayer[] arrowTakers;
@@ -55,14 +51,19 @@ namespace FridayNightFunkin.CHARACTERS
 
         private void Update()
         {
-            if (Input.anyKeyDown && isDead)
+            if (inputActions.MenuNavigation.RestartAfterDie.WasPressedThisFrame() && isDead)
             {
                 animator.Play("NotDead");
+            }
+            else if (inputActions.MenuNavigation.Escape.WasPressedThisFrame() && isDead)
+            {
+                PlayerPrefs.SetInt("AfterLevel",1);
+                SceneLoad.instance.StartLoad("MainMenu");
             }
 
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("NotDead") && !isAnimationStart)
             {
-                timeToEndAnimation = animator.GetCurrentAnimatorStateInfo(0).length + 1;
+                timeToEndAnimation = animator.GetCurrentAnimatorStateInfo(0).length + 1.3f;
                 OnGameOverEnd?.Invoke();
                 playAnimPerBeat.SetPause(true);
                 isAnimationStart = true;
@@ -71,9 +72,11 @@ namespace FridayNightFunkin.CHARACTERS
             if (timeToEndAnimation <= 0 && isAnimationStart)
             {
                 isAnimationStart = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
             }
-
+        }
+        private void FixedUpdate()
+        {
             timeToEndAnimation -= Time.fixedDeltaTime;
             lockIdle -= Time.fixedDeltaTime;
         }
@@ -106,8 +109,8 @@ namespace FridayNightFunkin.CHARACTERS
         public void PlayMissAnimation(Arrow arrow)
         {
             animator.CrossFade(MiSS_ANIMATION[(int)arrow.arrowSide], 0);
-
-            SetIdleAnim(0.4f);
+            playAnimPerBeat.SetBlock(true);
+            playAnimPerBeat.SetBlockTimer(false, 0.2f);
 
             if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)
             {
@@ -116,11 +119,6 @@ namespace FridayNightFunkin.CHARACTERS
                 isDead = true;
                 animator.Play("Dead");
             }
-        }
-
-        public void SetIdleAnim(float time)
-        {
-            lockIdle = time;
         }
     }
 }

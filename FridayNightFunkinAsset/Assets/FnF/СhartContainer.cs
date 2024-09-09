@@ -34,8 +34,17 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         
         private void Start()
         {
+            TryGetComponent(out PlayableDirector playableDirector);
+            this.playableDirector = playableDirector;
             if (Application.isPlaying)
             {
+                if (PlayerPrefs.HasKey("Difficult"))
+                {
+                    playableDirector.playableAsset = LevelSettings.instance.chartVariants[PlayerPrefs.GetInt("Difficult")];
+                    isSaveCharts = true;
+                    playableDirector.Play();
+                }
+                
                 GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
             }   
         }
@@ -44,8 +53,26 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             time = playableDirector.time;
 
+            if(playableDirector.duration - 1 < time)
+            {
+                playableDirector.time = 0;
+                PlayerPrefs.SetInt("AfterLevel",1);
+                SceneLoad.instance.StartLoad("MainMenu");
+            }
+
             if (levelSettings != null)
             {
+                SaveChartFromTimeLine(playableDirector, "BF", markers);
+                if (isSaveCharts)
+                {
+                    for (int i = 0; i < transform.childCount;)
+                    {
+                        DestroyImmediate(transform.GetChild(i).gameObject);
+                    }
+                    levelSettings.arrowsList = new List<Arrow>();
+                    SpawnChart();
+                    isSaveCharts = false;
+                }
 
                 for (int i = 0; i < levelSettings.arrowsList.Count; i++)
                 {
@@ -71,20 +98,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                     }
                 }
 
-                SaveChartFromTimeLine(playableDirector, "BF", markers);
-                if (!Application.isPlaying)
-                {
-                    if (isSaveCharts)
-                    {
-                        for (int i = 0; i < transform.childCount;)
-                        {
-                            DestroyImmediate(transform.GetChild(i).gameObject);
-                        }
-                        levelSettings.arrowsList = new List<Arrow>();
-                        SpawnChart();
-                        isSaveCharts = false;
-                    }
-                }
             }
             else
             {
