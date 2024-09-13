@@ -16,7 +16,25 @@ namespace FridayNightFunkin.CHARACTERS
 
         protected virtual void Awake()
         {
-            animator = GetComponent<Animator>();
+            if(TryGetComponent(out Animator animator))
+            {
+                this.animator = animator;
+            }
+            else
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (transform.GetChild(i).TryGetComponent(out Animator animatorChild))
+                    {
+                        this.animator = animatorChild;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"No animator {gameObject}");
+                    }
+                }
+            }
+
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
         public void PlayNote(ArrowSide arrowSide)

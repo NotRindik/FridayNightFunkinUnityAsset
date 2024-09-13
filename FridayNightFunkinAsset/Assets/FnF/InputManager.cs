@@ -18,10 +18,6 @@ public class InputManager : MonoBehaviour
         {
             inputActions = new FnfInput();
         }
-        else
-        {
-            DestroyImmediate(gameObject);
-        }
     }
 
     public static void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText,Image overlay, bool excludeMouse)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public interface IService
@@ -12,15 +13,12 @@ public class ServiceLocator : MonoBehaviour
     private readonly Dictionary<string, object> _services = new Dictionary<string, object>();
     public static ServiceLocator instance { get; private set; }
 
-    public void Awake()
+    private static GameObject thisGameObject;
+    private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-        }
-        else
-        {
-            DestroyImmediate(this.gameObject);
         }
     }
 

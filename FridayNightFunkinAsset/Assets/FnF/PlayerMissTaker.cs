@@ -38,8 +38,8 @@ namespace FridayNightFunkin
                     }
                     arrow.isWork = false;
                     arrow.gameObject.SetActive(false);
-                    levelSettings.player.PlayMissAnimation(arrow);
-                    scoreManager.ReduceValueToSlider(levelSettings.missForce);
+                    levelSettings.currentPlayer.PlayMissAnimation(arrow);
+                    scoreManager.ReduceValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetMissForce());
                     scoreManager.AddMiss();
                     scoreManager.ÑalculateAccuracy(1);
                     scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);

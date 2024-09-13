@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
 public class SkipCutscene : MonoBehaviour
@@ -12,16 +11,23 @@ public class SkipCutscene : MonoBehaviour
     private void OnEnable()
     {
         inputActions = InputManager.inputActions;
-        inputActions.Enable();
-        inputActions.MenuNavigation.SkipCutscene.performed += context => SkipTheCutscene();
+        inputActions.MenuNavigation.SkipCutscene.Enable();
+        inputActions.MenuNavigation.SkipCutscene.performed += SkipTheCutscene;
     }
     private void OnDisable()
     {
-        inputActions.Disable();
+        inputActions.MenuNavigation.SkipCutscene.performed -= SkipTheCutscene;
+        inputActions.MenuNavigation.SkipCutscene.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        inputActions.MenuNavigation.SkipCutscene.performed -= SkipTheCutscene;
+        inputActions.MenuNavigation.SkipCutscene.Disable();
     }
 
 
-    private void SkipTheCutscene()
+    private void SkipTheCutscene(InputAction.CallbackContext callbackContext)
     {
         if(skipTime == 0)
         {

@@ -55,7 +55,7 @@ namespace FridayNightFunkin
                         OnArrowTake?.Invoke(arrowSide);
 
                         FNFUIElement.instance.UpdateUI();
-                        scoreManager.AddValueToSlider(levelSettings.playerForce);
+                        scoreManager.AddValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetPlayerForce());
                         ArrowMask.instance.ActivateMask((int)arrowSide);
                         arrow.TakeArrow(isHold);
                     }

@@ -10,12 +10,6 @@ namespace FridayNightFunkin.CHARACTERS
     {
         private string[] MiSS_ANIMATION = { "LeftFail", "DownFail", "UpFail", "DownFail" };
 
-        [SerializeField] private UnityEvent OnPlayerDead;
-
-        [SerializeField] private UnityEvent OnGameOver;
-
-        [SerializeField] private UnityEvent OnGameOverEnd;
-
         private PlayAnimPerBeat playAnimPerBeat;
 
         private bool isDead = false;
@@ -31,22 +25,44 @@ namespace FridayNightFunkin.CHARACTERS
 
         private float lockIdle;
 
+        internal CharacterSide characterSide = CharacterSide.Player;
+
+        private PlayerDeath playerDeath;
+
+
+        protected override void Awake()
+        {
+            base.Awake();
+            if (TryGetComponent(out PlayAnimPerBeat playAnimPerBeat))
+            {
+                this.playAnimPerBeat = playAnimPerBeat;
+            }
+            else
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (transform.GetChild(i).TryGetComponent(out PlayAnimPerBeat playAnimPerBeatChild))
+                    {
+                        this.playAnimPerBeat = playAnimPerBeatChild;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"No playAnimPerBeat {gameObject}");
+                    }
+                }
+            }
+        }
         private void Start()
         {
-            levelSettings.player = this;
-            playAnimPerBeat = GetComponent<PlayAnimPerBeat>();
+            inputActions = InputManager.inputActions;
             arrowTakers = new ArrowTakerPlayer[levelSettings.arrowsPlayer.Length];
+            playerDeath = ServiceLocator.instance.Get<PlayerDeath>();
             for (int i = 0; i < levelSettings.arrowsPlayer.Length; i++)
             {
                 arrowTakers[i] = levelSettings.arrowsPlayer[i].GetComponent<ArrowTakerPlayer>();
                 arrowTakers[i].OnArrowTake += PlayHitAnimation;
                 arrowTakers[i].OnArrowUnTake += PlayIdle;
             }
-            InitializeActions();
-        }
-        private void InitializeActions()
-        {
-            inputActions = InputManager.inputActions;
         }
 
         private void Update()
@@ -64,7 +80,7 @@ namespace FridayNightFunkin.CHARACTERS
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("NotDead") && !isAnimationStart)
             {
                 timeToEndAnimation = animator.GetCurrentAnimatorStateInfo(0).length + 1.3f;
-                OnGameOverEnd?.Invoke();
+                playerDeath.OnGameOverEnd?.Invoke();
                 playAnimPerBeat.SetPause(true);
                 isAnimationStart = true;
             }
@@ -83,7 +99,7 @@ namespace FridayNightFunkin.CHARACTERS
 
         public void DeathAnimEnd()
         {
-            OnGameOver?.Invoke();
+            playerDeath.OnGameOver?.Invoke();
             playAnimPerBeat.SetPause(false);
             playAnimPerBeat.ChangeAnimation("DeadIdle");
         }
@@ -108,17 +124,25 @@ namespace FridayNightFunkin.CHARACTERS
 
         public void PlayMissAnimation(Arrow arrow)
         {
+            if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)
+            {
+                playAnimPerBeat.SetPause(true);
+                isDead = true;
+                animator.CrossFade("Dead", 0);
+                StartCoroutine(DeathAnimationEnd(2.1f));
+                playerDeath.OnPlayerDead?.Invoke();
+                return;
+            }
+
             animator.CrossFade(MiSS_ANIMATION[(int)arrow.arrowSide], 0);
             playAnimPerBeat.SetBlock(true);
             playAnimPerBeat.SetBlockTimer(false, 0.2f);
+        }
 
-            if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)
-            {
-                OnPlayerDead?.Invoke();
-                playAnimPerBeat.SetPause(true);
-                isDead = true;
-                animator.Play("Dead");
-            }
+        private IEnumerator DeathAnimationEnd(float time)
+        {
+            yield return new WaitForSeconds(time);
+            DeathAnimEnd();
         }
     }
 }

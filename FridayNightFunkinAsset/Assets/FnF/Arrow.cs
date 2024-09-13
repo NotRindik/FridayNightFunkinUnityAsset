@@ -63,8 +63,6 @@ namespace FridayNightFunkin
             this.startTime = startTime;
             this.endTime = endTime;
         }
-
-#if UNITY_EDITOR
         private void Update()
         {
             GenerateTail();
@@ -162,8 +160,6 @@ namespace FridayNightFunkin
             }
             Gizmos.color = Color.blue;
         }
-
-#endif
         public void TakeArrow(bool isHold = false)
         {
             this.isHold = isHold;
@@ -188,7 +184,7 @@ namespace FridayNightFunkin
                 if (characterSide == CharacterSide.Player)
                 {
                     ScoreManager.instance.AddScore(LevelSettings.instance.addMaxScoreInLongArrow);
-                    ScoreManager.instance.AddValueToSlider(LevelSettings.instance.playerForce / 2);
+                    ScoreManager.instance.AddValueToSlider(LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetPlayerForce() / 2);
                     FNFUIElement.instance.UpdateUI();
                 }
             } 

@@ -36,11 +36,12 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             TryGetComponent(out PlayableDirector playableDirector);
             this.playableDirector = playableDirector;
-            if (Application.isPlaying)
+            levelSettings = LevelSettings.instance;
+            if (Application.isPlaying && levelSettings)
             {
                 if (PlayerPrefs.HasKey("Difficult"))
                 {
-                    playableDirector.playableAsset = LevelSettings.instance.chartVariants[PlayerPrefs.GetInt("Difficult")];
+                    playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[PlayerPrefs.GetInt("Difficult")];
                     isSaveCharts = true;
                     playableDirector.Play();
                 }
@@ -108,7 +109,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             Vector3 arrowSpawnPos = Vector2.zero;
             Arrow arrow;
-
+            if (levelSettings.arrowsPlayerPos.Count == 0) return;
             if (road == 0)
             {
                 arrowSpawnPos = new Vector3(levelSettings.arrowsPlayerPos[(int)arrowSide].x, levelSettings.arrowsPlayerPos[(int)arrowSide].y - chartSpawnDistance * (Camera.main.orthographicSize / 5), levelSettings.arrowsPlayerPos[(int)arrowSide].z);

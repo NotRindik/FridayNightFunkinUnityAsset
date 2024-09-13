@@ -15,6 +15,8 @@ namespace FridayNightFunkin.CHARACTERS
 
         private float arrowDetectRadiusCalcualted;
 
+        internal CharacterSide characterSide = CharacterSide.Enemy;
+
         private void Start()
         {
             levelSettings = LevelSettings.instance;
@@ -43,6 +45,12 @@ namespace FridayNightFunkin.CHARACTERS
                 }
             }
             playAnimPerBeat.SetBlock(false);
+            StartCoroutine(playIdleInvoke());
+        }
+
+        private IEnumerator playIdleInvoke()
+        {
+            yield return new WaitForSeconds(0.5f);
             animator.CrossFade(IDLE, 0.1f);
         }
     }

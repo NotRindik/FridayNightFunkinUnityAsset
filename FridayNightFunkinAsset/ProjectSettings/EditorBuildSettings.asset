@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_MAIN/Scenes/MainMenu.unity
     guid: b11e77eccb907324587e27fa065ad09c
   - enabled: 1
-    path: Assets/FnF/LevelS/Tuttorial.unity
+    path: Assets/FnF/LevelS/Tuttorial/Tuttorial.unity
     guid: 853b6709bf42c4c4a9ebb9ed59ce03f9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 62fac19b914217444ad7eafcdc882bd6, type: 2}

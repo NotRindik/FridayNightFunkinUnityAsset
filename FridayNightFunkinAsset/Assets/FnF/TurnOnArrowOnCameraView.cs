@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace FridayNightFunkin.Editor
 {
+    [ExecuteAlways]
     public class TurnOnArrowOnCameraView : MonoBehaviour
     {
         private Vector2 detectSize;
@@ -14,8 +15,12 @@ namespace FridayNightFunkin.Editor
         private LevelSettings levelSettings => LevelSettings.instance;
         private Camera mainCamera;
 
+        private bool isUpdateWork = false;
+
         private void OnDrawGizmos()
         {
+            if (!isUpdateWork) return;
+
             if (!mainCamera)
                 mainCamera = Camera.main;
             if (!canvasPosition || !gameObject.activeInHierarchy || !levelSettings) return;
@@ -30,6 +35,21 @@ namespace FridayNightFunkin.Editor
 
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube(canvasPosition.position, detectSize);
+        }
+        private void Update()
+        {
+            isUpdateWork = true;
+            if (!mainCamera)
+                mainCamera = Camera.main;
+            if (!canvasPosition || !gameObject.activeInHierarchy || !levelSettings) return;
+
+            float camHeight = 2f * mainCamera.orthographicSize;
+            float camWidth = camHeight * mainCamera.aspect;
+
+            detectSize = new Vector2(camWidth, camHeight) + new Vector2(size * (mainCamera.orthographicSize / 5), size * (mainCamera.orthographicSize / 5));
+
+            if (!Application.isPlaying)
+                SwithArrows();
         }
         private void SwithArrows()
         {

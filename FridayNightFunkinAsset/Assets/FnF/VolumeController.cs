@@ -22,7 +22,7 @@ public class VolumeController : MonoBehaviour
     public Image soundTraySprite;
     public Animator soundTrayAnim;
 
-    private FnfInput fnfInput;
+    private FnfInput fnfInput => InputManager.inputActions;
 
     private Sprite[] soundTraySprites;
 
@@ -47,7 +47,7 @@ public class VolumeController : MonoBehaviour
             isMute = true;
             InitializeVolume(-80, 0);
         }
-
+        InitializeInput();
         if (!isMute)
         {
             if (!PlayerPrefs.HasKey(VOLUME_SAVE))
@@ -66,7 +66,9 @@ public class VolumeController : MonoBehaviour
 
     private void InitializeInput()
     {
-        fnfInput = InputManager.inputActions;
+        fnfInput.MenuNavigation.IncreaseSound.Enable();
+        fnfInput.MenuNavigation.DecreseSound.Enable();
+        fnfInput.MenuNavigation.Mute.Enable();
         fnfInput.MenuNavigation.IncreaseSound.started += IncreseSound;
         fnfInput.MenuNavigation.DecreseSound.started += DecreseSound;
         fnfInput.MenuNavigation.Mute.started += Mute;
@@ -180,12 +182,15 @@ public class VolumeController : MonoBehaviour
 
     private void OnEnable()
     {
-        InitializeInput();
-        fnfInput.Enable();
+        fnfInput.MenuNavigation.IncreaseSound.Enable();
+        fnfInput.MenuNavigation.DecreseSound.Enable();
+        fnfInput.MenuNavigation.Mute.Enable();
     }
 
     private void OnDisable()
     {
-        fnfInput.Disable();
+        fnfInput.MenuNavigation.IncreaseSound.Disable();
+        fnfInput.MenuNavigation.DecreseSound.Disable();
+        fnfInput.MenuNavigation.Mute.Disable();
     }
 }

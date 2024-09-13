@@ -1,9 +1,10 @@
+using FridayNightFunkin;
 using System.Collections;
 using UnityEngine;
-
+[RequireComponent(typeof(Animator))]
 public class PlayAnimPerBeat : MonoBehaviour
 {
-    [SerializeField]protected float BPM;
+    [SerializeField]protected float ownBPM;
     protected float BPS;
 
     protected float time;
@@ -18,13 +19,19 @@ public class PlayAnimPerBeat : MonoBehaviour
     private bool isBlock;
     protected void Awake()
     {
-        BPS = BPM / 60;
-        animator = GetComponent<Animator>();
         GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        if (ownBPM == 0)
+            ownBPM = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetGeneralBPM();
+        BPS = ownBPM / 60;
     }
     protected void Update()
     {
-        if(!isPause) 
+
+        if (!isPause) 
             if(!isBlock) time += Time.deltaTime;
         PlayAnimation();
     }
@@ -56,8 +63,8 @@ public class PlayAnimPerBeat : MonoBehaviour
     }
     public void ChangeBPM(int bpm)
     {
-        BPM = bpm;
-        BPS = BPM / 60;
+        ownBPM = bpm;
+        BPS = ownBPM / 60;
     }
 
     public void SetBlock(bool setBlock)

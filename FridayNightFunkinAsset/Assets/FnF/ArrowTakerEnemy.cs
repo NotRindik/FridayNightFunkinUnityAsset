@@ -9,7 +9,7 @@ namespace FridayNightFunkin
     {
         private float distanceFromArrowToTaker;
 
-        [SerializeField] private float timeToIdle = 0.3f;
+        [SerializeField] private float timeToIdle = 0.1f;
 
         public delegate void OnArrowTakeHandler(ArrowSide arrow);
         public event OnArrowTakeHandler OnArrowTake;

@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc451121dd03c4745be136be0362b64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BPM: 100
+  ownBPM: 100
   triggerName: Triggered
