@@ -45,6 +45,10 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                     isSaveCharts = true;
                     playableDirector.Play();
                 }
+                else
+                {
+                    playableDirector.Play();
+                }
                 
                 GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
             }   

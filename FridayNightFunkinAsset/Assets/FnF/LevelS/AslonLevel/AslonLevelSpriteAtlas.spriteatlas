@@ -36,10 +36,34 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
-    packedSpriteRenderDataKeys: []
+    packedSpriteRenderDataKeys:
+    - 678e6564b201cc24a9e0eda9c3be1fdb: -954856212
+    - 678e6564b201cc24a9e0eda9c3be1fdb: 1478096873
+    - 678e6564b201cc24a9e0eda9c3be1fdb: 600614231
+    - 678e6564b201cc24a9e0eda9c3be1fdb: -827039961
+    - 678e6564b201cc24a9e0eda9c3be1fdb: -19221612
+    - 678e6564b201cc24a9e0eda9c3be1fdb: 1848864667
+    - 678e6564b201cc24a9e0eda9c3be1fdb: -1490884282
+    - 678e6564b201cc24a9e0eda9c3be1fdb: 1123529243
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: -954856212, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: 1478096873, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: 600614231, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: -827039961, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: -19221612, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: 1848864667, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: -1490884282, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  - {fileID: 1123529243, guid: 678e6564b201cc24a9e0eda9c3be1fdb, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Restaurant_3
+  - Restaurant_2
+  - Restaurant_1
+  - Restaurant_0
+  - Restaurant_7
+  - Restaurant_6
+  - Restaurant_5
+  - Restaurant_4
   m_RenderDataMap: {}
   m_Tag: AslonLevelSpriteAtlas
   m_IsVariant: 0
