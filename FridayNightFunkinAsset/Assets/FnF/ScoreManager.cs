@@ -21,6 +21,8 @@ namespace FridayNightFunkin
 
         internal bool isDead;
 
+        private Coroutine sliderMoveProcess;
+
         private void Awake()
         {
             if (instance == null)
@@ -41,10 +43,20 @@ namespace FridayNightFunkin
                 return;
             }
 
-            StartCoroutine(MoveSliderSmoothly(FNFUIElement.instance.versusSlider.value + value, 1f));
+            StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.value + value, 1f);
         }
 
-        public IEnumerator MoveSliderSmoothly(float targetValue, float initialAdder)
+        public void StartMoveSliderSmoothly(float targetValue, float initialAdder)
+        {
+            if (sliderMoveProcess != null)
+            {
+                StopCoroutine(sliderMoveProcess);
+            }
+
+            sliderMoveProcess = StartCoroutine(MoveSliderSmoothlyCoroutine(targetValue, initialAdder));
+        }
+
+        public IEnumerator MoveSliderSmoothlyCoroutine(float targetValue, float initialAdder)
         {
             while (true)
             {
@@ -66,7 +78,7 @@ namespace FridayNightFunkin
                 Debug.LogWarning("AAAAAAAAAAAAAAAAA!!!!! FUCKIN LITLE SHIT, THIS METHOD IS REDUCE VALUE, REDUCE!!! U KNOW WHEN - to - equals +!! - to - is +, SO WHY U PUT NEGATIVE MUMBER");
                 return;
             }
-            StartCoroutine(MoveSliderSmoothly(FNFUIElement.instance.versusSlider.value - value, 1f));
+            StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.value - value, 1f);
         }
         public void ReduceValueToSliderEnemy(float value)
         {
@@ -77,19 +89,19 @@ namespace FridayNightFunkin
             }
             if(FNFUIElement.instance.versusSlider.value - value <= FNFUIElement.instance.versusSlider.minValue + 1) 
             {
-                FNFUIElement.instance.versusSlider.value = FNFUIElement.instance.versusSlider.minValue + 1;
+                StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.minValue + 1,1);
             }
             else if (FNFUIElement.instance.versusSlider.value > FNFUIElement.instance.versusSlider.minValue)
             {
-                FNFUIElement.instance.versusSlider.value -= value;
+                StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.value - value, 1);
             }
         }
 
         public int ÑalculateAccuracy(float distance)
         {
-            if (distance < 0.3f) distance = 0;
+            if (distance < 80) distance = 0;
 
-            int accuracy = Mathf.RoundToInt(100 * (1 - distance));
+            int accuracy = Mathf.RoundToInt(100 * (1 - (distance/150)));
             accuracyList.Add(accuracy);
             return accuracy;
         }

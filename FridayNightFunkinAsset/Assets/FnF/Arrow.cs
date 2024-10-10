@@ -31,6 +31,8 @@ namespace FridayNightFunkin
         public bool isWork = true;
         public bool isViewedOnce = false;
 
+        public ArrowMarker markerRef;
+
         //It's should be public, cuz it's save info from editmode to playmode
         public Vector2 startPos;
 
@@ -40,9 +42,7 @@ namespace FridayNightFunkin
 
         public double endTime;
 
-
         private int arrowIndex;
-
 
         internal SpriteRenderer tail;
 
@@ -62,14 +62,32 @@ namespace FridayNightFunkin
             this.endPos = endPos;
             this.startTime = startTime;
             this.endTime = endTime;
+            markerRef.OnParameterChanged += OnTimeChanged;
+            markerRef.OnMarkerRemove += Destroy;
         }
+
+        private void OnTimeChanged(double time,float speedMultiplier,uint distanceCount)
+        {
+            startTime = time -  ((10/LevelSettings.instance.stage[LevelSettings.instance.stageIndex].chartSpeed) * (1/speedMultiplier));
+            this.distanceCount = distanceCount;
+            endTime = time;
+        }
+
+        public void Destroy(ArrowMarker arrowMarker)
+        {
+            markerRef.OnParameterChanged -= OnTimeChanged;
+            markerRef.OnMarkerRemove -= Destroy;
+            LevelSettings.instance.arrowsList.Remove(this);
+            DestroyImmediate(this.gameObject);
+        }
+
         private void Update()
         {
             GenerateTail();
 
             if (!Application.isPlaying)
                 return;
-            if (tailDistanceToArrowTakerRaw < 0 && isHold && distanceCount > 0)
+            if (tailDistanceToArrowTakerRaw < 50 && isHold && distanceCount > 0)
             {
                 isWork = false;
                 gameObject.SetActive(false);
@@ -80,8 +98,10 @@ namespace FridayNightFunkin
                 {
                     if (!tail.gameObject.activeInHierarchy)
                         continue;
-                    var distance = endPos.y + 4 - tail.transform.position.y;
-                    if(distance < tail.transform.position.y)
+                    var tailPos = Camera.main.WorldToScreenPoint(tail.transform.position).y;
+                    var arrowTakerPos = Camera.main.WorldToScreenPoint(endPos).y;
+                    var distance = arrowTakerPos - tailPos;
+                    if(distance < -4)
                     {
                         tail.gameObject.SetActive(false);
                     }
@@ -128,8 +148,8 @@ namespace FridayNightFunkin
                     tail.sprite = endHoldTrackSprie;
                 }
 
-                tailDistanceToArrowTakerRaw = endPos.y - tail.transform.position.y;
-                tailDistance = Mathf.Abs(tail.transform.position.y - transform.position.y);
+                tailDistanceToArrowTakerRaw = Camera.main.WorldToScreenPoint(endPos).y - Camera.main.WorldToScreenPoint(tail.transform.position).y;
+                tailDistance = Mathf.Abs(Camera.main.WorldToScreenPoint(tail.transform.position).y - Camera.main.WorldToScreenPoint(transform.position).y);
             }
             else if (distanceCount == 0)
             {
@@ -176,6 +196,11 @@ namespace FridayNightFunkin
             }
         }
 
+        public void SetArrowHolding(bool isHold = false)
+        {
+            this.isHold = isHold;
+        }
+
         private IEnumerator GiveScoreByLongArrows()
         {
             while (isHold || isWork)
@@ -185,6 +210,11 @@ namespace FridayNightFunkin
                 {
                     ScoreManager.instance.AddScore(LevelSettings.instance.addMaxScoreInLongArrow);
                     ScoreManager.instance.AddValueToSlider(LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetPlayerForce() / 2);
+                    FNFUIElement.instance.UpdateUI();
+                }
+                else
+                {
+                    ScoreManager.instance.ReduceValueToSliderEnemy(LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetEnemyForce() / 2);
                     FNFUIElement.instance.UpdateUI();
                 }
             } 

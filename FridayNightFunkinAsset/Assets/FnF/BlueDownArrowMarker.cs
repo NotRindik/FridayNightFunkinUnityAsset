@@ -6,5 +6,9 @@ using UnityEngine.Timeline;
 [CustomStyle("DownArrow")]
 public class BlueDownArrowMarker : ArrowMarker
 {
-    [SerializeField] protected ArrowSide arrowSide = ArrowSide.DownArrow;
+    public override void OnInitialize(TrackAsset aPent)
+    {
+        arrowSide = ArrowSide.DownArrow;
+        base.OnInitialize(aPent);
+    }
 }

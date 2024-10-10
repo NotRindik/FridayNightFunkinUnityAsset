@@ -53,6 +53,14 @@ public class AudioTrack
     {
         source.Play();
     }
+    public void Pause()
+    {
+        source.Pause();
+    }
+    public void UnPause()
+    {
+        source.UnPause();
+    }
     public void Stop()
     {
         source.Stop();

@@ -6,5 +6,9 @@ using UnityEngine.Timeline;
 [CustomStyle("UpArrow")]
 public class GreenUpArrowMarker : ArrowMarker
 {
-    [SerializeField] protected ArrowSide arrowSide = ArrowSide.UpArrow;
+    public override void OnInitialize(TrackAsset aPent)
+    {
+        arrowSide = ArrowSide.UpArrow;
+        base.OnInitialize(aPent);
+    }
 }

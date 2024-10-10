@@ -1,6 +1,4 @@
 using FridayNightFunkin.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +17,10 @@ namespace FridayNightFunkin
         public delegate void OnArrowUnTakeHandler(ArrowSide arrow);
         public event OnArrowUnTakeHandler OnArrowUnTake;
 
+        private Arrow LastArrow;
+
+        private bool isPause;
+
         protected void Start()
         {
             inputActions.Enable();
@@ -34,17 +36,21 @@ namespace FridayNightFunkin
         }
         private void OnArrowPressed(InputAction.CallbackContext context)
         {
+            if (isPause)
+                return;
             animator.CrossFade("Pressed", 0);
             Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, arrowDetectRadiusCalcualted, levelSettings.arrowLayer);
             if (overlapCircle.Length != 0)
             {
-                if (overlapCircle[0].TryGetComponent(out Arrow arrow))
+                if (overlapCircle[overlapCircle.Length - 1 ].TryGetComponent(out Arrow arrow))
                 {
                     if (arrowSide == arrow.arrowSide)
                     {
                         isHold = true;
                         ActivateSplash(arrowSide);
-                        distanceFromArrowToTaker = Vector2.Distance(transform.position, arrow.transform.position);
+                        Vector2 x = Camera.main.WorldToScreenPoint(transform.position);
+                        Vector2 y = Camera.main.WorldToScreenPoint(arrow.transform.position);
+                        distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
 
                         int accuracy = scoreManager.ÑalculateAccuracy(distanceFromArrowToTaker);
                         scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
@@ -53,7 +59,7 @@ namespace FridayNightFunkin
                         scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
                         scoreManager.AddCombo();
                         OnArrowTake?.Invoke(arrowSide);
-
+                        LastArrow = arrow;
                         FNFUIElement.instance.UpdateUI();
                         scoreManager.AddValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetPlayerForce());
                         ArrowMask.instance.ActivateMask((int)arrowSide);
@@ -73,7 +79,21 @@ namespace FridayNightFunkin
             if (isHold)
             {
                 isHold = false;
+                LastArrow.SetArrowHolding(isHold);
+                LastArrow = null;
                 OnArrowUnTake?.Invoke(arrowSide);
+            }
+        }
+        protected override void OnGameStateChange(GameState gameState)
+        {
+            base.OnGameStateChange(gameState);
+            if (gameState == GameState.GamePlay)
+            {
+                isPause = false;
+            }
+            else
+            {
+                isPause = true;
             }
         }
 

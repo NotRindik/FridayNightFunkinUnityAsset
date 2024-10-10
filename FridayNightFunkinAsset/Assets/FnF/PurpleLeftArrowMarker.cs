@@ -6,5 +6,9 @@ using UnityEngine.Timeline;
 [CustomStyle("LeftArrow")]
 public class PurpleLeftArrowMarker : ArrowMarker
 {
-    [SerializeField] protected ArrowSide arrowSide = ArrowSide.LeftArrow;
+    public override void OnInitialize(TrackAsset aPent)
+    {
+        arrowSide = ArrowSide.LeftArrow;
+        base.OnInitialize(aPent);
+    }
 }

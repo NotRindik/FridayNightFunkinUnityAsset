@@ -23,11 +23,11 @@ namespace FridayNightFunkin
         {
             foreach (var arrow in levelSettings.arrowsList)
             {
-                if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled)
+                if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled || arrow.characterSide != CharacterSide.Enemy)
                     continue;
 
-                var distance = arrow.endPos.y - arrow.transform.position.y;
-                if (arrow.transform.position.x == transform.position.x && distance < 0)
+                var distance = (Camera.main.WorldToScreenPoint(arrow.endPos).y - Camera.main.WorldToScreenPoint(arrow.transform.position).y);
+                if (distance < 0)
                 {
                     animator.CrossFade("Pressed", 0);
 
@@ -41,6 +41,8 @@ namespace FridayNightFunkin
                         StartCoroutine(PlayAnimWithDelayWithCondition("Idle", timeToIdle, arrow));
                         break;
                     }
+                    ScoreManager.instance.ReduceValueToSliderEnemy(LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetEnemyForce());
+                    FNFUIElement.instance.UpdateUI();
                     StartCoroutine(PlayAnimWithDelay("Idle", timeToIdle));
                     arrow.isWork = false;
                     arrow.TakeArrow(isHold);
@@ -63,6 +65,7 @@ namespace FridayNightFunkin
                 if (arrow.tailDistanceToArrowTakerRaw < 0)
                 {
                     yield return new WaitForSeconds(time);
+                    isHold = false;
                     OnArrowUnTake?.Invoke(arrowSide);
                     animator.CrossFade(anim, 0);
                     break;

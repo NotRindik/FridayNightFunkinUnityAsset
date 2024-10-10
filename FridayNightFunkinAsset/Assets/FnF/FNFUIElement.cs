@@ -15,11 +15,10 @@ namespace FridayNightFunkin.UI
 
         public static FNFUIElement instance { get; private set; }
 
-        private ScoreManager scoreManager;
+        private ScoreManager scoreManager => ScoreManager.instance;
 
-        private void Start()
+        private void Awake()
         {
-            scoreManager = ScoreManager.instance;
             if (!instance)
             {
                 instance = this;

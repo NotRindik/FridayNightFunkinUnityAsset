@@ -9,7 +9,7 @@ namespace FridayNightFunkin.CHARACTERS
 {
     public class Character_Fnf_Enemy : Ñharacter_FNF
     {
-        public LevelSettings levelSettings;
+        private LevelSettings levelSettings => LevelSettings.instance;
         private ArrowTakerEnemy[] arrowTakers;
         private PlayAnimPerBeat playAnimPerBeat;
 
@@ -17,9 +17,10 @@ namespace FridayNightFunkin.CHARACTERS
 
         internal CharacterSide characterSide = CharacterSide.Enemy;
 
+        Coroutine coroutineIdle;
+
         private void Start()
         {
-            levelSettings = LevelSettings.instance;
             arrowTakers = new ArrowTakerEnemy[levelSettings.arrowsEnemy.Length];
             TryGetComponent(out PlayAnimPerBeat playAnimPerBeat);
             this.playAnimPerBeat = playAnimPerBeat;
@@ -30,11 +31,36 @@ namespace FridayNightFunkin.CHARACTERS
                 arrowTakers[i].OnArrowUnTake += PlayIdle;
             }
         }
+        public void Active()
+        {
+            for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
+            {
+                arrowTakers[i] = levelSettings.arrowsEnemy[i].GetComponent<ArrowTakerEnemy>();
+                arrowTakers[i].OnArrowTake += PlayHitAnimation;
+                arrowTakers[i].OnArrowUnTake += PlayIdle;
+            }
+        }
+        private void ReloadAnim()
+        {
+            playAnimPerBeat.SetBlock(false);
+            animator.CrossFade(IDLE, 0.1f);
+        }
+        public void Disactive()
+        {
+            for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
+            {
+                arrowTakers[i] = levelSettings.arrowsEnemy[i].GetComponent<ArrowTakerEnemy>();
+                arrowTakers[i].OnArrowTake -= PlayHitAnimation;
+                arrowTakers[i].OnArrowUnTake -= PlayIdle;
+            }
+            ReloadAnim();
+        }
         private void PlayHitAnimation(ArrowSide arrowSide)
         {
             playAnimPerBeat.SetBlock(true);
-            animator.CrossFade(SING_NOTES[(int)arrowSide], 0.1f);
+            animator.Play(SING_NOTES[(int)arrowSide]);
         }
+        
         private void PlayIdle(ArrowSide arrowSide)
         {
             foreach (var arrowTaker in arrowTakers)
@@ -45,6 +71,12 @@ namespace FridayNightFunkin.CHARACTERS
                 }
             }
             playAnimPerBeat.SetBlock(false);
+            StartAnimation();
+        }
+
+        public void StartAnimation()
+        {
+            StopAllCoroutines();
             StartCoroutine(playIdleInvoke());
         }
 

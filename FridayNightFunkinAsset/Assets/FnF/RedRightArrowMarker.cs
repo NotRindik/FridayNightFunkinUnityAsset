@@ -6,5 +6,9 @@ using UnityEngine.Timeline;
 [CustomStyle("RightArrow")]
 public class RedRightArrowMarker : ArrowMarker
 {
-    [SerializeField] protected ArrowSide arrowSide = ArrowSide.RightArrow;
+    public override void OnInitialize(TrackAsset aPent)
+    {
+        arrowSide = ArrowSide.RightArrow;
+        base.OnInitialize(aPent);
+    }
 }

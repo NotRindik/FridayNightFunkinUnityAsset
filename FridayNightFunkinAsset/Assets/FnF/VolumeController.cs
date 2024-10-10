@@ -14,7 +14,7 @@ public class VolumeController : MonoBehaviour
     private const string MUTE_SAVE = "MuteSave";
 
 
-    private const float START_VOLUME = -20;
+    private const float START_VOLUME = -10;
     public const int START_VOLUME_TRAY_INDEX = 4;
 
     public AudioMixerGroup masterMixer;
@@ -94,13 +94,13 @@ public class VolumeController : MonoBehaviour
     {
         if (currentVolume == -80)
         {
-            currentVolume = -60;
+            currentVolume = -18;
             AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}soundtray/Volup");
         }
-        if (currentVolume < 20)
+        if (currentVolume < 0)
         {
             AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}soundtray/Volup");
-            currentVolume += 10;
+            currentVolume += 2;
         }
         else
             AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}soundtray/VolMAX");
@@ -115,11 +115,11 @@ public class VolumeController : MonoBehaviour
 
     public void DecreseSound(InputAction.CallbackContext obj)
     {
-        if (currentVolume > -50)
+        if (currentVolume > -18)
         {
-            currentVolume -= 10;
+            currentVolume -= 2;
         }
-        else if (currentVolume == -50)
+        if (currentVolume == -18)
         {
             currentVolume = -80;
         }

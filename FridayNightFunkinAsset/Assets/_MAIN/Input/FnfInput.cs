@@ -212,6 +212,15 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""d67853d9-1258-44f7-a091-c2a02042d245"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -346,6 +355,17 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
                     ""action"": ""RestartAfterDie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""685a5cc5-f6db-43fd-b871-d78e63a7f61d"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -372,6 +392,7 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
         m_MenuNavigation_Escape = m_MenuNavigation.FindAction("Escape", throwIfNotFound: true);
         m_MenuNavigation_SkipCutscene = m_MenuNavigation.FindAction("SkipCutscene", throwIfNotFound: true);
         m_MenuNavigation_RestartAfterDie = m_MenuNavigation.FindAction("RestartAfterDie", throwIfNotFound: true);
+        m_MenuNavigation_Pause = m_MenuNavigation.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -509,6 +530,7 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_MenuNavigation_Escape;
     private readonly InputAction m_MenuNavigation_SkipCutscene;
     private readonly InputAction m_MenuNavigation_RestartAfterDie;
+    private readonly InputAction m_MenuNavigation_Pause;
     public struct MenuNavigationActions
     {
         private @FnfInput m_Wrapper;
@@ -519,6 +541,7 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
         public InputAction @Escape => m_Wrapper.m_MenuNavigation_Escape;
         public InputAction @SkipCutscene => m_Wrapper.m_MenuNavigation_SkipCutscene;
         public InputAction @RestartAfterDie => m_Wrapper.m_MenuNavigation_RestartAfterDie;
+        public InputAction @Pause => m_Wrapper.m_MenuNavigation_Pause;
         public InputActionMap Get() { return m_Wrapper.m_MenuNavigation; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -546,6 +569,9 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
             @RestartAfterDie.started += instance.OnRestartAfterDie;
             @RestartAfterDie.performed += instance.OnRestartAfterDie;
             @RestartAfterDie.canceled += instance.OnRestartAfterDie;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IMenuNavigationActions instance)
@@ -568,6 +594,9 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
             @RestartAfterDie.started -= instance.OnRestartAfterDie;
             @RestartAfterDie.performed -= instance.OnRestartAfterDie;
             @RestartAfterDie.canceled -= instance.OnRestartAfterDie;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IMenuNavigationActions instance)
@@ -609,5 +638,6 @@ public partial class @FnfInput: IInputActionCollection2, IDisposable
         void OnEscape(InputAction.CallbackContext context);
         void OnSkipCutscene(InputAction.CallbackContext context);
         void OnRestartAfterDie(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

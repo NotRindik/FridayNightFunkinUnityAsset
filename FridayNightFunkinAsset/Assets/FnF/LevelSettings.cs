@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using FridayNightFunkin.CHARACTERS;
 using UnityEditor;
 using UnityEngine.Timeline;
+using System;
 
 namespace FridayNightFunkin
 {
@@ -29,7 +30,7 @@ namespace FridayNightFunkin
 
         public Animator[] splashAnim;
 
-        public float chartSpeed;
+        private float chartSpeed;
 
         public Camera cam;
 
@@ -43,9 +44,10 @@ namespace FridayNightFunkin
 
         public bool IsArrowPositionSaved;
 
-        public Character_Fnf_PlayAble currentPlayer { get; private set; }
-        public Character_Fnf_Girlfriend currentGirlFriend { get; private set; }
-        public Character_Fnf_Enemy currentEnemy { get; private set; }
+        public List<Character_Fnf_PlayAble> currentPlayer { get; private set; }
+        public List<Character_Fnf_Girlfriend> currentGirlFriend { get; private set; }
+        public List<Character_Fnf_Enemy> currentEnemy { get; private set; }
+
 
         private void Awake()
         {
@@ -61,8 +63,23 @@ namespace FridayNightFunkin
                 GetPositionFromList(arrowsEnemy, arrowsEnemyPos);
                 IsArrowPositionSaved = true;
             }
-            stageIndex = PlayerPrefs.GetInt($"{SceneManager.GetActiveScene().name}Stage");
-            if (stage.Length != 0) stage[stageIndex].CalculateBPS();
+        }
+
+        public void ActivePlayer(int index)
+        {
+            currentPlayer[index].Active();
+        }
+        public void DisactivePlayer(int index)
+        {
+            currentPlayer[index].Disactive();
+        }
+        public void ActiveEnemy(int index)
+        {
+            currentEnemy[index].Active();
+        }
+        public void DisactiveEnemy(int index)
+        {
+            currentEnemy[index].Disactive();
         }
 
         private void Update()
@@ -86,20 +103,32 @@ namespace FridayNightFunkin
         }
         public void SpawnCharacters()
         {
-            if (stage[stageIndex].GetCharacterPrefab(CharacterSide.Player))
+            currentPlayer = new List<Character_Fnf_PlayAble>();
+            currentEnemy = new List<Character_Fnf_Enemy>();
+            currentGirlFriend = new List<Character_Fnf_Girlfriend>();
+            for (int i = 0; i < stage[stageIndex].GetCharacterLenth(CharacterSide.Player); i++)
             {
-                currentPlayer = (Character_Fnf_PlayAble)Instantiate(stage[stageIndex].GetCharacterPrefab(CharacterSide.Player), stage[stageIndex].GetCharacterPos(CharacterSide.Player).position, Quaternion.identity);
-                currentPlayer.transform.SetParent(stage[stageIndex].GetCharacterPos(CharacterSide.Player));
+                if (stage[stageIndex].GetCharacterPrefab(CharacterSide.Player,i))
+                {
+                    currentPlayer.Add((Character_Fnf_PlayAble)Instantiate(stage[stageIndex].GetCharacterPrefab(CharacterSide.Player,i), stage[stageIndex].GetCharacterPos(CharacterSide.Player, i).position, Quaternion.identity));
+                    currentPlayer[i].transform.SetParent(stage[stageIndex].GetCharacterPos(CharacterSide.Player,i));
+                }
             }
-            if (stage[stageIndex].GetCharacterPrefab(CharacterSide.Enemy))
+            for (int i = 0; i < stage[stageIndex].GetCharacterLenth(CharacterSide.Enemy); i++)
             {
-                currentEnemy = (Character_Fnf_Enemy)Instantiate(stage[stageIndex].GetCharacterPrefab(CharacterSide.Enemy), stage[stageIndex].GetCharacterPos(CharacterSide.Enemy).position, Quaternion.identity);
-                currentEnemy.transform.SetParent(stage[stageIndex].GetCharacterPos(CharacterSide.Enemy));
+                if (stage[stageIndex].GetCharacterPrefab(CharacterSide.Enemy, i))
+                {
+                    currentEnemy.Add((Character_Fnf_Enemy)Instantiate(stage[stageIndex].GetCharacterPrefab(CharacterSide.Enemy, i), stage[stageIndex].GetCharacterPos(CharacterSide.Enemy,i).position, Quaternion.identity));
+                    currentEnemy[i].transform.SetParent(stage[stageIndex].GetCharacterPos(CharacterSide.Enemy, i));
+                }
             }
-            if (stage[stageIndex].GetCharacterPrefab(CharacterSide.Gf))
+            for (int i = 0; i < stage[stageIndex].GetCharacterLenth(CharacterSide.Gf); i++)
             {
-                currentGirlFriend = (Character_Fnf_Girlfriend)Instantiate(stage[stageIndex].GetCharacterPrefab(CharacterSide.Gf), stage[stageIndex].GetCharacterPos(CharacterSide.Gf).position, Quaternion.identity);
-                currentGirlFriend.transform.SetParent(stage[stageIndex].GetCharacterPos(CharacterSide.Gf));
+                if (stage[stageIndex].GetCharacterPrefab(CharacterSide.Gf, i))
+                {
+                    currentGirlFriend.Add((Character_Fnf_Girlfriend)Instantiate(stage[stageIndex].GetCharacterPrefab(CharacterSide.Gf, i), stage[stageIndex].GetCharacterPos(CharacterSide.Gf, i).position, Quaternion.identity));
+                    currentGirlFriend[i].transform.SetParent(stage[stageIndex].GetCharacterPos(CharacterSide.Gf, i));
+                }
             }
         }
         private void GetPositionFromList(Image[] arrow, List<Vector3> arrowList)
@@ -113,6 +142,7 @@ namespace FridayNightFunkin
         public void SetStage(int index)
         {
             PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}Stage", index);
+            stageIndex = index;
         }
     }
 
@@ -130,15 +160,20 @@ namespace FridayNightFunkin
 
         [SerializeField] private float enemyForce = 0;
 
-        [SerializeField] private Character_Fnf_PlayAble playerPrefab;
-        [SerializeField] private Character_Fnf_Girlfriend girlFriendPrefab;
-        [SerializeField] private Character_Fnf_Enemy enemyPrefab;
+        [SerializeField] public float chartSpeed = 4;
 
-        [SerializeField] private Transform playerPos;
-        [SerializeField] private Transform girlPos;
-        [SerializeField] private Transform enemyPos;
+        [SerializeField] private Character_Fnf_PlayAble[] playerPrefab;
+        [SerializeField] private Character_Fnf_Girlfriend[] girlFriendPrefab;
+        [SerializeField] private Character_Fnf_Enemy[] enemyPrefab;
+
+        [SerializeField] private Transform[] playerPos;
+        [SerializeField] private Transform[] girlPos;
+        [SerializeField] private Transform[] enemyPos;
 
         [SerializeField] public TimelineAsset[] chartVariants;
+
+        public Sprite[] playerIcon;
+        public Sprite[] enemyIcon;
 
 
         public void CalculateBPS()
@@ -161,31 +196,47 @@ namespace FridayNightFunkin
             return missForce;
         }
 
-        public Ñharacter_FNF GetCharacterPrefab(CharacterSide characterSide)
+        public int GetCharacterLenth(CharacterSide characterSide)
         {
             switch (characterSide)
             {
                 case CharacterSide.Player:
-                    return playerPrefab;
+                    return playerPrefab.Length;
                 case CharacterSide.Enemy:
-                    return enemyPrefab;
+                    return enemyPrefab.Length;
                 case CharacterSide.Gf:
-                    return girlFriendPrefab;
+                    return girlFriendPrefab.Length;
+                default:
+                    Debug.LogError($"'{characterSide}' Character Prefab doesn't exist");
+                    return 0;
+            }
+        }
+
+        public Ñharacter_FNF GetCharacterPrefab(CharacterSide characterSide,int index)
+        {
+            switch (characterSide)
+            {
+                case CharacterSide.Player:
+                    return playerPrefab[index];
+                case CharacterSide.Enemy:
+                    return enemyPrefab[index];
+                case CharacterSide.Gf:
+                    return girlFriendPrefab[index];
                 default:
                     Debug.LogError($"'{characterSide}' Character Prefab doesn't exist");
                     return null;
             }
         }
-        public Transform GetCharacterPos(CharacterSide characterSide)
+        public Transform GetCharacterPos(CharacterSide characterSide,int index)
         {
             switch (characterSide)
             {
                 case CharacterSide.Player:
-                    return playerPos;
+                    return playerPos[index];
                 case CharacterSide.Enemy:
-                    return enemyPos;
+                    return enemyPos[index];
                 case CharacterSide.Gf:
-                    return girlPos;
+                    return girlPos[index];
                 default:
                     Debug.LogError($"'{characterSide}' Character Transform doesn't exist");
                     return null;

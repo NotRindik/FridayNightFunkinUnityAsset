@@ -29,6 +29,10 @@ namespace FridayNightFunkin.CHARACTERS
 
         private PlayerDeath playerDeath;
 
+        private bool isRestartPressed;
+
+        public bool isActive { get; private set; } 
+
 
         protected override void Awake()
         {
@@ -52,24 +56,42 @@ namespace FridayNightFunkin.CHARACTERS
                 }
             }
         }
-        private void Start()
+
+        public void Active()
         {
-            inputActions = InputManager.inputActions;
-            arrowTakers = new ArrowTakerPlayer[levelSettings.arrowsPlayer.Length];
-            playerDeath = ServiceLocator.instance.Get<PlayerDeath>();
             for (int i = 0; i < levelSettings.arrowsPlayer.Length; i++)
             {
                 arrowTakers[i] = levelSettings.arrowsPlayer[i].GetComponent<ArrowTakerPlayer>();
                 arrowTakers[i].OnArrowTake += PlayHitAnimation;
                 arrowTakers[i].OnArrowUnTake += PlayIdle;
             }
+            isActive = true;
+        }
+        public void Disactive()
+        {
+            for (int i = 0; i < levelSettings.arrowsPlayer.Length; i++)
+            {
+                arrowTakers[i] = levelSettings.arrowsPlayer[i].GetComponent<ArrowTakerPlayer>();
+                arrowTakers[i].OnArrowTake -= PlayHitAnimation;
+                arrowTakers[i].OnArrowUnTake -= PlayIdle;
+            }
+            isActive = false;
+            ReloadAnim();
+        }
+        private void Start()
+        {
+            inputActions = InputManager.inputActions;
+            arrowTakers = new ArrowTakerPlayer[levelSettings.arrowsPlayer.Length];
+            playerDeath = ServiceLocator.instance.Get<PlayerDeath>();
+            Active();
         }
 
         private void Update()
         {
-            if (inputActions.MenuNavigation.RestartAfterDie.WasPressedThisFrame() && isDead)
+            if (inputActions.MenuNavigation.RestartAfterDie.WasPressedThisFrame() && isDead && !isRestartPressed)
             {
                 animator.Play("NotDead");
+                isRestartPressed = true;
             }
             else if (inputActions.MenuNavigation.Escape.WasPressedThisFrame() && isDead)
             {
@@ -106,11 +128,23 @@ namespace FridayNightFunkin.CHARACTERS
 
         private void PlayHitAnimation(ArrowSide arrowSide)
         {
+            if (!isActive)
+                return;
             playAnimPerBeat.SetBlock(true);
             animator.CrossFade(SING_NOTES[(int)arrowSide],0.1f);
         }
+
+        private void ReloadAnim()
+        {
+            playAnimPerBeat.SetBlock(false);
+            animator.CrossFade(IDLE, 0.1f);
+        }
         private void PlayIdle(ArrowSide arrowSide)
         {
+            if (!isActive)
+                return;
+                
+            
             foreach (var arrowTaker in arrowTakers)
             {
                 if (arrowTaker.isHold)

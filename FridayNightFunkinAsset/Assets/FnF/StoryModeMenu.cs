@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using AYellowpaper.SerializedCollections;
+using UnityEngine.SceneManagement;
 
 public enum DifficultLevel
 {
@@ -20,6 +21,9 @@ public class StoryModeMenu : MenuBehaviour
         public int levelScore;
         public string[] tracks;
         public string levelName;
+        public string sceneName;
+        public Color backgroundColor = Color.white;
+        public Sprite backGroundSpite;
 
         [SerializedDictionary("Id[-1;1]", "imageCharacters")]
         public SerializedDictionary<sbyte, GameObject> imageCharacters = new SerializedDictionary<sbyte, GameObject>();
@@ -30,7 +34,7 @@ public class StoryModeMenu : MenuBehaviour
     [SerializeField] private RectTransform TrackContainer;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI LevelNameText;
-    [SerializeField] private GameObject levelImageCharacter;
+    [SerializeField] private Image levelImageCharacter;
     [SerializeField] private GameObject instanceTrack;
     [SerializeField] private RectTransform levelButtonContainer;
     [SerializeField] private Animator difficultBar;
@@ -108,7 +112,12 @@ public class StoryModeMenu : MenuBehaviour
                 if (levelConfigs.Length > i)
                 {
                     lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
-                    scoreText.text = $"Level Score: {levelConfigs[i].levelScore}";
+                    scoreText.text = $"Level Score: {PlayerPrefs.GetInt($"{levelConfigs[i].sceneName}Score")}";
+                    levelImageCharacter.color = levelConfigs[i].backgroundColor;
+                    if (levelConfigs[i].backGroundSpite)
+                    {
+                        levelImageCharacter.sprite = levelConfigs[i].backGroundSpite;
+                    }
                     LevelNameText.text = levelConfigs[i].levelName;
 
                     DeleteAllChilds(TrackContainer.gameObject);

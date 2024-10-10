@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 3
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,97 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RinFull_0
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 5842
-        width: 74
-        height: 108
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c31071ad18b84a54082a1febb1bbe486
-      internalID: 1498930062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_1
-      rect:
-        serializedVersion: 2
-        x: 654
-        y: 5840
-        width: 90
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21cd2e067acda5348bffe96bb29c9f77
-      internalID: -416673738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_2
-      rect:
-        serializedVersion: 2
-        x: 762
-        y: 5841
-        width: 70
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c756d239c05d1944a734374bafbb29f
-      internalID: -435750754
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_3
-      rect:
-        serializedVersion: 2
-        x: 855
-        y: 5839
-        width: 73
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e007824a07a7e94bb80005a8b2abb21
-      internalID: -1296312037
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: RinFull_4
       rect:
         serializedVersion: 2
-        x: 5040
-        y: 5135
-        width: 703
-        height: 631
+        x: 2902
+        y: 793
+        width: 699
+        height: 613
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +160,10 @@ TextureImporter:
       name: RinFull_5
       rect:
         serializedVersion: 2
-        x: 7875
-        y: 5147
-        width: 708
-        height: 610
+        x: 3611
+        y: 793
+        width: 699
+        height: 611
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,10 +181,10 @@ TextureImporter:
       name: RinFull_6
       rect:
         serializedVersion: 2
-        x: 67
-        y: 5147
-        width: 705
-        height: 608
+        x: 4321
+        y: 793
+        width: 699
+        height: 619
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,10 +202,10 @@ TextureImporter:
       name: RinFull_7
       rect:
         serializedVersion: 2
-        x: 778
-        y: 5147
-        width: 707
-        height: 611
+        x: 5029
+        y: 782
+        width: 699
+        height: 625
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,10 +223,10 @@ TextureImporter:
       name: RinFull_8
       rect:
         serializedVersion: 2
-        x: 1490
-        y: 5149
-        width: 708
-        height: 608
+        x: 5738
+        y: 782
+        width: 700
+        height: 625
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +244,10 @@ TextureImporter:
       name: RinFull_9
       rect:
         serializedVersion: 2
-        x: 2203
-        y: 5149
-        width: 704
-        height: 607
+        x: 6447
+        y: 782
+        width: 700
+        height: 624
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +265,10 @@ TextureImporter:
       name: RinFull_10
       rect:
         serializedVersion: 2
-        x: 2913
-        y: 5146
-        width: 703
-        height: 615
+        x: 47
+        y: 33
+        width: 699
+        height: 611
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,10 +286,10 @@ TextureImporter:
       name: RinFull_11
       rect:
         serializedVersion: 2
-        x: 3621
-        y: 5146
+        x: 756
+        y: 33
         width: 704
-        height: 614
+        height: 613
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +307,10 @@ TextureImporter:
       name: RinFull_12
       rect:
         serializedVersion: 2
-        x: 4330
-        y: 5146
-        width: 703
-        height: 622
+        x: 1469
+        y: 33
+        width: 704
+        height: 613
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,10 +328,10 @@ TextureImporter:
       name: RinFull_13
       rect:
         serializedVersion: 2
-        x: 5747
-        y: 5135
-        width: 706
-        height: 626
+        x: 2182
+        y: 33
+        width: 699
+        height: 617
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,10 +349,10 @@ TextureImporter:
       name: RinFull_14
       rect:
         serializedVersion: 2
-        x: 6457
-        y: 5135
-        width: 703
-        height: 624
+        x: 2891
+        y: 32
+        width: 700
+        height: 614
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -454,10 +370,10 @@ TextureImporter:
       name: RinFull_15
       rect:
         serializedVersion: 2
-        x: 7167
-        y: 5147
-        width: 702
-        height: 610
+        x: 3600
+        y: 32
+        width: 700
+        height: 612
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -475,10 +391,10 @@ TextureImporter:
       name: RinFull_16
       rect:
         serializedVersion: 2
-        x: 8588
-        y: 5148
-        width: 708
-        height: 612
+        x: 4309
+        y: 31
+        width: 699
+        height: 616
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -496,10 +412,10 @@ TextureImporter:
       name: RinFull_17
       rect:
         serializedVersion: 2
-        x: 9301
-        y: 5147
-        width: 704
-        height: 617
+        x: 5019
+        y: 31
+        width: 699
+        height: 625
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -517,10 +433,10 @@ TextureImporter:
       name: RinFull_18
       rect:
         serializedVersion: 2
-        x: 10010
-        y: 5146
-        width: 704
-        height: 617
+        x: 5727
+        y: 32
+        width: 699
+        height: 623
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -538,10 +454,10 @@ TextureImporter:
       name: RinFull_19
       rect:
         serializedVersion: 2
-        x: 10719
-        y: 5146
-        width: 703
-        height: 613
+        x: 6436
+        y: 32
+        width: 700
+        height: 626
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -556,13 +472,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RinFull_20
+      name: RinFull_0
       rect:
         serializedVersion: 2
-        x: 11428
-        y: 5145
-        width: 703
-        height: 617
+        x: 58
+        y: 794
+        width: 700
+        height: 607
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -570,20 +486,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c64dc8a8d6afe3d4f9f132c100055e09
-      internalID: -999185190
+      spriteID: 98bbe34ead562a54593b541b6c4033b5
+      internalID: 1498930062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RinFull_21
+      name: RinFull_1
       rect:
         serializedVersion: 2
-        x: 12138
-        y: 5145
-        width: 703
-        height: 627
+        x: 767
+        y: 794
+        width: 704
+        height: 611
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -591,20 +507,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1580602f7bafee24db7a132529b0ed6b
-      internalID: 985974273
+      spriteID: 4b28c5073ae0659409f0e362960a4866
+      internalID: -416673738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RinFull_22
+      name: RinFull_2
       rect:
         serializedVersion: 2
-        x: 12847
-        y: 5146
-        width: 702
-        height: 626
+        x: 1480
+        y: 796
+        width: 704
+        height: 610
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -612,20 +528,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 772d85b926808954cb95b6934910abfb
-      internalID: 633459393
+      spriteID: 227cc05ed1bd1df48ba1bbc0ed319efe
+      internalID: -435750754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RinFull_23
+      name: RinFull_3
       rect:
         serializedVersion: 2
-        x: 13556
-        y: 5146
-        width: 703
-        height: 627
+        x: 2193
+        y: 796
+        width: 700
+        height: 609
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -633,386 +549,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5df36e67165d4ff489a1fc099a393f79
-      internalID: -1046897567
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_24
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1928
-        width: 14300
-        height: 3125
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be9d67cadfe5f2343af1087419e0aa4d
-      internalID: 2107033380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_25
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 1216
-        width: 703
-        height: 653
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21ee9d34095079e4cb36463b6192be05
-      internalID: -1644241120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_26
-      rect:
-        serializedVersion: 2
-        x: 821
-        y: 1225
-        width: 730
-        height: 644
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 570162841ead84748bab359ce026e692
-      internalID: -1859768890
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_27
-      rect:
-        serializedVersion: 2
-        x: 1556
-        y: 1239
-        width: 704
-        height: 630
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e105eb88857e4242aea0db7e0d8f272
-      internalID: -1354549697
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_28
-      rect:
-        serializedVersion: 2
-        x: 2265
-        y: 1230
-        width: 708
-        height: 639
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d25e53f29c7562145b48fc91ddd6aff7
-      internalID: -1032531860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_29
-      rect:
-        serializedVersion: 2
-        x: 2977
-        y: 1233
-        width: 709
-        height: 636
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d2043e8ed8e0e04fa6a95d4b730a112
-      internalID: 1968154402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_30
-      rect:
-        serializedVersion: 2
-        x: 3691
-        y: 1241
-        width: 714
-        height: 628
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2403af3dcce6297418e132f02ca771db
-      internalID: 1152093393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_31
-      rect:
-        serializedVersion: 2
-        x: 4410
-        y: 1230
-        width: 704
-        height: 639
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d201b558b1184943be7572dc7ec892f
-      internalID: 2031045324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_32
-      rect:
-        serializedVersion: 2
-        x: 5119
-        y: 1239
-        width: 714
-        height: 630
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71b71ac37b98f344fb95b25e3a30b162
-      internalID: -1230164588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_33
-      rect:
-        serializedVersion: 2
-        x: 5839
-        y: 1234
-        width: 704
-        height: 635
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8568186643748a4cb54f9c736d705d4
-      internalID: 1216722229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_34
-      rect:
-        serializedVersion: 2
-        x: 6549
-        y: 1218
-        width: 701
-        height: 651
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d128e17303508b4eb3cade0855fbe4d
-      internalID: 1409108821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_35
-      rect:
-        serializedVersion: 2
-        x: 7257
-        y: 1226
-        width: 720
-        height: 643
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76a1a89ddc3a0d94ea2e353fa3d6200b
-      internalID: -1593836758
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_36
-      rect:
-        serializedVersion: 2
-        x: 8013
-        y: 1226
-        width: 704
-        height: 652
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e5cd6875b2dac7448d30a05bc348d4b
-      internalID: -418360225
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_37
-      rect:
-        serializedVersion: 2
-        x: 8722
-        y: 1234
-        width: 721
-        height: 644
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5081985420cf9064db77ffa34da2972b
-      internalID: 1302193862
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_38
-      rect:
-        serializedVersion: 2
-        x: 9448
-        y: 1235
-        width: 704
-        height: 643
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13398ca7449f64e4082527c83b015200
-      internalID: -461172974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_39
-      rect:
-        serializedVersion: 2
-        x: 10157
-        y: 1227
-        width: 703
-        height: 651
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26f05fdf6d7e9504a936327d72b93d27
-      internalID: 667696201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_40
-      rect:
-        serializedVersion: 2
-        x: 1157
-        y: 1206
-        width: 10
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09e2479e87722b74e8ed708e38fec482
-      internalID: -913071539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RinFull_41
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 14300
-        height: 1115
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37f18d9d31dcab34f980ccb43f3c7e2d
-      internalID: 2099524252
+      spriteID: 849e431643257f14aa68dc53c08be2de
+      internalID: -1296312037
       vertices: []
       indices: 
       edges: []
@@ -1041,30 +579,8 @@ TextureImporter:
       RinFull_18: -1458389054
       RinFull_19: 1704016754
       RinFull_2: -435750754
-      RinFull_20: -999185190
-      RinFull_21: 985974273
-      RinFull_22: 633459393
-      RinFull_23: -1046897567
-      RinFull_24: 2107033380
-      RinFull_25: -1644241120
-      RinFull_26: -1859768890
-      RinFull_27: -1354549697
-      RinFull_28: -1032531860
-      RinFull_29: 1968154402
       RinFull_3: -1296312037
-      RinFull_30: 1152093393
-      RinFull_31: 2031045324
-      RinFull_32: -1230164588
-      RinFull_33: 1216722229
-      RinFull_34: 1409108821
-      RinFull_35: -1593836758
-      RinFull_36: -418360225
-      RinFull_37: 1302193862
-      RinFull_38: -461172974
-      RinFull_39: 667696201
       RinFull_4: 1594185712
-      RinFull_40: -913071539
-      RinFull_41: 2099524252
       RinFull_5: -310542483
       RinFull_6: 1675848236
       RinFull_7: -775886118

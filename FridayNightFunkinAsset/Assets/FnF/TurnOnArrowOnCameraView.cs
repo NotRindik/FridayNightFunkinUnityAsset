@@ -48,13 +48,13 @@ namespace FridayNightFunkin.Editor
 
             detectSize = new Vector2(camWidth, camHeight) + new Vector2(size * (mainCamera.orthographicSize / 5), size * (mainCamera.orthographicSize / 5));
 
-            if (!Application.isPlaying)
-                SwithArrows();
+            SwithArrows();
         }
         private void SwithArrows()
         {
             foreach (var arrow in LevelSettings.instance.arrowsList)
             {
+
                 if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                 {
                     arrow.gameObject.SetActive(true);
@@ -63,24 +63,30 @@ namespace FridayNightFunkin.Editor
                 {
                     if (arrow.distanceCount > 0 && arrow.tail)
                     {
-                        if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize))
+                        if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize,true))
                         {
                             arrow.gameObject.SetActive(true);
                             continue;
                         }
                     }
-
                     arrow.gameObject.SetActive(false);
                 }
             }
         }
 
-        private bool IsArrowInsideCube(Vector3 point, Vector3 cubeCenter, Vector3 cubeSize)
+        private bool IsArrowInsideCube(Vector3 point, Vector3 cubeCenter, Vector3 cubeSize,bool istail = false)
         {
             Vector3 minPoint = cubeCenter - cubeSize / 2;
             Vector3 maxPoint = cubeCenter + cubeSize / 2;
-            return point.x >= minPoint.x && point.x <= maxPoint.x &&
-                   point.y >= minPoint.y && point.y <= maxPoint.y;
+            if (!istail)
+            {
+                return point.x >= minPoint.x && point.x <= maxPoint.x &&
+                       point.y >= minPoint.y && point.y <= maxPoint.y;
+            }
+            else
+            {
+                return point.x >= minPoint.x && point.x <= maxPoint.x && point.y <= maxPoint.y;
+            }
         }
     }
 }
