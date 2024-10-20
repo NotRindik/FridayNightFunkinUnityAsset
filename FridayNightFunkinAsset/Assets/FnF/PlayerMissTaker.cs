@@ -45,7 +45,7 @@ namespace FridayNightFunkin
                     }
                     scoreManager.ReduceValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetMissForce());
                     scoreManager.AddMiss();
-                    scoreManager.ÑalculateAccuracy(150);
+                    scoreManager.ÑalculateAccuracy(500);
                     scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
                     scoreManager.ResetCombo();
                 }

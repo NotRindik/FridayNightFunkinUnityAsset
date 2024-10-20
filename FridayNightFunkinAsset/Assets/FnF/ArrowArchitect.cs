@@ -1,26 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum functionType
-{
-    liner,
-    parabola
-}
 
 public class ArrowArchitect
 {
-    private ArrowSide arrowSide;
     private double timelineTime;
-    private uint distanceCount = 0;
-    private int road = 0;
 
-    public ArrowArchitect(ArrowSide arrowSide, double timelineTime, uint distanceCount = 0, int road = 0)
+    public ArrowArchitect(double timelineTime)
     {
-        this.arrowSide = arrowSide;
         this.timelineTime = timelineTime;
-        this.distanceCount = distanceCount;
-        this.road = road;
     }
 
     public Vector2 CalculateArrowPos(Vector2 startPos, Vector2 endPos,double startTime, double endTime)

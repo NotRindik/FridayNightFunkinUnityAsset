@@ -94,9 +94,9 @@ namespace FridayNightFunkin.Editor
         {
             arrowMarkers.Clear();
             InitializeArrowMarkers();
-            OnListCleared?.Invoke();
             playerArrowCount = 0;
             enemyArrowCount = 0;
+            OnListCleared?.Invoke();
         }
 
 
@@ -125,7 +125,7 @@ namespace FridayNightFunkin.Editor
             }
         }
 
-        public bool IsMethodSubscribed(OnArrowListChanged method)
+        public bool IsOnArrowListChangedMethodSubscribed(OnArrowListChanged method)
         {
             if (OnArrowCountChanged == null) return false;
 

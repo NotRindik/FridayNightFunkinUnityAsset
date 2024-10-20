@@ -1,9 +1,8 @@
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum ArrowSide
 {
@@ -44,39 +43,51 @@ namespace FridayNightFunkin
 
         private int arrowIndex;
 
+        public ÑhartContainer chartContainer;
+
         internal SpriteRenderer tail;
 
 
         public float tailDistanceToArrowTakerRaw { get; private set; }
         public float tailDistance { get; private set; }
 
-        public void Intialize(SpriteRenderer spriteRenderer, uint distanceCount, Vector2 startPos, Vector2 endPos, double startTime, double endTime, int arrowIndex)
+        public void Intialize(SpriteRenderer spriteRenderer,ArrowMarker arrowMarker, Vector2 startPos, Vector2 endPos, ÑhartContainer ñhartContainer)
         {
             isWork = true;
             isViewedOnce = false;
             spriteRendererOfArrow = spriteRenderer;
-            this.distanceCount = distanceCount;
-            this.arrowIndex = arrowIndex;
+            distanceCount = arrowMarker.distanceCount;
+            arrowIndex = arrowMarker.id;
             spriteRenderer.sortingOrder = spriteRenderer.sortingOrder + arrowIndex;
             this.startPos = startPos;
             this.endPos = endPos;
-            this.startTime = startTime;
-            this.endTime = endTime;
-            markerRef.OnParameterChanged += OnTimeChanged;
+            endTime = arrowMarker.time;
+            startTime = endTime - ((10 / LevelSettings.instance.stage[LevelSettings.instance.stageIndex].chartSpeed) * (1 / arrowMarker.speedMultiplier));
+            this.chartContainer = ñhartContainer;
+            markerRef = arrowMarker;
+            ñhartContainer.OnSpeedChanged += OnBaseParamChanged;
+            markerRef.OnParameterChanged += OnParamChanged;
             markerRef.OnMarkerRemove += Destroy;
         }
 
-        private void OnTimeChanged(double time,float speedMultiplier,uint distanceCount)
+        private void OnParamChanged(double time,float speedMultiplier,uint distanceCount)
         {
             startTime = time -  ((10/LevelSettings.instance.stage[LevelSettings.instance.stageIndex].chartSpeed) * (1/speedMultiplier));
             this.distanceCount = distanceCount;
             endTime = time;
         }
+        private void OnBaseParamChanged()
+        {
+            float speedSave = LevelSettings.instance.stage[chartContainer.EditorGetCurrentStage()].chartSpeed;
+            float speedCofency = 10 / speedSave;
+            startTime = endTime - ((speedCofency) * (1 / markerRef.speedMultiplier));
+        }
 
         public void Destroy(ArrowMarker arrowMarker)
         {
-            markerRef.OnParameterChanged -= OnTimeChanged;
+            markerRef.OnParameterChanged -= OnParamChanged;
             markerRef.OnMarkerRemove -= Destroy;
+            chartContainer.OnSpeedChanged -= OnBaseParamChanged;
             LevelSettings.instance.arrowsList.Remove(this);
             DestroyImmediate(this.gameObject);
         }
@@ -85,8 +96,29 @@ namespace FridayNightFunkin
         {
             GenerateTail();
 
+            if (!markerRef)
+            {
+                LevelSettings.instance.arrowsList.Remove(this);
+                DestroyImmediate(gameObject);
+                return;
+            }
+            if (!markerRef.IsSub(Destroy))
+            {
+                markerRef.OnMarkerRemove += Destroy;
+            }
+            if (!markerRef.IsSub(OnParamChanged))
+            {
+                markerRef.OnParameterChanged += OnParamChanged;
+            }
+            if (!chartContainer.IsSub(OnBaseParamChanged))
+            {
+                chartContainer.OnSpeedChanged += OnBaseParamChanged;
+            }
+
             if (!Application.isPlaying)
                 return;
+
+
             if (tailDistanceToArrowTakerRaw < 50 && isHold && distanceCount > 0)
             {
                 isWork = false;
@@ -115,7 +147,7 @@ namespace FridayNightFunkin
             {
                 if (distanceCount > Tails.Count)
                 {
-                    var distance = -0.20f;
+                    var distance = -0.20f * Mathf.Clamp((int)chartContainer.chartSpawnDistance, -1, 1);
                     Tails = new List<SpriteRenderer>();
                     var baseChildCount = transform.childCount;
                     for (int i = 0; i < baseChildCount; i++)
@@ -128,12 +160,10 @@ namespace FridayNightFunkin
                         var instance = Instantiate(holdTrack, transform.position, Quaternion.identity, transform);
                         instance.transform.localPosition = new Vector2(0, distance);
                         instance.sprite = holdTrackSprite;
-                        distance -= 0.20f;
+                        distance -= 0.20f * Mathf.Clamp((int)chartContainer.chartSpawnDistance, -1, 1);
                         Tails.Add(instance);
                     }
-                    tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
-                    tail.transform.localPosition = new Vector2(0, -0.255f);
-                    tail.sprite = endHoldTrackSprie;
+                    spawnTail();
                 }
                 else if (distanceCount < Tails.Count)
                 {
@@ -144,10 +174,8 @@ namespace FridayNightFunkin
                         DestroyImmediate(transform.GetChild(transform.childCount - 1).gameObject);
                     }
                     tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
-                    tail.transform.localPosition = new Vector2(0, -0.255f);
-                    tail.sprite = endHoldTrackSprie;
+                    spawnTail();
                 }
-
                 tailDistanceToArrowTakerRaw = Camera.main.WorldToScreenPoint(endPos).y - Camera.main.WorldToScreenPoint(tail.transform.position).y;
                 tailDistance = Mathf.Abs(Camera.main.WorldToScreenPoint(tail.transform.position).y - Camera.main.WorldToScreenPoint(transform.position).y);
             }
@@ -160,6 +188,14 @@ namespace FridayNightFunkin
                     DestroyImmediate(transform.GetChild(0).gameObject);
                 }
             }
+        }
+
+        private void spawnTail()
+        {
+            tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
+            tail.transform.localPosition = new Vector2(0, -0.255f * Mathf.Clamp((int)chartContainer.chartSpawnDistance, -1, 1));
+            tail.sprite = endHoldTrackSprie;
+            tail.flipY = Mathf.Clamp((int)chartContainer.chartSpawnDistance, -1, 1) == 1 ? false : true;
         }
 
         private void OnDrawGizmos()

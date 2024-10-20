@@ -31,7 +31,9 @@ namespace FridayNightFunkin.CHARACTERS
 
         private bool isRestartPressed;
 
-        public bool isActive { get; private set; } 
+        public bool isActive { get; private set; }
+
+        private Coroutine startIdleDelay;
 
 
         protected override void Awake()
@@ -139,23 +141,38 @@ namespace FridayNightFunkin.CHARACTERS
             playAnimPerBeat.SetBlock(false);
             animator.CrossFade(IDLE, 0.1f);
         }
+        
         private void PlayIdle(ArrowSide arrowSide)
         {
             if (!isActive)
                 return;
-                
-            
+            StartIdleDelay();
+        }
+
+        public void StartIdleDelay()
+        {
+            if(startIdleDelay != null)
+            {
+                StopCoroutine(startIdleDelay);
+            }
+
+            startIdleDelay = StartCoroutine(IdleDelay(0.5f));
+        }
+
+        public IEnumerator IdleDelay(float a)
+        {
+            yield return new WaitForSeconds(a);
             foreach (var arrowTaker in arrowTakers)
             {
                 if (arrowTaker.isHold)
                 {
-                    return;
+                    yield break;
                 }
             }
+
             playAnimPerBeat.SetBlock(false);
             animator.CrossFade(IDLE, 0.1f);
         }
-
         public void PlayMissAnimation(Arrow arrow)
         {
             if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)

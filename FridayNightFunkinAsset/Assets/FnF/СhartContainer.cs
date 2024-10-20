@@ -5,6 +5,7 @@ using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 using System;
 using Unity.VisualScripting;
+using static ArrowMarker;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
@@ -18,27 +19,34 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         private List<ArrowMarker> markers = new List<ArrowMarker>();
         public RectTransform chartRoad;
         public float chartSpawnDistance = 10;
-
-        [SerializeField]private bool isSaveCharts = false;
-        private int[] markerCount = new int[] { 0, 0 };
-        private float speedSave;
-
-        private List<uint> distanceCount = new List<uint>();
-        private List<double> arrowsTime = new List<double>();   
-        private List<TrackAsset> signalTracks;
+        public float speedSave { private set; get; }
 
         private LevelSettings levelSettings;
 
-        private float speedCofency;
+        public static СhartContainer instance;
+
+        public float speedCofency{ private set; get; }
 
         public bool playOnStart = true;
 
-        public bool isReLoadChart;
-
-        public bool resetList;
+        public bool reloadChart;
 
         public int playerArrowCount;
         public int enemyArrowCount;
+
+        public event Action OnSpeedChanged;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else 
+            {
+                DestroyImmediate(this.gameObject);
+            }
+        }
 
         private void Start()
         {
@@ -46,8 +54,9 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             this.playableDirector = playableDirector;
             levelSettings = LevelSettings.instance;
             if (Application.isPlaying && levelSettings)
-            {   
+            {
                 GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
+                chartSpawnDistance = ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll == 1 ? chartSpawnDistance * -1 : chartSpawnDistance;
                 if (playOnStart)
                 {
                     StartLevel();
@@ -57,12 +66,21 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public void ReloadChart()
         {
-            isReLoadChart = true;
-            isSaveCharts = true;
+            for (int i = 0; i < transform.childCount;)
+            {
+                DestroyImmediate(transform.GetChild(i).gameObject);
+            }
+            LevelSettings.instance.arrowsList.Clear();
+            ArrowMarkerManager.instance.LoadDataFromRoad();
+            reloadChart = false;
         }
 
         public void StartLevel()
         {
+            if (!ArrowMarkerManager.instance.IsOnArrowListChangedMethodSubscribed(SaveArrows))
+            {
+                ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
+            }
             if (PlayerPrefs.HasKey("Difficult"))
             {
                 playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[PlayerPrefs.GetInt("Difficult")];
@@ -72,35 +90,93 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[0];
             }
+            for (int i = 0; i < levelSettings.arrowsList.Count; i++)
+            {
+                var arrow = levelSettings.arrowsList[i];
+                UpdateArrowEndStartPos(arrow);
+
+                arrow.transform.position = arrow.startPos;
+            }
             playableDirector.Play();
         }
 
         private void Update()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            Counters();
+
+            if (reloadChart)
+            {
+                ReloadChart();
+            }
+
+            ChangeStageOfLevel();
+
+            if (levelSettings != null)
+            {
+                MoveArrows();
+
+            }
+            else
+            {
+                levelSettings = LevelSettings.instance;
+            }
+
+            InitDelegates();
+        }
+
+        private void Counters()
+        {
             time = playableDirector.time;
             playerArrowCount = ArrowMarkerManager.instance.playerArrowCount;
             enemyArrowCount = ArrowMarkerManager.instance.enemyArrowCount;
+        }
 
-            if (!ArrowMarkerManager.instance.IsMethodSubscribed(SaveArrows))
+        private void MoveArrows()
+        {
+            for (int i = 0; i < levelSettings.arrowsList.Count; i++)
             {
-                ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
-            }
-
-            if (resetList)
-            {
-                for (int i = 0; i < transform.childCount;)
+                var arrow = levelSettings.arrowsList[i];
+                if (arrow == null)
                 {
-                    DestroyImmediate(transform.GetChild(i).gameObject);
+                    ReloadChart();
                 }
-                LevelSettings.instance.arrowsList.Clear();
-                ArrowMarkerManager.instance.LoadDataFromRoad();
-                resetList = false;
-            }
+                if (arrow.startTime <= time && arrow.endTime + 5 + arrow.distanceCount >= time)
+                {
+                    UpdateArrowEndStartPos(arrow);
 
-            if(playableDirector.duration - 1 < time && Application.isPlaying)
+                    arrow.transform.position = new ArrowArchitect(time).CalculateArrowPos(arrow.startPos, arrow.endPos, arrow.startTime, arrow.endTime);
+                }
+                else
+                {
+                    arrow.transform.position = arrow.startPos;
+                }
+            }
+        }
+
+        private void UpdateArrowEndStartPos(Arrow arrow)
+        {
+            if (arrow.characterSide == CharacterSide.Player)
+            {
+                arrow.SetStartPos(new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5)));
+                arrow.SetEndPos(new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y));
+            }
+            else
+            {
+                arrow.SetStartPos(new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5)));
+                arrow.SetEndPos(new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y));
+            }
+        }
+
+        private void ChangeStageOfLevel()
+        {
+            if (playableDirector.duration - 1 < time && Application.isPlaying)
             {
                 playableDirector.time = 0;
-                if(LevelSettings.instance.stageIndex == 0) 
+                if (LevelSettings.instance.stageIndex == 0)
                     PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}Score", ScoreManager.instance.score);
                 else
                 {
@@ -120,40 +196,21 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                     SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
                 }
             }
+        }
 
-            if (levelSettings != null)
+        private void InitDelegates()
+        {
+            if (!ArrowMarkerManager.instance.IsOnArrowListChangedMethodSubscribed(SaveArrows))
             {
-                for (int i = 0; i < levelSettings.arrowsList.Count; i++)
-                {
-                    var arrow = levelSettings.arrowsList[i];
-                    if (arrow.startTime <= time && arrow.endTime + 5 + arrow.distanceCount >= time)
-                    {
-                        if (arrow.characterSide == CharacterSide.Player)
-                        {
-                            arrow.SetStartPos(new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5)));
-                            arrow.SetEndPos(new Vector2(levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y));
-                        }
-                        else
-                        {
-                            arrow.SetStartPos(new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5)));
-                            arrow.SetEndPos(new Vector2(levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.x, levelSettings.arrowsEnemy[(int)arrow.arrowSide].transform.position.y));
-                        }
-
-                        arrow.transform.position = new ArrowArchitect(arrow.arrowSide, time).CalculateArrowPos(arrow.startPos, arrow.endPos, arrow.startTime, arrow.endTime);
-                    }
-                    else
-                    {
-                        arrow.transform.position = arrow.startPos;
-                    }
-                }
-
+                ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
             }
-            else
+            if (!levelSettings.IsSub(SaveArrowsOnSpeedChange))
             {
-                levelSettings = LevelSettings.instance;
+                levelSettings.OnSpeedChanges += SaveArrowsOnSpeedChange;
             }
         }
-        public void SpawnArrow(ArrowMarker arrowMarker, double time, uint distanceCount, RoadSide roadSide)
+
+        public void SpawnArrow(ArrowMarker arrowMarker, RoadSide roadSide)
         {
             Vector3 arrowSpawnPos = Vector2.zero;
             Arrow arrow;
@@ -177,19 +234,51 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             Vector2 endPos = new Vector2(arrowSpawnPos.x, arrowSpawnPos.y + 10 + (Camera.main.orthographicSize / 5));
 
             arrow.transform.SetParent(transform);
-            arrow.markerRef = arrowMarker;
-            arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), distanceCount, startPos, endPos, time - (speedCofency * (1/arrowMarker.speedMultiplier)), time, arrowMarker.id);
+            arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), arrowMarker,startPos, endPos,this);
             arrow.transform.localScale = new Vector3(150, 150, 150);
             arrow.gameObject.name = $"Arrow[{arrowMarker.roadSide}] №:{arrowMarker.id}";
             levelSettings.arrowsList.Add(arrow);
         }
+        public int EditorGetCurrentStage()
+        {
+            for(int i = 0; i < levelSettings.stage.Length; i++)
+            {
+                for (int j = 0; j < levelSettings.stage[i].chartVariants.Length; j++)
+                {
+                    if (playableDirector.playableAsset == levelSettings.stage[i].chartVariants[j])
+                    {
+                        return i;
+                    }
+                }
+            }
+            return 0;
+        }
         private void SaveArrows(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null)
         {
-            speedSave = levelSettings.stage[levelSettings.stageIndex].chartSpeed;
+            speedSave = levelSettings.stage[EditorGetCurrentStage()].chartSpeed;
             speedCofency = 10 / speedSave;
-            if (!arrowMarker || !road)
+            if (!arrowMarker || !road) 
                 return;
-            SpawnArrow(arrowMarker, arrowMarker.time, arrowMarker.distanceCount, road.roadSide);
+            SpawnArrow(arrowMarker, road.roadSide);
+        }
+        private void SaveArrowsOnSpeedChange()
+        {
+            speedSave = levelSettings.stage[EditorGetCurrentStage()].chartSpeed;
+            speedCofency = 10 / speedSave;
+            OnSpeedChanged?.Invoke();
+        }
+        public bool IsSub(Action method)
+        {
+            if (OnSpeedChanged == null) return false;
+
+            foreach (var d in OnSpeedChanged.GetInvocationList())
+            {
+                if (d.Method == method.Method && d.Target == method.Target)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         private void OnGameStateChanged(GameState currenState)
         {

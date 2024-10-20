@@ -1,4 +1,5 @@
 using FridayNightFunkin.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ namespace FridayNightFunkin
         internal bool isDead;
 
         private Coroutine sliderMoveProcess;
+
+
+        public event Action<int> OnCalculateAccuracy;
 
         private void Awake()
         {
@@ -99,9 +103,10 @@ namespace FridayNightFunkin
 
         public int ÑalculateAccuracy(float distance)
         {
-            if (distance < 80) distance = 0;
+            if (distance < 20) distance = 0;
 
-            int accuracy = Mathf.RoundToInt(100 * (1 - (distance/150)));
+            int accuracy = Mathf.RoundToInt(100 * (1 - (distance/500)));
+            OnCalculateAccuracy?.Invoke(accuracy);
             accuracyList.Add(accuracy);
             return accuracy;
         }
@@ -128,6 +133,30 @@ namespace FridayNightFunkin
                 return "Shit";
             else
                 return "You Suck!";
+        }
+
+        public int GetRatingByAccuracyInt(float accuracy)
+        {
+            if (accuracy == 100)
+                return 0;
+            else if (accuracy > 90)
+                return 1;
+            else if (accuracy > 80)
+                return 1;
+            else if (accuracy > 70)
+                return 2;
+            else if (accuracy > 68)
+                return 2;
+            else if (accuracy > 60)
+                return 2;
+            else if (accuracy > 50)
+                return 2;
+            else if (accuracy > 40)
+                return 3;
+            else if (accuracy > 20)
+                return 3;
+            else
+                return -1;
         }
 
         public void AddScore(uint addingScore)

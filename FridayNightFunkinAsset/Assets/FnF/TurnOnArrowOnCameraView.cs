@@ -54,6 +54,10 @@ namespace FridayNightFunkin.Editor
         {
             foreach (var arrow in LevelSettings.instance.arrowsList)
             {
+                if (arrow == null)
+                {
+                    return;
+                }
 
                 if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                 {

@@ -3,15 +3,13 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Timeline;
-public class ArrowMarker : Marker, INotificationOptionProvider
+public class ArrowMarker : Marker
 {
-    [SerializeField] protected bool emitOnce;
-    [SerializeField] protected bool emitInEditor;
     [SerializeField] public uint distanceCount;
     private uint _distanceCount;
 
     public int id;
-    private PropertyName objectID => new PropertyName();
+    protected PropertyName objectID => new PropertyName();
     public RoadSide roadSide = RoadSide.Player;
 
     public ArrowSide arrowSide;
@@ -23,7 +21,9 @@ public class ArrowMarker : Marker, INotificationOptionProvider
     public event OnRemoveMarker OnMarkerRemove;
     public ArrowMarkerTrackAsset arrowMarkerParent { private set; get; }
 
-    public event Action<double,float,uint> OnParameterChanged;
+    public delegate void OnParameterChange(double time, float speed , uint distance);
+
+    public event OnParameterChange OnParameterChanged;
 
     public float speedMultiplier = 1;
     private float _speedMultiplier;
@@ -36,11 +36,9 @@ public class ArrowMarker : Marker, INotificationOptionProvider
         EditorApplication.update += Update;
         if (aPent is ArrowMarkerTrackAsset)
         {
-            id = aPent.GetMarkerCount();
             arrowMarkerParent = aPent as ArrowMarkerTrackAsset;
+            id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
             roadSide = arrowMarkerParent.roadSide;
-            speedMultiplier = arrowMarkerParent.defaultSpeedMultiplier;
-            distanceCount = arrowMarkerParent.defaultDistanceCount;
             _speedMultiplier = speedMultiplier;
             _distanceCount = distanceCount;
             ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
@@ -53,7 +51,7 @@ public class ArrowMarker : Marker, INotificationOptionProvider
         if (_speedMultiplier != speedMultiplier)
         {
             _speedMultiplier = speedMultiplier;
-            OnParameterChanged?.Invoke(currentTime, _speedMultiplier, _distanceCount);
+            OnParameterChanged?.Invoke(currentTime, Mathf.Abs(_speedMultiplier) != 0 ? Mathf.Abs(_speedMultiplier) : 0.0001f, _distanceCount);
         }
         if (_distanceCount != distanceCount)
         {
@@ -67,6 +65,32 @@ public class ArrowMarker : Marker, INotificationOptionProvider
             OnParameterChanged?.Invoke(currentTime, _speedMultiplier, _distanceCount);
         }
     }
+    public bool IsSub(OnRemoveMarker method)
+    {
+        if (OnMarkerRemove == null) return false;
+
+        foreach (var d in OnMarkerRemove.GetInvocationList())
+        {
+            if (d.Method == method.Method && d.Target == method.Target)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public bool IsSub(OnParameterChange method)
+    {
+        if (OnParameterChanged == null) return false;
+
+        foreach (var d in OnParameterChanged.GetInvocationList())
+        {
+            if (d.Method == method.Method && d.Target == method.Target)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void ArrowInit(ArrowMarkerTrackAsset arrowMarkerParent)
     {
@@ -76,8 +100,6 @@ public class ArrowMarker : Marker, INotificationOptionProvider
     protected void OnDestroy()
     {
         OnMarkerRemove?.Invoke(this);
+        EditorApplication.update -= Update;
     }
-    NotificationFlags INotificationOptionProvider.flags =>
-       (emitOnce ? NotificationFlags.TriggerOnce : default) |
-       (emitInEditor ? NotificationFlags.TriggerInEditMode : default);
 }

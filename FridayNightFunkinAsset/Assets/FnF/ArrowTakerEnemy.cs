@@ -19,6 +19,13 @@ namespace FridayNightFunkin
 
         public bool isHold { get; private set; }
 
+        private int isDownScroll;
+
+        private void Start()
+        {
+            isDownScroll = ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll;
+        }
+
         private void Update()
         {
             foreach (var arrow in levelSettings.arrowsList)
@@ -26,7 +33,7 @@ namespace FridayNightFunkin
                 if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled || arrow.characterSide != CharacterSide.Enemy)
                     continue;
 
-                var distance = (Camera.main.WorldToScreenPoint(arrow.endPos).y - Camera.main.WorldToScreenPoint(arrow.transform.position).y);
+                var distance = (Camera.main.WorldToScreenPoint(arrow.endPos).y - Camera.main.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1? -1 : 1);
                 if (distance < 0)
                 {
                     animator.CrossFade("Pressed", 0);

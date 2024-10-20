@@ -21,6 +21,13 @@ public class ServiceLocator : MonoBehaviour
             instance = this;
         }
     }
+    private void OnEnable()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     public T Get<T>() where T : IService
     {

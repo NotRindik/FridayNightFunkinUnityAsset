@@ -7,6 +7,7 @@ using FridayNightFunkin.CHARACTERS;
 using UnityEditor;
 using UnityEngine.Timeline;
 using System;
+using FridayNightFunkin.Editor.TimeLineEditor;
 
 namespace FridayNightFunkin
 {
@@ -20,6 +21,8 @@ namespace FridayNightFunkin
 
         public LevelStage[] stage;
 
+        public ÑhartContainer container;
+
         public int stageIndex;
 
         public Image[] arrowsPlayer;
@@ -29,8 +32,6 @@ namespace FridayNightFunkin
         public LayerMask arrowLayer;
 
         public Animator[] splashAnim;
-
-        private float chartSpeed;
 
         public Camera cam;
 
@@ -48,6 +49,10 @@ namespace FridayNightFunkin
         public List<Character_Fnf_Girlfriend> currentGirlFriend { get; private set; }
         public List<Character_Fnf_Enemy> currentEnemy { get; private set; }
 
+        public delegate void OnSpeedChanged();
+
+        public event OnSpeedChanged OnSpeedChanges;
+
 
         private void Awake()
         {
@@ -63,6 +68,19 @@ namespace FridayNightFunkin
                 GetPositionFromList(arrowsEnemy, arrowsEnemyPos);
                 IsArrowPositionSaved = true;
             }
+        }
+        public bool IsSub(OnSpeedChanged method)
+        {
+            if (OnSpeedChanges == null) return false;
+
+            foreach (var d in OnSpeedChanges.GetInvocationList())
+            {
+                if (d.Method == method.Method && d.Target == method.Target)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void ActivePlayer(int index)
@@ -98,6 +116,16 @@ namespace FridayNightFunkin
                 if (instance == null)
                 {
                     instance = this;
+                }
+
+                foreach (var item in stage)
+                {
+                    if(item.chartSpeed != item.currentChartSpeed)
+                    {
+                        item.currentChartSpeed = item.chartSpeed;
+                        OnSpeedChanges?.Invoke();
+                        break;
+                    }
                 }
             }
         }
@@ -161,6 +189,7 @@ namespace FridayNightFunkin
         [SerializeField] private float enemyForce = 0;
 
         [SerializeField] public float chartSpeed = 4;
+        internal float currentChartSpeed;
 
         [SerializeField] private Character_Fnf_PlayAble[] playerPrefab;
         [SerializeField] private Character_Fnf_Girlfriend[] girlFriendPrefab;
