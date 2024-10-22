@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 using System;
-using Unity.VisualScripting;
-using static ArrowMarker;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
     [ExecuteAlways]
-    public class СhartContainer : MonoBehaviour
+    public class ChartContainer : MonoBehaviour
     {
         public Arrow[] arrows;
         private double time;
@@ -23,7 +20,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private LevelSettings levelSettings;
 
-        public static СhartContainer instance;
+        public static ChartContainer instance;
 
         public float speedCofency{ private set; get; }
 
@@ -90,6 +87,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[0];
             }
+
             for (int i = 0; i < levelSettings.arrowsList.Count; i++)
             {
                 var arrow = levelSettings.arrowsList[i];

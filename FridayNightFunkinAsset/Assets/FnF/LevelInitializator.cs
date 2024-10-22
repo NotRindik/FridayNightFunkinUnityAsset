@@ -8,7 +8,7 @@ public class LevelInitializator : MonoBehaviour
     private LevelSettings levelSettings;
     [SerializeField]private bool isTestStage;
     [SerializeField]private int testingStage;
-    [SerializeField] private ÑhartContainer container;
+    [SerializeField] private ChartContainer container;
     public void Start()
     {
         levelSettings = LevelSettings.instance;

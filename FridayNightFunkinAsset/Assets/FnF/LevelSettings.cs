@@ -21,7 +21,7 @@ namespace FridayNightFunkin
 
         public LevelStage[] stage;
 
-        public ÑhartContainer container;
+        public ChartContainer container;
 
         public int stageIndex;
 

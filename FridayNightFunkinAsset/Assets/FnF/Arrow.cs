@@ -43,7 +43,7 @@ namespace FridayNightFunkin
 
         private int arrowIndex;
 
-        public ÑhartContainer chartContainer;
+        public ChartContainer chartContainer;
 
         internal SpriteRenderer tail;
 
@@ -51,7 +51,7 @@ namespace FridayNightFunkin
         public float tailDistanceToArrowTakerRaw { get; private set; }
         public float tailDistance { get; private set; }
 
-        public void Intialize(SpriteRenderer spriteRenderer,ArrowMarker arrowMarker, Vector2 startPos, Vector2 endPos, ÑhartContainer ñhartContainer)
+        public void Intialize(SpriteRenderer spriteRenderer,ArrowMarker arrowMarker, Vector2 startPos, Vector2 endPos, ChartContainer ñhartContainer)
         {
             isWork = true;
             isViewedOnce = false;

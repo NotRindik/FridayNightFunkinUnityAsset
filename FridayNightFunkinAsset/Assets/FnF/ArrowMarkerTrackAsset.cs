@@ -5,13 +5,13 @@ using UnityEngine.Timeline;
 
 [TrackColor(1f, 0.5f, 0f)]
 [TrackClipType(typeof(ArrowMarker))]
-[TrackBindingType(typeof(ÑhartContainer))]
+[TrackBindingType(typeof(ChartContainer))]
 [Icon("Assets/FnF/Editor/icon-bf.png")]
 public class ArrowMarkerTrackAsset : MarkerTrack
 {
     public RoadSide roadSide;
     public bool isActive = false;
-    public ÑhartContainer chartContainer => ÑhartContainer.instance;
+    public ChartContainer chartContainer => ChartContainer.instance;
     private void Awake()
     {
         name = roadSide.ToString();
