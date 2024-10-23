@@ -1,9 +1,7 @@
-using FridayNightFunkin.UI;
+using FridayNightFunkin.GamePlay;
+using FridayNightFunkin.Settings;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
-using UnityEngine.UI;
 
 namespace FridayNightFunkin.CHARACTERS
 {

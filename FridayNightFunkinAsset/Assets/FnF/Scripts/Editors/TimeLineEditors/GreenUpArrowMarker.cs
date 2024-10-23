@@ -1,14 +1,16 @@
 using System.ComponentModel;
-using UnityEngine;
 using UnityEngine.Timeline;
 
-[DisplayName("up")]
-[CustomStyle("UpArrow")]
-public class GreenUpArrowMarker : ArrowMarker
+namespace FridayNightFunkin.Editor.TimeLineEditor
 {
-    public override void OnInitialize(TrackAsset aPent)
+    [DisplayName("up")]
+    [CustomStyle("UpArrow")]
+    public class GreenUpArrowMarker : ArrowMarker
     {
-        arrowSide = ArrowSide.UpArrow;
-        base.OnInitialize(aPent);
+        public override void OnInitialize(TrackAsset aPent)
+        {
+            arrowSide = ArrowSide.UpArrow;
+            base.OnInitialize(aPent);
+        }
     }
 }

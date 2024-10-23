@@ -1,25 +1,27 @@
 using UnityEngine;
-
-public class ArrowArchitect
+namespace FridayNightFunkin.Calculations
 {
-    private double timelineTime;
-
-    public ArrowArchitect(double timelineTime)
+    public class ArrowArchitect
     {
-        this.timelineTime = timelineTime;
-    }
+        private double timelineTime;
 
-    public Vector2 CalculateArrowPos(Vector2 startPos, Vector2 endPos,double startTime, double endTime)
-    {
-        if (endTime == 0 && startTime == 0) 
+        public ArrowArchitect(double timelineTime)
         {
-            Debug.LogError($"endTime or startTime equals to zero");
-            return Vector2.zero;
+            this.timelineTime = timelineTime;
         }
-        double speed = (endPos.y - startPos.y) / (endTime - startTime);
 
-        Vector2 arrowPos = new Vector2(startPos.x, startPos.y + (float)(speed*(timelineTime - startTime)));
+        public Vector2 CalculateArrowPos(Vector2 startPos, Vector2 endPos, double startTime, double endTime)
+        {
+            if (endTime == 0 && startTime == 0)
+            {
+                Debug.LogError($"endTime or startTime equals to zero");
+                return Vector2.zero;
+            }
+            double speed = (endPos.y - startPos.y) / (endTime - startTime);
 
-        return arrowPos;
+            Vector2 arrowPos = new Vector2(startPos.x, startPos.y + (float)(speed * (timelineTime - startTime)));
+
+            return arrowPos;
+        }
     }
 }

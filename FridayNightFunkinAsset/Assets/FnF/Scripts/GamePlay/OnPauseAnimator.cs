@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class OnPauseAnimator : OnGameStateChange
+namespace FridayNightFunkin.GamePlay
 {
-    private Animator animator;
-    private void Start()
+    public class OnPauseAnimator : OnGameStateChange
     {
-        animator = GetComponent<Animator>();
-    }
-    protected override void OnGameStateChanged(GameState currenState)
-    {
-        if (currenState == GameState.Paused)
+        private Animator animator;
+        private void Start()
         {
-            animator.speed = 0;
+            animator = GetComponent<Animator>();
         }
-        else
+        protected override void OnGameStateChanged(GameState currenState)
         {
-            animator.speed = 1;
+            if (currenState == GameState.Paused)
+            {
+                animator.speed = 0;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
+using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Editor.TimeLineEditor;
+using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ public enum ArrowSide
     UpArrow,
     RightArrow
 }
-namespace FridayNightFunkin
+namespace FridayNightFunkin.GamePlay
 {
     [ExecuteAlways]
     public class Arrow : MonoBehaviour

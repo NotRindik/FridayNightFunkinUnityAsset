@@ -1,3 +1,5 @@
+using FridayNightFunkin.GamePlay;
+using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
 using UnityEngine;

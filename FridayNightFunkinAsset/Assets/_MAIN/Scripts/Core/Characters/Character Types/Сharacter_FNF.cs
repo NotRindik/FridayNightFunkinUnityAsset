@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using FridayNightFunkin.GamePlay;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace FridayNightFunkin.CHARACTERS
 {

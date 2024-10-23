@@ -1,9 +1,11 @@
+using FridayNightFunkin.Calculations;
+using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace FridayNightFunkin
+namespace FridayNightFunkin.GamePlay
 {
     public class ArrowTakerEnemy : ArrowTaker
     {

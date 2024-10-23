@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using FridayNightFunkin.Settings;
 using UnityEngine;
 
 namespace FridayNightFunkin.UI

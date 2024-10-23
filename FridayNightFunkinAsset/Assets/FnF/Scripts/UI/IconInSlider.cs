@@ -1,42 +1,44 @@
-using FridayNightFunkin;
-using FridayNightFunkin.UI;
+using FridayNightFunkin.Settings;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IconInSlider : MonoBehaviour
+namespace FridayNightFunkin.UI
 {
-    private Image image;
-    public bool isPlayer = false;
-
-    private void Start()
+    public class IconInSlider : MonoBehaviour
     {
-        image = GetComponent<Image>();
-        FNFUIElement.instance.versusSlider.onValueChanged.AddListener(IconsChanging);
-        IconsChanging(FNFUIElement.instance.versusSlider.value);
-    }
+        private Image image;
+        public bool isPlayer = false;
 
-    private void IconsChanging(float value)
-    {
-        if (isPlayer)
+        private void Start()
         {
-            if (value < -60)
-            {
-                image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[1];
-            }
-            else
-            {
-                image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[0];
-            }
+            image = GetComponent<Image>();
+            FNFUIElement.instance.versusSlider.onValueChanged.AddListener(IconsChanging);
+            IconsChanging(FNFUIElement.instance.versusSlider.value);
         }
-        else
+
+        private void IconsChanging(float value)
         {
-            if (value > 60)
+            if (isPlayer)
             {
-                image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[1];
+                if (value < -60)
+                {
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[1];
+                }
+                else
+                {
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[0];
+                }
             }
             else
             {
-                image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[0];
+                if (value > 60)
+                {
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[1];
+                }
+                else
+                {
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[0];
+                }
             }
         }
     }

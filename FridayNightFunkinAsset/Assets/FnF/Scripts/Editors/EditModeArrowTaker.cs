@@ -1,3 +1,4 @@
+using FridayNightFunkin.Settings;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;

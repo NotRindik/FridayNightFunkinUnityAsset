@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using FridayNightFunkin.Calculations;
+using FridayNightFunkin.Settings;
 using UnityEngine;
 
-namespace FridayNightFunkin
+namespace FridayNightFunkin.GamePlay
 {
     public class PlayerMissTaker : MonoBehaviour
     {

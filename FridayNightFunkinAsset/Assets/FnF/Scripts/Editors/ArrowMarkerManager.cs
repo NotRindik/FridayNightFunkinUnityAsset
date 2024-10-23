@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using FridayNightFunkin.Editor.TimeLineEditor;
 
 namespace FridayNightFunkin.Editor
 {

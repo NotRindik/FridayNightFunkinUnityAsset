@@ -1,15 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using FridayNightFunkin.CHARACTERS;
-using UnityEditor;
 using UnityEngine.Timeline;
-using System;
 using FridayNightFunkin.Editor.TimeLineEditor;
+using FridayNightFunkin.GamePlay;
 
-namespace FridayNightFunkin
+namespace FridayNightFunkin.Settings
 {
     [ExecuteAlways]
     public class LevelSettings : MonoBehaviour

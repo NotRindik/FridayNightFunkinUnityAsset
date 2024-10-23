@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FridayNightFunkin
+namespace FridayNightFunkin.Calculations
 {
     public class ScoreManager : MonoBehaviour
     {

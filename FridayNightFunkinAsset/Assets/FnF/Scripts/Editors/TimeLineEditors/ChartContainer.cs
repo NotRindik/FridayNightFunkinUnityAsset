@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using System;
+using FridayNightFunkin.Calculations;
+using FridayNightFunkin.GamePlay;
+using FridayNightFunkin.Settings;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {

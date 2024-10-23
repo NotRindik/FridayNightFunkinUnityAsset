@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayAnimationPerBeatWithParameters : PlayAnimPerBeat
+namespace FridayNightFunkin
 {
-    [SerializeField]private string triggerName = "Triggered";
-    protected override void PlayAnimation()
+    public class PlayAnimationPerBeatWithParameters : PlayAnimPerBeat
     {
-        if (time >= 1 / BPS)
+        [SerializeField] private string triggerName = "Triggered";
+        protected override void PlayAnimation()
         {
-            time = 0;
-            animator.SetTrigger(triggerName);
+            if (time >= 1 / BPS)
+            {
+                time = 0;
+                animator.SetTrigger(triggerName);
+            }
         }
     }
 }

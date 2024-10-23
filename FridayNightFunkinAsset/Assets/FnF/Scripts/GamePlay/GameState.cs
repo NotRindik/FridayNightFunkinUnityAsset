@@ -7,39 +7,42 @@ public enum GameState
     GamePlay,
     Paused
 }
-public class GameStateManager
+namespace FridayNightFunkin.GamePlay
 {
-    private static GameStateManager _instance;
-
-    public static GameStateManager instance
+    public class GameStateManager
     {
-        get
+        private static GameStateManager _instance;
+
+        public static GameStateManager instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = new GameStateManager();
+                if (_instance == null)
+                {
+                    _instance = new GameStateManager();
+                }
+
+                return _instance;
             }
-
-            return _instance;
         }
-    }
 
-    public GameState CurrentGameState { get; private set; }
+        public GameState CurrentGameState { get; private set; }
 
-    public delegate void GameStateChangeHandler(GameState gameState);
-    public event GameStateChangeHandler OnGameStateChanged;
+        public delegate void GameStateChangeHandler(GameState gameState);
+        public event GameStateChangeHandler OnGameStateChanged;
 
-    private GameStateManager()
-    {
+        private GameStateManager()
+        {
 
-    }
+        }
 
-    public void SetState(GameState currenState)
-    {
-        if (currenState == CurrentGameState)
-            return;
+        public void SetState(GameState currenState)
+        {
+            if (currenState == CurrentGameState)
+                return;
 
-        CurrentGameState = currenState;
-        OnGameStateChanged?.Invoke(currenState);
+            CurrentGameState = currenState;
+            OnGameStateChanged?.Invoke(currenState);
+        }
     }
 }

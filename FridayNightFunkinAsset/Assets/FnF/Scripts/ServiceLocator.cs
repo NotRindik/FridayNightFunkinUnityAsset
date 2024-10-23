@@ -39,13 +39,13 @@ public class ServiceLocator : MonoBehaviour
             throw new InvalidOperationException();
         }
 
-        return (T) _services[key];
+        return (T)_services[key];
     }
 
     public void Register<T>(T service) where T : IService
     {
         string key = typeof(T).Name;
-        if( _services.ContainsKey(key))
+        if (_services.ContainsKey(key))
         {
             Debug.LogError("you alredy register It");
             return;

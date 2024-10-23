@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class GoMenuAfterLevel : MonoBehaviour
+namespace FridayNightFunkin.UI
 {
-    [SerializeField] private UnityEvent OnAfterLevel;
-    [SerializeField] private StoryModeMenu storyModeMenu;
-
-    private void Start()
+    public class GoMenuAfterLevel : MonoBehaviour
     {
-        if (PlayerPrefs.GetInt("AfterLevel") == 1)
+        [SerializeField] private UnityEvent OnAfterLevel;
+        [SerializeField] private StoryModeMenu storyModeMenu;
+
+        private void Start()
         {
-            storyModeMenu.Initialize();
-            EventSystem.current.SetSelectedGameObject(storyModeMenu.buttons[0].gameObject);
-            PlayerPrefs.SetInt("AfterLevel", 0);
-            OnAfterLevel?.Invoke();
+            if (PlayerPrefs.GetInt("AfterLevel") == 1)
+            {
+                storyModeMenu.Initialize();
+                EventSystem.current.SetSelectedGameObject(storyModeMenu.buttons[0].gameObject);
+                PlayerPrefs.SetInt("AfterLevel", 0);
+                OnAfterLevel?.Invoke();
+            }
         }
     }
 }

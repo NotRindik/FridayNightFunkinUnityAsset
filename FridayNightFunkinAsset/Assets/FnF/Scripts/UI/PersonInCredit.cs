@@ -1,32 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class PersonInCredit : MonoBehaviour
+namespace FridayNightFunkin.UI
 {
-    [SerializeField] private TextMeshProUGUI textBox;
-    [SerializeField] private string descriptionText;
-
-    private Button button;
-
-    private void Start()
+    public class PersonInCredit : MonoBehaviour
     {
-        button = GetComponent<Button>();
-    }
+        [SerializeField] private TextMeshProUGUI textBox;
+        [SerializeField] private string descriptionText;
 
-    private void Update()
-    {
-        if(button.gameObject == EventSystem.current.currentSelectedGameObject)
+        private Button button;
+
+        private void Start()
         {
-            SetDescription();
+            button = GetComponent<Button>();
         }
-    }
 
-    private void SetDescription()
-    {
-        textBox.text = descriptionText;
+        private void Update()
+        {
+            if (button.gameObject == EventSystem.current.currentSelectedGameObject)
+            {
+                SetDescription();
+            }
+        }
+
+        private void SetDescription()
+        {
+            textBox.text = descriptionText;
+        }
     }
 }

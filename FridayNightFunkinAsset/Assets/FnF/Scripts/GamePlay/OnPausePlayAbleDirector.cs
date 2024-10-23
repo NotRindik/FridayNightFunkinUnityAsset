@@ -1,26 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Playables;
 
-public class OnPausePlayAbleDirector : OnGameStateChange
+
+namespace FridayNightFunkin.GamePlay
 {
-    private PlayableDirector mDirector;
-
-    private void Start()
+    public class OnPausePlayAbleDirector : OnGameStateChange
     {
-        mDirector = GetComponent<PlayableDirector>();
-    }
+        private PlayableDirector mDirector;
 
-    protected override void OnGameStateChanged(GameState currenState)
-    {
-        if (currenState == GameState.Paused)
+        private void Start()
         {
-            mDirector.Pause();
+            mDirector = GetComponent<PlayableDirector>();
         }
-        else
+
+        protected override void OnGameStateChanged(GameState currenState)
         {
-            mDirector.Resume();
+            if (currenState == GameState.Paused)
+            {
+                mDirector.Pause();
+            }
+            else
+            {
+                mDirector.Resume();
+            }
         }
     }
 }

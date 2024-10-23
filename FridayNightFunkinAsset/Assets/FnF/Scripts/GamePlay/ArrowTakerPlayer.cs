@@ -1,8 +1,10 @@
+using FridayNightFunkin.Calculations;
+using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace FridayNightFunkin
+namespace FridayNightFunkin.GamePlay
 {
     public class ArrowTakerPlayer : ArrowTaker
     {

@@ -1,102 +1,104 @@
 using FridayNightFunkin;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using FridayNightFunkin.GamePlay;
+using FridayNightFunkin.Settings;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+namespace FridayNightFunkin.UI
 {
-    [SerializeField] protected UnityEvent OnEscapePressed;
-    protected FnfInput inputActions;
-
-    private bool isInputedBy;
-
-    private void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        Enabled(true);
-    }
+        [SerializeField] protected UnityEvent OnEscapePressed;
+        protected FnfInput inputActions;
 
-    public void Enabled(bool isEnabled)
-    {
-        if (isEnabled)
+        private bool isInputedBy;
+
+        private void Start()
         {
-            inputActions = InputManager.inputActions;
-            inputActions.Enable();
-        }
-        else
-        {
-            inputActions = InputManager.inputActions;
-            inputActions.Disable();
+            Enabled(true);
         }
 
-    }
-    protected virtual void Update()
-    {
-        if (!isPressed)
+        public void Enabled(bool isEnabled)
         {
-            if ((inputActions.MenuNavigation.Escape.WasPerformedThisFrame() || inputActions.MenuNavigation.Pause.WasPressedThisFrame()) && !isInputedBy)
+            if (isEnabled)
             {
-                Escape();
-                isInputedBy = true;
+                inputActions = InputManager.inputActions;
+                inputActions.Enable();
             }
-            isInputedBy = false;
-        }
-        else
-        {
-            if (inputActions.MenuNavigation.Escape.WasPerformedThisFrame())
+            else
             {
-                Escape();
+                inputActions = InputManager.inputActions;
+                inputActions.Disable();
+            }
+
+        }
+        protected virtual void Update()
+        {
+            if (!isPressed)
+            {
+                if ((inputActions.MenuNavigation.Escape.WasPerformedThisFrame() || inputActions.MenuNavigation.Pause.WasPressedThisFrame()) && !isInputedBy)
+                {
+                    Escape();
+                    isInputedBy = true;
+                }
                 isInputedBy = false;
             }
+            else
+            {
+                if (inputActions.MenuNavigation.Escape.WasPerformedThisFrame())
+                {
+                    Escape();
+                    isInputedBy = false;
+                }
+            }
         }
-    }
 
-    [SerializeField] protected UnityEvent OnEscapeUnpressed;
-    private bool isPressed;
-    public PlayableDirector director;
+        [SerializeField] protected UnityEvent OnEscapeUnpressed;
+        private bool isPressed;
+        public PlayableDirector director;
 
-    public void Escape(bool callByButton = false)
-    {
-        isPressed = !isPressed;
-        if (callByButton)
-            isInputedBy = true;
+        public void Escape(bool callByButton = false)
+        {
+            isPressed = !isPressed;
+            if (callByButton)
+                isInputedBy = true;
 
-        if (isPressed)
-            OnEscapePressed?.Invoke();
-        else
-            OnEscapeUnpressed?.Invoke();
+            if (isPressed)
+                OnEscapePressed?.Invoke();
+            else
+                OnEscapeUnpressed?.Invoke();
 
-        GameStates();
-    }
+            GameStates();
+        }
 
-    private void GameStates()
-    {
-        GameState currentGameState = GameStateManager.instance.CurrentGameState;
-        GameState newGameState = currentGameState == GameState.GamePlay ? GameState.Paused : GameState.GamePlay;
+        private void GameStates()
+        {
+            GameState currentGameState = GameStateManager.instance.CurrentGameState;
+            GameState newGameState = currentGameState == GameState.GamePlay ? GameState.Paused : GameState.GamePlay;
 
-        GameStateManager.instance.SetState(newGameState);
-    }
+            GameStateManager.instance.SetState(newGameState);
+        }
 
-    public void RestartSong()
-    {
-        GameStateManager.instance.SetState(GameState.GamePlay);
-        SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
-    }
-    
-    public void ChangeDifficult(int difficult)
-    {
-        PlayerPrefs.SetInt("Difficult", difficult);
-        RestartSong();
-    }
+        public void RestartSong()
+        {
+            GameStateManager.instance.SetState(GameState.GamePlay);
+            SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
+        }
 
-    public void ExitToMenu()
-    {
-        GameStateManager.instance.SetState(GameState.GamePlay);
-        LevelSettings.instance.SetStage(0);
-        PlayerPrefs.SetInt("AfterLevel", 1);
-        SceneLoad.instance.StartLoad("MainMenu");
+        public void ChangeDifficult(int difficult)
+        {
+            PlayerPrefs.SetInt("Difficult", difficult);
+            RestartSong();
+        }
+
+        public void ExitToMenu()
+        {
+            GameStateManager.instance.SetState(GameState.GamePlay);
+            LevelSettings.instance.SetStage(0);
+            PlayerPrefs.SetInt("AfterLevel", 1);
+            SceneLoad.instance.StartLoad("MainMenu");
+        }
     }
 }

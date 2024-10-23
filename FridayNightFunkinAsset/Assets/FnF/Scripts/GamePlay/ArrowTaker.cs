@@ -1,8 +1,6 @@
-using FridayNightFunkin.UI;
+using FridayNightFunkin.Settings;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
-namespace FridayNightFunkin
+namespace FridayNightFunkin.GamePlay
 {
     public abstract class ArrowTaker : MonoBehaviour
     {

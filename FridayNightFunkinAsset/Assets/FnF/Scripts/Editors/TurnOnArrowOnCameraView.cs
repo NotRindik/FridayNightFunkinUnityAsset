@@ -1,7 +1,4 @@
-using FridayNightFunkin.UI;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+using FridayNightFunkin.Settings;
 using UnityEngine;
 
 namespace FridayNightFunkin.Editor

@@ -1,41 +1,45 @@
+using FridayNightFunkin.GamePlay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
-public class SkipCutscene : MonoBehaviour
+namespace FridayNightFunkin.UI
 {
-    [SerializeField] private PlayableDirector cutscene;
-    [SerializeField] private float skipTime = 0;
-    private FnfInput inputActions;
-
-    private void OnEnable()
+    public class SkipCutscene : MonoBehaviour
     {
-        inputActions = InputManager.inputActions;
-        inputActions.MenuNavigation.SkipCutscene.Enable();
-        inputActions.MenuNavigation.SkipCutscene.performed += SkipTheCutscene;
-    }
-    private void OnDisable()
-    {
-        inputActions.MenuNavigation.SkipCutscene.performed -= SkipTheCutscene;
-        inputActions.MenuNavigation.SkipCutscene.Disable();
-    }
+        [SerializeField] private PlayableDirector cutscene;
+        [SerializeField] private float skipTime = 0;
+        private FnfInput inputActions;
 
-    private void OnDestroy()
-    {
-        inputActions.MenuNavigation.SkipCutscene.performed -= SkipTheCutscene;
-        inputActions.MenuNavigation.SkipCutscene.Disable();
-    }
-
-
-    private void SkipTheCutscene(InputAction.CallbackContext callbackContext)
-    {
-        if(skipTime == 0)
+        private void OnEnable()
         {
-            cutscene.time = cutscene.duration;
+            inputActions = InputManager.inputActions;
+            inputActions.MenuNavigation.SkipCutscene.Enable();
+            inputActions.MenuNavigation.SkipCutscene.performed += SkipTheCutscene;
         }
-        else
+        private void OnDisable()
         {
-            cutscene.time = skipTime;
+            inputActions.MenuNavigation.SkipCutscene.performed -= SkipTheCutscene;
+            inputActions.MenuNavigation.SkipCutscene.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            inputActions.MenuNavigation.SkipCutscene.performed -= SkipTheCutscene;
+            inputActions.MenuNavigation.SkipCutscene.Disable();
+        }
+
+
+        private void SkipTheCutscene(InputAction.CallbackContext callbackContext)
+        {
+            if (skipTime == 0)
+            {
+                cutscene.time = cutscene.duration;
+            }
+            else
+            {
+                cutscene.time = skipTime;
+            }
         }
     }
 }
