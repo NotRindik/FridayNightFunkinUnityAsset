@@ -1744,7 +1744,7 @@ Transform:
   m_GameObject: {fileID: 108855340}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -169.99985, y: 1058.7476, z: -6938.844}
+  m_LocalPosition: {x: -169.99985, y: -1260.5625, z: -6938.844}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2155,8 +2155,8 @@ MonoBehaviour:
   chartSpawnDistance: 20
   playOnStart: 1
   reloadChart: 0
-  playerArrowCount: 37
-  enemyArrowCount: 23
+  playerArrowCount: 101
+  enemyArrowCount: 71
 --- !u!1 &120581594
 GameObject:
   m_ObjectHideFlags: 0
@@ -5662,7 +5662,7 @@ Transform:
   m_GameObject: {fileID: 484509337}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 186.00002, y: -1123.4374, z: -6938.844}
+  m_LocalPosition: {x: 186.00002, y: -1260.5625, z: -6938.844}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7167,7 +7167,7 @@ Transform:
   m_GameObject: {fileID: 664217918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -530, y: 1841.5712, z: -6938.844}
+  m_LocalPosition: {x: -530, y: -1260.5625, z: -6938.844}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19046,7 +19046,7 @@ Transform:
   m_GameObject: {fileID: 1484463479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -169.99985, y: -457.51245, z: -6938.844}
+  m_LocalPosition: {x: -169.99985, y: -1260.5625, z: -6938.844}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22417,7 +22417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1905294918
 Transform:
   m_ObjectHideFlags: 0
@@ -22427,7 +22427,7 @@ Transform:
   m_GameObject: {fileID: 1905294917}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -530, y: 280.12762, z: -6938.844}
+  m_LocalPosition: {x: -530, y: -1260.5625, z: -6938.844}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23032,7 +23032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2092404141, guid: e45c94e81bf4f3c4aa92ea4823ecc60b, type: 3}
+  m_Sprite: {fileID: -2017699479, guid: e45c94e81bf4f3c4aa92ea4823ecc60b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
