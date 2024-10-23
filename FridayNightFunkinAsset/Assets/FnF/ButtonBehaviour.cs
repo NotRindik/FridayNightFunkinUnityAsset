@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -44,6 +46,7 @@ public class ButtonBehaviour : MonoBehaviour
             timeToEndAnimation = animator.GetCurrentAnimatorStateInfo(0).length;
             button.interactable = false;
             EventSystem.current.SetSelectedGameObject(gameObject);
+            EventSystem.current.sendNavigationEvents = false;
             isAnimationStart = true;
         }
 
@@ -51,6 +54,7 @@ public class ButtonBehaviour : MonoBehaviour
         {
             isAnimationStart = false;
             button.interactable = true;
+            EventSystem.current.sendNavigationEvents = true;
             onAnimationEnd?.Invoke();
         }
     }

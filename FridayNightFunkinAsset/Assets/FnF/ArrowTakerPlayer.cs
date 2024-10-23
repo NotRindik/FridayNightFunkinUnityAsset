@@ -70,6 +70,20 @@ namespace FridayNightFunkin
             else
             {
                 animator.CrossFade("NoArrowPress", 0);
+                if(ServiceLocator.instance.Get<ChangesByGameSettings>().ghostTapping == 1) 
+                { 
+                    foreach (var currentPlayer in levelSettings.currentPlayer)
+                    {
+                        if(currentPlayer.isActive)
+                            currentPlayer.PlayMissAnimation(arrowSide);
+                    }
+                    scoreManager.ReduceValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetMissForce());
+                    scoreManager.AddMiss();
+                    scoreManager.ÑalculateAccuracy(500);
+                    AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");
+                    scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
+                    scoreManager.ResetCombo();
+                }
             }
         }
         private void OnArrowUnPressed(InputAction.CallbackContext context)

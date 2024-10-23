@@ -89,7 +89,7 @@ namespace FridayNightFunkin
             markerRef.OnMarkerRemove -= Destroy;
             chartContainer.OnSpeedChanged -= OnBaseParamChanged;
             LevelSettings.instance.arrowsList.Remove(this);
-            DestroyImmediate(this.gameObject);
+            if(gameObject)DestroyImmediate(this.gameObject);
         }
 
         private void Update()
@@ -99,7 +99,7 @@ namespace FridayNightFunkin
             if (!markerRef)
             {
                 LevelSettings.instance.arrowsList.Remove(this);
-                DestroyImmediate(gameObject);
+                if (gameObject) DestroyImmediate(gameObject);
                 return;
             }
             if (!markerRef.IsSub(Destroy))
@@ -132,8 +132,8 @@ namespace FridayNightFunkin
                         continue;
                     var tailPos = Camera.main.WorldToScreenPoint(tail.transform.position).y;
                     var arrowTakerPos = Camera.main.WorldToScreenPoint(endPos).y;
-                    var distance = arrowTakerPos - tailPos;
-                    if(distance < -4)
+                    var distance = arrowTakerPos - tailPos * Mathf.Clamp(Mathf.Round(chartContainer.chartSpawnDistance), -1, 1);
+                    if(distance < -4 * Mathf.Clamp(Mathf.Round(chartContainer.chartSpawnDistance), -1, 1))
                     {
                         tail.gameObject.SetActive(false);
                     }
@@ -176,7 +176,7 @@ namespace FridayNightFunkin
                     tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
                     spawnTail();
                 }
-                tailDistanceToArrowTakerRaw = Camera.main.WorldToScreenPoint(endPos).y - Camera.main.WorldToScreenPoint(tail.transform.position).y;
+                tailDistanceToArrowTakerRaw = Camera.main.WorldToScreenPoint(endPos).y - Camera.main.WorldToScreenPoint(tail.transform.position).y * Mathf.Clamp(Mathf.Round(chartContainer.chartSpawnDistance),-1,1);
                 tailDistance = Mathf.Abs(Camera.main.WorldToScreenPoint(tail.transform.position).y - Camera.main.WorldToScreenPoint(transform.position).y);
             }
             else if (distanceCount == 0)

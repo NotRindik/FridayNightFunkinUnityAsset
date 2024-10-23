@@ -45,6 +45,7 @@ namespace FridayNightFunkin
                     }
                     scoreManager.ReduceValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetMissForce());
                     scoreManager.AddMiss();
+                    AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1,4)}");
                     scoreManager.ÑalculateAccuracy(500);
                     scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
                     scoreManager.ResetCombo();

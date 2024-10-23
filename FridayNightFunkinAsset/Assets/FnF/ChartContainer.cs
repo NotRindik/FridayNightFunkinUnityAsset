@@ -87,14 +87,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[0];
             }
-
-            for (int i = 0; i < levelSettings.arrowsList.Count; i++)
-            {
-                var arrow = levelSettings.arrowsList[i];
-                UpdateArrowEndStartPos(arrow);
-
-                arrow.transform.position = arrow.startPos;
-            }
             playableDirector.Play();
         }
 
@@ -229,7 +221,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
 
             Vector2 startPos = arrowSpawnPos;
-            Vector2 endPos = new Vector2(arrowSpawnPos.x, arrowSpawnPos.y + 10 + (Camera.main.orthographicSize / 5));
+            Vector2 endPos = new Vector2(arrowSpawnPos.x, arrowSpawnPos.y);
 
             arrow.transform.SetParent(transform);
             arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), arrowMarker,startPos, endPos,this);
@@ -255,7 +247,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             speedSave = levelSettings.stage[EditorGetCurrentStage()].chartSpeed;
             speedCofency = 10 / speedSave;
-            if (!arrowMarker || !road) 
+            if (!arrowMarker || !road ) 
                 return;
             SpawnArrow(arrowMarker, road.roadSide);
         }

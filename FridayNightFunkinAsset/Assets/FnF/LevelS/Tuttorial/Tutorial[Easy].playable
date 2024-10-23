@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 57.116666666666674
   distanceCount: 0
-  id: 99
+  id: 40
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 27.799999999999997
   distanceCount: 0
-  id: 76
+  id: 47
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 52.31666666666668
   distanceCount: 0
-  id: 91
+  id: 95
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -348,9 +348,7 @@ MonoBehaviour:
     - {fileID: -5311872654865515311}
     - {fileID: 6908500089545285871}
   roadSide: 1
-  defaultSpeedMultiplier: 1
-  defaultDistanceCount: 0
-  isActive: 1
+  isActive: 0
 --- !u!114 &-7036306824736628072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 19.416666666666664
   distanceCount: 0
-  id: 51
+  id: 11
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
@@ -401,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 52.91666666666667
   distanceCount: 0
-  id: 92
+  id: 5
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -419,7 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 10.966666666666665
   distanceCount: 0
-  id: 48
+  id: 44
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -551,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 55.95
   distanceCount: 0
-  id: 97
+  id: 67
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -605,7 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 50.51666666666668
   distanceCount: 0
-  id: 87
+  id: 23
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -623,7 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 46.3666666666667
   distanceCount: 0
-  id: 85
+  id: 60
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -659,7 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 32.68333333333333
   distanceCount: 0
-  id: 58
+  id: 55
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -677,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 29.03333333333333
   distanceCount: 0
-  id: 55
+  id: 0
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
@@ -695,7 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 49.100000000000016
   distanceCount: 0
-  id: 69
+  id: 64
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
@@ -713,7 +711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 49.98333333333334
   distanceCount: 0
-  id: 70
+  id: 6
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -731,7 +729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 25.41666666666668
   distanceCount: 0
-  id: 74
+  id: 69
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -767,7 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 55.33333333333334
   distanceCount: 0
-  id: 96
+  id: 26
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -857,7 +855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 15.716666666666665
   distanceCount: 0
-  id: 70
+  id: 79
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -969,9 +967,7 @@ MonoBehaviour:
     - {fileID: -8811750207665943888}
     - {fileID: -2908898310914259044}
   roadSide: 0
-  defaultSpeedMultiplier: 1
-  defaultDistanceCount: 0
-  isActive: 1
+  isActive: 0
 --- !u!114 &-3186277486034947823
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,7 +1018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 57.650000000000006
   distanceCount: 29
-  id: 100
+  id: 59
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1040,7 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 48.51666666666669
   distanceCount: 0
-  id: 67
+  id: 25
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
@@ -1588,7 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 21.81666666666667
   distanceCount: 0
-  id: 53
+  id: 16
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
@@ -1624,7 +1620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 41.00000000000001
   distanceCount: 0
-  id: 62
+  id: 30
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -1642,7 +1638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 36.11666666666669
   distanceCount: 0
-  id: 79
+  id: 42
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1660,7 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 14.516666666666667
   distanceCount: 0
-  id: 69
+  id: 91
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -1696,7 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 53.533333333333346
   distanceCount: 0
-  id: 93
+  id: 8
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1714,7 +1710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 54.000000000000014
   distanceCount: 0
-  id: 94
+  id: 22
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -1750,7 +1746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 43.950000000000045
   distanceCount: 0
-  id: 82
+  id: 14
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1768,7 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 45.73333333333338
   distanceCount: 0
-  id: 84
+  id: 45
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1786,7 +1782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 41.63333333333335
   distanceCount: 0
-  id: 63
+  id: 38
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -1804,7 +1800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 24.044918483775106
   distanceCount: 0
-  id: 73
+  id: 27
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -1838,7 +1834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 51.116666666666674
   distanceCount: 0
-  id: 89
+  id: 63
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -1856,7 +1852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 13.433333333333334
   distanceCount: 0
-  id: 50
+  id: 22
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -1892,7 +1888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 46.933333333333366
   distanceCount: 0
-  id: 86
+  id: 0
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -1988,7 +1984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 37.36666666666669
   distanceCount: 0
-  id: 80
+  id: 96
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -2006,7 +2002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 20.700000000000003
   distanceCount: 0
-  id: 52
+  id: 60
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -2024,7 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 48.21666666666669
   distanceCount: 0
-  id: 66
+  id: 31
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -2042,7 +2038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 44.53333333333336
   distanceCount: 0
-  id: 83
+  id: 68
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -2094,7 +2090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 42.71666666666669
   distanceCount: 0
-  id: 65
+  id: 54
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -2130,7 +2126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 54.80000000000001
   distanceCount: 0
-  id: 95
+  id: 21
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -2148,7 +2144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 39.1
   distanceCount: 0
-  id: 60
+  id: 61
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -2202,7 +2198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 23.083333333333336
   distanceCount: 0
-  id: 54
+  id: 9
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -2306,7 +2302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 12.233333333333334
   distanceCount: 0
-  id: 49
+  id: 45
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
@@ -2360,7 +2356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 43.31666666666672
   distanceCount: 0
-  id: 81
+  id: 76
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -2396,7 +2392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 39.800000000000004
   distanceCount: 0
-  id: 61
+  id: 24
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
@@ -2432,7 +2428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 42.200000000000024
   distanceCount: 0
-  id: 64
+  id: 20
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -2517,7 +2513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 51.41666666666667
   distanceCount: 0
-  id: 90
+  id: 16
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -2587,7 +2583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 56.516265232426434
   distanceCount: 0
-  id: 98
+  id: 75
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -2605,7 +2601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 34.93333333333334
   distanceCount: 0
-  id: 78
+  id: 50
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -2641,7 +2637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 50.81666666666668
   distanceCount: 0
-  id: 88
+  id: 98
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -2713,7 +2709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 26.516666666666673
   distanceCount: 0
-  id: 75
+  id: 70
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -2749,7 +2745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 38.61666666666667
   distanceCount: 0
-  id: 59
+  id: 47
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -2767,7 +2763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 9.783333333333333
   distanceCount: 0
-  id: 71
+  id: 7
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
@@ -2803,7 +2799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 48.850000000000016
   distanceCount: 0
-  id: 68
+  id: 56
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
@@ -2893,7 +2889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 30.25
   distanceCount: 0
-  id: 56
+  id: 42
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
@@ -2911,7 +2907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 18.116666666666667
   distanceCount: 0
-  id: 72
+  id: 57
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -2965,7 +2961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 16.900000000000006
   distanceCount: 0
-  id: 71
+  id: 51
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1

@@ -21,6 +21,15 @@ namespace FridayNightFunkin.UI
             }
         }
 
+        private void Start()
+        {
+            for (int i = 0; i < playerMask.Length; i++)
+            {
+                playerMask[i].transform.localPosition = new Vector2(playerMask[i].transform.localPosition.x, playerMask[i].transform.localPosition.y * (ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll == 0 ? 1 : -1));
+                EnemyMask[i].transform.localPosition = new Vector2(EnemyMask[i].transform.localPosition.x, EnemyMask[i].transform.localPosition.y * (ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll == 0 ? 1 : -1));
+            }
+        }
+
         public void ActivateMask(int index, CharacterSide side = CharacterSide.Player)
         {
             if (side == CharacterSide.Player)

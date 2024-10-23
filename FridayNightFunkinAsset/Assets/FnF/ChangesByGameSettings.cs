@@ -10,6 +10,7 @@ public class ChangesByGameSettings : MonoBehaviour,IService
     public int naughtyness { get; private set; }
     public int flashLights { get; private set; }
     public int cameraZoomingOnBeat { get; private set; }
+    public int ghostTapping { get; private set; }
     public int autoPause { get; private set; }
     private ServiceLocator serviceLocator => ServiceLocator.instance;
 
@@ -28,6 +29,7 @@ public class ChangesByGameSettings : MonoBehaviour,IService
         naughtyness = PlayerPrefs.GetInt("Naughtyness");
         downscroll = PlayerPrefs.GetInt("DownScroll");
         flashLights = PlayerPrefs.GetInt("FlashLights");
+        ghostTapping = PlayerPrefs.GetInt("GhostTapping");
         cameraZoomingOnBeat = PlayerPrefs.GetInt("Camera Zooming On Beat");
         autoPause = PlayerPrefs.GetInt("AutoPause");
     }

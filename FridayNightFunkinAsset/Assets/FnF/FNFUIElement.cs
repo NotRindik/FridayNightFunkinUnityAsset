@@ -30,6 +30,25 @@ namespace FridayNightFunkin.UI
             UpdateUI();
         }
 
+        private void Start()
+        {
+            if (ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll == 1)
+            {
+                ChangeAnchorToTop(hud.rectTransform);
+                hud.rectTransform.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x, -15); //Top
+
+                var slider = versusSlider.transform.parent.GetComponent<RectTransform>();
+                ChangeAnchorToTop(slider);
+                slider.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x, -50); //Top
+            }
+        }
+
+        private void ChangeAnchorToTop(RectTransform rectTransform)
+        {
+            rectTransform.anchorMin = new Vector2(0.5f, 1);
+            rectTransform.anchorMax = new Vector2(0.5f, 1);
+        }
+
         public void UpdateUI()
         {
             if (scoreManager.accuracyList.Count == 0)

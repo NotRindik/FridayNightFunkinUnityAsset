@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace FridayNightFunkin.CHARACTERS
 {
@@ -18,6 +19,17 @@ namespace FridayNightFunkin.CHARACTERS
         private void Awake()
         {
             serviceLocator.Register<PlayerDeath>(this);
+            OnPlayerDead.AddListener(OnPlayerisDead);
+        }
+
+        private void OnDisable()
+        {
+            OnPlayerDead.RemoveListener(OnPlayerisDead);
+        }
+
+        public void OnPlayerisDead()
+        {
+            InputManager.inputActions.PlayableArrow.Disable();
         }
     }
 }

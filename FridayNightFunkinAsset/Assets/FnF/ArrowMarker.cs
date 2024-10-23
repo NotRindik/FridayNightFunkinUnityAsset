@@ -30,13 +30,13 @@ public class ArrowMarker : Marker
 
     private double currentTime;
 
-    public override void OnInitialize(TrackAsset aPent)
+    public void OnEnable()
     {
         OnMarkerAdd?.Invoke();
         EditorApplication.update += Update;
-        if (aPent is ArrowMarkerTrackAsset)
+        if (parent is ArrowMarkerTrackAsset)
         {
-            arrowMarkerParent = aPent as ArrowMarkerTrackAsset;
+            arrowMarkerParent = parent as ArrowMarkerTrackAsset;
             id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
             roadSide = arrowMarkerParent.roadSide;
             _speedMultiplier = speedMultiplier;

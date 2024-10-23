@@ -190,6 +190,23 @@ namespace FridayNightFunkin.CHARACTERS
             playAnimPerBeat.SetBlockTimer(false, 0.2f);
         }
 
+        public void PlayMissAnimation(ArrowSide arrowSide)
+        {
+            if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)
+            {
+                playAnimPerBeat.SetPause(true);
+                isDead = true;
+                animator.CrossFade("Dead", 0);
+                StartCoroutine(DeathAnimationEnd(2.1f));
+                playerDeath.OnPlayerDead?.Invoke();
+                return;
+            }
+
+            animator.CrossFade(MiSS_ANIMATION[(int)arrowSide], 0);
+            playAnimPerBeat.SetBlock(true);
+            playAnimPerBeat.SetBlockTimer(false, 0.2f);
+        }
+
         private IEnumerator DeathAnimationEnd(float time)
         {
             yield return new WaitForSeconds(time);
