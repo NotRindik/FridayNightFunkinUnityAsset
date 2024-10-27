@@ -27,7 +27,6 @@ namespace FridayNightFunkin.UI
             {
                 DestroyImmediate(this.gameObject);
             }
-            UpdateUI();
         }
 
         private void Start()
@@ -41,6 +40,7 @@ namespace FridayNightFunkin.UI
                 ChangeAnchorToTop(slider);
                 slider.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x, -50); //Top
             }
+            UpdateUI();
         }
 
         private void ChangeAnchorToTop(RectTransform rectTransform)
