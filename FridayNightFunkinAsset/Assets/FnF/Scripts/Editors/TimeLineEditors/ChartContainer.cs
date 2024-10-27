@@ -89,6 +89,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             else
             {
                 playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[0];
+                ReloadChart();
             }
             playableDirector.Play();
         }

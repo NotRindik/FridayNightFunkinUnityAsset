@@ -5,6 +5,8 @@ using UnityEngine.Timeline;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
+    [HideInMenu]
+
     public class ArrowMarker : Marker
     {
         [SerializeField] public uint distanceCount;
