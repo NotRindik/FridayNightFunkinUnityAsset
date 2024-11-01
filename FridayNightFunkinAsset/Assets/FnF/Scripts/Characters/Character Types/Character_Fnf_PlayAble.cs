@@ -86,7 +86,7 @@ namespace FridayNightFunkin.CHARACTERS
         {
             inputActions = InputManager.inputActions;
             arrowTakers = new ArrowTakerPlayer[levelSettings.arrowsPlayer.Length];
-            playerDeath = ServiceLocator.instance.Get<PlayerDeath>();
+            playerDeath = levelSettings.playerDeath;
             Active();
         }
 

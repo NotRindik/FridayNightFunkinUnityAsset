@@ -25,7 +25,7 @@ namespace FridayNightFunkin.GamePlay
 
         private void Start()
         {
-            isDownScroll = ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll;
+            isDownScroll = ChangesByGameSettings.instance.downscroll;
         }
 
         private void Update()

@@ -56,7 +56,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             if (Application.isPlaying && levelSettings)
             {
                 GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
-                chartSpawnDistance = ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll == 1 ? chartSpawnDistance * -1 : chartSpawnDistance;
+                chartSpawnDistance = ChangesByGameSettings.instance.downscroll == 1 ? chartSpawnDistance * -1 : chartSpawnDistance;
                 if (playOnStart)
                 {
                     StartLevel();
@@ -225,7 +225,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
 
             Vector2 startPos = arrowSpawnPos;
-            Vector2 endPos = new Vector2(arrowSpawnPos.x, arrowSpawnPos.y);
+            Vector2 endPos = new Vector2(arrowSpawnPos.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y);
 
             arrow.transform.SetParent(transform);
             arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), arrowMarker,startPos, endPos,this);

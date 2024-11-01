@@ -31,7 +31,7 @@ namespace FridayNightFunkin.UI
 
         private void Start()
         {
-            if (ServiceLocator.instance.Get<ChangesByGameSettings>().downscroll == 1)
+            if (ChangesByGameSettings.instance.downscroll == 1)
             {
                 ChangeAnchorToTop(hud.rectTransform);
                 hud.rectTransform.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x, -15); //Top

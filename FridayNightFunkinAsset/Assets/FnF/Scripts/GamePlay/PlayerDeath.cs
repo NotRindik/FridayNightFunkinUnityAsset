@@ -1,9 +1,10 @@
+using FridayNightFunkin.Settings;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace FridayNightFunkin.GamePlay
 {
-    public class PlayerDeath : MonoBehaviour,IService
+    public class PlayerDeath : MonoBehaviour
     {
         public UnityEvent OnPlayerDead;
 
@@ -11,12 +12,13 @@ namespace FridayNightFunkin.GamePlay
 
         public UnityEvent OnGameOverEnd;
 
-        private ServiceLocator serviceLocator => ServiceLocator.instance;
-
         private void Awake()
         {
-            serviceLocator.Register<PlayerDeath>(this);
             OnPlayerDead.AddListener(OnPlayerisDead);
+        }
+        private void Start()
+        {
+            LevelSettings.instance.playerDeath = this;
         }
 
         private void OnDisable()

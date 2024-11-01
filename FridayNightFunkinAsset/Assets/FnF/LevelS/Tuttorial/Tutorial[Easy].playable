@@ -348,7 +348,7 @@ MonoBehaviour:
     - {fileID: -5311872654865515311}
     - {fileID: 6908500089545285871}
   roadSide: 1
-  isActive: 1
+  isActive: 0
 --- !u!114 &-7036306824736628072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,7 +967,7 @@ MonoBehaviour:
     - {fileID: -8811750207665943888}
     - {fileID: -2908898310914259044}
   roadSide: 0
-  isActive: 1
+  isActive: 0
 --- !u!114 &-3186277486034947823
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -51,6 +51,8 @@ namespace FridayNightFunkin.Settings
 
         public event OnSpeedChanged OnSpeedChanges;
 
+        public PlayerDeath playerDeath;
+
 
         private void Awake()
         {

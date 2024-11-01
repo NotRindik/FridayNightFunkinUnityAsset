@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FridayNightFunkin.Settings
 {
-    public class ChangesByGameSettings : MonoBehaviour, IService
+    public class ChangesByGameSettings : MonoBehaviour
     {
         private RectTransform playerArrows;
         private RectTransform enemyArrows;
@@ -13,16 +13,20 @@ namespace FridayNightFunkin.Settings
         public int cameraZoomingOnBeat { get; private set; }
         public int ghostTapping { get; private set; }
         public int autoPause { get; private set; }
-        private ServiceLocator serviceLocator => ServiceLocator.instance;
+
+        public static ChangesByGameSettings instance { get; private set; }
 
         private void Awake()
         {
             GetSettingsValue();
-            serviceLocator.Register(this);
-        }
-        private void OnDestroy()
-        {
-            serviceLocator.UnRegister<ChangesByGameSettings>();
+            if(instance == null )
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
         //All settings are saved in playprefs with the toggle object NAME in the inspector.
         private void GetSettingsValue()

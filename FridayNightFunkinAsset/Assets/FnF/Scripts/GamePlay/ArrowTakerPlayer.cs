@@ -72,7 +72,7 @@ namespace FridayNightFunkin.GamePlay
             else
             {
                 animator.CrossFade("NoArrowPress", 0);
-                if(ServiceLocator.instance.Get<ChangesByGameSettings>().ghostTapping == 1) 
+                if(ChangesByGameSettings.instance.ghostTapping == 1) 
                 { 
                     foreach (var currentPlayer in levelSettings.currentPlayer)
                     {
