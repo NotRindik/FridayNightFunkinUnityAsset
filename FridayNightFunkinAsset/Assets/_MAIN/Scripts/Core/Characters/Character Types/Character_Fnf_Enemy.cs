@@ -24,6 +24,7 @@ namespace FridayNightFunkin.CHARACTERS
             arrowTakers = new ArrowTakerEnemy[levelSettings.arrowsEnemy.Length];
             TryGetComponent(out PlayAnimPerBeat playAnimPerBeat);
             this.playAnimPerBeat = playAnimPerBeat;
+            
             for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
             {
                 arrowTakers[i] = levelSettings.arrowsEnemy[i].GetComponent<ArrowTakerEnemy>();

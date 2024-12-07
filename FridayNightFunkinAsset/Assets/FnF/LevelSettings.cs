@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEngine.Timeline;
 using System;
 using FridayNightFunkin.Editor.TimeLineEditor;
+using UnityEngine.Events;
 
 namespace FridayNightFunkin
 {
@@ -49,9 +50,7 @@ namespace FridayNightFunkin
         public List<Character_Fnf_Girlfriend> currentGirlFriend { get; private set; }
         public List<Character_Fnf_Enemy> currentEnemy { get; private set; }
 
-        public delegate void OnSpeedChanged();
-
-        public event OnSpeedChanged OnSpeedChanges;
+        public UnityEvent OnSpeedChanges = new UnityEvent();
 
 
         private void Awake()
@@ -68,19 +67,6 @@ namespace FridayNightFunkin
                 GetPositionFromList(arrowsEnemy, arrowsEnemyPos);
                 IsArrowPositionSaved = true;
             }
-        }
-        public bool IsSub(OnSpeedChanged method)
-        {
-            if (OnSpeedChanges == null) return false;
-
-            foreach (var d in OnSpeedChanges.GetInvocationList())
-            {
-                if (d.Method == method.Method && d.Target == method.Target)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void ActivePlayer(int index)

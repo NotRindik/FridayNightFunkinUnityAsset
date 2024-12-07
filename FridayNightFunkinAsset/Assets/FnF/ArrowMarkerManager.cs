@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEngine.Events;
 
 namespace FridayNightFunkin.Editor
 {
@@ -8,14 +9,11 @@ namespace FridayNightFunkin.Editor
     {
         public List<List<ArrowMarker>> arrowMarkers = new List<List<ArrowMarker>>();
 
-        public delegate void OnArrowMarkerCountChanged(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null);
-        public event OnArrowMarkerCountChanged OnMarkerCountChanged;
+        public UnityEvent<ArrowMarker, ArrowMarkerTrackAsset> OnMarkerCountChanged = new UnityEvent<ArrowMarker, ArrowMarkerTrackAsset>();
 
-        public delegate void OnArrowListChanged(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null);
-        public event OnArrowListChanged OnArrowCountChanged;
+        public UnityEvent<ArrowMarker, ArrowMarkerTrackAsset> OnArrowCountChanged = new UnityEvent<ArrowMarker, ArrowMarkerTrackAsset>();
 
-        public delegate void OnArrowListCleared();
-        public event OnArrowListCleared OnListCleared;
+        public UnityEvent OnListCleared = new UnityEvent();
 
 
         private static ArrowMarkerManager _instance;
@@ -107,7 +105,7 @@ namespace FridayNightFunkin.Editor
         
         private void Initialize()
         {
-            OnMarkerCountChanged += AddMarkersToList;
+            OnMarkerCountChanged.AddListener(AddMarkersToList);
         }
 
         public void IntegrityCheck(ArrowMarkerTrackAsset road = null)
@@ -123,20 +121,6 @@ namespace FridayNightFunkin.Editor
                 }
                 saveRoad[(int)road.roadSide] = road;
             }
-        }
-
-        public bool IsOnArrowListChangedMethodSubscribed(OnArrowListChanged method)
-        {
-            if (OnArrowCountChanged == null) return false;
-
-            foreach (var d in OnArrowCountChanged.GetInvocationList())
-            {
-                if (d.Method == method.Method && d.Target == method.Target)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

@@ -19,17 +19,17 @@ public class ArrowMarkerTrackAsset : MarkerTrack
         {
             item.ArrowInit(this);
         }
-        ArrowMarkerManager.instance.OnListCleared += OnListCleared;
+        ArrowMarkerManager.instance.OnListCleared.AddListener(OnListCleared);
     }
 
     private void OnDisable()
     {
-        ArrowMarkerManager.instance.OnListCleared -= OnListCleared;
+        ArrowMarkerManager.instance.OnListCleared.RemoveListener(OnListCleared);
     }
 
     private void OnEnable()
     {
-        ArrowMarkerManager.instance.OnListCleared += OnListCleared;
+        ArrowMarkerManager.instance.OnListCleared.AddListener(OnListCleared);
     }
 
     private void OnListCleared()
@@ -42,7 +42,7 @@ public class ArrowMarkerTrackAsset : MarkerTrack
     }
     private void OnDestroy()
     {
-        ArrowMarkerManager.instance.OnListCleared -= OnListCleared;
+        ArrowMarkerManager.instance.OnListCleared.RemoveListener(OnListCleared);
     }
 
     private void IsActive()

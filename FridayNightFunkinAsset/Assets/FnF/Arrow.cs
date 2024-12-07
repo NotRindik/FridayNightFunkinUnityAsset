@@ -65,9 +65,10 @@ namespace FridayNightFunkin
             startTime = endTime - ((10 / LevelSettings.instance.stage[LevelSettings.instance.stageIndex].chartSpeed) * (1 / arrowMarker.speedMultiplier));
             this.chartContainer = ñhartContainer;
             markerRef = arrowMarker;
-            ñhartContainer.OnSpeedChanged += OnBaseParamChanged;
+            ñhartContainer.OnSpeedChanged.AddListener(OnBaseParamChanged);
             markerRef.OnParameterChanged += OnParamChanged;
             markerRef.OnMarkerRemove += Destroy;
+            chartContainer.OnSpeedChanged.AddListener(OnBaseParamChanged);
         }
 
         private void OnParamChanged(double time,float speedMultiplier,uint distanceCount)
@@ -87,7 +88,7 @@ namespace FridayNightFunkin
         {
             markerRef.OnParameterChanged -= OnParamChanged;
             markerRef.OnMarkerRemove -= Destroy;
-            chartContainer.OnSpeedChanged -= OnBaseParamChanged;
+            chartContainer.OnSpeedChanged.RemoveListener(OnBaseParamChanged);
             LevelSettings.instance.arrowsList.Remove(this);
             DestroyImmediate(this.gameObject);
         }
@@ -109,10 +110,6 @@ namespace FridayNightFunkin
             if (!markerRef.IsSub(OnParamChanged))
             {
                 markerRef.OnParameterChanged += OnParamChanged;
-            }
-            if (!chartContainer.IsSub(OnBaseParamChanged))
-            {
-                chartContainer.OnSpeedChanged += OnBaseParamChanged;
             }
 
             if (!Application.isPlaying)
