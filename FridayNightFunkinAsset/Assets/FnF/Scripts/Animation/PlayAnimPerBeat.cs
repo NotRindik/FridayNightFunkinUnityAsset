@@ -1,4 +1,4 @@
-using FridayNightFunkin;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
 using System.Collections;
@@ -29,7 +29,7 @@ namespace FridayNightFunkin
         {
             animator = GetComponent<Animator>();
             if (ownBPM == 0)
-                ownBPM = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetGeneralBPM();
+                ownBPM = ChartContainer.Instance.levelData.stage[LevelSettings.instance.stageIndex].BPM;
             BPS = ownBPM / 60;
         }
         protected void Update()

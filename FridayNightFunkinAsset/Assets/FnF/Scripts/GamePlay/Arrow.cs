@@ -1,4 +1,5 @@
 using FridayNightFunkin.Calculations;
+using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
@@ -93,29 +94,34 @@ namespace FridayNightFunkin.GamePlay
             LevelSettings.instance.arrowsList.Remove(this);
             if(gameObject)DestroyImmediate(this.gameObject);
         }
+        private void OnEnable()
+        {
+            SubDelegates();
+        }
+
+        private void OnDisable()
+        {
+            UnSubDelegates();
+        }
+
+        private void SubDelegates()
+        {
+            if (markerRef == null)
+                return;
+            markerRef.OnMarkerRemove += Destroy;
+            markerRef.OnParameterChanged += OnParamChanged;
+            chartContainer.OnSpeedChanged += OnBaseParamChanged;
+        }
+        private void UnSubDelegates()
+        {
+            markerRef.OnMarkerRemove -= Destroy;
+            markerRef.OnParameterChanged -= OnParamChanged;
+            chartContainer.OnSpeedChanged -= OnBaseParamChanged;
+        }
 
         private void Update()
         {
             GenerateTail();
-
-            if (!markerRef)
-            {
-                LevelSettings.instance.arrowsList.Remove(this);
-                if (gameObject) DestroyImmediate(gameObject);
-                return;
-            }
-            if (!markerRef.IsSub(Destroy))
-            {
-                markerRef.OnMarkerRemove += Destroy;
-            }
-            if (!markerRef.IsSub(OnParamChanged))
-            {
-                markerRef.OnParameterChanged += OnParamChanged;
-            }
-            if (!chartContainer.IsSub(OnBaseParamChanged))
-            {
-                chartContainer.OnSpeedChanged += OnBaseParamChanged;
-            }
 
             if (!Application.isPlaying)
                 return;

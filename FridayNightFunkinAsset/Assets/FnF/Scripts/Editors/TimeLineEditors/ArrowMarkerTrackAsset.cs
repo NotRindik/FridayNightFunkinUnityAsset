@@ -11,7 +11,7 @@ public class ArrowMarkerTrackAsset : MarkerTrack
 {
     public RoadSide roadSide;
     public bool isActive = false;
-    public ChartContainer chartContainer => ChartContainer.instance;
+    public ChartContainer chartContainer => ChartContainer.Instance;
 
     private void OnDisable()
     {
@@ -20,7 +20,6 @@ public class ArrowMarkerTrackAsset : MarkerTrack
 
     private void OnEnable()
     {
-        name = roadSide.ToString();
         foreach (ArrowMarker item in GetMarkers())
         {
             item.ArrowInit(this);

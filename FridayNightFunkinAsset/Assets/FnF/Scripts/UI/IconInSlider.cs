@@ -22,22 +22,22 @@ namespace FridayNightFunkin.UI
             {
                 if (value < -60)
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[1];
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[IconProgressStatus.Losing];
                 }
                 else
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[0];
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[IconProgressStatus.Mid];
                 }
             }
             else
             {
                 if (value > 60)
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[1];
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[IconProgressStatus.Mid];
                 }
                 else
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[0];
+                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[IconProgressStatus.Losing];
                 }
             }
         }

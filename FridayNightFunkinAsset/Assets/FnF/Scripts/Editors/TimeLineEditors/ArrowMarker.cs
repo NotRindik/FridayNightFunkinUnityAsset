@@ -34,22 +34,21 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private double currentTime;
 
-        //public void OnEnable()
-        //{
-        //    OnMarkerAdd?.Invoke();
-        //    EditorApplication.update += Update;
-        //    if (parent is ArrowMarkerTrackAsset)
-        //    {
-        //        arrowMarkerParent = parent as ArrowMarkerTrackAsset;
-        //        id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
-        //        roadSide = arrowMarkerParent.roadSide;
-        //        _speedMultiplier = speedMultiplier;
-        //        _distanceCount = distanceCount;
-        //        ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
-        //    }
-        //}
-
-        public override void OnInitialize(TrackAsset aPent)
+        public void OnEnable()
+        {
+            OnMarkerAdd?.Invoke();
+            EditorApplication.update += Update;
+            if (parent is ArrowMarkerTrackAsset)
+            {
+                arrowMarkerParent = parent as ArrowMarkerTrackAsset;
+                id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
+                roadSide = arrowMarkerParent.roadSide;
+                _speedMultiplier = speedMultiplier;
+                _distanceCount = distanceCount;
+                ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
+            }
+        }
+/*        public override void OnInitialize(TrackAsset aPent)
         {
             OnMarkerAdd?.Invoke();
             EditorApplication.update += Update;
@@ -62,7 +61,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 _distanceCount = distanceCount;
                 ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
             }
-        }
+        }*/
 
         private void Update()
         {

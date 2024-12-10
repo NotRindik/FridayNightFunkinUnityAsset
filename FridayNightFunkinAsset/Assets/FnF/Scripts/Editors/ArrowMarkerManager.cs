@@ -124,19 +124,5 @@ namespace FridayNightFunkin.Editor
                 saveRoad[(int)road.roadSide] = road;
             }
         }
-
-        public bool IsOnArrowListChangedMethodSubscribed(OnArrowListChanged method)
-        {
-            if (OnArrowCountChanged == null) return false;
-
-            foreach (var d in OnArrowCountChanged.GetInvocationList())
-            {
-                if (d.Method == method.Method && d.Target == method.Target)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
     }
 }

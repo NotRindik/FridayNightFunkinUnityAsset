@@ -6,6 +6,7 @@ using System;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
+using UnityEditor;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
@@ -16,14 +17,32 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         private double time;
         public int arrowsLayer;
         public PlayableDirector playableDirector;
+        public LevelData levelData;
         private List<ArrowMarker> markers = new List<ArrowMarker>();
         public RectTransform chartRoad;
         public float chartSpawnDistance = 10;
         public float speedSave { private set; get; }
 
-        private LevelSettings levelSettings;
+        private LevelSettings levelSettings => LevelSettings.instance;
 
-        public static ChartContainer instance;
+        private static ChartContainer instance;
+
+        public static ChartContainer Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = FindObjectOfType<ChartContainer>();
+                    if (instance == null)
+                    {
+                        GameObject go = new GameObject("LevelDataManager");
+                        instance = go.AddComponent<ChartContainer>();
+                    }
+                }
+                return instance;
+            }
+        }
 
         public float speedCofency{ private set; get; }
 
@@ -35,6 +54,25 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         public int enemyArrowCount;
 
         public event Action OnSpeedChanged;
+
+        private void OnEnable()
+        {
+            SubDelegates();
+        }
+
+        private void OnDisable()
+        {
+            UnSubDelegates();
+        }
+        private void OnDestroy()
+        {
+            ArrowMarkerManager.instance.OnArrowCountChanged -= SaveArrows;
+            UnSubDelegates();
+            if (Application.isPlaying)
+            {
+                GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
+            }
+        }
 
         private void Awake()
         {
@@ -48,11 +86,21 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
         }
 
+        private void SubDelegates()
+        {
+            ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
+            levelSettings.OnSpeedChanges += SaveArrowsOnSpeedChange;
+        }
+        private void UnSubDelegates()
+        {
+            ArrowMarkerManager.instance.OnArrowCountChanged -= SaveArrows;
+            levelSettings.OnSpeedChanges -= SaveArrowsOnSpeedChange;
+        }
+
         private void Start()
         {
             TryGetComponent(out PlayableDirector playableDirector);
             this.playableDirector = playableDirector;
-            levelSettings = LevelSettings.instance;
             if (Application.isPlaying && levelSettings)
             {
                 GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
@@ -62,6 +110,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                     StartLevel();
                 }
             }
+            SubDelegates();
         }
 
         public void ReloadChart()
@@ -77,10 +126,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public void StartLevel()
         {
-            if (!ArrowMarkerManager.instance.IsOnArrowListChangedMethodSubscribed(SaveArrows))
-            {
-                ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
-            }
+            ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
             if (PlayerPrefs.HasKey("Difficult"))
             {
                 playableDirector.playableAsset = levelSettings.stage[levelSettings.stageIndex].chartVariants[PlayerPrefs.GetInt("Difficult")];
@@ -114,12 +160,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 MoveArrows();
 
             }
-            else
-            {
-                levelSettings = LevelSettings.instance;
-            }
-
-            InitDelegates();
         }
 
         private void Counters()
@@ -192,18 +232,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
         }
 
-        private void InitDelegates()
-        {
-            if (!ArrowMarkerManager.instance.IsOnArrowListChangedMethodSubscribed(SaveArrows))
-            {
-                ArrowMarkerManager.instance.OnArrowCountChanged += SaveArrows;
-            }
-            if (!levelSettings.IsSub(SaveArrowsOnSpeedChange))
-            {
-                levelSettings.OnSpeedChanges += SaveArrowsOnSpeedChange;
-            }
-        }
-
         public void SpawnArrow(ArrowMarker arrowMarker, RoadSide roadSide)
         {
             Vector3 arrowSpawnPos = Vector2.zero;
@@ -223,14 +251,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 arrow.characterSide = CharacterSide.Enemy;
 
             }
-
             Vector2 startPos = arrowSpawnPos;
             Vector2 endPos = new Vector2(arrowSpawnPos.x, levelSettings.arrowsPlayer[(int)arrow.arrowSide].transform.position.y);
 
             arrow.transform.SetParent(transform);
-            arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), arrowMarker,startPos, endPos,this);
             arrow.transform.localScale = new Vector3(150, 150, 150);
             arrow.gameObject.name = $"Arrow[{arrowMarker.roadSide}] №:{arrowMarker.id}";
+            arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), arrowMarker,startPos, endPos,this);
             levelSettings.arrowsList.Add(arrow);
         }
         public int EditorGetCurrentStage()
@@ -249,7 +276,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         }
         private void SaveArrows(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null)
         {
-            speedSave = levelSettings.stage[EditorGetCurrentStage()].chartSpeed;
+            speedSave = levelData.stage[EditorGetCurrentStage()].chartSpeed;
             speedCofency = 10 / speedSave;
             if (!arrowMarker || !road ) 
                 return;
@@ -257,7 +284,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         }
         private void SaveArrowsOnSpeedChange()
         {
-            speedSave = levelSettings.stage[EditorGetCurrentStage()].chartSpeed;
+            speedSave = levelData.stage[EditorGetCurrentStage()].chartSpeed;
             speedCofency = 10 / speedSave;
             OnSpeedChanged?.Invoke();
         }
@@ -283,15 +310,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             else
             {
                 playableDirector.Resume();
-            }
-        }
-
-        private void OnDestroy()
-        {
-            ArrowMarkerManager.instance.OnArrowCountChanged -= SaveArrows;
-            if (Application.isPlaying)
-            {
-                GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
             }
         }
     }

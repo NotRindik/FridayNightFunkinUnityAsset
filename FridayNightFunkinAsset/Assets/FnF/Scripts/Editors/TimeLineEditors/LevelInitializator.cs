@@ -20,7 +20,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 levelSettings.SetStage(testingStage);
             }
 
-            levelSettings.stage[levelSettings.stageIndex].CalculateBPS();
             levelSettings.SpawnCharacters();
             container.ReloadChart();
         }
