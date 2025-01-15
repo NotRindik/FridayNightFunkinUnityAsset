@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Timeline;
+using System.Collections;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
@@ -34,19 +35,26 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private double currentTime;
 
+        public bool isInit;
+
         public void OnEnable()
         {
             OnMarkerAdd?.Invoke();
             EditorApplication.update += Update;
-            if (parent is ArrowMarkerTrackAsset)
+            if (!isInit)
             {
-                arrowMarkerParent = parent as ArrowMarkerTrackAsset;
-                id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
-                roadSide = arrowMarkerParent.roadSide;
-                _speedMultiplier = speedMultiplier;
-                _distanceCount = distanceCount;
-                ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
+                if (parent is ArrowMarkerTrackAsset)
+                {
+                    arrowMarkerParent = parent as ArrowMarkerTrackAsset;
+                    id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
+                    roadSide = arrowMarkerParent.roadSide;
+                    _speedMultiplier = speedMultiplier;
+                    _distanceCount = distanceCount;
+                    ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
+                }
+                isInit = true;
             }
+
         }
 /*        public override void OnInitialize(TrackAsset aPent)
         {

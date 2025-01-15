@@ -29,7 +29,10 @@ MonoBehaviour:
     playerPos: []
     girlPos: []
     enemyPos: []
-    chartVariants: []
+    chartVariants:
+    - {fileID: 11400000, guid: 32329f40238faec4dbde4f04e6015615, type: 2}
+    - {fileID: 11400000, guid: 4fb8efdfb2af09c4ba52541cb0306ae2, type: 2}
+    - {fileID: 11400000, guid: adcbf05dc9d205f4e95006dc234fa6cb, type: 2}
   - bpm: 0
     playerForce: 2
     missForce: 2

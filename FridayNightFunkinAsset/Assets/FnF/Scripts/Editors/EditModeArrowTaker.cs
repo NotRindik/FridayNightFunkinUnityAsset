@@ -1,7 +1,7 @@
+using FridayNightFunkin.Editor.TimeLineEditor;
+using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace FridayNightFunkin.Editor
 {
@@ -11,17 +11,29 @@ namespace FridayNightFunkin.Editor
         public float distanceForTakearrow;
         public static EditModeArrowTaker instance;
 
-        public Sprite[] TakeSprite;
-        public Sprite[] DefaultSprite;
-
-        private LevelSettings levelSettings => LevelSettings.instance;
-
         [SerializeField] private float arrowDetectRadius = 0.8f;
 
-        private float arrowDetectRadiusCalcualted;
+        private Animator _animator;
+        private Animator animator
+        {
+            get
+            {
+                if (!_animator)
+                    _animator = GetComponent<Animator>();
+                return _animator;
+            }
+        }
 
-#if UNITY_EDITOR
-        [ExecuteInEditMode]
+        private ArrowTaker _arrowTaker;
+        private ArrowTaker arrowTaker { 
+            get { 
+                if (!_arrowTaker) 
+                    _arrowTaker = GetComponent<ArrowTaker>();
+                return _arrowTaker; 
+            }
+        }
+
+        private float arrowDetectRadiusCalcualted;
 
         private void Update()
         {
@@ -30,68 +42,51 @@ namespace FridayNightFunkin.Editor
             {
                 instance = this;
             }
-
-            if (!EditorApplication.isPlayingOrWillChangePlaymode && levelSettings != null)
-            {
-                VisualiseTakingArrow(levelSettings.arrowsPlayer, CharacterSide.Player);
-                VisualiseTakingArrow(levelSettings.arrowsEnemy, CharacterSide.Enemy);
-            }
+            VisualiseTakingArrow();
         }
 
         private void OnDrawGizmos()
         {
             arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
-            if (levelSettings != null)
-            {
-                DrawDetectRadius(levelSettings.arrowsPlayer,Color.green);
-                DrawDetectRadius(levelSettings.arrowsEnemy,Color.red);
-            }
+            DrawDetectRadius();
         }
 
-        private void DrawDetectRadius(Image[] arrowTakers,Color color)
+        private void DrawDetectRadius()
         {
-            for (int i = 0; i < arrowTakers.Length; i++)
-            {
-                Gizmos.color = color;
-                Gizmos.DrawWireSphere(arrowTakers[i].transform.position, arrowDetectRadiusCalcualted);
-            }
+            Gizmos.color = arrowTaker.GetType() == typeof(ArrowTakerPlayer) ? Color.green : Color.red;
+            Gizmos.DrawWireSphere(transform.position, arrowDetectRadiusCalcualted);
         }
 
-        private void VisualiseTakingArrow(Image[] arrowTakers, CharacterSide characterSide)
+        private void VisualiseTakingArrow()
         {
-            for (int i = 0; i < arrowTakers.Length; i++)
+            animator.Update(Time.deltaTime);
+            foreach (var arrow in ChartPlayBack.Instance.arrowsList[arrowTaker.roadSide])
             {
-                foreach (var arrow in levelSettings.arrowsList)
+                if (arrow.isWork && arrow.gameObject.activeInHierarchy)
                 {
-                    if (arrow.characterSide != characterSide) continue;
+                    var distance = Vector2.Distance(transform.position, arrow.transform.position);
 
-                    if (i == (int)arrow.arrowSide && arrow.isWork && arrow.gameObject.activeInHierarchy)
-                    { 
-                        var distance = Vector2.Distance(arrowTakers[i].transform.position, arrow.transform.position);
-
-                        if (distance <= arrowDetectRadiusCalcualted)
-                        {
-                            arrowTakers[i].sprite = TakeSprite[i];
-                            break;
-                        }
-                        else
-                        {
-                            if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
-                            {
-                                arrowTakers[i].sprite = TakeSprite[i];
-                                break;
-                            }
-
-                            arrowTakers[i].sprite = DefaultSprite[i];
-                        }
+                    if (distance <= arrowDetectRadiusCalcualted)
+                    {
+                        animator.Play("Pressed");
+                        break;
                     }
                     else
                     {
-                        arrowTakers[i].sprite = DefaultSprite[i];
+                        if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
+                        {
+                            animator.Play("Pressed");
+                            break;
+                        }
+
+                        animator.Play("Idle");
                     }
+                }
+                else
+                {
+                    animator.Play("Idle");
                 }
             }
         }
-#endif
     }
 }

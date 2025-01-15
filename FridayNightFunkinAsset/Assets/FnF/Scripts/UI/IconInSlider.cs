@@ -1,3 +1,4 @@
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ namespace FridayNightFunkin.UI
     {
         private Image image;
         public bool isPlayer = false;
+        public ChartPlayBack chartPlayBack => ChartPlayBack.Instance;
 
         private void Start()
         {
@@ -22,22 +24,22 @@ namespace FridayNightFunkin.UI
             {
                 if (value < -60)
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[IconProgressStatus.Losing];
+                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].playerIcon[IconProgressStatus.Losing];
                 }
                 else
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].playerIcon[IconProgressStatus.Mid];
+                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].playerIcon[IconProgressStatus.Mid];
                 }
             }
             else
             {
                 if (value > 60)
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[IconProgressStatus.Mid];
+                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].enemyIcon[IconProgressStatus.Mid];
                 }
                 else
                 {
-                    image.sprite = LevelSettings.instance.stage[LevelSettings.instance.stageIndex].enemyIcon[IconProgressStatus.Losing];
+                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].enemyIcon[IconProgressStatus.Losing];
                 }
             }
         }

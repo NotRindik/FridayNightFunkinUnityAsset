@@ -1,4 +1,5 @@
 using FridayNightFunkin;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
 using UnityEngine;
@@ -96,7 +97,7 @@ namespace FridayNightFunkin.UI
         public void ExitToMenu()
         {
             GameStateManager.instance.SetState(GameState.GamePlay);
-            LevelSettings.instance.SetStage(0);
+            PlayerPrefs.SetInt(ChartPlayBack.STAGE_PLAYER_PREFS_NAME, 0);
             PlayerPrefs.SetInt("AfterLevel", 1);
             SceneLoad.instance.StartLoad("MainMenu");
         }

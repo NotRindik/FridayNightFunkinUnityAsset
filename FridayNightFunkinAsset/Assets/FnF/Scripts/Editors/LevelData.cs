@@ -1,6 +1,9 @@
 using FridayNightFunkin.CHARACTERS;
 using FridayNightFunkin.GamePlay;
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -40,7 +43,7 @@ public class LevelData : ScriptableObject
 }
 
 [System.Serializable]
-public class LevelStage
+public unsafe class LevelStage
 {
     [SerializeField] private float bpm;
 
@@ -50,26 +53,25 @@ public class LevelStage
         {
             return bpm;
         }
-        set
+        set 
         {
             bpm = Mathf.Max(0, value);
         }
     }
 
+    public GameObject[] backgroundObjectList;
+
     [SerializeField] public float BPS => BPM / 60;
 
-    [SerializeField] private float playerForce = 2;
+    [SerializeField] public float playerForce = 2;
 
-    [SerializeField] private float missForce = 2;
+    [SerializeField] public float missForce = 2;
 
-    [SerializeField] private float enemyForce = 0;
+    [SerializeField] public float enemyForce = 0;
 
-    [SerializeField] private float _chartSpeed = 4;
+    [SerializeField] public float _chartSpeed = 4;
 
-    public delegate void OnSpeedChanged();
-
-    public event OnSpeedChanged OnSpeedChanges;
-
+    public Action OnSpeedChanges;
     public float chartSpeed
     {
         get => _chartSpeed;
@@ -95,6 +97,8 @@ public class LevelStage
 
     public Dictionary<IconProgressStatus, Sprite> playerIcon = new Dictionary<IconProgressStatus, Sprite>();
     public Dictionary<IconProgressStatus, Sprite> enemyIcon = new Dictionary<IconProgressStatus, Sprite>();
+
+    [SerializeField] public GameObject[] backGroundPrefab;
 
     public LevelStage()
     {

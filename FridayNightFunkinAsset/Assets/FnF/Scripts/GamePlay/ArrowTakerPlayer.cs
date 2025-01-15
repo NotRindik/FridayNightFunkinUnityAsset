@@ -13,16 +13,10 @@ namespace FridayNightFunkin.GamePlay
         private float distanceFromArrowToTaker;
         public bool isHold { get; private set; }
 
-        public delegate void OnArrowTakeHandler(ArrowSide arrow);
-        public event OnArrowTakeHandler OnArrowTake;
-
-        public delegate void OnArrowUnTakeHandler(ArrowSide arrow);
-        public event OnArrowUnTakeHandler OnArrowUnTake;
-
         private Arrow LastArrow;
 
         private bool isPause;
-
+        public override RoadSide roadSide => RoadSide.Player;
         protected void Start()
         {
             inputActions.Enable();
@@ -41,7 +35,7 @@ namespace FridayNightFunkin.GamePlay
             if (isPause)
                 return;
             animator.CrossFade("Pressed", 0);
-            Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, arrowDetectRadiusCalcualted, levelSettings.arrowLayer);
+            Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, arrowDetectRadiusCalcualted, chartPlayBack.arrowsLayer);
             if (overlapCircle.Length != 0)
             {
                 if (overlapCircle[overlapCircle.Length - 1 ].TryGetComponent(out Arrow arrow))
@@ -56,14 +50,14 @@ namespace FridayNightFunkin.GamePlay
 
                         int accuracy = scoreManager.ÑalculateAccuracy(distanceFromArrowToTaker);
                         scoreManager.ÑalculateTotalAccuracy(scoreManager.accuracyList);
-                        float scoreByAccuracy = (levelSettings.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
+                        float scoreByAccuracy = (chartPlayBack.levelData.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
 
                         scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
                         scoreManager.AddCombo();
                         OnArrowTake?.Invoke(arrowSide);
                         LastArrow = arrow;
                         FNFUIElement.instance.UpdateUI();
-                        scoreManager.AddValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetPlayerForce());
+                        scoreManager.AddValueToSlider(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetPlayerForce());
                         ArrowMask.instance.ActivateMask((int)arrowSide);
                         arrow.TakeArrow(isHold);
                     }
@@ -74,12 +68,12 @@ namespace FridayNightFunkin.GamePlay
                 animator.CrossFade("NoArrowPress", 0);
                 if(ChangesByGameSettings.instance.ghostTapping == 1) 
                 { 
-                    foreach (var currentPlayer in levelSettings.currentPlayer)
+/*                    foreach (var currentPlayer in chartPlayBack.currentPlayer)
                     {
                         if(currentPlayer.isActive)
-                            currentPlayer.PlayMissAnimation(arrowSide);
-                    }
-                    scoreManager.ReduceValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetMissForce());
+                            currentPlayer.PlayMissAnimation(arrowSide); //Êàðî÷å ôóíêöèÿ äëÿ íåñêîëüêèõ èãðîêîâ ïðîøó ïîòîì äîäåëàé ìîìåíò
+                    }*/
+                    scoreManager.ReduceValueToSlider(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetMissForce());
                     scoreManager.AddMiss();
                     scoreManager.ÑalculateAccuracy(500);
                     AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");

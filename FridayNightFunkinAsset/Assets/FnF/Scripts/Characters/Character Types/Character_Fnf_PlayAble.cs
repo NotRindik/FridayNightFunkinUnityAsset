@@ -1,7 +1,9 @@
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -21,9 +23,6 @@ namespace FridayNightFunkin.CHARACTERS
         private float timeToEndAnimation;
 
         private FnfInput inputActions;
-        public LevelSettings levelSettings => LevelSettings.instance;
-
-        private ArrowTakerPlayer[] arrowTakers;
 
         private float lockIdle;
 
@@ -36,6 +35,9 @@ namespace FridayNightFunkin.CHARACTERS
         public bool isActive { get; private set; }
 
         private Coroutine startIdleDelay;
+
+        public override RoadSide roadSide => RoadSide.Player;
+        private IEnumerable<ArrowTaker> arrowTakers => chartPlayBack.arrowTakerPlayer;
 
 
         protected override void Awake()
@@ -61,33 +63,30 @@ namespace FridayNightFunkin.CHARACTERS
             }
         }
 
-        public void Active()
+        public void Activate()
         {
-            for (int i = 0; i < levelSettings.arrowsPlayer.Length; i++)
+            foreach (var arrowTaker in arrowTakers)
             {
-                arrowTakers[i] = levelSettings.arrowsPlayer[i].GetComponent<ArrowTakerPlayer>();
-                arrowTakers[i].OnArrowTake += PlayHitAnimation;
-                arrowTakers[i].OnArrowUnTake += PlayIdle;
+                (arrowTaker as ArrowTakerEnemy).OnArrowTake += PlayHitAnimation;
+                (arrowTaker as ArrowTakerEnemy).OnArrowUnTake += PlayIdle;
             }
             isActive = true;
         }
         public void Disactive()
         {
-            for (int i = 0; i < levelSettings.arrowsPlayer.Length; i++)
+            foreach (var arrowTaker in arrowTakers)
             {
-                arrowTakers[i] = levelSettings.arrowsPlayer[i].GetComponent<ArrowTakerPlayer>();
-                arrowTakers[i].OnArrowTake -= PlayHitAnimation;
-                arrowTakers[i].OnArrowUnTake -= PlayIdle;
+                (arrowTaker as ArrowTakerEnemy).OnArrowTake -= PlayHitAnimation;
+                (arrowTaker as ArrowTakerEnemy).OnArrowUnTake -= PlayIdle;
             }
-            isActive = false;
+            isActive= false;
             ReloadAnim();
         }
         private void Start()
         {
             inputActions = InputManager.inputActions;
-            arrowTakers = new ArrowTakerPlayer[levelSettings.arrowsPlayer.Length];
-            playerDeath = levelSettings.playerDeath;
-            Active();
+            /*playerDeath = levelSettings.playerDeath;*/
+            Activate();
         }
 
         private void Update()
@@ -166,7 +165,7 @@ namespace FridayNightFunkin.CHARACTERS
             yield return new WaitForSeconds(a);
             foreach (var arrowTaker in arrowTakers)
             {
-                if (arrowTaker.isHold)
+                if ((arrowTaker as ArrowTakerEnemy).isHold)
                 {
                     yield break;
                 }

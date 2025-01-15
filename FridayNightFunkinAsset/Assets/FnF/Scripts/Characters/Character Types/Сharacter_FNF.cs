@@ -1,3 +1,4 @@
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ namespace FridayNightFunkin.CHARACTERS
         protected string[] SING_NOTES = { "Left", "Down", "Up", "Right" };
         protected const string IDLE = "Idle";
         protected const string ARROW_PRESSED = "Pressed";
+
+        public abstract RoadSide roadSide {get;}
+
+        protected ChartPlayBack chartPlayBack;
+
 
         protected virtual void Awake()
         {

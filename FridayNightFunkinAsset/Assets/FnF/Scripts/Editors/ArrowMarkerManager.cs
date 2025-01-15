@@ -11,12 +11,7 @@ namespace FridayNightFunkin.Editor
         public delegate void OnArrowMarkerCountChanged(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null);
         public event OnArrowMarkerCountChanged OnMarkerCountChanged;
 
-        public delegate void OnArrowListChanged(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null);
-        public event OnArrowListChanged OnArrowCountChanged;
-
-        public delegate void OnArrowListCleared();
-        public event OnArrowListCleared OnListCleared;
-
+        public Action OnListCleared;
 
         private static ArrowMarkerManager _instance;
 
@@ -67,7 +62,7 @@ namespace FridayNightFunkin.Editor
 
             AddMarker(arrowMarker, road.roadSide, road);
             UpdateCounts();
-            OnArrowCountChanged?.Invoke(arrowMarker,road);
+            ChartPlayBack.Instance.SaveArrows(arrowMarker, road);
         }
         public void AddMarker(ArrowMarker marker, RoadSide side, ArrowMarkerTrackAsset road = null)
         {

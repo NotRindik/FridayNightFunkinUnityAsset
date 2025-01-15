@@ -8,75 +8,124 @@ public class LevelDataWindow : EditorWindow
 {
     private string levelDataFileName = "LevelData.asset";
     public LevelData levelData { get; private set; }
-    private ChartContainer chartContainer;
-    private int selectedStageIndex = 0;
+    private ChartPlayBack chartPlayback;
+    public int selectedStageIndex { get; private set; }
+    public int selectedChartVar { get; private set; }
+    private int preveusSelectedChartVar;
     private Dictionary<string, Vector2> scrollPositions = new Dictionary<string, Vector2>();
-    private Vector2 windowScroll;
     private string tooltipText = null;
     private Rect tooltipRect;
+    private bool isLocked;
 
-    [MenuItem("Window/Level Data Editor")]
+    private bool isResizing = false;
+    private Rect windowRect = new Rect(50, 50, 400, 300);
+
+    private Vector2 scroll;
+
+    public Action OnGUIUpdate;
+
+    [MenuItem("Window/FNF Level Data Editor")]
     public static void ShowWindow()
     {
-        GetWindow<LevelDataWindow>("Level Data Editor");
+        var window = GetWindow<LevelDataWindow>("FNF Level Data Editor");
     }
-
+    private void OnEnable()
+    {
+        DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+    }
     private void OnGUI()
     {
-        windowScroll = EditorGUILayout.BeginScrollView(windowScroll);
-        levelData = Selection.activeObject as LevelData;
-        if (Selection.activeGameObject != null)
+        DrawHeader();
+
+        if (!isLocked)
         {
-            if (Selection.activeGameObject.TryGetComponent(out ChartContainer chartContainer))
+            levelData = Selection.activeObject as LevelData;
+            if (Selection.activeGameObject != null)
             {
-                this.chartContainer = chartContainer;
-                levelData = chartContainer.levelData;
-            }
-            else
-            {
-                this.chartContainer = null;
-                levelData = null;
+                if (Selection.activeGameObject.TryGetComponent(out ChartPlayBack chartPlayback))
+                {
+                    InitChartPlayback(chartPlayback);
+                }
+                else
+                {
+                    this.chartPlayback = null;
+                    levelData = null;
+                }
             }
         }
-
         if (levelData == null)
         {
             DrawNoLevelDataUI();
         }
         else
         {
+            scroll = EditorGUILayout.BeginScrollView(scroll);
             DrawLevelDataUI();
+            EditorGUILayout.EndScrollView();
         }
-        EditorGUILayout.EndScrollView();
+    }
+    private void InitChartPlayback(ChartPlayBack chartPlayback)
+    {
+        this.chartPlayback = chartPlayback;
+        chartPlayback.SetLevelDataWindow(this);
+        levelData = chartPlayback.levelData;
     }
 
-    private void DrawNoLevelDataUI()
+    private void DrawHeader()
     {
-        EditorGUILayout.HelpBox("No Level Data selected. Please load or create a Level Data asset.", MessageType.Warning);
+        GUILayout.BeginHorizontal(EditorStyles.toolbar);
 
-        if (GUILayout.Button("Load Level Data"))
+
+        GUILayout.FlexibleSpace();
+        if (chartPlayback != null)
         {
-            string path = EditorUtility.OpenFilePanel("Select Level Data", "Assets/Levels", "asset");
-            if (!string.IsNullOrEmpty(path))
+            if (chartPlayback.levelData == null)
             {
-                LoadLevelData(path);
+                GUI.enabled = false;
+            }
+            else
+            {
+                GUI.enabled = true;
+
             }
         }
-
-        if (GUILayout.Button("Create New Level Data"))
+        else
         {
-            string path = EditorUtility.SaveFilePanel("Save New Level Data", "Assets", levelDataFileName, "asset");
-
-            if (!string.IsNullOrEmpty(path))
+            GUI.enabled = false;
+        }
+        if (GUILayout.Button("Save Level Data"))
+        {
+            EditorUtility.SetDirty(levelData);
+            AssetDatabase.SaveAssets();
+        }
+        isLocked = GUILayout.Toggle(isLocked, isLocked ? EditorGUIUtility.IconContent("LockIcon-On") : EditorGUIUtility.IconContent("LockIcon"),
+                                    "ToolbarButton", GUILayout.Width(30));
+        GUI.enabled = true;
+        GUILayout.EndHorizontal();
+    }
+    private void DrawNoLevelDataUI()
+    {
+        var selectedGameObject = Selection.activeGameObject;
+        if (selectedGameObject != null)
+        {
+            if (GUILayout.Button("Create New Level Data"))
             {
-                CreateNewLevelData(path);
+                string path = EditorUtility.SaveFilePanel("Save New Level Data", "Assets", levelDataFileName, "asset");
+
+                if (!string.IsNullOrEmpty(path))
+                {
+                    CreateNewLevelData(path, selectedGameObject);
+                }
             }
+        }
+        else
+        {
+            EditorGUILayout.HelpBox("Please Select GameObject", MessageType.Warning);
         }
     }
 
     private void DrawLevelDataUI()
     {
-
         GUILayout.Label("Level Data Properties", EditorStyles.boldLabel);
 
         levelData.addMaxScore = (uint)EditorGUILayout.IntField("Add Max Score", (int)levelData.addMaxScore);
@@ -86,12 +135,6 @@ public class LevelDataWindow : EditorWindow
         EditorGUILayout.LabelField("Arrows Player Positions:");
 
         StageDraw();
-
-        if (GUILayout.Button("Save Level Data"))
-        {
-            EditorUtility.SetDirty(levelData);
-            AssetDatabase.SaveAssets();
-        }
     }
 
     private void StageDraw()
@@ -124,7 +167,6 @@ public class LevelDataWindow : EditorWindow
 
     private void DrawLevelStage(LevelStage stage)
     {
-
         float newChartSpeed = EditorGUILayout.FloatField("Chart Speed", stage.chartSpeed);
         if (!Mathf.Approximately(newChartSpeed, stage.chartSpeed))
         {
@@ -135,13 +177,17 @@ public class LevelDataWindow : EditorWindow
 
         stage.BPM = EditorGUILayout.FloatField("BPM", stage.BPM);
 
+        DrawTooltipLabel("Map objects","You can add here prefabs with your map.It will spawn on zero coordinates", EditorStyles.boldLabel);
+        DrawArrayField(ref stage.backgroundObjectList,allowObjectFromScene:true);
+
+        RenderTooltip();
         GUILayout.Label("PlayerIcons", EditorStyles.boldLabel);
-        DrawIcons(stage.playerIcon);
+        DrawIconsField(stage.playerIcon);
         GUILayout.Label("EnemyIcons", EditorStyles.boldLabel);
-        DrawIcons(stage.enemyIcon);
+        DrawIconsField(stage.enemyIcon);
 
         EditorGUILayout.BeginVertical("Box");
-        DrawTooltipLabel("Characters Prefabs", "If you wan't to spawn more than one chracter you can do this", EditorStyles.boldLabel);
+        DrawTooltipLabel("Characters Prefabs", "If you want to spawn more than one character you can do this", EditorStyles.boldLabel);
         DrawArrayField(ref stage.playerPrefab, "Player prefab");
         DrawArrayField(ref stage.girlFriendPrefab, "GF prefab");
         DrawArrayField(ref stage.enemyPrefab, "Enemy prefab");
@@ -149,25 +195,44 @@ public class LevelDataWindow : EditorWindow
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");
-        DrawTooltipLabel("Characters positions","If you have more than one characters, you should set pos for all of them",EditorStyles.boldLabel);
-        DrawArrayField(ref stage.playerPos,"Player pos",true);
-        DrawArrayField(ref stage.girlPos,"GF pos", true);
-        DrawArrayField(ref stage.enemyPos,"Enemy pos", true);
+        DrawTooltipLabel("Characters positions", "If you have more than one character, you should set positions for all of them", EditorStyles.boldLabel);
+        DrawArrayField(ref stage.playerPos, "Player pos", true);
+        DrawArrayField(ref stage.girlPos, "GF pos", true);
+        DrawArrayField(ref stage.enemyPos, "Enemy pos", true);
         RenderTooltip();
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");
-        DrawTooltipLabel("Chart Variants", "chats chartvariants for one stage, basicly it's need for difficults", EditorStyles.boldLabel);
-        DrawArrayField(ref stage.chartVariants, "Player pos");
+        DrawTooltipLabel("Chart Variants", "Chart variants for one stage, basically it's needed for difficulties", EditorStyles.boldLabel);
+        DrawArrayField(ref stage.chartVariants);
+
+        if (stage.chartVariants != null && stage.chartVariants.Length > 0)
+        {
+            string[] arrElementShowing = new string[stage.chartVariants.Length];
+            for (int i = 0; i < stage.chartVariants.Length; i++)
+            {
+                if (stage.chartVariants[i] != null)
+                    arrElementShowing[i] = $"{stage.chartVariants[i].name}";
+            }
+            selectedChartVar = EditorGUILayout.Popup("Current chart variant", selectedChartVar, arrElementShowing);
+            if (selectedChartVar != preveusSelectedChartVar)
+            {
+                OnGUIUpdate?.Invoke();
+                preveusSelectedChartVar = selectedChartVar;
+            }
+        }
+        else
+        {
+            EditorGUILayout.HelpBox("No Variants", MessageType.Info);
+        }
         RenderTooltip();
         EditorGUILayout.EndVertical();
-
     }
 
-    private void DrawArrayField<T>(ref T[] arr, string arrName,bool allowObjectFromScene = false) where T : UnityEngine.Object
+    private void DrawArrayField<T>(ref T[] arr, string arrName = "", bool allowObjectFromScene = false) where T : UnityEngine.Object
     {
         EditorGUILayout.BeginVertical("Box");
-        GUILayout.Label(arrName, EditorStyles.boldLabel);
+        if (arrName != "") GUILayout.Label(arrName, EditorStyles.boldLabel);
 
         if (arr == null)
         {
@@ -184,7 +249,7 @@ public class LevelDataWindow : EditorWindow
 
         Vector2 localScrollPosition = scrollPositions[arrName];
         localScrollPosition = arr.Length < 3
-            ? EditorGUILayout.BeginScrollView(localScrollPosition, GUILayout.Height(45*arr.Length))
+            ? EditorGUILayout.BeginScrollView(localScrollPosition, GUILayout.Height(45 * arr.Length))
             : EditorGUILayout.BeginScrollView(localScrollPosition, GUILayout.Height(80));
 
         scrollPositions[arrName] = localScrollPosition;
@@ -261,14 +326,14 @@ public class LevelDataWindow : EditorWindow
         {
             GUIStyle tooltipStyle = new GUIStyle(EditorStyles.helpBox);
             tooltipStyle.normal.background = Texture2D.normalTexture;
-            tooltipStyle.normal.textColor = Color.white; 
+            tooltipStyle.normal.textColor = Color.white;
             tooltipStyle.alignment = TextAnchor.MiddleCenter;
 
             GUI.Label(tooltipRect, tooltipText, tooltipStyle);
         }
     }
 
-    private void DrawIcons(Dictionary<IconProgressStatus, Sprite> icons)
+    private void DrawIconsField(Dictionary<IconProgressStatus, Sprite> icons)
     {
         GUILayout.BeginVertical("Box");
         int labelWidth = 100;
@@ -294,7 +359,7 @@ public class LevelDataWindow : EditorWindow
 
     private void AddNewStage()
     {
-        var stages = new System.Collections.Generic.List<LevelStage>(levelData.stage ?? new LevelStage[0]);
+        var stages = new List<LevelStage>(levelData.stage ?? new LevelStage[0]);
         stages.Add(new LevelStage());
         levelData.stage = stages.ToArray();
         selectedStageIndex = stages.Count - 1;
@@ -317,7 +382,7 @@ public class LevelDataWindow : EditorWindow
         }
     }
 
-    private void CreateNewLevelData(string path)
+    private void CreateNewLevelData(string path, GameObject selectedGameObject)
     {
         string relativePath = FileUtil.GetProjectRelativePath(path);
 
@@ -330,10 +395,18 @@ public class LevelDataWindow : EditorWindow
         LevelData newLevelData = ScriptableObject.CreateInstance<LevelData>();
         AssetDatabase.CreateAsset(newLevelData, relativePath);
         AssetDatabase.SaveAssets();
-
-        Selection.activeObject = newLevelData;
+        ChartPlayBack chartPlayBack;
+        if (!selectedGameObject.TryGetComponent(out ChartPlayBack playback))
+        {
+            chartPlayBack = selectedGameObject.AddComponent<ChartPlayBack>();
+        }
+        else
+        {
+            chartPlayBack = playback;
+        }
         levelData = newLevelData;
-
+        chartPlayBack.levelData = levelData;
+        InitChartPlayback(chartPlayBack);
         Debug.Log("New Level Data created successfully at " + relativePath);
     }
 }

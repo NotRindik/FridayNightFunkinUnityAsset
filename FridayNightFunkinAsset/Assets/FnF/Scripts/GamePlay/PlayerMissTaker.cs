@@ -1,26 +1,26 @@
 using FridayNightFunkin.Calculations;
-using FridayNightFunkin.Settings;
+using FridayNightFunkin.Editor;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using UnityEngine;
 
 namespace FridayNightFunkin.GamePlay
 {
-    public class PlayerMissTaker : MonoBehaviour
+    public class PlayerMissTaker : ArrowSwitch
     {
-        [SerializeField] private float size;
-        [SerializeField] private Transform canvasPosition;
-        private LevelSettings levelSettings => LevelSettings.instance;
-        private ScoreManager scoreManager => ScoreManager.instance;
-        private Vector2 detectSize;
-        private Camera mainCamera => Camera.main;
+        public PlayerMissTaker(ChartPlayBack chartPlayback) : base(chartPlayback)
+        {
+        }
 
-        void Update()
+        private ScoreManager scoreManager => ScoreManager.instance;
+
+        public override void OnUpdate()
         {
             float camHeight = 2f * mainCamera.orthographicSize;
             float camWidth = camHeight * mainCamera.aspect;
 
             detectSize = new Vector2(camWidth, camHeight) + new Vector2(size * (mainCamera.orthographicSize / 5), size * (mainCamera.orthographicSize / 5));
 
-            foreach (var arrow in levelSettings.arrowsList)
+            foreach (var arrow in chartPlayback.arrowsList[RoadSide.Player])
             {
                 if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                 {
@@ -38,12 +38,7 @@ namespace FridayNightFunkin.GamePlay
                     }
                     arrow.isWork = false;
                     arrow.gameObject.SetActive(false);
-                    foreach (var currentPlayer in levelSettings.currentPlayer)
-                    {
-                        if(currentPlayer.isActive)
-                            currentPlayer.PlayMissAnimation(arrow);
-                    }
-                    scoreManager.ReduceValueToSlider(levelSettings.stage[levelSettings.stageIndex].GetMissForce());
+                    scoreManager.ReduceValueToSlider(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetMissForce());
                     scoreManager.AddMiss();
                     AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1,4)}");
                     scoreManager.ÑalculateAccuracy(500);
@@ -55,26 +50,10 @@ namespace FridayNightFunkin.GamePlay
         }
         private void OnDrawGizmos()
         {
-            if (!canvasPosition || !gameObject.activeInHierarchy) return;
+            if (!canvasPosition) return;
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(canvasPosition.position, detectSize);
-        }
-
-
-        private bool IsArrowInsideCube(Vector3 point, Vector3 cubeCenter, Vector3 cubeSize, bool istail = false)
-        {
-            Vector3 minPoint = cubeCenter - cubeSize / 2;
-            Vector3 maxPoint = cubeCenter + cubeSize / 2;
-            if (!istail)
-            {
-                return point.x >= minPoint.x && point.x <= maxPoint.x &&
-                       point.y >= minPoint.y && point.y <= maxPoint.y;
-            }
-            else
-            {
-                return point.x >= minPoint.x && point.x <= maxPoint.x && point.y <= maxPoint.y;
-            }
         }
     }
 }

@@ -1,18 +1,24 @@
-using FridayNightFunkin.Settings;
+using FridayNightFunkin.Editor.TimeLineEditor;
+using System;
 using UnityEngine;
 namespace FridayNightFunkin.GamePlay
 {
     public abstract class ArrowTaker : MonoBehaviour
     {
         [SerializeField] protected ArrowSide arrowSide;
+        public abstract RoadSide roadSide { get;}
 
         [SerializeField] protected float arrowDetectRadius = 0.8f;
-        protected LevelSettings levelSettings => LevelSettings.instance;
+
+        public Action<ArrowSide> OnArrowTake;
+
+        public Action<ArrowSide> OnArrowUnTake;
 
         protected Animator animator;
 
         protected float arrowDetectRadiusCalcualted;
 
+        protected ChartPlayBack chartPlayBack => ChartPlayBack.Instance;
         protected virtual void OnEnable()
         {
             GameStateManager.instance.OnGameStateChanged += OnGameStateChange;
@@ -40,9 +46,10 @@ namespace FridayNightFunkin.GamePlay
         }
         protected void ActivateSplash(ArrowSide arrowSide)
         {
-            Animator animator = LevelSettings.instance.splashAnim[(int)arrowSide];
-            animator.Play("Splash");
+            //Animator animator = LevelSettings.instance.splashAnim[(int)arrowSide]; кароче сплэши добавь
+            //animator.Play("Splash");
         }
+
 
         protected virtual void OnDrawGizmos()
         {

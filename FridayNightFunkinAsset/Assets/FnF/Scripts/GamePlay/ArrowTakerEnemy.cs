@@ -13,15 +13,10 @@ namespace FridayNightFunkin.GamePlay
 
         [SerializeField] private float timeToIdle = 0.1f;
 
-        public delegate void OnArrowTakeHandler(ArrowSide arrow);
-        public event OnArrowTakeHandler OnArrowTake;
-
-        public delegate void OnArrowUnTakeHandler(ArrowSide arrow);
-        public event OnArrowUnTakeHandler OnArrowUnTake;
-
         public bool isHold { get; private set; }
 
         private int isDownScroll;
+        public override RoadSide roadSide => RoadSide.Enemy;
 
         private void Start()
         {
@@ -30,9 +25,9 @@ namespace FridayNightFunkin.GamePlay
 
         private void Update()
         {
-            foreach (var arrow in levelSettings.arrowsList)
+            foreach (var arrow in chartPlayBack.arrowsList[roadSide])
             {
-                if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled || arrow.characterSide != CharacterSide.Enemy)
+                if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled)
                     continue;
 
                 var distance = (Camera.main.WorldToScreenPoint(arrow.endPos).y - Camera.main.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1? -1 : 1);
@@ -50,7 +45,7 @@ namespace FridayNightFunkin.GamePlay
                         StartCoroutine(PlayAnimWithDelayWithCondition("Idle", timeToIdle, arrow));
                         break;
                     }
-                    ScoreManager.instance.ReduceValueToSliderEnemy(LevelSettings.instance.stage[LevelSettings.instance.stageIndex].GetEnemyForce());
+                    ScoreManager.instance.ReduceValueToSliderEnemy(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetEnemyForce());
                     FNFUIElement.instance.UpdateUI();
                     StartCoroutine(PlayAnimWithDelay("Idle", timeToIdle));
                     arrow.isWork = false;

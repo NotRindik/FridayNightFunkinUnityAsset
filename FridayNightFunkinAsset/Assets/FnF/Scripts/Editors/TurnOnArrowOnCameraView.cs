@@ -1,44 +1,40 @@
-using FridayNightFunkin.Settings;
+using FridayNightFunkin.Editor.TimeLineEditor;
+using System;
 using UnityEngine;
 
 namespace FridayNightFunkin.Editor
 {
-    [ExecuteAlways]
-    public class TurnOnArrowOnCameraView : MonoBehaviour
+    public class ArrowSwitch
     {
-        private Vector2 detectSize;
+        protected Vector2 detectSize;
         public float size;
-        public Transform canvasPosition;
-        private LevelSettings levelSettings => LevelSettings.instance;
-        private Camera mainCamera;
+        protected Transform canvasPosition => mainCamera.transform;
 
-        private bool isUpdateWork = false;
-
-        private void OnDrawGizmos()
+        protected Camera _mainCamera;
+        protected Camera mainCamera 
         {
-            if (!isUpdateWork) return;
-
-            if (!mainCamera)
-                mainCamera = Camera.main;
-            if (!canvasPosition || !gameObject.activeInHierarchy || !levelSettings) return;
-
-            float camHeight = 2f * mainCamera.orthographicSize;
-            float camWidth = camHeight * mainCamera.aspect;
-
-            detectSize = new Vector2(camWidth, camHeight) + new Vector2(size * (mainCamera.orthographicSize / 5), size * (mainCamera.orthographicSize / 5));
-
-            if(!Application.isPlaying)
-                SwithArrows();
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(canvasPosition.position, detectSize);
+            get
+            {
+                if(_mainCamera == null)
+                {
+                    _mainCamera = Camera.main;
+                }
+                return _mainCamera;
+            }
+            set { }
         }
-        private void Update()
+
+        protected ChartPlayBack chartPlayback;
+
+        protected bool lastSwitch;
+
+        public ArrowSwitch(ChartPlayBack chartPlayback)
         {
-            isUpdateWork = true;
-            if (!mainCamera)
-                mainCamera = Camera.main;
-            if (!canvasPosition || !gameObject.activeInHierarchy || !levelSettings) return;
+            this.chartPlayback = chartPlayback;
+        }
+        public virtual void OnUpdate()
+        {
+            if (!canvasPosition) return;
 
             float camHeight = 2f * mainCamera.orthographicSize;
             float camWidth = camHeight * mainCamera.aspect;
@@ -47,35 +43,62 @@ namespace FridayNightFunkin.Editor
 
             SwithArrows();
         }
+
+        public void SwitchAllArrows(bool isOn)
+        {
+            if (isOn != lastSwitch)
+            {
+                lastSwitch = isOn;
+                foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
+                {
+                    foreach (var arrow in chartPlayback.arrowsList[item])
+                    {
+                        if (arrow == null)
+                        {
+                            return;
+                        }
+
+                        if (arrow.gameObject.activeInHierarchy != isOn)
+                            arrow.gameObject.SetActive(isOn);
+                    }
+                }
+            }
+        }
         private void SwithArrows()
         {
-            foreach (var arrow in LevelSettings.instance.arrowsList)
+            if (chartPlayback.arrowsList.Count == Enum.GetValues(typeof(RoadSide)).Length)
             {
-                if (arrow == null)
+                foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
                 {
-                    return;
-                }
-
-                if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
-                {
-                    arrow.gameObject.SetActive(true);
-                }
-                else
-                {
-                    if (arrow.distanceCount > 0 && arrow.tail)
+                    foreach (var arrow in chartPlayback.arrowsList[item])
                     {
-                        if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize,true))
+                        if (arrow == null)
+                        {
+                            return;
+                        }
+
+                        if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                         {
                             arrow.gameObject.SetActive(true);
-                            continue;
+                        }
+                        else
+                        {
+                            if (arrow.distanceCount > 0 && arrow.tail)
+                            {
+                                if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize, true))
+                                {
+                                    arrow.gameObject.SetActive(true);
+                                    continue;
+                                }
+                            }
+                            arrow.gameObject.SetActive(false);
                         }
                     }
-                    arrow.gameObject.SetActive(false);
                 }
             }
         }
 
-        private bool IsArrowInsideCube(Vector3 point, Vector3 cubeCenter, Vector3 cubeSize,bool istail = false)
+        protected bool IsArrowInsideCube(Vector3 point, Vector3 cubeCenter, Vector3 cubeSize,bool istail = false)
         {
             Vector3 minPoint = cubeCenter - cubeSize / 2;
             Vector3 maxPoint = cubeCenter + cubeSize / 2;

@@ -1,14 +1,14 @@
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
-using FridayNightFunkin.Settings;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FridayNightFunkin.CHARACTERS
 {
     public class Character_Fnf_Enemy : Ñharacter_FNF
     {
-        private LevelSettings levelSettings => LevelSettings.instance;
-        private ArrowTakerEnemy[] arrowTakers;
         private PlayAnimPerBeat playAnimPerBeat;
 
         private float arrowDetectRadiusCalcualted;
@@ -17,25 +17,23 @@ namespace FridayNightFunkin.CHARACTERS
 
         Coroutine coroutineIdle;
 
+        public override RoadSide roadSide => RoadSide.Enemy;
+
+        private IEnumerable<ArrowTaker> arrowTakers => chartPlayBack.arrowTakerEnemy;
+
         private void Start()
         {
-            arrowTakers = new ArrowTakerEnemy[levelSettings.arrowsEnemy.Length];
             TryGetComponent(out PlayAnimPerBeat playAnimPerBeat);
             this.playAnimPerBeat = playAnimPerBeat;
-            for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
-            {
-                arrowTakers[i] = levelSettings.arrowsEnemy[i].GetComponent<ArrowTakerEnemy>();
-                arrowTakers[i].OnArrowTake += PlayHitAnimation;
-                arrowTakers[i].OnArrowUnTake += PlayIdle;
-            }
+
+            Activate();
         }
-        public void Active()
+        public void Activate()
         {
-            for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
+            foreach (var arrowTaker in arrowTakers)
             {
-                arrowTakers[i] = levelSettings.arrowsEnemy[i].GetComponent<ArrowTakerEnemy>();
-                arrowTakers[i].OnArrowTake += PlayHitAnimation;
-                arrowTakers[i].OnArrowUnTake += PlayIdle;
+                (arrowTaker as ArrowTakerEnemy).OnArrowTake += PlayHitAnimation;
+                (arrowTaker as ArrowTakerEnemy).OnArrowUnTake += PlayIdle;
             }
         }
         private void ReloadAnim()
@@ -45,11 +43,10 @@ namespace FridayNightFunkin.CHARACTERS
         }
         public void Disactive()
         {
-            for (int i = 0; i < levelSettings.arrowsEnemy.Length; i++)
+            foreach (var arrowTaker in arrowTakers)
             {
-                arrowTakers[i] = levelSettings.arrowsEnemy[i].GetComponent<ArrowTakerEnemy>();
-                arrowTakers[i].OnArrowTake -= PlayHitAnimation;
-                arrowTakers[i].OnArrowUnTake -= PlayIdle;
+                (arrowTaker as ArrowTakerEnemy).OnArrowTake -= PlayHitAnimation;
+                (arrowTaker as ArrowTakerEnemy).OnArrowUnTake -= PlayIdle;
             }
             ReloadAnim();
         }
@@ -63,7 +60,7 @@ namespace FridayNightFunkin.CHARACTERS
         {
             foreach (var arrowTaker in arrowTakers)
             {
-                if (arrowTaker.isHold)
+                if ((arrowTaker as ArrowTakerEnemy).isHold)
                 {
                     return;
                 }

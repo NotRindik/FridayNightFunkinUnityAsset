@@ -16,10 +16,6 @@ namespace FridayNightFunkin.GamePlay
         {
             OnPlayerDead.AddListener(OnPlayerisDead);
         }
-        private void Start()
-        {
-            LevelSettings.instance.playerDeath = this;
-        }
 
         private void OnDisable()
         {

@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 301da263daea6dc448b790e683248eb5, type: 3}
-  m_Name: Kakashka
+  m_Name: TuttorialData
   m_EditorClassIdentifier: 
-  addMaxScore: 22
-  addMaxScoreInLongArrow: 14
+  addMaxScore: 20
+  addMaxScoreInLongArrow: 10
   arrowLayer:
     serializedVersion: 2
     m_Bits: 0
   stage:
-  - bpm: 99.46
+  - bpm: 100
     backgroundObjectList:
-    - {fileID: 0}
+    - {fileID: 6892683110991676331, guid: 6488fc7bafd1786409f5aa69e90387fa, type: 3}
     playerForce: 2
     missForce: 2
     enemyForce: 0
     _chartSpeed: 4
     playerPrefab:
-    - {fileID: 0}
-    girlFriendPrefab:
-    - {fileID: 0}
+    - {fileID: 3826677505114352928, guid: 55fb02f67de21734eaa5b0dbbb2a568e, type: 3}
+    girlFriendPrefab: []
     enemyPrefab:
-    - {fileID: 0}
+    - {fileID: 1999713651586044079, guid: 8dc6da5d54c7de94b8527c15e9852aa8, type: 3}
     playerPos:
     - {fileID: 0}
     girlPos:
@@ -38,21 +37,7 @@ MonoBehaviour:
     enemyPos:
     - {fileID: 0}
     chartVariants:
+    - {fileID: 11400000, guid: 32329f40238faec4dbde4f04e6015615, type: 2}
     - {fileID: 11400000, guid: adcbf05dc9d205f4e95006dc234fa6cb, type: 2}
     - {fileID: 11400000, guid: 4fb8efdfb2af09c4ba52541cb0306ae2, type: 2}
-    - {fileID: 11400000, guid: 32329f40238faec4dbde4f04e6015615, type: 2}
-    backGroundPrefab: []
-  - bpm: 0
-    backgroundObjectList: []
-    playerForce: 2
-    missForce: 2
-    enemyForce: 0
-    _chartSpeed: 4
-    playerPrefab: []
-    girlFriendPrefab: []
-    enemyPrefab: []
-    playerPos: []
-    girlPos: []
-    enemyPos: []
-    chartVariants: []
     backGroundPrefab: []

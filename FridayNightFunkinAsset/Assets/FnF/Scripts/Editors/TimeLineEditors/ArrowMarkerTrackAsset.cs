@@ -1,17 +1,18 @@
 using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Timeline;
 
 [TrackColor(1f, 0.5f, 0f)]
 [TrackClipType(typeof(ArrowMarker))]
-[TrackBindingType(typeof(ChartContainer))]
+[TrackBindingType(typeof(ChartPlayBack))]
 [Icon("Assets/FnF/Editor/icon-bf.png")]
 public class ArrowMarkerTrackAsset : MarkerTrack
 {
     public RoadSide roadSide;
     public bool isActive = false;
-    public ChartContainer chartContainer => ChartContainer.Instance;
+    public LevelDataWindow levelDataWindow => EditorWindow.GetWindow<LevelDataWindow>();
 
     private void OnDisable()
     {
@@ -42,7 +43,10 @@ public class ArrowMarkerTrackAsset : MarkerTrack
 
     private void IsActive()
     {
-        if (chartContainer.playableDirector.playableAsset == parent)
+        if(levelDataWindow == null)
+            isActive = false;
+
+        if (levelDataWindow.levelData.stage[levelDataWindow.selectedStageIndex].chartVariants[levelDataWindow.selectedChartVar] == parent)
         {
             isActive = true;
         }
