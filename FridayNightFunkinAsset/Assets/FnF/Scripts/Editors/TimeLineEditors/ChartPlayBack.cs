@@ -7,6 +7,7 @@ using FridayNightFunkin.Calculations;
 using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
 using AYellowpaper.SerializedCollections;
+using UnityEngine.Timeline;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
@@ -43,6 +44,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private ArrowSwitch arrowSwitch;
         private PlayerMissTaker playerMissTaker;
+        private RoadManager roadManager;
 
 
         private void OnDestroy()
@@ -58,6 +60,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         private void OnEnable()
         {
             arrowSwitch = new ArrowSwitch(this);
+            roadManager = new RoadManager(playableDirector,this);
         }
 
         private void OnDisable()
@@ -115,7 +118,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 arrowsList.Add(roadSide, new List<Arrow>());
             }
-            ArrowMarkerManager.instance.LoadDataFromRoad();
             reloadChart = false;
         }
 
@@ -295,6 +297,39 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 playableDirector.Resume();
             }
+        }
+    }
+
+    [System.Serializable]
+    public class RoadManager 
+    {
+        public ArrowMarkerTrackAsset[] arrowMarkerTrackAssets => GetRoads();
+        public TimelineAsset timelineAsset;
+        public ChartPlayBack chartPlayBack;
+        public RoadManager(PlayableDirector director, ChartPlayBack chartPlayBack) 
+        {
+            timelineAsset = director.playableAsset as TimelineAsset;
+            this.chartPlayBack = chartPlayBack;
+        }   
+
+        private ArrowMarkerTrackAsset[] GetRoads()
+        {
+            List<ArrowMarkerTrackAsset> trackAssets = new List<ArrowMarkerTrackAsset>();
+            if (timelineAsset != null)
+            {
+                int trackCount = timelineAsset.outputTrackCount;
+                for (int i = 0; i < trackCount; i++)
+                {
+                    TrackAsset track = timelineAsset.GetOutputTrack(i);
+                    if (track is ArrowMarkerTrackAsset)
+                    {
+                        ArrowMarkerTrackAsset trackAsset = track as ArrowMarkerTrackAsset;
+                        trackAssets.Add(trackAsset);
+                        trackAsset.chartPlayBack = chartPlayBack;
+                    }
+                }
+            }
+            return trackAssets.ToArray();
         }
     }
 }

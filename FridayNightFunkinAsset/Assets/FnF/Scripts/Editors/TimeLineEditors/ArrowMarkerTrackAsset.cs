@@ -1,5 +1,7 @@
 using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
+using System.Collections.Generic;
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -13,10 +15,15 @@ public class ArrowMarkerTrackAsset : MarkerTrack
     public RoadSide roadSide;
     public bool isActive = false;
     public LevelDataWindow levelDataWindow => EditorWindow.GetWindow<LevelDataWindow>();
+    public List<ArrowMarker> arrowMarkers = new List<ArrowMarker>();
+
+    public int arrowCurrentIndex = 0;
+
+    public ChartPlayBack chartPlayBack;
 
     private void OnDisable()
     {
-        ArrowMarkerManager.instance.OnListCleared -= OnListCleared;
+
     }
 
     private void OnEnable()
@@ -25,20 +32,40 @@ public class ArrowMarkerTrackAsset : MarkerTrack
         {
             item.ArrowInit(this);
         }
-        ArrowMarkerManager.instance.OnListCleared += OnListCleared;
     }
+    public void AddMarkersToList(ArrowMarker arrowMarker)
+    {
+        if (!arrowMarker)
+            return;
+
+        AddMarker(arrowMarker);
+        chartPlayBack.SaveArrows(arrowMarker, this);
+    }
+    public void AddMarker(ArrowMarker marker)
+    {
+        if (!arrowMarkers.Contains(marker))
+        {
+            arrowCurrentIndex++;
+            marker.OnMarkerRemove += RemoveMarker;
+            arrowMarkers.Add(marker);
+        }
+    }
+
+    public void RemoveMarker(ArrowMarker marker)
+    {
+        arrowMarkers.Remove(marker);
+    }
+
 
     private void OnListCleared()
     {
         IsActive();
         if (!isActive)
             return;
-        ArrowMarkerManager.instance.saveRoad[(int)roadSide] = null;
-        ArrowMarkerManager.instance.IntegrityCheck(this);
     }
     private void OnDestroy()
     {
-        ArrowMarkerManager.instance.OnListCleared -= OnListCleared;
+       
     }
 
     private void IsActive()

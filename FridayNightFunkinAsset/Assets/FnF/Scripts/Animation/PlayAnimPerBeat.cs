@@ -27,8 +27,6 @@ namespace FridayNightFunkin
         private void Start()
         {
             animator = GetComponent<Animator>();
-            if (ownBPM == 0)
-                ownBPM = ChartPlayBack.Instance.levelData.stage[ChartPlayBack.Instance.currentStageIndex].BPM;
             BPS = ownBPM / 60;
         }
         protected void Update()

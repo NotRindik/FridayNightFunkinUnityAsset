@@ -46,11 +46,11 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 if (parent is ArrowMarkerTrackAsset)
                 {
                     arrowMarkerParent = parent as ArrowMarkerTrackAsset;
-                    id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
+                    id = arrowMarkerParent.arrowCurrentIndex;
                     roadSide = arrowMarkerParent.roadSide;
                     _speedMultiplier = speedMultiplier;
                     _distanceCount = distanceCount;
-                    ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
+                    arrowMarkerParent.AddMarkersToList(this);
                 }
                 isInit = true;
             }

@@ -9,7 +9,15 @@ namespace FridayNightFunkin.UI
     {
         private Image image;
         public bool isPlayer = false;
-        public ChartPlayBack chartPlayBack => ChartPlayBack.Instance;
+        public ChartPlayBack chartPlayBack;
+
+        private void OnValidate()
+        {
+            if(chartPlayBack == null)
+            {
+                chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
+            }
+        }
 
         private void Start()
         {
