@@ -1,7 +1,5 @@
 using FridayNightFunkin.Calculations;
-using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
-using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,9 +38,9 @@ namespace FridayNightFunkin.GamePlay
 
         public Vector2 endPos;
 
-        public double startTime;
+        public double startTime => markerRef ? endTime - ((10 / chartPlayback.levelData.stage[chartPlayback.levelDataWindow.selectedStageIndex].chartSpeed) * (1 / markerRef.speedMultiplier)): 0;
 
-        public double endTime;
+        public double endTime => markerRef ? markerRef.time : 0;
 
         private int arrowIndex;
 
@@ -64,59 +62,16 @@ namespace FridayNightFunkin.GamePlay
             spriteRenderer.sortingOrder = spriteRenderer.sortingOrder + arrowIndex;
             this.startPos = startPos;
             this.endPos = endPos;
-            endTime = arrowMarker.time;
             this.chartPlayback = chartPlayBack;
-            startTime = endTime - ((10 / chartPlayback.levelData.stage[chartPlayback.levelDataWindow.selectedStageIndex].chartSpeed) * (1 / arrowMarker.speedMultiplier)); //немного не пон€тный момент в случае ошибки гл€нь
             markerRef = arrowMarker;
-            chartPlayBack.OnSpeedChanged += OnBaseParamChanged;
-            markerRef.OnParameterChanged += OnParamChanged;
-            markerRef.OnMarkerRemove += Destroy;
+            markerRef.arrow = this;
         }
 
-        private void OnParamChanged(double time,float speedMultiplier,uint distanceCount)
+        public void OnParamChanged(double time,float speedMultiplier,uint distanceCount)
         {
-            startTime = time - ((10 / chartPlayback.levelData.stage[chartPlayback.levelDataWindow.selectedStageIndex].chartSpeed) * (1 / speedMultiplier));
             this.distanceCount = distanceCount;
-            endTime = time;
-        }
-        private void OnBaseParamChanged()
-        {
             float speedSave = chartPlayback.levelData.stage[chartPlayback.levelDataWindow.selectedStageIndex].chartSpeed;
             float speedCofency = 10 / speedSave;
-            startTime = endTime - ((speedCofency) * (1 / markerRef.speedMultiplier));
-        }
-
-        public void Destroy(ArrowMarker arrowMarker)
-        {
-            markerRef.OnParameterChanged -= OnParamChanged;
-            markerRef.OnMarkerRemove -= Destroy;
-            chartPlayback.OnSpeedChanged -= OnBaseParamChanged;
-            chartPlayback.arrowsList[roadSide].Remove(this);
-            if(gameObject)DestroyImmediate(this.gameObject);
-        }
-        private void OnEnable()
-        {
-            SubDelegates();
-        }
-
-        private void OnDisable()
-        {
-            UnSubDelegates();
-        }
-
-        private void SubDelegates()
-        {
-            if (markerRef == null)
-                return;
-            markerRef.OnMarkerRemove += Destroy;
-            markerRef.OnParameterChanged += OnParamChanged;
-            chartPlayback.OnSpeedChanged += OnBaseParamChanged;
-        }
-        private void UnSubDelegates()
-        {
-            markerRef.OnMarkerRemove -= Destroy;
-            markerRef.OnParameterChanged -= OnParamChanged;
-            chartPlayback.OnSpeedChanged -= OnBaseParamChanged;
         }
 
         private void Update()
@@ -147,6 +102,12 @@ namespace FridayNightFunkin.GamePlay
                     }
                 }
             }
+        }
+
+        public void Destroy()
+        {
+            chartPlayback.arrowsList[roadSide].Remove(this);
+            DestroyImmediate(transform.gameObject);
         }
 
         private void GenerateTail()

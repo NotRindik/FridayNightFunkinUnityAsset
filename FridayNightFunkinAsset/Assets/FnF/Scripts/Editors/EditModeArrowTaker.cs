@@ -8,8 +8,6 @@ namespace FridayNightFunkin.Editor
     [ExecuteInEditMode]
     public class EditModeArrowTaker : MonoBehaviour
     {
-        public float distanceForTakearrow;
-        public static EditModeArrowTaker instance;
 
         [SerializeField] private float arrowDetectRadius = 0.8f;
 
@@ -25,29 +23,42 @@ namespace FridayNightFunkin.Editor
         }
 
         private ArrowTaker _arrowTaker;
-        private ArrowTaker arrowTaker { 
-            get { 
-                if (!_arrowTaker) 
+        private ArrowTaker arrowTaker
+        {
+            get
+            {
+                if (!_arrowTaker)
                     _arrowTaker = GetComponent<ArrowTaker>();
-                return _arrowTaker; 
+                return _arrowTaker;
             }
         }
 
-        private float arrowDetectRadiusCalcualted;
+        public ChartPlayBack chartPlayBack;
+
+        private float arrowDetectRadiusCalcualted => arrowDetectRadius * (Camera.main.orthographicSize / 5);
+
+        private string lastAnim;
+        private string currentAnim;
 
         private void Update()
         {
-            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
-            if (instance == null)
+            if (chartPlayBack == null)
             {
-                instance = this;
+                chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
             }
-            VisualiseTakingArrow();
+            else
+            {
+                VisualiseTakingArrow();
+                animator.Update(1f / 60f);
+                if (currentAnim != lastAnim)
+                {
+                    lastAnim = currentAnim;
+                    animator.CrossFade(currentAnim, 0.3f);
+                }
+            }
         }
-
         private void OnDrawGizmos()
         {
-            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
             DrawDetectRadius();
         }
 
@@ -59,32 +70,31 @@ namespace FridayNightFunkin.Editor
 
         private void VisualiseTakingArrow()
         {
-            animator.Update(Time.deltaTime);
-            foreach (var arrow in ChartPlayBack.Instance.arrowsList[arrowTaker.roadSide])
+            foreach (var arrow in chartPlayBack.arrowsList[arrowTaker.roadSide])
             {
-                if (arrow.isWork && arrow.gameObject.activeInHierarchy)
+                if (arrow.isWork && arrow.gameObject.activeInHierarchy && arrow.arrowSide == arrowTaker.arrowSide)
                 {
                     var distance = Vector2.Distance(transform.position, arrow.transform.position);
 
                     if (distance <= arrowDetectRadiusCalcualted)
                     {
-                        animator.Play("Pressed");
+                        currentAnim = "Pressed";
                         break;
                     }
                     else
                     {
                         if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
                         {
-                            animator.Play("Pressed");
+                            currentAnim = "Pressed";
                             break;
                         }
 
-                        animator.Play("Idle");
+                        currentAnim = "Idle";
                     }
                 }
                 else
                 {
-                    animator.Play("Idle");
+                    currentAnim = "Idle";
                 }
             }
         }

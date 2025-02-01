@@ -44,12 +44,31 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private ArrowSwitch arrowSwitch;
         private PlayerMissTaker playerMissTaker;
-        private RoadManager roadManager;
+        public RoadManager roadManager;
+
+        private ChartContainer _chartContainer;
+        private ChartContainer chartContainer 
+        { 
+            get 
+            {
+                if(_chartContainer == null)
+                {
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        if (transform.GetChild(i).TryGetComponent(out ChartContainer container))
+                        {
+                            _chartContainer = container;
+                        }
+                    }
+                }
+                return _chartContainer;
+
+            } 
+        }
 
 
         private void OnDestroy()
         {
-            UnSubDelegates();
             if (Application.isPlaying)
             {
                 GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
@@ -82,20 +101,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             levelDataWindow.OnGUIUpdate += OnChartVariantChange;
         }
 
-        private void SubDelegates()
-        {
-            if (levelData.stage[levelDataWindow.selectedStageIndex].OnSpeedChanges == null) 
-                levelData.stage[levelDataWindow.selectedStageIndex].OnSpeedChanges += SaveArrowsOnSpeedChange;
-        }
-        private void UnSubDelegates()
-        {
-            levelData.stage[levelDataWindow.selectedStageIndex].OnSpeedChanges -= SaveArrowsOnSpeedChange;
-            if (levelDataWindow)
-            {
-                levelDataWindow.OnGUIUpdate -= OnChartVariantChange;
-            }
-        }
-
         private void Start()
         {
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
@@ -109,16 +114,24 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public void ReloadChart()
         {
-            for (int i = 0; i < transform.childCount;i++)
+            if (chartContainer != null)
             {
-                DestroyImmediate(transform.GetChild(i).gameObject);
-            }
-            arrowsList.Clear();
-            foreach (RoadSide roadSide in Enum.GetValues(typeof(RoadSide)))
-            {
-                arrowsList.Add(roadSide, new List<Arrow>());
+                for (int i = 0; i < chartContainer.transform.childCount; i++)
+                {
+                    DestroyImmediate(chartContainer.transform.GetChild(i).gameObject);
+                }
+                arrowsList.Clear();
+                foreach (RoadSide roadSide in Enum.GetValues(typeof(RoadSide)))
+                {
+                    arrowsList.Add(roadSide, new List<Arrow>());
+                }
+                foreach (var track in roadManager.arrowMarkerTrackAssets)
+                {
+                    track.LoadDataFromRoad();
+                }
             }
             reloadChart = false;
+
         }
 
         public void StartLevel()
@@ -138,10 +151,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private void Update()
         {
-            playerMissTaker.OnUpdate();
             if (Application.isEditor)
             {
                 EditorUpdate();
+            }
+            else
+            {
+                playerMissTaker.OnUpdate();
             }
             OnBothUpdates();
         }
@@ -153,7 +169,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 ReloadChart();
             }
             OnBothUpdates();
-
+            SaveArrowsOnSpeedChange();
             arrowSwitch.SwitchAllArrows(TurnOfArrows);
         }
 
@@ -161,9 +177,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             Counters();
 
-
             ChangeStageOfLevel();
-            SubDelegates();
             if (levelData != null)
             {
                 MoveArrows();
@@ -239,16 +253,27 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public void SpawnArrow(ArrowMarker arrowMarker, RoadSide roadSide)
         {
-            Vector2 arrowTakerPos = arrowMarker.roadSide == RoadSide.Player ? arrowTakerPlayer[(int)arrowMarker.arrowSide].transform.position : arrowTakerEnemy[(int)arrowMarker.arrowSide].transform.position; ;
+            if(arrowTakerPlayer.Length == 0 || arrowTakerEnemy.Length == 0)
+            {
+                Debug.Log("Hey you dont put arrow takers references on array");
+                return;
+            }
+            if(arrows.Length == 0)
+            {
+                Debug.Log("bro you don't put arrows prefabs on array");
+                return;
+            }
+            Vector2 arrowTakerPos = arrowMarker.roadSide == RoadSide.Player ? arrowTakerPlayer[(int)arrowMarker.arrowSide].transform.position : arrowTakerEnemy[(int)arrowMarker.arrowSide].transform.position;
 
             Vector3 arrowSpawnPos = new Vector3(arrowTakerPos.x, arrowTakerPos.y - chartSpawnDistance * (Camera.main.orthographicSize / 5), 0);
             Arrow arrow = Instantiate(arrows[(int)arrowMarker.arrowSide], arrowSpawnPos, Quaternion.identity);
             arrow.roadSide = arrowMarker.roadSide;
+            arrowMarker.arrow = arrow;
 
             Vector2 startPos = arrowSpawnPos;
 
-            arrow.transform.SetParent(transform);
-            arrow.transform.localScale = new Vector3(150, 150, 150);
+            arrow.transform.SetParent(chartContainer.transform);
+            arrow.transform.localScale = new Vector3(1, 1, 1);
             arrow.gameObject.name = $"Arrow[{arrowMarker.roadSide}] №:{arrowMarker.id}";
             arrow.Intialize(arrow.GetComponent<SpriteRenderer>(), arrowMarker,startPos, arrowTakerPos, this);
             arrowsList[roadSide].Add(arrow);
@@ -256,7 +281,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public void SaveArrows(ArrowMarker arrowMarker, ArrowMarkerTrackAsset road = null)
         {
-            if (levelDataWindow)
+            if (levelDataWindow && chartContainer)
             {
                 speedSave = levelData.stage[levelDataWindow.selectedStageIndex].chartSpeed;
                 speedCofency = 10 / speedSave;
@@ -269,23 +294,12 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             if (levelDataWindow)
             {
-                speedSave = levelData.stage[levelDataWindow.selectedStageIndex].chartSpeed;
-                speedCofency = 10 / speedSave;
-                OnSpeedChanged?.Invoke();
-            }
-        }
-        public bool IsSub(Action method)
-        {
-            if (OnSpeedChanged == null) return false;
-
-            foreach (var d in OnSpeedChanged.GetInvocationList())
-            {
-                if (d.Method == method.Method && d.Target == method.Target)
+                if (speedSave != levelData.stage[levelDataWindow.selectedStageIndex].chartSpeed)
                 {
-                    return true;
+                    speedSave = levelData.stage[levelDataWindow.selectedStageIndex].chartSpeed;
+                    speedCofency = 10 / speedSave;
                 }
             }
-            return false;
         }
         private void OnGameStateChanged(GameState currenState)
         {

@@ -5,7 +5,7 @@ namespace FridayNightFunkin.GamePlay
 {
     public abstract class ArrowTaker : MonoBehaviour
     {
-        [SerializeField] protected ArrowSide arrowSide;
+        [SerializeField]public ArrowSide arrowSide;
         public abstract RoadSide roadSide { get;}
 
         [SerializeField] protected float arrowDetectRadius = 0.8f;
@@ -18,7 +18,15 @@ namespace FridayNightFunkin.GamePlay
 
         protected float arrowDetectRadiusCalcualted;
 
-        protected ChartPlayBack chartPlayBack => ChartPlayBack.Instance;
+        protected ChartPlayBack chartPlayBack;
+
+        private void OnValidate()
+        {
+            if(chartPlayBack != null)
+            {
+                chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
+            }
+        }
         protected virtual void OnEnable()
         {
             GameStateManager.instance.OnGameStateChanged += OnGameStateChange;

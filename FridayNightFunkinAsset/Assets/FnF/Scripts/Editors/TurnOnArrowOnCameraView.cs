@@ -51,15 +51,18 @@ namespace FridayNightFunkin.Editor
                 lastSwitch = isOn;
                 foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
                 {
-                    foreach (var arrow in chartPlayback.arrowsList[item])
+                    if (chartPlayback.arrowsList.ContainsKey(item))
                     {
-                        if (arrow == null)
+                        foreach (var arrow in chartPlayback.arrowsList[item])
                         {
-                            return;
-                        }
+                            if (arrow == null)
+                            {
+                                return;
+                            }
 
-                        if (arrow.gameObject.activeInHierarchy != isOn)
-                            arrow.gameObject.SetActive(isOn);
+                            if (arrow.gameObject.activeInHierarchy != isOn)
+                                arrow.gameObject.SetActive(isOn);
+                        }
                     }
                 }
             }

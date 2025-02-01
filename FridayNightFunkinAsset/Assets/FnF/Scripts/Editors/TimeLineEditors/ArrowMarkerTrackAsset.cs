@@ -13,7 +13,6 @@ using UnityEngine.Timeline;
 public class ArrowMarkerTrackAsset : MarkerTrack
 {
     public RoadSide roadSide;
-    public bool isActive = false;
     public LevelDataWindow levelDataWindow => EditorWindow.GetWindow<LevelDataWindow>();
     public List<ArrowMarker> arrowMarkers = new List<ArrowMarker>();
 
@@ -35,10 +34,12 @@ public class ArrowMarkerTrackAsset : MarkerTrack
     }
     public void AddMarkersToList(ArrowMarker arrowMarker)
     {
-        if (!arrowMarker)
+        if (!chartPlayBack)
+        {
             return;
+        }
 
-        AddMarker(arrowMarker);
+            AddMarker(arrowMarker);
         chartPlayBack.SaveArrows(arrowMarker, this);
     }
     public void AddMarker(ArrowMarker marker)
@@ -46,7 +47,6 @@ public class ArrowMarkerTrackAsset : MarkerTrack
         if (!arrowMarkers.Contains(marker))
         {
             arrowCurrentIndex++;
-            marker.OnMarkerRemove += RemoveMarker;
             arrowMarkers.Add(marker);
         }
     }
@@ -59,28 +59,27 @@ public class ArrowMarkerTrackAsset : MarkerTrack
 
     private void OnListCleared()
     {
-        IsActive();
-        if (!isActive)
-            return;
+        arrowCurrentIndex = 0;
+    }
+    public void LoadDataFromRoad()
+    {
+        arrowMarkers.Clear();
+        OnListCleared();
+        IntegrityCheck();
+    }
+    public void IntegrityCheck()
+    {
+        if (GetMarkerCount() != arrowMarkers.Count)
+        {
+            for (int i = 0; i < GetMarkerCount(); i++)
+            {
+                AddMarkersToList(GetMarker(i) as ArrowMarker);
+            }
+        }
     }
     private void OnDestroy()
     {
        
-    }
-
-    private void IsActive()
-    {
-        if(levelDataWindow == null)
-            isActive = false;
-
-        if (levelDataWindow.levelData.stage[levelDataWindow.selectedStageIndex].chartVariants[levelDataWindow.selectedChartVar] == parent)
-        {
-            isActive = true;
-        }
-        else
-        {
-            isActive = false;
-        }
     }
 }
 public enum RoadSide

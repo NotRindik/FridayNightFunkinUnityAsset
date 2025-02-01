@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Timeline;
 using System.Collections;
+using FridayNightFunkin.GamePlay;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
@@ -18,17 +19,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         public RoadSide roadSide = RoadSide.Player;
 
         public ArrowSide arrowSide;
-
-        public delegate void OnAddMarker();
-        public event OnAddMarker OnMarkerAdd;
-
-        public delegate void OnRemoveMarker(ArrowMarker arrowMarker);
-        public event OnRemoveMarker OnMarkerRemove;
         public ArrowMarkerTrackAsset arrowMarkerParent { private set; get; }
-
-        public delegate void OnParameterChange(double time, float speed, uint distance);
-
-        public event OnParameterChange OnParameterChanged;
 
         public float speedMultiplier = 1;
         private float _speedMultiplier;
@@ -37,15 +28,16 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public bool isInit;
 
-        public void OnEnable()
+        public Arrow arrow;
+
+        public override void OnInitialize(TrackAsset aPent)
         {
-            OnMarkerAdd?.Invoke();
             EditorApplication.update += Update;
             if (!isInit)
             {
-                if (parent is ArrowMarkerTrackAsset)
+                if (aPent is ArrowMarkerTrackAsset)
                 {
-                    arrowMarkerParent = parent as ArrowMarkerTrackAsset;
+                    arrowMarkerParent = aPent as ArrowMarkerTrackAsset;
                     id = arrowMarkerParent.arrowCurrentIndex;
                     roadSide = arrowMarkerParent.roadSide;
                     _speedMultiplier = speedMultiplier;
@@ -54,70 +46,21 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 }
                 isInit = true;
             }
-
         }
-/*        public override void OnInitialize(TrackAsset aPent)
-        {
-            OnMarkerAdd?.Invoke();
-            EditorApplication.update += Update;
-            if (aPent is ArrowMarkerTrackAsset)
-            {
-                arrowMarkerParent = aPent as ArrowMarkerTrackAsset;
-                id = arrowMarkerParent.roadSide == RoadSide.Player ? ArrowMarkerManager.instance.playerArrowCount : ArrowMarkerManager.instance.enemyArrowCount;
-                roadSide = arrowMarkerParent.roadSide;
-                _speedMultiplier = speedMultiplier;
-                _distanceCount = distanceCount;
-                ArrowMarkerManager.instance.AddArowMarker(this, arrowMarkerParent);
-            }
-        }*/
 
         private void Update()
         {
-
-            if (_speedMultiplier != speedMultiplier)
+            if (arrow)
             {
-                _speedMultiplier = speedMultiplier;
-                OnParameterChanged?.Invoke(currentTime, Mathf.Abs(_speedMultiplier) != 0 ? Mathf.Abs(_speedMultiplier) : 0.0001f, _distanceCount);
-            }
-            if (_distanceCount != distanceCount)
-            {
-                _distanceCount = distanceCount;
-                OnParameterChanged?.Invoke(currentTime, _speedMultiplier, _distanceCount);
-            }
-
-            if (Math.Abs(currentTime - time) > double.Epsilon)
-            {
-                currentTime = time;
-                OnParameterChanged?.Invoke(currentTime, _speedMultiplier, _distanceCount);
-            }
-        }
-        public bool IsSub(OnRemoveMarker method)
-        {
-            if (OnMarkerRemove == null) return false;
-
-            foreach (var d in OnMarkerRemove.GetInvocationList())
-            {
-                if (d.Method == method.Method && d.Target == method.Target)
+                if (_speedMultiplier != speedMultiplier || _distanceCount != distanceCount || Math.Abs(currentTime - time) > double.Epsilon)
                 {
-                    return true;
+                    _speedMultiplier = speedMultiplier;
+                    _distanceCount = distanceCount;
+                    currentTime = time;
+                    arrow.OnParamChanged(currentTime, Mathf.Abs(_speedMultiplier) != 0 ? Mathf.Abs(_speedMultiplier) : 0.0001f, _distanceCount);
                 }
             }
-            return false;
         }
-        public bool IsSub(OnParameterChange method)
-        {
-            if (OnParameterChanged == null) return false;
-
-            foreach (var d in OnParameterChanged.GetInvocationList())
-            {
-                if (d.Method == method.Method && d.Target == method.Target)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public void ArrowInit(ArrowMarkerTrackAsset arrowMarkerParent)
         {
             this.arrowMarkerParent = arrowMarkerParent;
@@ -125,7 +68,8 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         }
         protected void OnDestroy()
         {
-            OnMarkerRemove?.Invoke(this);
+            (parent as ArrowMarkerTrackAsset).RemoveMarker(this);
+            arrow.Destroy();
             EditorApplication.update -= Update;
         }
     }

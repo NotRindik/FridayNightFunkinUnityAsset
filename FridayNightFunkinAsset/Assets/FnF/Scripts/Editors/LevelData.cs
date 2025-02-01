@@ -71,7 +71,6 @@ public unsafe class LevelStage
 
     [SerializeField] public float _chartSpeed = 4;
 
-    public Action OnSpeedChanges;
     public float chartSpeed
     {
         get => _chartSpeed;
@@ -80,7 +79,6 @@ public unsafe class LevelStage
             if (Mathf.Abs(_chartSpeed - value) > Mathf.Epsilon) 
             {
                 _chartSpeed = value;
-                OnSpeedChanges?.Invoke();
             }
         }
     }
