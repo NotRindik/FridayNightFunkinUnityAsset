@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185.34998, y: -458.01508}
+  m_AnchoredPosition: {x: 185.34999, y: -458.01508}
   m_SizeDelta: {x: 621.06, y: 107.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16414611
@@ -993,6 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirstTimeTrue: 0
+  settingName: Naughtyness
 --- !u!1 &141137438
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,6 +2104,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200920274}
   m_CullTransparentMesh: 1
+--- !u!1 &207946024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207946025}
+  - component: {fileID: 207946026}
+  m_Layer: 0
+  m_Name: GameSettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &207946025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207946024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.46570933, y: 0.41768032, z: 55.42725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &207946026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207946024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8fa38e19a53b0419076521e74d64e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeGameSettings: {fileID: 11400000, guid: 79f8e51004a24d245aec36e50077b8eb, type: 2}
+  savePath: assets/data
 --- !u!1 &208922793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,6 +3090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirstTimeTrue: 0
+  settingName: DownScroll
 --- !u!1 &262495371
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,6 +5898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirstTimeTrue: 0
+  settingName: FlashLights
 --- !u!1 &629409496
 GameObject:
   m_ObjectHideFlags: 0
@@ -7001,7 +7050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -500}
+  m_AnchoredPosition: {x: 50, y: -300}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831517213
@@ -7155,6 +7204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirstTimeTrue: 1
+  settingName: AutoPause
 --- !u!1 &834300824
 GameObject:
   m_ObjectHideFlags: 0
@@ -9597,7 +9647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185.34998, y: -76.04999}
+  m_AnchoredPosition: {x: 185.34999, y: -76.04999}
   m_SizeDelta: {x: 253.01, y: 52.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134065343
@@ -9734,7 +9784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185.34998, y: -325.64905}
+  m_AnchoredPosition: {x: 185.34999, y: -325.64905}
   m_SizeDelta: {x: 484.35, y: 107.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202557420
@@ -15486,7 +15536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185.34998, y: -193.28302}
+  m_AnchoredPosition: {x: 185.34999, y: -193.28302}
   m_SizeDelta: {x: 484.35, y: 107.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600423905
@@ -19259,7 +19309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -500}
+  m_AnchoredPosition: {x: 50, y: -400}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1949191736
@@ -19413,6 +19463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirstTimeTrue: 1
+  settingName: GhostTapping
 --- !u!1 &1951083314
 GameObject:
   m_ObjectHideFlags: 0
@@ -20131,6 +20182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirstTimeTrue: 0
+  settingName: CameraZoomingOnBeat
 --- !u!1 &2026669481
 GameObject:
   m_ObjectHideFlags: 0
@@ -20870,3 +20922,4 @@ SceneRoots:
   - {fileID: 87935841}
   - {fileID: 757450554}
   - {fileID: 229887371}
+  - {fileID: 207946025}

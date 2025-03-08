@@ -18,13 +18,19 @@ namespace FridayNightFunkin.GamePlay
 
         protected float arrowDetectRadiusCalcualted;
 
-        protected ChartPlayBack chartPlayBack;
+        public ChartPlayBack chartPlayBack;
+
+        protected Camera Camera;
 
         private void OnValidate()
         {
-            if(chartPlayBack != null)
+            if(chartPlayBack == null)
             {
                 chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
+            }
+            if (Camera == null)
+            {
+                Camera = Camera.main;
             }
         }
         protected virtual void OnEnable()
@@ -54,7 +60,7 @@ namespace FridayNightFunkin.GamePlay
         }
         protected void ActivateSplash(ArrowSide arrowSide)
         {
-            //Animator animator = LevelSettings.instance.splashAnim[(int)arrowSide]; кароче сплэши добавь
+            //Animator animator = LevelSettings.instance.splashAnim[(int)arrowSide]; пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             //animator.Play("Splash");
         }
 

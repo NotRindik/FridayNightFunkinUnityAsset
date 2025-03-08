@@ -4,10 +4,10 @@ namespace FridayNightFunkin.UI
 {
     public class AutoPauseSetting : ToggleBehaviour
     {
-        protected override void OnToggleTriggered(bool isTrue)
+        protected override void OnToggleTriggered(bool value)
         {
-            base.OnToggleTriggered(isTrue);
-            Application.runInBackground = !isTrue;
+            base.OnToggleTriggered(value);
+            Application.runInBackground = !value;
         }
     }
 }

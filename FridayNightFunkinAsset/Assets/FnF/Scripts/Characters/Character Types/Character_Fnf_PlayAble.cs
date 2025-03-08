@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public class Character_Fnf_PlayAble : Ñharacter_FNF
+    public class Character_Fnf_PlayAble : Ð¡haracter_FNF
     {
         private string[] MiSS_ANIMATION = { "LeftFail", "DownFail", "UpFail", "DownFail" };
 
@@ -67,8 +67,8 @@ namespace FridayNightFunkin.CHARACTERS
         {
             foreach (var arrowTaker in arrowTakers)
             {
-                (arrowTaker as ArrowTakerEnemy).OnArrowTake += PlayHitAnimation;
-                (arrowTaker as ArrowTakerEnemy).OnArrowUnTake += PlayIdle;
+                ((ArrowTakerPlayer)arrowTaker).OnArrowTake += PlayHitAnimation;
+                ((ArrowTakerPlayer)arrowTaker).OnArrowUnTake += PlayIdle;
             }
             isActive = true;
         }
@@ -76,8 +76,8 @@ namespace FridayNightFunkin.CHARACTERS
         {
             foreach (var arrowTaker in arrowTakers)
             {
-                (arrowTaker as ArrowTakerEnemy).OnArrowTake -= PlayHitAnimation;
-                (arrowTaker as ArrowTakerEnemy).OnArrowUnTake -= PlayIdle;
+                ((ArrowTakerPlayer)arrowTaker).OnArrowTake -= PlayHitAnimation;
+                ((ArrowTakerPlayer)arrowTaker).OnArrowUnTake -= PlayIdle;
             }
             isActive= false;
             ReloadAnim();
@@ -165,7 +165,7 @@ namespace FridayNightFunkin.CHARACTERS
             yield return new WaitForSeconds(a);
             foreach (var arrowTaker in arrowTakers)
             {
-                if ((arrowTaker as ArrowTakerEnemy).isHold)
+                if (((ArrowTakerPlayer)arrowTaker).isHold)
                 {
                     yield break;
                 }

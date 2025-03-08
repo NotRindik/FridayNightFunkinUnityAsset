@@ -17,6 +17,9 @@ public class LevelData : ScriptableObject
 
     [SerializeField] public uint addMaxScore = 20;
     [SerializeField] public uint addMaxScoreInLongArrow = 10;
+    
+    public int selectedStageIndex { get; set; }
+    public int selectedChartVar { get; set; }
 
     public Dictionary<CharacterSide, List<Arrow>> arrows = new Dictionary<CharacterSide, List<Arrow>>();
     public LayerMask arrowLayer;
@@ -121,13 +124,15 @@ public unsafe class LevelStage
                 return playerPrefab.Length;
             case CharacterSide.Enemy:
                 return enemyPrefab.Length;
+            case CharacterSide.Gf:
+                return girlFriendPrefab.Length;
             default:
                 Debug.LogError($"'{characterSide}' Character Prefab doesn't exist");
                 return 0;
         }
     }
 
-    public Ñharacter_FNF GetCharacterPrefab(CharacterSide characterSide, int index)
+    public Ð¡haracter_FNF GetCharacterPrefab(CharacterSide characterSide, int index)
     {
         switch (characterSide)
         {
@@ -135,6 +140,8 @@ public unsafe class LevelStage
                 return playerPrefab[index];
             case CharacterSide.Enemy:
                 return enemyPrefab[index];
+            case CharacterSide.Gf:
+                return girlFriendPrefab[index];
             default:
                 Debug.LogError($"'{characterSide}' Character Prefab doesn't exist");
                 return null;

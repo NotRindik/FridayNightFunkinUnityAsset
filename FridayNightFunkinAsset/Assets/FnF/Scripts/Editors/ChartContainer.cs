@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
+using FridayNightFunkin.GamePlay;
 using UnityEngine;
 
 public class ChartContainer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializedDictionary] public SerializedDictionary<RoadSide, List<Arrow>> arrowsList = new SerializedDictionary<RoadSide, List<Arrow>>();
 }

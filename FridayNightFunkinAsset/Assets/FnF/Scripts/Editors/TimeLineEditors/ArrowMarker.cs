@@ -1,8 +1,8 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Timeline;
-using System.Collections;
 using FridayNightFunkin.GamePlay;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
@@ -15,10 +15,10 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         private uint _distanceCount;
 
         public int id;
-        protected PropertyName objectID => new PropertyName();
         public RoadSide roadSide = RoadSide.Player;
 
         public ArrowSide arrowSide;
+        protected PropertyName objectID => new PropertyName();
         public ArrowMarkerTrackAsset arrowMarkerParent { private set; get; }
 
         public float speedMultiplier = 1;
@@ -30,9 +30,12 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public Arrow arrow;
 
-        public override void OnInitialize(TrackAsset aPent)
+        public override async void OnInitialize(TrackAsset aPent)
         {
             EditorApplication.update += Update;
+            isInit = false;
+            await Task.Delay(100);
+            
             if (!isInit)
             {
                 if (aPent is ArrowMarkerTrackAsset)
@@ -68,9 +71,12 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         }
         protected void OnDestroy()
         {
-            (parent as ArrowMarkerTrackAsset).RemoveMarker(this);
-            arrow.Destroy();
-            EditorApplication.update -= Update;
+            if (parent && arrow)
+            {
+                ((ArrowMarkerTrackAsset)parent).RemoveMarker(this);
+                EditorApplication.update -= Update;   
+                Undo.ClearUndo(this);
+            }
         }
     }
 }

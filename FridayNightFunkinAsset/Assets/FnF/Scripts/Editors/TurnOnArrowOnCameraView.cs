@@ -24,13 +24,13 @@ namespace FridayNightFunkin.Editor
             set { }
         }
 
-        protected ChartPlayBack chartPlayback;
+        protected ChartPlayBack ChartPlayback;
 
         protected bool lastSwitch;
 
         public ArrowSwitch(ChartPlayBack chartPlayback)
         {
-            this.chartPlayback = chartPlayback;
+            this.ChartPlayback = chartPlayback;
         }
         public virtual void OnUpdate()
         {
@@ -51,9 +51,9 @@ namespace FridayNightFunkin.Editor
                 lastSwitch = isOn;
                 foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
                 {
-                    if (chartPlayback.arrowsList.ContainsKey(item))
+                    if (ChartPlayback.ChartContainer.arrowsList.ContainsKey(item))
                     {
-                        foreach (var arrow in chartPlayback.arrowsList[item])
+                        foreach (var arrow in ChartPlayback.ChartContainer.arrowsList[item])
                         {
                             if (arrow == null)
                             {
@@ -69,11 +69,11 @@ namespace FridayNightFunkin.Editor
         }
         private void SwithArrows()
         {
-            if (chartPlayback.arrowsList.Count == Enum.GetValues(typeof(RoadSide)).Length)
+            if (ChartPlayback.ChartContainer.arrowsList.Count == Enum.GetValues(typeof(RoadSide)).Length)
             {
                 foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
                 {
-                    foreach (var arrow in chartPlayback.arrowsList[item])
+                    foreach (var arrow in ChartPlayback.ChartContainer.arrowsList[item])
                     {
                         if (arrow == null)
                         {

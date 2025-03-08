@@ -1,7 +1,9 @@
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.Settings;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FridayNightFunkin.Editor
 {
@@ -40,8 +42,17 @@ namespace FridayNightFunkin.Editor
         private string lastAnim;
         private string currentAnim;
 
+        private Image _image;
+        public Sprite inactiveState;
+        public Sprite activeState;
+
         private void Update()
         {
+            if (!_image)
+            {
+                _image = GetComponent<Image>();
+            }
+            
             if (chartPlayBack == null)
             {
                 chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
@@ -49,12 +60,6 @@ namespace FridayNightFunkin.Editor
             else
             {
                 VisualiseTakingArrow();
-                animator.Update(1f / 60f);
-                if (currentAnim != lastAnim)
-                {
-                    lastAnim = currentAnim;
-                    animator.CrossFade(currentAnim, 0.3f);
-                }
             }
         }
         private void OnDrawGizmos()
@@ -70,31 +75,34 @@ namespace FridayNightFunkin.Editor
 
         private void VisualiseTakingArrow()
         {
-            foreach (var arrow in chartPlayBack.arrowsList[arrowTaker.roadSide])
+            foreach (var arrow in chartPlayBack.ChartContainer.arrowsList[arrowTaker.roadSide])
             {
-                if (arrow.isWork && arrow.gameObject.activeInHierarchy && arrow.arrowSide == arrowTaker.arrowSide)
+                if (arrow)
                 {
-                    var distance = Vector2.Distance(transform.position, arrow.transform.position);
-
-                    if (distance <= arrowDetectRadiusCalcualted)
+                    if (arrow.isWork && arrow.gameObject.activeInHierarchy && arrow.arrowSide == arrowTaker.arrowSide)
                     {
-                        currentAnim = "Pressed";
-                        break;
+                        var distance = Vector2.Distance(transform.position, arrow.transform.position);
+
+                        if (distance <= arrowDetectRadiusCalcualted)
+                        {
+                            _image.sprite = activeState;
+                            break;
+                        }
+                        else
+                        {
+                            if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
+                            {
+                                _image.sprite = activeState;
+                                break;
+                            }
+
+                            _image.sprite = inactiveState;
+                        }
                     }
                     else
                     {
-                        if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
-                        {
-                            currentAnim = "Pressed";
-                            break;
-                        }
-
-                        currentAnim = "Idle";
+                        _image.sprite = inactiveState;
                     }
-                }
-                else
-                {
-                    currentAnim = "Idle";
                 }
             }
         }

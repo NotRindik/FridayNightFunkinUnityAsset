@@ -9,8 +9,6 @@ public class LevelDataWindow : EditorWindow
     private string levelDataFileName = "LevelData.asset";
     public LevelData levelData { get; private set; }
     private ChartPlayBack chartPlayback;
-    public int selectedStageIndex { get; private set; }
-    public int selectedChartVar { get; private set; }
     private int preveusSelectedChartVar;
     private Dictionary<string, Vector2> scrollPositions = new Dictionary<string, Vector2>();
     private string tooltipText = null;
@@ -67,7 +65,6 @@ public class LevelDataWindow : EditorWindow
     private void InitChartPlayback(ChartPlayBack chartPlayback)
     {
         this.chartPlayback = chartPlayback;
-        chartPlayback.SetLevelDataWindow(this);
         levelData = chartPlayback.levelData;
     }
 
@@ -147,10 +144,10 @@ public class LevelDataWindow : EditorWindow
                 stageNames[i] = $"Stage {i + 1}";
             }
             stageNames[levelData.stage.Length] = $"+Create new Stage";
-            selectedStageIndex = EditorGUILayout.Popup("Select Level Stage", selectedStageIndex, stageNames);
+            levelData.selectedStageIndex = EditorGUILayout.Popup("Select Level Stage", levelData.selectedStageIndex, stageNames);
 
-            if (selectedStageIndex != levelData.stage.Length)
-                DrawLevelStage(levelData.stage[selectedStageIndex]);
+            if (levelData.selectedStageIndex != levelData.stage.Length)
+                DrawLevelStage(levelData.stage[levelData.selectedStageIndex]);
             else
                 AddNewStage();
         }
@@ -214,11 +211,11 @@ public class LevelDataWindow : EditorWindow
                 if (stage.chartVariants[i] != null)
                     arrElementShowing[i] = $"{stage.chartVariants[i].name}";
             }
-            selectedChartVar = EditorGUILayout.Popup("Current chart variant", selectedChartVar, arrElementShowing);
-            if (selectedChartVar != preveusSelectedChartVar)
+            levelData.selectedChartVar = EditorGUILayout.Popup("Current chart variant", levelData.selectedChartVar, arrElementShowing);
+            if (levelData.selectedChartVar != preveusSelectedChartVar)
             {
                 OnGUIUpdate?.Invoke();
-                preveusSelectedChartVar = selectedChartVar;
+                preveusSelectedChartVar = levelData.selectedChartVar;
             }
         }
         else
@@ -362,7 +359,7 @@ public class LevelDataWindow : EditorWindow
         var stages = new List<LevelStage>(levelData.stage ?? new LevelStage[0]);
         stages.Add(new LevelStage());
         levelData.stage = stages.ToArray();
-        selectedStageIndex = stages.Count - 1;
+        levelData.selectedStageIndex = stages.Count - 1;
     }
 
     private void LoadLevelData(string path)

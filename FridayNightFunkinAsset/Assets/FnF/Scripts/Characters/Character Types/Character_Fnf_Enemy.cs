@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public class Character_Fnf_Enemy : Ñharacter_FNF
+    public class Character_Fnf_Enemy : Ð¡haracter_FNF
     {
         private PlayAnimPerBeat playAnimPerBeat;
 

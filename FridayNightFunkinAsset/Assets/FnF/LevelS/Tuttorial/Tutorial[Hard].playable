@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9198926286083384310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 57.650000000000006
+  distanceCount: 19
+  id: 71
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-9168890921973715312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34,6 +54,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-9094407996211100089
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 43.950000000000045
+  distanceCount: 0
+  id: 52
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-9062108353886120709
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -50,6 +92,46 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: 1c34aa0fdeacf134baf4a91307d05c0e
     defaultValue: {fileID: 0}
+--- !u!114 &-8975664914643536652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 48.51666666666669
+  distanceCount: 0
+  id: 32
+  roadSide: 1
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-8897556868564958305
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 34.93333333333334
+  distanceCount: 0
+  id: 49
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-8883309264854402812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +150,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8669337846354597835
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,6 +170,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8667411219831924881
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,10 +186,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 36.11666666666669
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-8643493722364583295
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,6 +210,48 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-8630663890691599679
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 50.81666666666668
+  distanceCount: 0
+  id: 59
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-8624529152352300129
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 43.950000000000045
+  distanceCount: 0
+  id: 55
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-8467171494420978118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,10 +266,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 39.1
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-8442828668973261573
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,10 +286,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 56.516265232426434
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-8400652612100537022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +310,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8369924993955505764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +330,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8306735338244363712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +350,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8266982598529226830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,6 +370,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-8193013602617411887
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 41.00000000000001
+  distanceCount: 0
+  id: 30
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-8149022048157980340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +410,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8130383847344543555
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,6 +430,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-8104776165939035964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,10 +446,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 43.31666666666672
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-8049535229211193836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 16.900000000000006
+  distanceCount: 0
+  id: 42
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-8041535338151818156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 15.716666666666665
+  distanceCount: 0
+  id: 41
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-7894543149598143980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 48.850000000000016
+  distanceCount: 0
+  id: 33
+  roadSide: 1
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-7890096944795911785
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 43.31666666666672
+  distanceCount: 0
+  id: 53
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7857014682156849067
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,6 +550,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7855907225893828818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +570,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7792088594192213557
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,10 +586,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 42.200000000000024
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-7791175220079353964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 52.31666666666668
+  distanceCount: 0
+  id: 61
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7777117139088891801
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,6 +628,46 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: 50b3bec2f716e974e830848e45ea2519
     defaultValue: {fileID: 0}
+--- !u!114 &-7724288518776772776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down/Add Down
+  m_EditorClassIdentifier: 
+  m_Time: 10.533333333333333
+  distanceCount: 0
+  id: 38
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-7693441190608291601
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 49.100000000000016
+  distanceCount: 0
+  id: 37
+  roadSide: 1
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7620216341333615607
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,6 +686,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7576706263818206214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,6 +706,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7488382357067889728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,6 +726,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7457381083953776002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,10 +742,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 61.61666666666667
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7378763352763933282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,10 +762,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 53.533333333333346
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7365747602425312922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,6 +786,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7344374990823271445
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,6 +806,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-7320574718666069922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 42.200000000000024
+  distanceCount: 0
+  id: 36
+  roadSide: 1
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7307924069430064081
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,6 +846,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-7273678542927154240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 51.116666666666674
+  distanceCount: 0
+  id: 60
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7261354485884735688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,10 +882,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 25.41666666666668
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-7241981786367507458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 18.116666666666667
+  distanceCount: 0
+  id: 42
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7205324847121938556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,10 +922,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 62.583333333333336
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 3
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7180746609273053670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,10 +942,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 50.51666666666668
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-7163047023369102907
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,6 +966,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7055070436638685732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,6 +986,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-7036306824736628072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,6 +1006,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-6942886953942861671
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 62.583333333333336
+  distanceCount: 0
+  id: 76
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 3
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6862870191287628500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -624,6 +1046,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-6854686896053606736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,6 +1066,68 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-6844262963974833375
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 45.73333333333338
+  distanceCount: 0
+  id: 55
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-6839005842590613885
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 38.61666666666667
+  distanceCount: 0
+  id: 27
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-6814427313526859863
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 55.95
+  distanceCount: 0
+  id: 69
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6763491339076621906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -660,6 +1146,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-6742894562701218800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 37.36666666666669
+  distanceCount: 0
+  id: 51
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6578218600654039223
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -678,6 +1186,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-6566558294424640283
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 46.933333333333366
+  distanceCount: 0
+  id: 58
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6557571580663720000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,10 +1222,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 29.03333333333333
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6537258255447261051
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,6 +1246,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-6500093062012729374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -828,6 +1362,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-6423558042237914308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -842,10 +1378,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 39.800000000000004
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6321443426041729191
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,6 +1402,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-6300466354747581494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -905,6 +1445,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-6090590341348088955
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -919,10 +1461,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 20.700000000000003
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-6060045863864695636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -941,6 +1485,68 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-5949854652990702107
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 50.81666666666668
+  distanceCount: 0
+  id: 59
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-5917241144523398058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 27.799999999999997
+  distanceCount: 0
+  id: 48
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-5911716756892454841
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 53.533333333333346
+  distanceCount: 0
+  id: 65
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-5852454226564865199
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -959,6 +1565,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5852331754882104692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -973,10 +1581,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 48.51666666666669
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-5798861857676964504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -995,6 +1605,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5766990324368398134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1013,6 +1625,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5757878399226344734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1031,6 +1645,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5724884122414510693
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,10 +1661,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 43.950000000000045
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-5623041625355068161
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1067,6 +1685,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5381883198286356742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1085,6 +1705,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5273041735104334336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1103,6 +1725,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-5141980158315950786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1117,10 +1741,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 51.116666666666674
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-5115855641858188060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 61.083333333333336
+  distanceCount: 0
+  id: 77
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 2
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-5028371217373521035
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,7 +1785,29 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
---- !u!114 &-4960174698961966701
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-4946792990745945691
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 51.41666666666667
+  distanceCount: 0
+  id: 61
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-4940417301527131680
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1149,14 +1817,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
-  m_Name: right
+  m_Name: right(Clone)
   m_EditorClassIdentifier: 
-  m_Time: 10.966666666666665
+  m_Time: 49.98333333333334
   distanceCount: 0
-  id: 71
+  id: 34
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-4927403906329742449
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1175,6 +1845,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4916863866491679016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1189,10 +1861,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 30.25
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-4870485294569994014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1211,6 +1885,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4796099296748942925
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1225,10 +1901,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 46.933333333333366
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-4748030981900317261
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1247,6 +1925,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4746741986152476390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,7 +1945,29 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
---- !u!114 &-4357696794261383697
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-4635153876504677942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 51.41666666666667
+  distanceCount: 0
+  id: 62
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-4631582564956992906
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1275,14 +1977,76 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
-  m_Name: left
+  m_Name: left(Clone)
   m_EditorClassIdentifier: 
-  m_Time: 14.516666666666667
+  m_Time: 56.516265232426434
   distanceCount: 0
-  id: 101
+  id: 68
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-4430133248811508829
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 26.516666666666673
+  distanceCount: 0
+  id: 46
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-4390612717131683674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 54.80000000000001
+  distanceCount: 0
+  id: 66
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-4330559837918810515
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 25.41666666666668
+  distanceCount: 0
+  id: 44
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-4320728197114674288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,6 +2065,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4219568113790967371
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1319,6 +2085,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4192619447961468217
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1337,6 +2105,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4180092427496609083
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1355,6 +2125,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-4054327736264314829
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1369,10 +2141,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 48.21666666666669
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3964701175864995999
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1387,10 +2161,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 26.516666666666673
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-3963673509207010332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 52.91666666666667
+  distanceCount: 0
+  id: 63
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-3959954905600030610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 14.5
+  distanceCount: 0
+  id: 41
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3946486824555273605
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1409,6 +2225,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-3925665641656355300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,6 +2245,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-3876172957171006130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1461,6 +2281,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-3857301444649995392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1475,10 +2297,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 27.799999999999997
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-3856841635210809702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 23.083333333333336
+  distanceCount: 0
+  id: 21
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-3848803729715645275
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right/add right
+  m_EditorClassIdentifier: 
+  m_Time: 11.033333333333333
+  distanceCount: 0
+  id: 23
+  roadSide: 1
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-3718839250167638658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 24.044918483775106
+  distanceCount: 0
+  id: 46
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3698935729032336262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1493,10 +2377,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 49.100000000000016
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3632055370294937107
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1515,6 +2401,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-3532983177392079715
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1533,6 +2421,48 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-3450367921821683375
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 46.933333333333366
+  distanceCount: 0
+  id: 54
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-3304990669461916376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 55.95
+  distanceCount: 0
+  id: 66
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3283248356692984501
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1551,6 +2481,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-3282949307980507108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 41.63333333333335
+  distanceCount: 0
+  id: 35
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3156513197456267909
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1574,8 +2526,6 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: -4357696794261383697}
-    - {fileID: 6651346807543245439}
     - {fileID: 7618642794356958195}
     - {fileID: 1718176967226712075}
     - {fileID: -1323001330078460205}
@@ -1611,8 +2561,49 @@ MonoBehaviour:
     - {fileID: -7457381083953776002}
     - {fileID: 8205768074991683335}
     - {fileID: -7205324847121938556}
+    - {fileID: 7812616263789725000}
+    - {fileID: -3959954905600030610}
   roadSide: 0
-  isActive: 0
+  arrowMarkers:
+  - {fileID: 7618642794356958195}
+  - {fileID: 1718176967226712075}
+  - {fileID: -1323001330078460205}
+  - {fileID: -7261354485884735688}
+  - {fileID: -3964701175864995999}
+  - {fileID: -3857301444649995392}
+  - {fileID: 1787189109831080036}
+  - {fileID: 5756086106589763156}
+  - {fileID: -8667411219831924881}
+  - {fileID: 1202306720980397454}
+  - {fileID: -8104776165939035964}
+  - {fileID: -5724884122414510693}
+  - {fileID: 5434560117229332761}
+  - {fileID: 3024252858605284750}
+  - {fileID: -2300106524488617680}
+  - {fileID: -4796099296748942925}
+  - {fileID: -7180746609273053670}
+  - {fileID: 419245063447170386}
+  - {fileID: -5141980158315950786}
+  - {fileID: 4439688600502666614}
+  - {fileID: 4105658234727643205}
+  - {fileID: 4369606049001928837}
+  - {fileID: -7378763352763933282}
+  - {fileID: 7304463634962981561}
+  - {fileID: 3127726322717225225}
+  - {fileID: 6894500226555287333}
+  - {fileID: 6407481280639748462}
+  - {fileID: -8442828668973261573}
+  - {fileID: 7271270267445267303}
+  - {fileID: 7189851556699158213}
+  - {fileID: -2678127126542791839}
+  - {fileID: -1133219502108818365}
+  - {fileID: -7457381083953776002}
+  - {fileID: 8205768074991683335}
+  - {fileID: -7205324847121938556}
+  - {fileID: 7812616263789725000}
+  - {fileID: -3959954905600030610}
+  arrowCurrentIndex: 37
+  chartPlayBack: {fileID: 0}
 --- !u!114 &-3065851009157955051
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1627,10 +2618,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 41.63333333333335
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-2992491263682539656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 60.71666666666667
+  distanceCount: 0
+  id: 72
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1.6
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2991866681251564190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1649,6 +2662,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2936765329395628739
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1667,6 +2682,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2932536852954481090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1685,6 +2702,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2927094270383591268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1699,10 +2718,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 49.98333333333334
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2847058484337220314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2151,49 +3172,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.7344148464190496
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2220,49 +3205,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.6000000000000014
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2289,49 +3238,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.3333333333333286
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2358,49 +3271,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5000000000000071
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2427,25 +3304,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2467,6 +3326,26 @@ MonoBehaviour:
     m_DisplayName: GFCamera
   m_Markers:
     m_Objects: []
+--- !u!114 &-2818958731089754953
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 21.81666666666667
+  distanceCount: 0
+  id: 20
+  roadSide: 1
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2811755634756333435
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2481,10 +3360,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 41.00000000000001
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2786078871871622036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2503,6 +3384,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2748724378440604669
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2521,6 +3404,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-2735955222216599065
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 61.61666666666667
+  distanceCount: 0
+  id: 74
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2678127126542791839
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2535,10 +3440,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 60.71666666666667
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1.6
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2623640786631920378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2557,6 +3464,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2501180179057155660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2575,6 +3484,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2484725937945820058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2593,6 +3504,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2471846112671509289
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2611,6 +3524,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-2441629267137292952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2629,6 +3544,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-2306133375859589007
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 61.61666666666667
+  distanceCount: 0
+  id: 76
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2300106524488617680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2643,10 +3580,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 46.3666666666667
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2271298643881794959
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2665,6 +3604,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-2191543939529521078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 54.000000000000014
+  distanceCount: 0
+  id: 64
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-2099074357332035160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2683,6 +3644,48 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-2027017803096608038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 24.044918483775106
+  distanceCount: 0
+  id: 44
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-2008861033799080067
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 12.266666666666667
+  distanceCount: 0
+  id: 23
+  roadSide: 1
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-1916438813522661024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2701,6 +3704,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-1812828768076164060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2719,6 +3724,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-1711214762674367795
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2737,6 +3744,48 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-1522063493493364077
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 44.53333333333336
+  distanceCount: 0
+  id: 54
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &-1510290778335702831
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 44.53333333333336
+  distanceCount: 0
+  id: 53
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-1504226259040045965
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2755,6 +3804,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-1359784991663585287
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2773,6 +3824,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-1337982266364797955
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2791,6 +3844,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-1323001330078460205
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2805,10 +3860,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 24.044918483775106
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-1300541510814708538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2827,7 +3884,9 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
---- !u!114 &-1137241100629385658
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-1268201346331996763
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2836,15 +3895,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
-  m_Name: left
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
   m_EditorClassIdentifier: 
-  m_Time: 12.233333333333334
+  m_Time: 26.516666666666673
   distanceCount: 0
-  id: 71
-  roadSide: 1
-  arrowSide: 0
+  id: 45
+  roadSide: 0
+  arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-1133219502108818365
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2859,10 +3920,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 61.083333333333336
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 2
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-922729305345111350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2881,6 +3944,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-858607005909931905
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2897,6 +3962,26 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: a7e5f2e56479d314181ff0f8ccf23004
     defaultValue: {fileID: 0}
+--- !u!114 &-687805075159064762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 57.650000000000006
+  distanceCount: 19
+  id: 71
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-616274843438443199
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2915,6 +4000,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-607094196787945294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2933,6 +4020,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-560285225547151639
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2951,6 +4040,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-479856288442452985
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2969,6 +4060,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-432830413458293549
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 30.25
+  distanceCount: 0
+  id: 23
+  roadSide: 1
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-430412632250335141
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2987,6 +4100,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-401846221201793724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 36.11666666666669
+  distanceCount: 0
+  id: 50
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-344341510326855326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3001,10 +4136,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 32.68333333333333
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-261139886062586417
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3023,6 +4160,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-259106943087340315
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3041,6 +4180,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-187629457653229896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up/Add up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 11.55
+  distanceCount: 0
+  id: 75
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-162642186663622927
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3059,6 +4220,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-71959129685629467
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3077,6 +4240,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-60210336494354323
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3095,6 +4260,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &-58749112581241764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3113,6 +4280,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3155,6 +4324,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &22105807431428470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3173,6 +4344,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &30332256723214383
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3191,6 +4364,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &247017706949355629
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3209,6 +4384,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &352822104829895763
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3227,6 +4404,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &361340295179745495
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3245,6 +4424,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &381600692085006453
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 45.73333333333338
+  distanceCount: 0
+  id: 56
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &419245063447170386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3259,11 +4460,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 50.81666666666668
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
---- !u!114 &716513354056918598
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &548967571931249537
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3272,15 +4475,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
-  m_Name: left
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
   m_EditorClassIdentifier: 
-  m_Time: 9.693161490435402
+  m_Time: 18.116666666666667
   distanceCount: 0
-  id: 71
-  roadSide: 1
-  arrowSide: 0
+  id: 43
+  roadSide: 0
+  arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &737609989072065952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3299,6 +4504,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &865030888007962303
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3317,6 +4524,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &992846853525967077
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3335,6 +4544,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &1028623353844590272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 55.33333333333334
+  distanceCount: 0
+  id: 68
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &1116357395039258887
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3353,6 +4584,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &1120645327152290347
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3371,6 +4604,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &1178723304091289150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 54.000000000000014
+  distanceCount: 0
+  id: 64
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &1202306720980397454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3385,10 +4640,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 37.36666666666669
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &1205011655995625114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 31.43333333333333
+  distanceCount: 0
+  id: 25
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &1249359477808331586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3412,9 +4689,6 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: -4960174698961966701}
-    - {fileID: -1137241100629385658}
-    - {fileID: 6554893330756568671}
     - {fileID: 8585785736708177067}
     - {fileID: -6090590341348088955}
     - {fileID: 5588436077865259182}
@@ -3434,9 +4708,77 @@ MonoBehaviour:
     - {fileID: 7482210732022672526}
     - {fileID: -3698935729032336262}
     - {fileID: -2927094270383591268}
-    - {fileID: 716513354056918598}
+    - {fileID: 2617066973187089580}
+    - {fileID: -3848803729715645275}
+    - {fileID: -2008861033799080067}
+    - {fileID: 8953931546259842491}
   roadSide: 1
-  isActive: 0
+  arrowMarkers:
+  - {fileID: 8585785736708177067}
+  - {fileID: -6090590341348088955}
+  - {fileID: 5588436077865259182}
+  - {fileID: 5718864172146957171}
+  - {fileID: -6557571580663720000}
+  - {fileID: -4916863866491679016}
+  - {fileID: 7608466792402384573}
+  - {fileID: -344341510326855326}
+  - {fileID: 2160508460178841541}
+  - {fileID: -8467171494420978118}
+  - {fileID: -6423558042237914308}
+  - {fileID: -2811755634756333435}
+  - {fileID: -3065851009157955051}
+  - {fileID: -7792088594192213557}
+  - {fileID: -4054327736264314829}
+  - {fileID: -5852331754882104692}
+  - {fileID: 7482210732022672526}
+  - {fileID: -3698935729032336262}
+  - {fileID: -2927094270383591268}
+  - {fileID: 2617066973187089580}
+  - {fileID: -3848803729715645275}
+  - {fileID: -2008861033799080067}
+  - {fileID: 8953931546259842491}
+  arrowCurrentIndex: 23
+  chartPlayBack: {fileID: 0}
+--- !u!114 &1251591220802040764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 33.71666666666668
+  distanceCount: 0
+  id: 48
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &1272443223434547093
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up
+  m_EditorClassIdentifier: 
+  m_Time: 9.95
+  distanceCount: 0
+  id: 38
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &1454309917602465605
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3455,6 +4797,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &1538535828123324813
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3473,6 +4817,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &1718176967226712075
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3487,10 +4833,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 18.116666666666667
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &1726739295962133080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3521,10 +4869,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 33.71666666666668
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &1897122909748098930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3543,6 +4893,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &1906623741517531364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3561,6 +4913,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2032740692279002787
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3579,6 +4933,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2036935827812095302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3597,6 +4953,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2160508460178841541
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3611,10 +4969,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 38.61666666666667
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &2230272201644948358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 19.416666666666664
+  distanceCount: 0
+  id: 19
+  roadSide: 1
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &2276282157790247834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3633,6 +5013,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2281547056219491580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3651,6 +5033,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2340785395004721316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3669,6 +5053,48 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &2450310823711497175
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 15.716666666666665
+  distanceCount: 0
+  id: 41
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &2480208572115632790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 33.71666666666668
+  distanceCount: 0
+  id: 47
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &2564845082267340207
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3703,6 +5129,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &2574785260482418389
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 50.51666666666668
+  distanceCount: 0
+  id: 56
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &2611845822115721771
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3721,6 +5169,48 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &2614877396191727778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 48.21666666666669
+  distanceCount: 0
+  id: 31
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &2617066973187089580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 9.65
+  distanceCount: 0
+  id: 23
+  roadSide: 1
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &2620197080719857679
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3739,6 +5229,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2697759383256371987
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3757,6 +5249,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2725601645394885373
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3775,6 +5269,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2774757728489161536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3793,6 +5289,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &2805977804144232473
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3811,6 +5309,68 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &2806959425343706888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 54.80000000000001
+  distanceCount: 0
+  id: 67
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &2904398503272858778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 32.68333333333333
+  distanceCount: 0
+  id: 26
+  roadSide: 1
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &2918664962040314084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 46.3666666666667
+  distanceCount: 0
+  id: 58
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &2931900514026293581
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3829,6 +5389,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &3005200740271997780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 57.116666666666674
+  distanceCount: 0
+  id: 70
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &3024252858605284750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3843,10 +5425,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 45.73333333333338
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &3026026900415580934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3865,6 +5449,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &3090096772731781329
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 39.1
+  distanceCount: 0
+  id: 28
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &3119227651658815534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3883,6 +5489,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3127726322717225225
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3897,10 +5505,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 54.80000000000001
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &3158843744502078537
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3935,6 +5545,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3174888972360048603
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3953,6 +5565,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3221040419384783704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3971,6 +5585,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3277408267706087750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3989,6 +5605,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3349411750444014364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4007,6 +5625,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3432650540707383470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4025,6 +5645,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3556427934783459752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4043,6 +5665,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3640518969403110438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4061,6 +5685,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3649969760233508806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4079,6 +5705,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3671877132692530901
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4097,6 +5725,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3710473348153258087
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4115,6 +5745,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3754237073608831216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4133,6 +5765,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &3759259135806986667
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 39.800000000000004
+  distanceCount: 0
+  id: 29
+  roadSide: 1
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &3837539362886778399
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4151,6 +5805,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3890060760929224145
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4169,6 +5825,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3923572861705958603
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4187,6 +5845,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &3943356286202494619
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4222,6 +5882,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &4105658234727643205
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4236,10 +5898,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 52.31666666666668
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &4121967507840396029
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4258,6 +5922,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &4123913900325570595
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 50.51666666666668
+  distanceCount: 0
+  id: 57
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &4251072480358455754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4274,6 +5960,26 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: 668a7dd0eabe7854a9bb5de10c11a8f0
     defaultValue: {fileID: 0}
+--- !u!114 &4269325568579055475
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 60.71666666666667
+  distanceCount: 0
+  id: 72
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1.6
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &4269394990595486770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4290,6 +5996,26 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: 0654849caf8020e40a6d40ac9b5d3286
     defaultValue: {fileID: 0}
+--- !u!114 &4358569181793897533
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 52.91666666666667
+  distanceCount: 0
+  id: 63
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &4369606049001928837
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4304,10 +6030,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 52.91666666666667
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &4398910613231905423
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 25.41666666666668
+  distanceCount: 0
+  id: 45
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &4426519520481598801
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 29.03333333333333
+  distanceCount: 0
+  id: 24
+  roadSide: 1
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &4439688600502666614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4322,10 +6090,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 51.41666666666667
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &4553287227623611952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4344,6 +6114,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &4583499598579238206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4362,6 +6134,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &4599775264624003094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4380,6 +6154,48 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &4797325441425605098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 27.799999999999997
+  distanceCount: 0
+  id: 47
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &4840805107221445963
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 43.31666666666672
+  distanceCount: 0
+  id: 52
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5055475716984198073
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4398,6 +6214,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &5298295989877377369
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4416,6 +6234,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &5390640783690983750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4434,6 +6254,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &5434560117229332761
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4448,10 +6270,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 44.53333333333336
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5470183110297730182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4486,6 +6310,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &5502074795844696512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 62.06666666666666
+  distanceCount: 0
+  id: 74
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5533670852630089245
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4504,6 +6350,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &5588436077865259182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4518,10 +6366,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 21.81666666666667
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5624440108066507893
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4540,6 +6390,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &5709597879546141107
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up/Add up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 11.55
+  distanceCount: 0
+  id: 77
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5718864172146957171
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4554,10 +6426,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 23.083333333333336
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5756086106589763156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4572,10 +6446,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 34.93333333333334
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &5800332740219541604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 34.93333333333334
+  distanceCount: 0
+  id: 49
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &5859458419635936081
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4594,6 +6490,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6069732475327274802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4612,6 +6510,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6070589498026477209
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4630,6 +6530,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6197897197181260252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4648,6 +6550,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6242508342797480837
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4666,6 +6570,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6294851990795291185
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4684,6 +6590,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6407481280639748462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4698,10 +6606,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 55.95
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &6433208805861685604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4720,6 +6630,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6486908983720905288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4738,6 +6650,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6544999279151357987
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4756,24 +6670,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
---- !u!114 &6554893330756568671
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
-  m_Name: right
-  m_EditorClassIdentifier: 
-  m_Time: 13.433333333333334
-  distanceCount: 0
-  id: 71
-  roadSide: 1
-  arrowSide: 3
-  speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6555420493745900425
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4792,6 +6690,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6644804264213685135
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4810,24 +6710,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
---- !u!114 &6651346807543245439
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
-  m_Name: right
-  m_EditorClassIdentifier: 
-  m_Time: 15.716666666666665
-  distanceCount: 0
-  id: 101
-  roadSide: 0
-  arrowSide: 3
-  speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6673475133830279134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4846,6 +6730,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6847767462219170887
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4864,6 +6750,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &6894500226555287333
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4878,10 +6766,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 55.33333333333334
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &6974352601332344119
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 16.900000000000006
+  distanceCount: 0
+  id: 43
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &7055566601211540355
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 56.516265232426434
+  distanceCount: 0
+  id: 69
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &7135775478684759823
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 46.3666666666667
+  distanceCount: 0
+  id: 57
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &7140979276786206308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 52.31666666666668
+  distanceCount: 0
+  id: 62
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7189851556699158213
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4896,10 +6866,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 57.650000000000006
   distanceCount: 19
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7223445113019420024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4918,6 +6890,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &7271270267445267303
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4932,10 +6906,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 57.116666666666674
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7304463634962981561
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4950,10 +6926,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 54.000000000000014
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7482210732022672526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4968,10 +6946,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 48.850000000000016
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7532627042031145564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4990,6 +6970,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &7538596836703519806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5008,6 +6990,8 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &7578110037780198490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5026,6 +7010,28 @@ MonoBehaviour:
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &7590919563656866453
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 61.083333333333336
+  distanceCount: 0
+  id: 73
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 2
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7608466792402384573
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5040,10 +7046,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 31.43333333333333
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7618642794356958195
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5058,10 +7066,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 16.900000000000006
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &7812616263789725000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right/add right
+  m_EditorClassIdentifier: 
+  m_Time: 15.683333333333334
+  distanceCount: 0
+  id: 41
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &7823199746552396036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5080,6 +7110,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &7827120300378198924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5098,6 +7130,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &7890077146235484070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5116,6 +7150,48 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &7964499183724531939
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 57.116666666666674
+  distanceCount: 0
+  id: 70
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &8048421357733809411
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 51.116666666666674
+  distanceCount: 0
+  id: 60
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &8075045039992455507
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5134,6 +7210,28 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &8110131121984450946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041a6cd134e398f45a05e1a0d5c7bb37, type: 3}
+  m_Name: up(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 55.33333333333334
+  distanceCount: 0
+  id: 67
+  roadSide: 0
+  arrowSide: 2
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &8205768074991683335
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5148,10 +7246,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 62.06666666666666
   distanceCount: 0
-  id: 101
+  id: 41
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &8218377744359290157
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 20.700000000000003
+  distanceCount: 0
+  id: 22
+  roadSide: 1
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &8309180236540004955
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 37.36666666666669
+  distanceCount: 0
+  id: 51
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &8323821186523319265
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 11.7
+  distanceCount: 0
+  id: 38
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &8466655290094261892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5170,6 +7330,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &8473310720155210270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5188,6 +7350,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &8480886084678875809
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5206,6 +7370,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &8585785736708177067
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5220,10 +7386,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 19.416666666666664
   distanceCount: 0
-  id: 71
+  id: 23
   roadSide: 1
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &8699465064466183148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 53.533333333333346
+  distanceCount: 0
+  id: 65
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &8818150241160980885
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5242,6 +7430,8 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
 --- !u!114 &8838566802979947170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5260,3 +7450,85 @@ MonoBehaviour:
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
+  isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &8953931546259842491
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right/add right
+  m_EditorClassIdentifier: 
+  m_Time: 13.283333333333333
+  distanceCount: 0
+  id: 23
+  roadSide: 1
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &8990171223289275458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
+  m_Name: down(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 36.11666666666669
+  distanceCount: 0
+  id: 50
+  roadSide: 0
+  arrowSide: 1
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &9117642056457174276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 62.06666666666666
+  distanceCount: 0
+  id: 75
+  roadSide: 0
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
+--- !u!114 &9131568861948784733
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left(Clone)
+  m_EditorClassIdentifier: 
+  m_Time: 62.583333333333336
+  distanceCount: 0
+  id: 73
+  roadSide: 0
+  arrowSide: 0
+  speedMultiplier: 3
+  isInit: 1
+  arrow: {fileID: 0}

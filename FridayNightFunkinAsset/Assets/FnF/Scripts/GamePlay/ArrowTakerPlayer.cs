@@ -48,8 +48,8 @@ namespace FridayNightFunkin.GamePlay
                         Vector2 y = Camera.main.WorldToScreenPoint(arrow.transform.position);
                         distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
 
-                        int accuracy = scoreManager.СalculateAccuracy(distanceFromArrowToTaker);
-                        scoreManager.СalculateTotalAccuracy(scoreManager.accuracyList);
+                        int accuracy = scoreManager.CalculateAccuracy(distanceFromArrowToTaker);
+                        scoreManager.CalculateTotalAccuracy(scoreManager.accuracyList);
                         float scoreByAccuracy = (chartPlayBack.levelData.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
 
                         scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
@@ -71,13 +71,13 @@ namespace FridayNightFunkin.GamePlay
 /*                    foreach (var currentPlayer in chartPlayBack.currentPlayer)
                     {
                         if(currentPlayer.isActive)
-                            currentPlayer.PlayMissAnimation(arrowSide); //Кароче функция для нескольких игроков прошу потом доделай момент
+                            currentPlayer.PlayMissAnimation(arrowSide); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                     }*/
                     scoreManager.ReduceValueToSlider(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetMissForce());
                     scoreManager.AddMiss();
-                    scoreManager.СalculateAccuracy(500);
+                    scoreManager.CalculateAccuracy(500);
                     AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");
-                    scoreManager.СalculateTotalAccuracy(scoreManager.accuracyList);
+                    scoreManager.CalculateTotalAccuracy(scoreManager.accuracyList);
                     scoreManager.ResetCombo();
                 }
             }

@@ -26,11 +26,11 @@ MonoBehaviour:
     enemyForce: 0
     _chartSpeed: 4.72
     playerPrefab:
-    - {fileID: 0}
+    - {fileID: 3826677505114352928, guid: 55fb02f67de21734eaa5b0dbbb2a568e, type: 3}
     girlFriendPrefab:
     - {fileID: 0}
     enemyPrefab:
-    - {fileID: 0}
+    - {fileID: 1999713651586044079, guid: 8dc6da5d54c7de94b8527c15e9852aa8, type: 3}
     playerPos:
     - {fileID: 0}
     girlPos:

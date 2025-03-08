@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public class Character_Fnf_Girlfriend: Ñharacter_FNF
+    public class Character_Fnf_Girlfriend: Ð¡haracter_FNF
     {
         internal CharacterSide characterSide = CharacterSide.Gf;
         public override RoadSide roadSide => RoadSide.Player;

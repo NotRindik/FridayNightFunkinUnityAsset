@@ -2,13 +2,13 @@ using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Timeline;
 
 [TrackColor(1f, 0.5f, 0f)]
-[TrackClipType(typeof(ArrowMarker))]
-[TrackBindingType(typeof(ChartPlayBack))]
+[TrackBindingType(typeof(Null))]
 [Icon("Assets/FnF/Editor/icon-bf.png")]
 public class ArrowMarkerTrackAsset : MarkerTrack
 {

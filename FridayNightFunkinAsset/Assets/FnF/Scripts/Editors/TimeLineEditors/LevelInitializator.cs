@@ -29,6 +29,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 {
                     currentPlayer.Add((Character_Fnf_PlayAble)Instantiate(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Player, i), chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPos(CharacterSide.Player, i).position, Quaternion.identity));
                     currentPlayer[i].transform.SetParent(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPos(CharacterSide.Player, i));
+                    currentPlayer[i].chartPlayBack = chartPlayback;
                 }
             }
             for (int i = 0; i < chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterLenth(CharacterSide.Enemy); i++)
@@ -37,6 +38,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 {
                     currentEnemy.Add((Character_Fnf_Enemy)Instantiate(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Enemy, i), chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPos(CharacterSide.Enemy, i).position, Quaternion.identity));
                     currentEnemy[i].transform.SetParent(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPos(CharacterSide.Enemy, i));
+                    currentEnemy[i].chartPlayBack = chartPlayback;
                 }
             }
             for (int i = 0; i < chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterLenth(CharacterSide.Gf); i++)
@@ -45,6 +47,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 {
                     currentGirlFriend.Add((Character_Fnf_Girlfriend)Instantiate(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Gf, i), chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPos(CharacterSide.Gf, i).position, Quaternion.identity));
                     currentGirlFriend[i].transform.SetParent(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetCharacterPos(CharacterSide.Gf, i));
+                    currentGirlFriend[i].chartPlayBack = chartPlayback;
                 }
             }
         }

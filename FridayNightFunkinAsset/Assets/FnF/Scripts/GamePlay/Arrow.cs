@@ -1,9 +1,11 @@
+using System;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum ArrowSide
 {
@@ -34,11 +36,18 @@ namespace FridayNightFunkin.GamePlay
         public ArrowMarker markerRef;
 
         //It's should be public, cuz it's save info from editmode to playmode
-        public Vector2 startPos;
+        public Vector2 startPos
+        {
+            get
+            {
+                
+                return new Vector3(arrowTaker.transform.position.x, arrowTaker.transform.position.y - _chartSpawnDistance * (camera.orthographicSize / 5), 0);
+            }
+        }
 
-        public Vector2 endPos;
+        public Vector2 endPos => arrowTaker.transform.position;
 
-        public double startTime => markerRef ? endTime - ((10 / chartPlayback.levelData.stage[chartPlayback.levelDataWindow.selectedStageIndex].chartSpeed) * (1 / markerRef.speedMultiplier)): 0;
+        public double startTime => markerRef ? endTime - ((10 / chartPlayback.levelData.stage[chartPlayback.levelData.selectedStageIndex].chartSpeed) * (1 / markerRef.speedMultiplier)): 0;
 
         public double endTime => markerRef ? markerRef.time : 0;
 
@@ -48,20 +57,25 @@ namespace FridayNightFunkin.GamePlay
 
         internal SpriteRenderer tail;
 
+        [FormerlySerializedAs("_arrowTaker")] public Transform arrowTaker;
 
+        [SerializeField] private float _chartSpawnDistance;
         public float tailDistanceToArrowTakerRaw { get; private set; }
         public float tailDistance { get; private set; }
 
-        public void Intialize(SpriteRenderer spriteRenderer,ArrowMarker arrowMarker, Vector2 startPos, Vector2 endPos, ChartPlayBack chartPlayBack)
+        public Camera camera;
+
+        public void Intialize(ArrowMarker arrowMarker,Transform arrowTaker,float chartSpawnDistance, ChartPlayBack chartPlayBack)
         {
+            camera = Camera.main;
             isWork = true;
             isViewedOnce = false;
-            spriteRendererOfArrow = spriteRenderer;
+            spriteRendererOfArrow = GetComponent<SpriteRenderer>();
             distanceCount = arrowMarker.distanceCount;
             arrowIndex = arrowMarker.id;
-            spriteRenderer.sortingOrder = spriteRenderer.sortingOrder + arrowIndex;
-            this.startPos = startPos;
-            this.endPos = endPos;
+            spriteRendererOfArrow.sortingOrder += arrowIndex;
+            this.arrowTaker = arrowTaker;
+            _chartSpawnDistance = chartSpawnDistance;
             this.chartPlayback = chartPlayBack;
             markerRef = arrowMarker;
             markerRef.arrow = this;
@@ -70,12 +84,14 @@ namespace FridayNightFunkin.GamePlay
         public void OnParamChanged(double time,float speedMultiplier,uint distanceCount)
         {
             this.distanceCount = distanceCount;
-            float speedSave = chartPlayback.levelData.stage[chartPlayback.levelDataWindow.selectedStageIndex].chartSpeed;
+            float speedSave = chartPlayback.levelData.stage[chartPlayback.levelData.selectedStageIndex].chartSpeed;
             float speedCofency = 10 / speedSave;
         }
 
         private void Update()
         {
+            if(!markerRef && gameObject)
+                DestroyImmediate(gameObject);
             GenerateTail();
 
             if (!Application.isPlaying)
@@ -104,10 +120,9 @@ namespace FridayNightFunkin.GamePlay
             }
         }
 
-        public void Destroy()
+        public void OnDestroy()
         {
-            chartPlayback.arrowsList[roadSide].Remove(this);
-            DestroyImmediate(transform.gameObject);
+            chartPlayback.ChartContainer.arrowsList[roadSide].Remove(this);
         }
 
         private void GenerateTail()
@@ -203,7 +218,10 @@ namespace FridayNightFunkin.GamePlay
 
         public void MoveArrowByTime(double timelineTime)
         {
-            if (endTime == 0 && startTime == 0)
+            if(!markerRef && gameObject)
+                DestroyImmediate(gameObject);
+            
+            if (Math.Abs(endTime - startTime) < double.Epsilon)
             {
                 Debug.LogError($"endTime or startTime equals to zero");
                 transform.position = Vector2.zero;
@@ -225,7 +243,7 @@ namespace FridayNightFunkin.GamePlay
             while (isHold || isWork)
             {
                 yield return new WaitForSecondsRealtime(0.1f);
-                if (roadSide == RoadSide.Player) //на будущее ты менял тут энам если сломаеться что-то глянь сюda
+                if (roadSide == RoadSide.Player)
                 {
                     ScoreManager.instance.AddScore(chartPlayback.levelData.addMaxScoreInLongArrow);
                     ScoreManager.instance.AddValueToSlider(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetPlayerForce() / 2);
@@ -237,15 +255,6 @@ namespace FridayNightFunkin.GamePlay
                     FNFUIElement.instance.UpdateUI();
                 }
             } 
-        }
-
-        public void SetStartPos(Vector2 pos)
-        {
-            startPos = pos;
-        }
-        public void SetEndPos(Vector2 pos)
-        {
-            endPos = pos;
         }
     }
 }

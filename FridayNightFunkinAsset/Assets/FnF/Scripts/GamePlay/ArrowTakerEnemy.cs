@@ -25,12 +25,12 @@ namespace FridayNightFunkin.GamePlay
 
         private void Update()
         {
-            foreach (var arrow in chartPlayBack.arrowsList[roadSide])
+            foreach (var arrow in chartPlayBack.ChartContainer.arrowsList[roadSide])
             {
                 if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled)
                     continue;
 
-                var distance = (Camera.main.WorldToScreenPoint(arrow.endPos).y - Camera.main.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1? -1 : 1);
+                var distance = (Camera.WorldToScreenPoint(arrow.endPos).y - Camera.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1? -1 : 1);
                 if (distance < 0)
                 {
                     animator.CrossFade("Pressed", 0);

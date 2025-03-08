@@ -1,9 +1,10 @@
 using System.ComponentModel;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using UnityEngine.Timeline;
 
-namespace FridayNightFunkin.Editor.TimeLineEditor
+namespace FnF.Editors.TimeLineEditors
 {
-    [DisplayName("up")]
+    [DisplayName("up/Add up")]
     [CustomStyle("UpArrow")]
     public class GreenUpArrowMarker : ArrowMarker
     {

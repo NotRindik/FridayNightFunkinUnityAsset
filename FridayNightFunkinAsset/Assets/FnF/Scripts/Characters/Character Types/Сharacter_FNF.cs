@@ -15,7 +15,7 @@ namespace FridayNightFunkin.CHARACTERS
 
         public abstract RoadSide roadSide {get;}
 
-        protected ChartPlayBack chartPlayBack;
+        public ChartPlayBack chartPlayBack;
 
 
         protected virtual void Awake()

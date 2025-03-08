@@ -101,7 +101,7 @@ namespace FridayNightFunkin.Calculations
             }
         }
 
-        public int ÑalculateAccuracy(float distance)
+        public int CalculateAccuracy(float distance)
         {
             if (distance < 20) distance = 0;
 
@@ -163,7 +163,7 @@ namespace FridayNightFunkin.Calculations
         {
             score += (int)addingScore;
         }
-        public float ÑalculateTotalAccuracy(List<int> Accuracy)
+        public float CalculateTotalAccuracy(List<int> Accuracy)
         {
             int multiplyOfList = 0;
             foreach (var item in Accuracy)
