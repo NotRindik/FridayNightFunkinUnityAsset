@@ -13,32 +13,17 @@ namespace FridayNightFunkin.CHARACTERS
         protected const string IDLE = "Idle";
         protected const string ARROW_PRESSED = "Pressed";
 
-        public abstract RoadSide roadSide {get;}
+        public abstract RoadSide roadSide { get; }
 
         public ChartPlayBack chartPlayBack;
+        public PlayAnimPerBeat playAnimPerBeat {  get; private set; }
 
 
-        protected virtual void Awake()
+        public virtual void Init()
         {
-            if(TryGetComponent(out Animator animator))
-            {
-                this.animator = animator;
-            }
-            else
-            {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    if (transform.GetChild(i).TryGetComponent(out Animator animatorChild))
-                    {
-                        this.animator = animatorChild;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"No animator {gameObject}");
-                    }
-                }
-            }
-
+            animator = ComponentFinder.FindComponentAndCheckChilds<Animator>(gameObject);
+            playAnimPerBeat = ComponentFinder.FindComponentAndCheckChilds<PlayAnimPerBeat>(gameObject);
+            playAnimPerBeat.ChangeBPM(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].BPM);
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
         public void PlayNote(ArrowSide arrowSide)

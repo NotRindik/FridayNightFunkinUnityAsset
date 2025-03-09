@@ -1,4 +1,3 @@
-using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
 using System.Collections;
 using UnityEngine;
@@ -62,7 +61,7 @@ namespace FridayNightFunkin
         {
             beatAnimation = animation;
         }
-        public void ChangeBPM(int bpm)
+        public void ChangeBPM(float bpm)
         {
             ownBPM = bpm;
             BPS = ownBPM / 60;

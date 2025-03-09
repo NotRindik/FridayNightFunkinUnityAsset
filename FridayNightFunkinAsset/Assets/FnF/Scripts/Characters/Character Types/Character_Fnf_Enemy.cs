@@ -9,7 +9,6 @@ namespace FridayNightFunkin.CHARACTERS
 {
     public class Character_Fnf_Enemy : Сharacter_FNF
     {
-        private PlayAnimPerBeat playAnimPerBeat;
 
         private float arrowDetectRadiusCalcualted;
 
@@ -21,11 +20,9 @@ namespace FridayNightFunkin.CHARACTERS
 
         private IEnumerable<ArrowTaker> arrowTakers => chartPlayBack.arrowTakerEnemy;
 
-        private void Start()
+        public override void Init()
         {
-            TryGetComponent(out PlayAnimPerBeat playAnimPerBeat);
-            this.playAnimPerBeat = playAnimPerBeat;
-
+            base.Init();
             Activate();
         }
         public void Activate()

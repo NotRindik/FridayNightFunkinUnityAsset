@@ -14,8 +14,6 @@ namespace FridayNightFunkin.CHARACTERS
     {
         private string[] MiSS_ANIMATION = { "LeftFail", "DownFail", "UpFail", "DownFail" };
 
-        private PlayAnimPerBeat playAnimPerBeat;
-
         private bool isDead = false;
 
         private bool isAnimationStart = false;
@@ -38,30 +36,6 @@ namespace FridayNightFunkin.CHARACTERS
 
         public override RoadSide roadSide => RoadSide.Player;
         private IEnumerable<ArrowTaker> arrowTakers => chartPlayBack.arrowTakerPlayer;
-
-
-        protected override void Awake()
-        {
-            base.Awake();
-            if (TryGetComponent(out PlayAnimPerBeat playAnimPerBeat))
-            {
-                this.playAnimPerBeat = playAnimPerBeat;
-            }
-            else
-            {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    if (transform.GetChild(i).TryGetComponent(out PlayAnimPerBeat playAnimPerBeatChild))
-                    {
-                        this.playAnimPerBeat = playAnimPerBeatChild;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"No playAnimPerBeat {gameObject}");
-                    }
-                }
-            }
-        }
 
         public void Activate()
         {
