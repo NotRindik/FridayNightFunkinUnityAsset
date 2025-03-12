@@ -22,8 +22,6 @@ namespace FridayNightFunkin.Calculations
 
         internal bool isDead;
 
-        private Coroutine sliderMoveProcess;
-
 
         public event Action<int> OnCalculateAccuracy;
 
@@ -37,67 +35,6 @@ namespace FridayNightFunkin.Calculations
             {
                 Debug.LogWarning($"Dont create 2 {this} pls!!!!");
                 DestroyImmediate(gameObject);
-            }
-        }
-        public void AddValueToSlider(float value)
-        {
-            if (value < 0)
-            {
-                Debug.LogWarning("Bro, this shit is ADD VALUE, NOT REDUSE U FUCKING SHIT!!, DONT PUT NEGATIVE NUMBERS");
-                return;
-            }
-
-            StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.value + value, 1f);
-        }
-
-        public void StartMoveSliderSmoothly(float targetValue, float initialAdder)
-        {
-            if (sliderMoveProcess != null)
-            {
-                StopCoroutine(sliderMoveProcess);
-            }
-
-            sliderMoveProcess = StartCoroutine(MoveSliderSmoothlyCoroutine(targetValue, initialAdder));
-        }
-
-        public IEnumerator MoveSliderSmoothlyCoroutine(float targetValue, float initialAdder)
-        {
-            while (true)
-            {
-                yield return new WaitForFixedUpdate();
-
-                FNFUIElement.instance.versusSlider.value = Mathf.MoveTowards(FNFUIElement.instance.versusSlider.value, targetValue, initialAdder);
-
-                if (FNFUIElement.instance.versusSlider.value == targetValue)
-                {
-                    break;
-                }
-            }
-        }
-
-        public void ReduceValueToSlider(float value)
-        {
-            if (value < 0)
-            {
-                Debug.LogWarning("AAAAAAAAAAAAAAAAA!!!!! FUCKIN LITLE SHIT, THIS METHOD IS REDUCE VALUE, REDUCE!!! U KNOW WHEN - to - equals +!! - to - is +, SO WHY U PUT NEGATIVE MUMBER");
-                return;
-            }
-            StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.value - value, 1f);
-        }
-        public void ReduceValueToSliderEnemy(float value)
-        {
-            if (value < 0)
-            {
-                Debug.LogWarning("AAAAAAAAAAAAAAAAA!!!!! FUCKIN LITLE SHIT, THIS METHOD IS REDUCE VALUE, REDUCE!!! U KNOW WHEN - to - equals +!! - to - is +, SO WHY U PUT NEGATIVE MUMBER");
-                return;
-            }
-            if(FNFUIElement.instance.versusSlider.value - value <= FNFUIElement.instance.versusSlider.minValue + 1) 
-            {
-                StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.minValue + 1,1);
-            }
-            else if (FNFUIElement.instance.versusSlider.value > FNFUIElement.instance.versusSlider.minValue)
-            {
-                StartMoveSliderSmoothly(FNFUIElement.instance.versusSlider.value - value, 1);
             }
         }
 

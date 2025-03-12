@@ -11,8 +11,6 @@ namespace FridayNightFunkin.UI
         [Header("UIElements")]
         [SerializeField] private TextMeshProUGUI hud;
 
-        [SerializeField] public Slider versusSlider;
-
         public static FNFUIElement instance { get; private set; }
 
         private ScoreManager scoreManager => ScoreManager.instance;
@@ -31,22 +29,7 @@ namespace FridayNightFunkin.UI
 
         private void Start()
         {
-            if (ChangesByGameSettings.instance.downscroll == 1)
-            {
-                ChangeAnchorToTop(hud.rectTransform);
-                hud.rectTransform.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x, -15); //Top
-
-                var slider = versusSlider.transform.parent.GetComponent<RectTransform>();
-                ChangeAnchorToTop(slider);
-                slider.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x, -50); //Top
-            }
             UpdateUI();
-        }
-
-        private void ChangeAnchorToTop(RectTransform rectTransform)
-        {
-            rectTransform.anchorMin = new Vector2(0.5f, 1);
-            rectTransform.anchorMax = new Vector2(0.5f, 1);
         }
 
         public void UpdateUI()
