@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using FridayNightFunkin.CHARACTERS;
@@ -16,6 +17,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             SpawnCharacters();
             chartPlayback.ReloadChart();
+        }
+        private void Awake()
+        {
+            if (isTestStage)
+            {
+                PlayerPrefs.SetInt(ChartPlayBack.STAGE_PLAYER_PREFS_NAME, testingStage);
+            }
         }
 
         public void SpawnCharacters()

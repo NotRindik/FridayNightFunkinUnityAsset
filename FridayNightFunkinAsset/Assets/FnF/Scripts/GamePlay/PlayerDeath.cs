@@ -1,4 +1,3 @@
-using FridayNightFunkin.Settings;
 using UnityEngine;
 using UnityEngine.Events;
 

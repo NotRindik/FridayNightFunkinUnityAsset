@@ -53,18 +53,22 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
             }
-            arrowSwitch = null;
         }
 
         private void OnEnable()
         {
-            arrowSwitch = new ArrowSwitch(this);
+            if (!Application.isPlaying)
+            {
+                arrowSwitch = new ArrowSwitch(this);   
+            }
+            playerMissTaker = new PlayerMissTaker(this);
             roadManager = new RoadManager(playableDirector,this);
         }
 
         private void OnDisable()
         {
             arrowSwitch = null;
+            playerMissTaker = null;
         }
 
         private void OnValidate()
@@ -125,7 +129,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         private void Update()
         {
-            if (Application.isEditor)
+            if (!Application.isPlaying)
             {
                 OnEditModeUpdate();
             }
@@ -145,6 +149,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
             SaveArrowsOnSpeedChange();
             arrowSwitch.SwitchAllArrows(TurnOfArrows);
+            arrowSwitch.OnUpdate();
         }
 
         private void OnBothUpdates()
@@ -155,8 +160,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 MoveArrows();
             }
-
-            arrowSwitch.OnUpdate();
         }
 
         private void OnChartVariantChange()

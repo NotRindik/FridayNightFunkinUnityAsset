@@ -1,4 +1,5 @@
 using FridayNightFunkin.Calculations;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace FridayNightFunkin.GamePlay
 
         private bool isPause;
         public override RoadSide roadSide => RoadSide.Player;
+
+        public LevelInitializator LevelInitializator;
         protected void Start()
         {
             inputActions.Enable();
@@ -43,13 +46,16 @@ namespace FridayNightFunkin.GamePlay
                     if (arrowSide == arrow.arrowSide)
                     {
                         isHold = true;
-                        ActivateSplash(arrowSide);
                         Vector2 x = Camera.main.WorldToScreenPoint(transform.position);
                         Vector2 y = Camera.main.WorldToScreenPoint(arrow.transform.position);
                         distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
 
                         int accuracy = scoreManager.CalculateAccuracy(distanceFromArrowToTaker);
                         scoreManager.CalculateTotalAccuracy(scoreManager.accuracyList);
+                        if (accuracy == 100)
+                        {
+                            ActivateSplash(arrowSide);   
+                        }
                         float scoreByAccuracy = (chartPlayBack.levelData.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
 
                         scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
@@ -68,11 +74,11 @@ namespace FridayNightFunkin.GamePlay
                 animator.CrossFade("NoArrowPress", 0);
                 if(ChangesByGameSettings.instance.ghostTapping == 1) 
                 { 
-/*                    foreach (var currentPlayer in chartPlayBack.currentPlayer)
+                    foreach (var currentPlayer in LevelInitializator.currentPlayer)
                     {
                         if(currentPlayer.isActive)
                             currentPlayer.PlayMissAnimation(arrowSide); //������ ������� ��� ���������� ������� ����� ����� ������� ������
-                    }*/
+                    }
                     scoreManager.ReduceValueToSlider(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetMissForce());
                     scoreManager.AddMiss();
                     scoreManager.CalculateAccuracy(500);

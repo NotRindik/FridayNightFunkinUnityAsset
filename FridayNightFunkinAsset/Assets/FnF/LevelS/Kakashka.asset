@@ -42,17 +42,3 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4fb8efdfb2af09c4ba52541cb0306ae2, type: 2}
     - {fileID: 11400000, guid: 32329f40238faec4dbde4f04e6015615, type: 2}
     backGroundPrefab: []
-  - bpm: 0
-    backgroundObjectList: []
-    playerForce: 2
-    missForce: 2
-    enemyForce: 0
-    _chartSpeed: 4
-    playerPrefab: []
-    girlFriendPrefab: []
-    enemyPrefab: []
-    playerPos: []
-    girlPos: []
-    enemyPos: []
-    chartVariants: []
-    backGroundPrefab: []

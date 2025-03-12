@@ -3,6 +3,7 @@ using UnityEngine;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using System.Collections.Generic;
 using System;
+using UnityEditor.SceneManagement;
 
 public class LevelDataWindow : EditorWindow
 {
@@ -224,6 +225,12 @@ public class LevelDataWindow : EditorWindow
         }
         RenderTooltip();
         EditorGUILayout.EndVertical();
+        
+        var isDelete = GUILayout.Button("Delete current stage");
+        if (isDelete)
+        {
+            DeleteStage(stage);
+        }
     }
 
     private void DrawArrayField<T>(ref T[] arr, string arrName = "", bool allowObjectFromScene = false) where T : UnityEngine.Object
@@ -360,6 +367,15 @@ public class LevelDataWindow : EditorWindow
         stages.Add(new LevelStage());
         levelData.stage = stages.ToArray();
         levelData.selectedStageIndex = stages.Count - 1;
+    }
+    private void DeleteStage(LevelStage stage)
+    {
+        var stages = new List<LevelStage>(levelData.stage);
+        stages.Remove(stage);
+        levelData.stage = stages.ToArray();
+        levelData.selectedStageIndex = stages.Count-1;
+        if (levelData.selectedStageIndex == -1)
+            levelData.selectedStageIndex = 0;
     }
 
     private void LoadLevelData(string path)

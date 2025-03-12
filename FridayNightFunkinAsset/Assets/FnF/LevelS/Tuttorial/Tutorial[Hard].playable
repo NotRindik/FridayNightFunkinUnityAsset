@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 36.11666666666669
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 56.516265232426434
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 43.31666666666672
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 61.61666666666667
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 53.533333333333346
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 25.41666666666668
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 62.583333333333336
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 3
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 50.51666666666668
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 43.950000000000045
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -1741,7 +1741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 51.116666666666674
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -1901,7 +1901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 46.933333333333366
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -2161,7 +2161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 26.516666666666673
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 14.5
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 27.799999999999997
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -2827,49 +2827,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.41666666666666785
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2896,49 +2860,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5949184837751105
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2965,49 +2893,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5000000000000036
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3034,49 +2926,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5282518171084476
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3103,49 +2959,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.46666666666666856
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3440,7 +3260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 60.71666666666667
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1.6
@@ -3580,7 +3400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 46.3666666666667
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -3860,7 +3680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 24.044918483775106
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -3920,7 +3740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 61.083333333333336
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 2
@@ -4460,7 +4280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 50.81666666666668
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -4640,7 +4460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 37.36666666666669
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -4737,7 +4557,7 @@ MonoBehaviour:
   - {fileID: -3848803729715645275}
   - {fileID: -2008861033799080067}
   - {fileID: 8953931546259842491}
-  arrowCurrentIndex: 23
+  arrowCurrentIndex: 24
   chartPlayBack: {fileID: 0}
 --- !u!114 &1251591220802040764
 MonoBehaviour:
@@ -4833,7 +4653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 18.116666666666667
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -4869,7 +4689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 33.71666666666668
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -5425,7 +5245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 45.73333333333338
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -5505,7 +5325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 54.80000000000001
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -5898,7 +5718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 52.31666666666668
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -6030,7 +5850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 52.91666666666667
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -6090,7 +5910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 51.41666666666667
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -6270,7 +6090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 44.53333333333336
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -6446,7 +6266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 34.93333333333334
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -6606,7 +6426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 55.95
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -6766,7 +6586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 55.33333333333334
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -6866,7 +6686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 57.650000000000006
   distanceCount: 19
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 1
   speedMultiplier: 1
@@ -6906,7 +6726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 57.116666666666674
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 2
   speedMultiplier: 1
@@ -6926,7 +6746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 54.000000000000014
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -7066,7 +6886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 16.900000000000006
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 0
   speedMultiplier: 1
@@ -7086,7 +6906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 15.683333333333334
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1
@@ -7246,7 +7066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Time: 62.06666666666666
   distanceCount: 0
-  id: 41
+  id: 37
   roadSide: 0
   arrowSide: 3
   speedMultiplier: 1

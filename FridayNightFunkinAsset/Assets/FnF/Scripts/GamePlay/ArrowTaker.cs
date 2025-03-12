@@ -21,6 +21,8 @@ namespace FridayNightFunkin.GamePlay
         public ChartPlayBack chartPlayBack;
 
         protected Camera Camera;
+        
+        public Animator splashAnim;
 
         private void OnValidate()
         {
@@ -59,9 +61,8 @@ namespace FridayNightFunkin.GamePlay
             }
         }
         protected void ActivateSplash(ArrowSide arrowSide)
-        {
-            //Animator animator = LevelSettings.instance.splashAnim[(int)arrowSide]; ������ ������ ������
-            //animator.Play("Splash");
+        { 
+            splashAnim.Play("Splash");
         }
 
 

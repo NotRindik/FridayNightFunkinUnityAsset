@@ -59,7 +59,6 @@ namespace FridayNightFunkin.CHARACTERS
         private void Start()
         {
             inputActions = InputManager.inputActions;
-            /*playerDeath = levelSettings.playerDeath;*/
             Activate();
         }
 
