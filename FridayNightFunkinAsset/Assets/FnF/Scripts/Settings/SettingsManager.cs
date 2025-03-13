@@ -1,28 +1,20 @@
 using System;
+using FnF.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace FnF.Scripts.Settings
 {
     [ExecuteAlways]
-    public class SettingsManager : MonoBehaviour
+    public class SettingsManager : MonoBehaviour,IService
     {
-        public static SettingsManager Instance { get; private set; }
-
         public GameSettingsSO activeGameSettings;
         public string savePath;
 
         public bool manualSave;
         public bool manualLoad;
-        private void Awake()
+        public void Init()
         {
-            if (!Instance)
-                Instance = this;
-            else
-            {
-                Destroy(this);
-            }
-
             Load();
         }
 

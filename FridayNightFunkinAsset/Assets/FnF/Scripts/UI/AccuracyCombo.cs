@@ -1,36 +1,39 @@
+using FnF.Scripts.Extensions;
 using FridayNightFunkin.Calculations;
 using UnityEngine;
 
 namespace FridayNightFunkin.UI
 {
-    public class AccuracyCombo : MonoBehaviour
+    public class AccuracyCombo : MonoBehaviour,IService
     {
         public Sprite[] comboSpites;
 
         private ParticleSystem _particleSystem;
 
         private int curentIndex;
+        private StatisticManager _statManager;
 
-        private void Start()
+        public void Init(StatisticManager statisticManager)
         {
             _particleSystem = GetComponent<ParticleSystem>();
-            ScoreManager.instance.OnCalculateAccuracy += SpawnCombo;
+            _statManager = statisticManager;
+            _statManager.OnCalculateAccuracy += SpawnCombo;
         }
 
         private void OnDisable()
         {
-            ScoreManager.instance.OnCalculateAccuracy -= SpawnCombo;
+            _statManager.OnCalculateAccuracy -= SpawnCombo;
         }
         private void OnDestroy()
         {
-            ScoreManager.instance.OnCalculateAccuracy -= SpawnCombo;
+            _statManager.OnCalculateAccuracy -= SpawnCombo;
         }
 
-        private void SpawnCombo(int accuracy)
+        private void SpawnCombo(float accuracy)
         {
-            if (curentIndex != ScoreManager.instance.GetRatingByAccuracyInt(accuracy))
+            if (curentIndex != _statManager.GetRatingByAccuracyInt(accuracy))
             {
-                curentIndex = ScoreManager.instance.GetRatingByAccuracyInt(accuracy);
+                curentIndex = _statManager.GetRatingByAccuracyInt(accuracy);
                 if (curentIndex != -1)
                 {
                     _particleSystem.textureSheetAnimation.SetSprite(0, comboSpites[curentIndex]);

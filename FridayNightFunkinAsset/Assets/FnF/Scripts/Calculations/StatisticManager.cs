@@ -2,49 +2,34 @@ using FridayNightFunkin.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FnF.Scripts.Extensions;
 using UnityEngine;
 
 namespace FridayNightFunkin.Calculations
 {
-    public class ScoreManager : MonoBehaviour
+    public class StatisticManager : MonoBehaviour,IService
     {
-        public static ScoreManager instance { get; private set; }
-
         public int score { get; private set; }
 
-        internal int combo { get; private set; }
+        public int combo { get; private set; }
 
-        internal int misses { get; private set; }
+        public int misses { get; private set; }
 
-        internal float totalAccuracy { get; private set; }
+        public float totalAccuracy { get; private set; }
 
         public List<int> accuracyList = new List<int>();
 
-        internal bool isDead;
-
-
-        public event Action<int> OnCalculateAccuracy;
-
-        private void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Debug.LogWarning($"Dont create 2 {this} pls!!!!");
-                DestroyImmediate(gameObject);
-            }
-        }
-
+        public Action OnValueChanged;
+        public Action<float> OnCalculateAccuracy;
+        
         public int CalculateAccuracy(float distance)
         {
             if (distance < 20) distance = 0;
 
             int accuracy = Mathf.RoundToInt(100 * (1 - (distance/500)));
-            OnCalculateAccuracy?.Invoke(accuracy);
             accuracyList.Add(accuracy);
+            OnValueChanged?.Invoke();
+            OnCalculateAccuracy?.Invoke(accuracy);
             return accuracy;
         }
 
@@ -99,6 +84,7 @@ namespace FridayNightFunkin.Calculations
         public void AddScore(uint addingScore)
         {
             score += (int)addingScore;
+            OnValueChanged?.Invoke();
         }
         public float CalculateTotalAccuracy(List<int> Accuracy)
         {
@@ -109,26 +95,26 @@ namespace FridayNightFunkin.Calculations
             }
 
             totalAccuracy = Mathf.RoundToInt(multiplyOfList / Accuracy.Count);
-
+            OnValueChanged?.Invoke();
             return totalAccuracy;
         }
 
         public void AddMiss()
         {
             misses++;
-            FNFUIElement.instance.UpdateUI();
+            OnValueChanged?.Invoke();
         }
 
         public void AddCombo()
         {
             combo++;
-            FNFUIElement.instance.UpdateUI();
+            OnValueChanged?.Invoke();
         }
 
         public void ResetCombo()
         {
             combo = 0;
-            FNFUIElement.instance.UpdateUI();
+            OnValueChanged?.Invoke();
         }
     }
 }

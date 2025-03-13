@@ -4,6 +4,7 @@ using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
+using FnF.Scripts.Extensions;
 using FnF.Scripts.Settings;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.GamePlay;
@@ -14,7 +15,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 {
     [RequireComponent(typeof(PlayableDirector))]
     [ExecuteAlways]
-    public class ChartPlayBack : MonoBehaviour
+    public class ChartPlayBack : MonoBehaviour,IService
     {
         public Arrow[] arrowsPrefab;
         private double time;
@@ -24,7 +25,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         private List<ArrowMarker> _markers = new List<ArrowMarker>();
         public ArrowTakerEnemy[] arrowTakerEnemy;
         public ArrowTakerPlayer[] arrowTakerPlayer;
-        public RectTransform chartRoad;
         public float chartSpawnDistance = 10;
         public float speedSave { private set; get; }
 
@@ -79,17 +79,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
         }
 
-        private void Start()
+        public void InitOnGameMode(SettingsManager settingsManager)
         {
-            GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
+            ReloadChart();
             playerMissTaker = new PlayerMissTaker(this);
-            chartSpawnDistance = SettingsManager.Instance.activeGameSettings.Downscroll == 1 ? chartSpawnDistance * -1 : chartSpawnDistance;
-            if (playOnStart && Application.isPlaying)
-            {
-                StartLevel();
-            }
+            chartSpawnDistance = settingsManager.activeGameSettings.Downscroll == 1 ? chartSpawnDistance * -1 : chartSpawnDistance;
+            GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
-
         public void ReloadChart()
         {
             if (ChartContainer)
@@ -147,6 +143,8 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 ReloadChart();
             }
+            var currStage = levelData.stage[levelData.selectedStageIndex];
+            playableDirector.playableAsset = currStage.chartVariants[levelData.selectedChartVar];
             SaveArrowsOnSpeedChange();
             arrowSwitch.SwitchAllArrows(TurnOfArrows);
             arrowSwitch.OnUpdate();
@@ -197,23 +195,24 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             if (playableDirector.duration - 1 < time && Application.isPlaying)
             {
                 playableDirector.time = 0;
+                var score = G.Instance.Get<StatisticManager>().score;
                 if (currentStageIndex == 0)
-                    PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}Score", ScoreManager.instance.score);
+                    PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}Score",score);
                 else
                 {
-                    PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}Score", PlayerPrefs.GetInt($"{SceneManager.GetActiveScene().name}Score") + ScoreManager.instance.score);
+                    PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}Score", PlayerPrefs.GetInt($"{SceneManager.GetActiveScene().name}Score") + score);
                 }
 
                 if (levelData.stage.Length == currentStageIndex + 1)
                 {
                     PlayerPrefs.SetInt(STAGE_PLAYER_PREFS_NAME,0);
                     PlayerPrefs.SetInt("AfterLevel", 1);
-                    SceneLoad.instance.StartLoad("MainMenu");
+                    G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
                 }
                 else
                 {
                     PlayerPrefs.SetInt(STAGE_PLAYER_PREFS_NAME, currentStageIndex + 1);
-                    SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
+                    G.Instance.Get<SceneLoad>().StartLoad(SceneManager.GetActiveScene().name);
                 }
             }
         }

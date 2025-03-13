@@ -2,6 +2,7 @@ using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using System.Collections.Generic;
 using System;
+using FnF.Scripts.Editors;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;

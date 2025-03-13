@@ -4,13 +4,14 @@ using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
+using FnF.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public class Character_Fnf_PlayAble : Сharacter_FNF
+    public class Character_Fnf_PlayAble : Character_FNF
     {
         private string[] MiSS_ANIMATION = { "LeftFail", "DownFail", "UpFail", "DownFail" };
 
@@ -26,7 +27,7 @@ namespace FridayNightFunkin.CHARACTERS
 
         internal CharacterSide characterSide = CharacterSide.Player;
 
-        private PlayerDeath playerDeath;
+        private PlayerDeath playerDeath => G.Instance.Get<PlayerDeath>();
 
         private bool isRestartPressed;
 
@@ -72,7 +73,7 @@ namespace FridayNightFunkin.CHARACTERS
             else if (inputActions.MenuNavigation.Escape.WasPressedThisFrame() && isDead)
             {
                 PlayerPrefs.SetInt("AfterLevel",1);
-                SceneLoad.instance.StartLoad("MainMenu");
+                G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
             }
 
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("NotDead") && !isAnimationStart)
@@ -86,7 +87,7 @@ namespace FridayNightFunkin.CHARACTERS
             if (timeToEndAnimation <= 0 && isAnimationStart)
             {
                 isAnimationStart = false;
-                SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
+                G.Instance.Get<SceneLoad>().StartLoad(SceneManager.GetActiveScene().name);
             }
         }
         private void FixedUpdate()
@@ -149,7 +150,8 @@ namespace FridayNightFunkin.CHARACTERS
         }
         public void PlayMissAnimation(Arrow arrow)
         {
-            if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)
+            var healthBar = G.Instance.Get<HealthBar>().healthBarData.healthBar;
+            if (healthBar.value == healthBar.minValue)
             {
                 playAnimPerBeat.SetPause(true);
                 isDead = true;
@@ -166,7 +168,8 @@ namespace FridayNightFunkin.CHARACTERS
 
         public void PlayMissAnimation(ArrowSide arrowSide)
         {
-            if (FNFUIElement.instance.versusSlider.value == FNFUIElement.instance.versusSlider.minValue)
+            var healthBar = G.Instance.Get<HealthBar>().healthBarData.healthBar;
+            if (healthBar.value == healthBar.minValue)
             {
                 playAnimPerBeat.SetPause(true);
                 isDead = true;

@@ -1,4 +1,4 @@
-using FridayNightFunkin.CHARACTERS;
+/*using FridayNightFunkin.CHARACTERS;
 using UnityEditor;
 using UnityEngine;
 
@@ -80,4 +80,4 @@ public class LevelDataEditor : Editor
             EditorUtility.SetDirty(target);
         }
     }
-}
+}*/

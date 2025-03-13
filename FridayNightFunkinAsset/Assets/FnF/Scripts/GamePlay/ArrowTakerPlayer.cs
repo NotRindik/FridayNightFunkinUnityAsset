@@ -1,16 +1,18 @@
+using FnF.Scripts.Extensions;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace FridayNightFunkin.GamePlay
 {
     public class ArrowTakerPlayer : ArrowTaker
     {
         private FnfInput inputActions => InputManager.inputActions;
-        private ScoreManager scoreManager => ScoreManager.instance;
+        private StatisticManager StatisticManager => G.Instance.Get<StatisticManager>();
         private float distanceFromArrowToTaker;
         public bool isHold { get; private set; }
 
@@ -19,7 +21,7 @@ namespace FridayNightFunkin.GamePlay
         private bool isPause;
         public override RoadSide roadSide => RoadSide.Player;
 
-        public LevelInitializator LevelInitializator;
+        [FormerlySerializedAs("LevelInitializator")] public CharacterSpawner characterSpawner;
         protected void Start()
         {
             inputActions.Enable();
@@ -50,20 +52,19 @@ namespace FridayNightFunkin.GamePlay
                         Vector2 y = Camera.main.WorldToScreenPoint(arrow.transform.position);
                         distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
 
-                        int accuracy = scoreManager.CalculateAccuracy(distanceFromArrowToTaker);
-                        scoreManager.CalculateTotalAccuracy(scoreManager.accuracyList);
+                        int accuracy = StatisticManager.CalculateAccuracy(distanceFromArrowToTaker);
+                        StatisticManager.CalculateTotalAccuracy(StatisticManager.accuracyList);
                         if (accuracy == 100)
                         {
                             ActivateSplash(arrowSide);   
                         }
-                        float scoreByAccuracy = (chartPlayBack.levelData.addMaxScore * ((float)accuracy / 100) + scoreManager.combo);
+                        float scoreByAccuracy = (chartPlayBack.levelData.addMaxScore * ((float)accuracy / 100) + StatisticManager.combo);
 
-                        scoreManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
-                        scoreManager.AddCombo();
+                        StatisticManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
+                        StatisticManager.AddCombo();
                         OnArrowTake?.Invoke(arrowSide);
                         LastArrow = arrow;
-                        FNFUIElement.instance.UpdateUI();
-                        scoreManager.AddValueToSlider(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetPlayerForce());
+                        G.Instance.Get<HealthBar>().ModifyValue(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetPlayerForce());
                         ArrowMask.instance.ActivateMask((int)arrowSide);
                         arrow.TakeArrow(isHold);
                     }
@@ -74,17 +75,17 @@ namespace FridayNightFunkin.GamePlay
                 animator.CrossFade("NoArrowPress", 0);
                 if(ChangesByGameSettings.instance.ghostTapping == 1) 
                 { 
-                    foreach (var currentPlayer in LevelInitializator.currentPlayer)
+                    foreach (var currentPlayer in characterSpawner.currentPlayer)
                     {
                         if(currentPlayer.isActive)
-                            currentPlayer.PlayMissAnimation(arrowSide); //������ ������� ��� ���������� ������� ����� ����� ������� ������
+                            currentPlayer.PlayMissAnimation(arrowSide);
                     }
-                    scoreManager.ReduceValueToSlider(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetMissForce());
-                    scoreManager.AddMiss();
-                    scoreManager.CalculateAccuracy(500);
+                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetMissForce());
+                    StatisticManager.AddMiss();
+                    StatisticManager.CalculateAccuracy(500);
                     AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");
-                    scoreManager.CalculateTotalAccuracy(scoreManager.accuracyList);
-                    scoreManager.ResetCombo();
+                    StatisticManager.CalculateTotalAccuracy(StatisticManager.accuracyList);
+                    StatisticManager.ResetCombo();
                 }
             }
         }

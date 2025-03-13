@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+using FnF.Scripts.Extensions;
+using FridayNightFunkin.CHARACTERS;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace FridayNightFunkin.GamePlay
 {
-    public class PlayerDeath : MonoBehaviour
+    public class PlayerDeath : MonoBehaviour, IService
     {
         public UnityEvent OnPlayerDead;
 
@@ -11,7 +15,7 @@ namespace FridayNightFunkin.GamePlay
 
         public UnityEvent OnGameOverEnd;
 
-        private void Awake()
+        public void Init()
         {
             OnPlayerDead.AddListener(OnPlayerisDead);
         }
@@ -23,7 +27,18 @@ namespace FridayNightFunkin.GamePlay
 
         public void OnPlayerisDead()
         {
+            var players = G.Instance.Get<CharacterSpawner>().currentPlayer;
+            SetSortingOrder(players, 801);
+            
             InputManager.inputActions.PlayableArrow.Disable();
+        }
+        
+        private void SetSortingOrder(IEnumerable<Character_FNF> chars, int sortingOrder)
+        {
+            foreach (var c in chars)
+            {
+                ComponentFinder.FindComponentAndCheckChilds<SpriteRenderer>(c.gameObject).sortingOrder = sortingOrder;
+            }
         }
     }
 }

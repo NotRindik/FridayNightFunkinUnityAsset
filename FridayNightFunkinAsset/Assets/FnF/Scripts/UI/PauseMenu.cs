@@ -1,3 +1,4 @@
+using FnF.Scripts.Extensions;
 using FridayNightFunkin;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
@@ -85,7 +86,7 @@ namespace FridayNightFunkin.UI
         public void RestartSong()
         {
             GameStateManager.instance.SetState(GameState.GamePlay);
-            SceneLoad.instance.StartLoad(SceneManager.GetActiveScene().name);
+            G.Instance.Get<SceneLoad>().StartLoad(SceneManager.GetActiveScene().name);
         }
 
         public void ChangeDifficult(int difficult)
@@ -99,7 +100,7 @@ namespace FridayNightFunkin.UI
             GameStateManager.instance.SetState(GameState.GamePlay);
             PlayerPrefs.SetInt(ChartPlayBack.STAGE_PLAYER_PREFS_NAME, 0);
             PlayerPrefs.SetInt("AfterLevel", 1);
-            SceneLoad.instance.StartLoad("MainMenu");
+            G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
         }
     }
 }

@@ -1,3 +1,4 @@
+using FnF.Scripts.Extensions;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
 using UnityEngine;
@@ -22,8 +23,9 @@ namespace FridayNightFunkin.UI
         private void Start()
         {
             image = GetComponent<Image>();
-            FNFUIElement.instance.versusSlider.onValueChanged.AddListener(IconsChanging);
-            IconsChanging(FNFUIElement.instance.versusSlider.value);
+            var healthBar = G.Instance.Get<HealthBar>().healthBarData.healthBar;
+            healthBar.onValueChanged.AddListener(IconsChanging);
+            IconsChanging(healthBar.value);
         }
 
         private void IconsChanging(float value)

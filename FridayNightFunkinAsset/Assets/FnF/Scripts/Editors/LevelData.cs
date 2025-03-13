@@ -1,10 +1,8 @@
 using FridayNightFunkin.CHARACTERS;
 using FridayNightFunkin.GamePlay;
-using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 public enum IconProgressStatus{
@@ -46,7 +44,7 @@ public class LevelData : ScriptableObject
 }
 
 [System.Serializable]
-public unsafe class LevelStage
+public class LevelStage
 {
     [SerializeField] private float bpm;
 
@@ -62,7 +60,7 @@ public unsafe class LevelStage
         }
     }
 
-    public GameObject[] backgroundObjectList;
+    public GameObject[] mapGameObjects;
 
     [SerializeField] public float BPS => BPM / 60;
 
@@ -73,6 +71,10 @@ public unsafe class LevelStage
     [SerializeField] public float enemyForce = 0;
 
     [SerializeField] public float _chartSpeed = 4;
+    
+    [FormerlySerializedAs("StartHealth")] [FormerlySerializedAs("StartHealh")] [SerializeField] public float startHealth = 0;
+    [FormerlySerializedAs("maxHealh")] [SerializeField] public float maxHealth = 100;
+    [FormerlySerializedAs("minHealh")] [SerializeField] public float minHealth = -100;
 
     public float chartSpeed
     {
@@ -90,21 +92,12 @@ public unsafe class LevelStage
     [SerializeField] public Character_Fnf_Girlfriend[] girlFriendPrefab;
     [SerializeField] public Character_Fnf_Enemy[] enemyPrefab;
 
-    [SerializeField] public Transform[] playerPos;
-    [SerializeField] public Transform[] girlPos;   
-    [SerializeField] public Transform[] enemyPos;
-
     [SerializeField] public TimelineAsset[] chartVariants;
 
     public Dictionary<IconProgressStatus, Sprite> playerIcon = new Dictionary<IconProgressStatus, Sprite>();
     public Dictionary<IconProgressStatus, Sprite> enemyIcon = new Dictionary<IconProgressStatus, Sprite>();
 
     [SerializeField] public GameObject[] backGroundPrefab;
-
-    public LevelStage()
-    {
-       
-    }
 
     public float GetPlayerForce()
     {
@@ -116,7 +109,7 @@ public unsafe class LevelStage
         return missForce;
     }
 
-    public int GetCharacterLenth(CharacterSide characterSide)
+    public int GetCharacterLength(CharacterSide characterSide)
     {
         switch (characterSide)
         {
@@ -132,7 +125,7 @@ public unsafe class LevelStage
         }
     }
 
-    public Сharacter_FNF GetCharacterPrefab(CharacterSide characterSide, int index)
+    public Character_FNF GetCharacterPrefab(CharacterSide characterSide, int index)
     {
         switch (characterSide)
         {
@@ -144,19 +137,6 @@ public unsafe class LevelStage
                 return girlFriendPrefab[index];
             default:
                 Debug.LogError($"'{characterSide}' Character Prefab doesn't exist");
-                return null;
-        }
-    }
-    public Transform GetCharacterPos(CharacterSide characterSide, int index)
-    {
-        switch (characterSide)
-        {
-            case CharacterSide.Player:
-                return playerPos[index];
-            case CharacterSide.Enemy:
-                return enemyPos[index];
-            default:
-                Debug.LogError($"'{characterSide}' Character Transform doesn't exist");
                 return null;
         }
     }

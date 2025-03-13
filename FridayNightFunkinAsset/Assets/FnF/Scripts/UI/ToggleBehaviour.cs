@@ -1,4 +1,5 @@
 using System;
+using FnF.Scripts.Extensions;
 using FnF.Scripts.Settings;
 using FridayNightFunkin.GamePlay;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace FridayNightFunkin.UI
             {
                 if (!_gameSettingsSo)
                 {
-                    _gameSettingsSo = SettingsManager.Instance.activeGameSettings;
+                    _gameSettingsSo = G.Instance.Get<SettingsManager>().activeGameSettings;
                 }
                 return _gameSettingsSo;
             }
@@ -43,7 +44,7 @@ namespace FridayNightFunkin.UI
         protected virtual void OnToggleTriggered(bool value)
         {
             GameSettingsSo.SetSettingValue(value,settingName);
-            SettingsManager.Instance.Save();
+            G.Instance.Get<SettingsManager>().Save();
         }
 
         private void OnDisable()

@@ -2,6 +2,7 @@ using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
+using FnF.Scripts.Extensions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -45,8 +46,7 @@ namespace FridayNightFunkin.GamePlay
                         StartCoroutine(PlayAnimWithDelayWithCondition("Idle", timeToIdle, arrow));
                         break;
                     }
-                    ScoreManager.instance.ReduceValueToSliderEnemy(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetEnemyForce());
-                    FNFUIElement.instance.UpdateUI();
+                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetEnemyForce());
                     StartCoroutine(PlayAnimWithDelay("Idle", timeToIdle));
                     arrow.isWork = false;
                     arrow.TakeArrow(isHold);

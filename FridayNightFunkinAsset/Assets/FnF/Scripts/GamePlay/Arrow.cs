@@ -4,6 +4,7 @@ using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.UI;
 using System.Collections;
 using System.Collections.Generic;
+using FnF.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -245,14 +246,12 @@ namespace FridayNightFunkin.GamePlay
                 yield return new WaitForSecondsRealtime(0.1f);
                 if (roadSide == RoadSide.Player)
                 {
-                    ScoreManager.instance.AddScore(chartPlayback.levelData.addMaxScoreInLongArrow);
-                    ScoreManager.instance.AddValueToSlider(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetPlayerForce() / 2);
-                    FNFUIElement.instance.UpdateUI();
+                    G.Instance.Get<StatisticManager>().AddScore(chartPlayback.levelData.addMaxScoreInLongArrow);
+                    G.Instance.Get<HealthBar>().ModifyValue(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetPlayerForce() / 2);
                 }
                 else
                 {
-                    ScoreManager.instance.ReduceValueToSliderEnemy(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetEnemyForce() / 2);
-                    FNFUIElement.instance.UpdateUI();
+                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetEnemyForce() / 2);
                 }
             } 
         }

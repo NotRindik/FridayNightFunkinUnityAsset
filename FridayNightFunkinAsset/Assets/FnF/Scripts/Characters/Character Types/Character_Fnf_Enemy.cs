@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public class Character_Fnf_Enemy : Сharacter_FNF
+    public class Character_Fnf_Enemy : Character_FNF
     {
 
         private float arrowDetectRadiusCalcualted;
@@ -65,13 +65,13 @@ namespace FridayNightFunkin.CHARACTERS
             playAnimPerBeat.SetBlock(false);
             StartAnimation();
         }
-
+        
         public void StartAnimation()
         {
             StopAllCoroutines();
             StartCoroutine(playIdleInvoke());
         }
-
+        
         private IEnumerator playIdleInvoke()
         {
             yield return new WaitForSeconds(0.5f);

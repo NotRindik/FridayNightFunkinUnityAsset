@@ -1,3 +1,4 @@
+using FnF.Scripts.Extensions;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
@@ -11,7 +12,7 @@ namespace FridayNightFunkin.GamePlay
         {
         }
 
-        private ScoreManager scoreManager => ScoreManager.instance;
+        private StatisticManager StatisticManager => G.Instance.Get<StatisticManager>();
 
         public override void OnUpdate()
         {
@@ -39,12 +40,12 @@ namespace FridayNightFunkin.GamePlay
                         }
                         arrow.isWork = false;
                         arrow.gameObject.SetActive(false);
-                        scoreManager.ReduceValueToSlider(ChartPlayback.levelData.stage[ChartPlayback.currentStageIndex].GetMissForce());
-                        scoreManager.AddMiss();
+                        G.Instance.Get<HealthBar>().ModifyValue(-ChartPlayback.levelData.stage[ChartPlayback.currentStageIndex].GetMissForce());
+                        StatisticManager.AddMiss();
                         AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");
-                        scoreManager.CalculateAccuracy(500);
-                        scoreManager.CalculateTotalAccuracy(scoreManager.accuracyList);
-                        scoreManager.ResetCombo();
+                        StatisticManager.CalculateAccuracy(500);
+                        StatisticManager.CalculateTotalAccuracy(StatisticManager.accuracyList);
+                        StatisticManager.ResetCombo();
                     }
                 }
             }

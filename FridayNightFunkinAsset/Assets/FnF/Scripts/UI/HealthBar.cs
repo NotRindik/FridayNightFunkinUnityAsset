@@ -1,10 +1,20 @@
 using System.Collections;
+using FnF.Scripts.Extensions;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour,IService
 {
-    [SerializeField] healthBarData healthBarData = new healthBarData();
+    [SerializeField] public healthBarData healthBarData = new healthBarData();
+
+    public void Init(ChartPlayBack chartPlayBack)
+    {
+        var bar = healthBarData.healthBar;
+        bar.value = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].startHealth;
+        bar.minValue = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].minHealth;
+        bar.maxValue = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].maxHealth;
+    }
 
     private void OnValidate()
     {
@@ -14,22 +24,22 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    public void AddValueToSlider(float value)
+    public void ModifyValue(float value)
     {
-        StartMoveSliderSmoothly(healthBarData.healthBar.value + value, 1f);
+        ModifyProcess(healthBarData.healthBar.value + value, 1f);
     }
 
-    public void StartMoveSliderSmoothly(float targetValue, float initialAdder)
+    private void ModifyProcess(float targetValue, float initialAdder)
     {
         if (healthBarData.sliderMoveProcess != null)
         {
             StopCoroutine(healthBarData.sliderMoveProcess);
         }
 
-        healthBarData.sliderMoveProcess = StartCoroutine(MoveSliderSmoothlyCoroutine(targetValue, initialAdder));
+        healthBarData.sliderMoveProcess = StartCoroutine(ModifyProcessCO(targetValue, initialAdder));
     }
 
-    public IEnumerator MoveSliderSmoothlyCoroutine(float targetValue, float initialAdder)
+    private IEnumerator ModifyProcessCO(float targetValue, float initialAdder)
     {
         while (true)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FridayNightFunkin.CHARACTERS
 {
-    public abstract class Сharacter_FNF : MonoBehaviour
+    public abstract class Character_FNF : MonoBehaviour
     {
         protected Animator animator;
         protected string currentAnimationState;

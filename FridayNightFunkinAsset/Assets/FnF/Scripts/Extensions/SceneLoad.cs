@@ -1,28 +1,16 @@
 using System.Collections;
+using FnF.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace FridayNightFunkin
 {
-    public class SceneLoad : MonoBehaviour
+    public class SceneLoad : MonoBehaviour,IService
     {
         AsyncOperation asyncOperation;
         [SerializeField] private Sprite[] sprites;
         [SerializeField] private Image image;
-        public static SceneLoad instance { get; private set; }
-
-        private void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
 
         public void StartLoad(int SceneID)
         {
