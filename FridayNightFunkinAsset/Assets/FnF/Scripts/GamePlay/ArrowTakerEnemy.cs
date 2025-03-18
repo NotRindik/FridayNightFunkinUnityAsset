@@ -1,8 +1,11 @@
+using System;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using System.Collections;
 using FnF.Scripts.Extensions;
+using FnF.Scripts.Settings;
+using FridayNightFunkin.Editor.TimeLineEditor;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,47 +20,52 @@ namespace FridayNightFunkin.GamePlay
         public bool isHold { get; private set; }
 
         private int isDownScroll;
-        public override RoadSide roadSide => RoadSide.Enemy;
+        public override RoadSide RoadSide => RoadSide.Enemy;
+        
 
-        private void Start()
+        protected override void Start()
         {
-            isDownScroll = ChangesByGameSettings.instance.downscroll;
+            base.Start();
+            isDownScroll = G.Instance.Get<SettingsManager>().activeGameSettings.Downscroll;
         }
 
         private void Update()
         {
-            foreach (var arrow in chartPlayBack.ChartContainer.arrowsList[roadSide])
+            if (chartPlayBack)
             {
-                if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled)
-                    continue;
-
-                var distance = (Camera.WorldToScreenPoint(arrow.endPos).y - Camera.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1? -1 : 1);
-                if (distance < 0)
+                foreach (var arrow in chartPlayBack.chartContainer.arrowsList[RoadSide])
                 {
-                    animator.CrossFade("Pressed", 0);
+                    if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled || arrow == null)
+                        continue;
 
-                    isHold = false;
-                    OnArrowTake?.Invoke(arrowSide);
-                    if (arrow.tailDistance > 0)
+                    var distance = (Camera.WorldToScreenPoint(arrow.EndPos).y - Camera.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1 ? -1 : 1);
+                    if (distance < 0)
                     {
-                        isHold = true;
-                        ArrowMask.instance.ActivateMask((int)arrowSide, CharacterSide.Enemy);
+                        Animator.CrossFade("Pressed", 0);
+
+                        isHold = false;
+                        OnArrowTake?.Invoke(arrowSide);
+                        if (arrow.TailDistance > 0)
+                        {
+                            isHold = true;
+                            ArrowMask.instance.ActivateMask((int)arrowSide, CharacterSide.Enemy);
+                            arrow.TakeArrow(isHold);
+                            StartCoroutine(PlayAnimWithDelayWithCondition("Idle", timeToIdle, arrow));
+                            break;
+                        }
+                        G.Instance.Get<HealthBar>().ModifyValue(-chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].GetEnemyForce());
+                        StartCoroutine(PlayAnimWithDelay("Idle", timeToIdle));
+                        arrow.isWork = false;
                         arrow.TakeArrow(isHold);
-                        StartCoroutine(PlayAnimWithDelayWithCondition("Idle", timeToIdle, arrow));
-                        break;
                     }
-                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetEnemyForce());
-                    StartCoroutine(PlayAnimWithDelay("Idle", timeToIdle));
-                    arrow.isWork = false;
-                    arrow.TakeArrow(isHold);
-                }
+                }   
             }
         }
 
         private IEnumerator PlayAnimWithDelay(string anim,float time)
         {
             yield return new WaitForSeconds(time);
-            animator.CrossFade(anim, 0);
+            Animator.CrossFade(anim, 0);
             OnArrowUnTake?.Invoke(arrowSide);
         }
 
@@ -66,12 +74,12 @@ namespace FridayNightFunkin.GamePlay
             while (true)
             {
                 yield return new FixedUpdate();
-                if (arrow.tailDistanceToArrowTakerRaw < 0)
+                if (arrow.TailDistanceToArrowTakerRaw < 0)
                 {
                     yield return new WaitForSeconds(time);
                     isHold = false;
                     OnArrowUnTake?.Invoke(arrowSide);
-                    animator.CrossFade(anim, 0);
+                    Animator.CrossFade(anim, 0);
                     break;
                 }
             }

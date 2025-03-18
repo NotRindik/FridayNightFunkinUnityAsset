@@ -11,9 +11,9 @@ public class HealthBar : MonoBehaviour,IService
     public void Init(ChartPlayBack chartPlayBack)
     {
         var bar = healthBarData.healthBar;
-        bar.value = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].startHealth;
-        bar.minValue = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].minHealth;
-        bar.maxValue = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].maxHealth;
+        bar.value = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].startHealth;
+        bar.minValue = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].minHealth;
+        bar.maxValue = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].maxHealth;
     }
 
     private void OnValidate()

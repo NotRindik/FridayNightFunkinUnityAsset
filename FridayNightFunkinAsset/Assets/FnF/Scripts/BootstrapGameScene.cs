@@ -7,6 +7,7 @@ using FridayNightFunkin.GamePlay;
 using FridayNightFunkin.UI;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 
 namespace FnF.Scripts
 {
@@ -25,6 +26,7 @@ namespace FnF.Scripts
         public SceneLoad sceneLoad;
 
         public CharacterCamera[] characterCameras;
+        public ArrowTakerSettings[] arrowTakerSettings;
 
         protected void OnValidate()
         {
@@ -39,14 +41,18 @@ namespace FnF.Scripts
         }
         private void Initialize()
         {
-            g.Initialize(); //Service Locator Init
-            
+            g.Init(); //Service Locator Init
+            InputManager.InputActions = new FnfInput();
             statDisplay.Init(statManager);
             accuracyCombo.Init(statManager);
             settingsManager.Init();
             
-            chartPlayBack.InitOnGameMode(settingsManager);
+            chartPlayBack.InitOnGameMode(settingsManager,LevelManager.CurrentLevelData);
             healthBar.Init(chartPlayBack);
+            foreach (var takerSettings in arrowTakerSettings)
+            {
+                takerSettings.Init(settingsManager);   
+            }
             
             mapSpawner.OnSpawnMapEnd += InitAfterMapSpawn;
             mapSpawner.Init(chartPlayBack);

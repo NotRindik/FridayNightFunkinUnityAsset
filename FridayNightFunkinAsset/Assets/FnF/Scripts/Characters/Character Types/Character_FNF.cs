@@ -23,7 +23,7 @@ namespace FridayNightFunkin.CHARACTERS
         {
             animator = ComponentFinder.FindComponentAndCheckChilds<Animator>(gameObject);
             playAnimPerBeat = ComponentFinder.FindComponentAndCheckChilds<PlayAnimPerBeat>(gameObject);
-            playAnimPerBeat.ChangeBPM(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].BPM);
+            playAnimPerBeat.ChangeBPM(chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].BPM);
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
         public void PlayNote(ArrowSide arrowSide)

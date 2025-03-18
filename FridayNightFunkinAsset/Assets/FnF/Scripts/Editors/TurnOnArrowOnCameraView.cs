@@ -51,9 +51,9 @@ namespace FridayNightFunkin.Editor
                 lastSwitch = isOn;
                 foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
                 {
-                    if (ChartPlayback.ChartContainer.arrowsList.ContainsKey(item))
+                    if (ChartPlayback.chartContainer.arrowsList.ContainsKey(item))
                     {
-                        foreach (var arrow in ChartPlayback.ChartContainer.arrowsList[item])
+                        foreach (var arrow in ChartPlayback.chartContainer.arrowsList[item])
                         {
                             if (arrow == null)
                             {
@@ -69,11 +69,11 @@ namespace FridayNightFunkin.Editor
         }
         private void SwithArrows()
         {
-            if (ChartPlayback.ChartContainer.arrowsList.Count == Enum.GetValues(typeof(RoadSide)).Length)
+            if (ChartPlayback.chartContainer.arrowsList.Count == Enum.GetValues(typeof(RoadSide)).Length)
             {
                 foreach (RoadSide item in Enum.GetValues(typeof(RoadSide)))
                 {
-                    foreach (var arrow in ChartPlayback.ChartContainer.arrowsList[item])
+                    foreach (var arrow in ChartPlayback.chartContainer.arrowsList[item])
                     {
                         if (arrow == null)
                         {
@@ -86,9 +86,9 @@ namespace FridayNightFunkin.Editor
                         }
                         else
                         {
-                            if (arrow.distanceCount > 0 && arrow.tail)
+                            if (arrow.distanceCount > 0 && arrow.Tail)
                             {
-                                if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize, true))
+                                if (IsArrowInsideCube(arrow.Tail.transform.position, canvasPosition.position, detectSize, true))
                                 {
                                     arrow.gameObject.SetActive(true);
                                     continue;

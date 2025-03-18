@@ -30,7 +30,7 @@ namespace FridayNightFunkin.GamePlay
             var players = G.Instance.Get<CharacterSpawner>().currentPlayer;
             SetSortingOrder(players, 801);
             
-            InputManager.inputActions.PlayableArrow.Disable();
+            InputManager.InputActions.PlayableArrow.Disable();
         }
         
         private void SetSortingOrder(IEnumerable<Character_FNF> chars, int sortingOrder)

@@ -14,7 +14,7 @@ namespace FnF.Scripts.Extensions
         private readonly Dictionary<string, object> _services = new Dictionary<string, object>();
         public static G Instance { get; set; }
         
-        public void Initialize()
+        public void Init()
         {
             if (Instance == null)
             {

@@ -1,4 +1,4 @@
-using FridayNightFunkin.Settings;
+using FnF.Scripts.Settings;
 using FridayNightFunkin.UI;
 using UnityEngine;
 
@@ -7,10 +7,10 @@ public class ArrowTakerSettings : MonoBehaviour
     private RectTransform rectTransform;
     ArrowMask arrowMask => ArrowMask.instance;
 
-    private void Start()
+    public void Init(SettingsManager settingsManager)
     {
         rectTransform = GetComponent<RectTransform>();
-        if (ChangesByGameSettings.instance.downscroll == 1)
+        if (settingsManager.activeGameSettings.Downscroll == 1)
         {
             rectTransform.offsetMax = new Vector2(rectTransform.offsetMax.x, -500); //Top
             rectTransform.offsetMin = new Vector2(rectTransform.offsetMin.x, 0); //Bottom

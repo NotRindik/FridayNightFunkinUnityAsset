@@ -1,17 +1,18 @@
+using FnF.Scripts.Extensions;
 using FridayNightFunkin.GamePlay;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace FridayNightFunkin.UI
 {
-    public class MenuBehaviour : MonoBehaviour
+    public class MenuBehaviour : MonoBehaviour,IService
     {
         [SerializeField] protected UnityEvent OnEscapePressed;
         protected FnfInput inputActions;
 
-        private void Start()
+        protected virtual void Start()
         {
-            inputActions = InputManager.inputActions;
+            inputActions = InputManager.InputActions;
             inputActions.Enable();
         }
         protected virtual void Update()

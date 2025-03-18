@@ -1,6 +1,9 @@
+using System;
 using FridayNightFunkin.CHARACTERS;
 using FridayNightFunkin.GamePlay;
 using System.Collections.Generic;
+using FnF.Scripts;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
@@ -15,7 +18,6 @@ public class LevelData : ScriptableObject
 
     [SerializeField] public uint addMaxScore = 20;
     [SerializeField] public uint addMaxScoreInLongArrow = 10;
-    
     public int selectedStageIndex { get; set; }
     public int selectedChartVar { get; set; }
 
@@ -24,6 +26,10 @@ public class LevelData : ScriptableObject
 
     public LevelStage[] stage;
 
+    private void OnValidate()
+    {
+        LevelManager.RegisterLevel(this.name,this);
+    }
     public void AddArrow(CharacterSide side, Arrow arrow)
     {
         if (!arrows.ContainsKey(side))
@@ -46,6 +52,8 @@ public class LevelData : ScriptableObject
 [System.Serializable]
 public class LevelStage
 {
+    [SerializeField] public string name;
+    [SerializeField] public Sprite icon;
     [SerializeField] private float bpm;
 
     public float BPM
@@ -62,7 +70,7 @@ public class LevelStage
 
     public GameObject[] mapGameObjects;
 
-    [SerializeField] public float BPS => BPM / 60;
+    public float BPS => BPM / 60;
 
     [SerializeField] public float playerForce = 2;
 
@@ -70,20 +78,21 @@ public class LevelStage
 
     [SerializeField] public float enemyForce = 0;
 
-    [SerializeField] public float _chartSpeed = 4;
+    [SerializeField] public float chartSpeed = 4;
+    [SerializeField] public float chartSpawnDistance = 10;
     
-    [FormerlySerializedAs("StartHealth")] [FormerlySerializedAs("StartHealh")] [SerializeField] public float startHealth = 0;
-    [FormerlySerializedAs("maxHealh")] [SerializeField] public float maxHealth = 100;
-    [FormerlySerializedAs("minHealh")] [SerializeField] public float minHealth = -100;
+    [SerializeField] public float startHealth = 0;
+    [SerializeField] public float maxHealth = 100;
+    [SerializeField] public float minHealth = -100;
 
-    public float chartSpeed
+    public float ChartSpeed
     {
-        get => _chartSpeed;
+        get => chartSpeed;
         set
         {
-            if (Mathf.Abs(_chartSpeed - value) > Mathf.Epsilon) 
+            if (Mathf.Abs(chartSpeed - value) > Mathf.Epsilon) 
             {
-                _chartSpeed = value;
+                chartSpeed = value;
             }
         }
     }

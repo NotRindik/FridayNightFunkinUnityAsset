@@ -1,12 +1,13 @@
 using FridayNightFunkin.Editor.TimeLineEditor;
 using System;
+using FnF.Scripts.Extensions;
 using UnityEngine;
 namespace FridayNightFunkin.GamePlay
 {
     public abstract class ArrowTaker : MonoBehaviour
     {
         [SerializeField]public ArrowSide arrowSide;
-        public abstract RoadSide roadSide { get;}
+        public abstract RoadSide RoadSide { get;}
 
         [SerializeField] protected float arrowDetectRadius = 0.8f;
 
@@ -14,50 +15,55 @@ namespace FridayNightFunkin.GamePlay
 
         public Action<ArrowSide> OnArrowUnTake;
 
-        protected Animator animator;
+        protected Animator Animator;
 
-        protected float arrowDetectRadiusCalcualted;
+        protected float ArrowDetectRadiusCalcualted;
 
         public ChartPlayBack chartPlayBack;
 
-        protected Camera Camera;
+        protected Camera Camera => Camera.main;
         
         public Animator splashAnim;
 
+#if  UNITY_EDITOR
+        
         private void OnValidate()
         {
             if(chartPlayBack == null)
             {
                 chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
             }
-            if (Camera == null)
-            {
-                Camera = Camera.main;
-            }
         }
-        protected virtual void OnEnable()
+        
+#endif
+        protected void OnEnable()
         {
             GameStateManager.instance.OnGameStateChanged += OnGameStateChange;
         }
         protected void Awake()
         {
-            animator = GetComponent<Animator>();
+            Animator = GetComponent<Animator>();
+        }
+
+        protected virtual void Start()
+        {
+            chartPlayBack = G.Instance.Get<ChartPlayBack>();
         }
 
         private void Update()
         {
-            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
+            ArrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
         }
 
         protected virtual void OnGameStateChange(GameState currentState)
         {
             if (currentState == GameState.Paused)
             {
-                animator.speed = 0;
+                Animator.speed = 0;
             }
             else
             {
-                animator.speed = 1;
+                Animator.speed = 1;
             }
         }
         protected void ActivateSplash(ArrowSide arrowSide)
@@ -73,9 +79,9 @@ namespace FridayNightFunkin.GamePlay
 
         protected void DrawDetectRadius(Color color)
         {
-            arrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
+            ArrowDetectRadiusCalcualted = arrowDetectRadius * (Camera.main.orthographicSize / 5);
             Gizmos.color = color;
-            Gizmos.DrawWireSphere(transform.position, arrowDetectRadiusCalcualted);
+            Gizmos.DrawWireSphere(transform.position, ArrowDetectRadiusCalcualted);
         }
 
         protected virtual void OnDestroy()

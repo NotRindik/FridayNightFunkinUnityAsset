@@ -59,7 +59,7 @@ namespace FridayNightFunkin.CHARACTERS
         }
         private void Start()
         {
-            inputActions = InputManager.inputActions;
+            inputActions = InputManager.InputActions;
             Activate();
         }
 
@@ -139,7 +139,7 @@ namespace FridayNightFunkin.CHARACTERS
             yield return new WaitForSeconds(a);
             foreach (var arrowTaker in arrowTakers)
             {
-                if (((ArrowTakerPlayer)arrowTaker).isHold)
+                if (((ArrowTakerPlayer)arrowTaker).IsHold)
                 {
                     yield break;
                 }

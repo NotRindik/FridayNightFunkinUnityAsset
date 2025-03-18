@@ -20,9 +20,9 @@ namespace FridayNightFunkin.GamePlay
             float camWidth = camHeight * mainCamera.aspect;
 
             detectSize = new Vector2(camWidth, camHeight) + new Vector2(size * (mainCamera.orthographicSize / 5), size * (mainCamera.orthographicSize / 5));
-            if (ChartPlayback.ChartContainer.arrowsList.ContainsKey(RoadSide.Player))
+            if (ChartPlayback.chartContainer.arrowsList.ContainsKey(RoadSide.Player))
             {
-                foreach (var arrow in ChartPlayback.ChartContainer.arrowsList[RoadSide.Player])
+                foreach (var arrow in ChartPlayback.chartContainer.arrowsList[RoadSide.Player])
                 {
                     if (IsArrowInsideCube(arrow.transform.position, canvasPosition.position, detectSize) && arrow.isWork)
                     {
@@ -33,14 +33,14 @@ namespace FridayNightFunkin.GamePlay
                     {
                         if (arrow.distanceCount > 0)
                         {
-                            if (IsArrowInsideCube(arrow.tail.transform.position, canvasPosition.position, detectSize, true))
+                            if (IsArrowInsideCube(arrow.Tail.transform.position, canvasPosition.position, detectSize, true))
                             {
                                 continue;
                             }
                         }
                         arrow.isWork = false;
                         arrow.gameObject.SetActive(false);
-                        G.Instance.Get<HealthBar>().ModifyValue(-ChartPlayback.levelData.stage[ChartPlayback.currentStageIndex].GetMissForce());
+                        G.Instance.Get<HealthBar>().ModifyValue(-ChartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetMissForce());
                         StatisticManager.AddMiss();
                         AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");
                         StatisticManager.CalculateAccuracy(500);

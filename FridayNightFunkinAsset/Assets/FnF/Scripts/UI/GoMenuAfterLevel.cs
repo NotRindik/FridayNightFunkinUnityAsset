@@ -13,7 +13,7 @@ namespace FridayNightFunkin.UI
         {
             if (PlayerPrefs.GetInt("AfterLevel") == 1)
             {
-                storyModeMenu.Initialize();
+                storyModeMenu.Init();
                 EventSystem.current.SetSelectedGameObject(storyModeMenu.buttons[0].gameObject);
                 PlayerPrefs.SetInt("AfterLevel", 0);
                 OnAfterLevel?.Invoke();

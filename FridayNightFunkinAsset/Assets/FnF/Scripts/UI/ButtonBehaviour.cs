@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -13,24 +14,25 @@ namespace FridayNightFunkin.UI
 
         public float scaleMultiplierInSelecting = 1f;
 
-        private Animator animator;
-        private float timeToEndAnimation;
-        private bool isAnimationStart;
+        protected Animator animator;
+        protected float timeToEndAnimation;
+        protected bool isAnimationStart;
 
-        private float startXScale;
-        private float startYScale;
+        protected float startXScale;
+        protected float startYScale;
 
-        private Button button;
+        protected Button button;
 
 
-        private void Start()
+        protected virtual void Start()
         {
             animator = GetComponent<Animator>();
             startXScale = transform.localScale.x;
             startYScale = transform.localScale.y;
             button = GetComponent<Button>();
+            onAnimationEnd.AddListener(OnAnimationEnd);
         }
-        private void Update()
+        protected virtual void Update()
         {
             if (scaleMultiplierInSelecting != 1 && EventSystem.current.currentSelectedGameObject == gameObject)
             {
@@ -58,6 +60,8 @@ namespace FridayNightFunkin.UI
                 onAnimationEnd?.Invoke();
             }
         }
+
+        protected virtual void OnAnimationEnd() { }
 
         public void ChangeScene(string sceneName)
         {
@@ -98,6 +102,11 @@ namespace FridayNightFunkin.UI
         public void StopMusic(string audioName)
         {
             AudioManager.instance.StopTrack(audioName);
+        }
+
+        private void OnDestroy()
+        {
+            onAnimationEnd.RemoveListener(OnAnimationEnd);
         }
 
     }

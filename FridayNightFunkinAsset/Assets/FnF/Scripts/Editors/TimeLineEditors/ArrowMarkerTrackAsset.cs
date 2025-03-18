@@ -1,8 +1,8 @@
-using FridayNightFunkin.Editor;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using System.Collections.Generic;
-using System;
+#if UNITY_EDITOR
 using FnF.Scripts.Editors;
+#endif
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -14,7 +14,9 @@ using UnityEngine.Timeline;
 public class ArrowMarkerTrackAsset : MarkerTrack
 {
     public RoadSide roadSide;
+#if UNITY_EDITOR
     public LevelDataWindow levelDataWindow => EditorWindow.GetWindow<LevelDataWindow>();
+#endif
     public List<ArrowMarker> arrowMarkers = new List<ArrowMarker>();
 
     public int arrowCurrentIndex = 0;
@@ -40,7 +42,7 @@ public class ArrowMarkerTrackAsset : MarkerTrack
             return;
         }
 
-            AddMarker(arrowMarker);
+        AddMarker(arrowMarker);
         chartPlayBack.SaveArrows(arrowMarker, this);
     }
     public void AddMarker(ArrowMarker marker)
@@ -56,16 +58,10 @@ public class ArrowMarkerTrackAsset : MarkerTrack
     {
         arrowMarkers.Remove(marker);
     }
-
-
-    private void OnListCleared()
-    {
-        arrowCurrentIndex = 0;
-    }
     public void LoadDataFromRoad()
     {
         arrowMarkers.Clear();
-        OnListCleared();
+        arrowCurrentIndex = 0;
         IntegrityCheck();
     }
     public void IntegrityCheck()

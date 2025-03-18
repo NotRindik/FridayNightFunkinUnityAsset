@@ -13,7 +13,7 @@ namespace FridayNightFunkin.UI
 
         private void OnEnable()
         {
-            inputActions = InputManager.inputActions;
+            inputActions = InputManager.InputActions;
             inputActions.MenuNavigation.SkipCutscene.Enable();
             inputActions.MenuNavigation.SkipCutscene.performed += SkipTheCutscene;
         }

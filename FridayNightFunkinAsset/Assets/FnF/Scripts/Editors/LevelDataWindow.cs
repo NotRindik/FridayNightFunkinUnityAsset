@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 namespace FnF.Scripts.Editors
 {
     public class LevelDataWindow : EditorWindow
@@ -16,8 +16,7 @@ namespace FnF.Scripts.Editors
         private string tooltipText = null;
         private Rect tooltipRect;
         private bool isLocked;
-
-        private bool isResizing = false;
+        
         private Rect windowRect = new Rect(50, 50, 400, 300);
 
         private Vector2 scroll;
@@ -168,11 +167,16 @@ namespace FnF.Scripts.Editors
 
         private void DrawLevelStage(LevelStage stage)
         {
-            float newChartSpeed = EditorGUILayout.FloatField("Chart Speed", stage.chartSpeed);
-            if (!Mathf.Approximately(newChartSpeed, stage.chartSpeed))
+            stage.name = EditorGUILayout.TextField("Stage Name",stage.name);
+            stage.icon = (Sprite)EditorGUILayout.ObjectField("Stage Sprite", stage.icon, typeof(Sprite), false);
+            
+            float newChartSpeed = EditorGUILayout.FloatField("Chart Speed", stage.ChartSpeed);
+            if (!Mathf.Approximately(newChartSpeed, stage.ChartSpeed))
             {
-                stage.chartSpeed = newChartSpeed;
+                stage.ChartSpeed = newChartSpeed;
             }
+            
+            stage.chartSpawnDistance = EditorGUILayout.FloatField("Chart Spawn Distance", stage.chartSpawnDistance);
 
             EditorGUILayout.Space();
             
@@ -218,7 +222,7 @@ namespace FnF.Scripts.Editors
             EditorGUILayout.EndVertical();
             
             EditorGUILayout.BeginVertical("Box");
-            DrawTooltipLabel("Chart Variants", "Chart variants for one stage, basically it's needed for difficulties", EditorStyles.boldLabel);
+            DrawTooltipLabel("Chart Variants", "Chart variants for one stage, basically it's needed for difficulties.(FROM EASY TO HARD)", EditorStyles.boldLabel);
             DrawArrayField(ref stage.chartVariants);
 
             if (stage.chartVariants != null && stage.chartVariants.Length > 0)
@@ -441,3 +445,4 @@ namespace FnF.Scripts.Editors
         }
     }
 }
+#endif

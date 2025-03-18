@@ -1,11 +1,9 @@
+using FnF.Scripts;
 using FnF.Scripts.Extensions;
-using FridayNightFunkin;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
-using FridayNightFunkin.Settings;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 namespace FridayNightFunkin.UI
@@ -26,12 +24,12 @@ namespace FridayNightFunkin.UI
         {
             if (isEnabled)
             {
-                inputActions = InputManager.inputActions;
+                inputActions = InputManager.InputActions;
                 inputActions.Enable();
             }
             else
             {
-                inputActions = InputManager.inputActions;
+                inputActions = InputManager.InputActions;
                 inputActions.Disable();
             }
 
@@ -59,7 +57,6 @@ namespace FridayNightFunkin.UI
 
         [SerializeField] protected UnityEvent OnEscapeUnpressed;
         private bool isPressed;
-        public PlayableDirector director;
 
         public void Escape(bool callByButton = false)
         {
@@ -98,7 +95,7 @@ namespace FridayNightFunkin.UI
         public void ExitToMenu()
         {
             GameStateManager.instance.SetState(GameState.GamePlay);
-            PlayerPrefs.SetInt(ChartPlayBack.STAGE_PLAYER_PREFS_NAME, 0);
+            PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, 0);
             PlayerPrefs.SetInt("AfterLevel", 1);
             G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
         }

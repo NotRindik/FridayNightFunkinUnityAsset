@@ -14,11 +14,12 @@ namespace FnF.Scripts.Settings
         
         public bool GetSettingValue(string settingName)
         {
-            return (bool)this.GetType().GetField(settingName).GetValue(this);
+            return (int)GetType().GetField(settingName).GetValue(this) != 0;
         }
         public void SetSettingValue(bool value,string settingName)
         {
-            this.GetType().GetField(settingName).SetValue(this, value);
+            int val = value == true ? 1 : 0;
+            GetType().GetField(settingName).SetValue(this, val);
         }
     }
 }

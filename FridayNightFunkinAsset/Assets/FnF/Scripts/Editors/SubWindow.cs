@@ -1,4 +1,4 @@
-using FridayNightFunkin.Editor.TimeLineEditor;
+/*using FridayNightFunkin.Editor.TimeLineEditor;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -223,4 +223,4 @@ public class SubWindow
 enum ResizeDirection
 {
     None, Top, Bottom, Left, Right, TopLeft, TopRight, BottomLeft, BottomRight
-}
+}*/

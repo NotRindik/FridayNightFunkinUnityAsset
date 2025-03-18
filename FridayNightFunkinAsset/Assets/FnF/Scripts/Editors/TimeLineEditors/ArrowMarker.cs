@@ -32,7 +32,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public override async void OnInitialize(TrackAsset aPent)
         {
-            EditorApplication.update += Update;
             isInit = false;
             await Task.Delay(100);
             
@@ -50,20 +49,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 isInit = true;
             }
         }
-
-        private void Update()
-        {
-            if (arrow)
-            {
-                if (_speedMultiplier != speedMultiplier || _distanceCount != distanceCount || Math.Abs(currentTime - time) > double.Epsilon)
-                {
-                    _speedMultiplier = speedMultiplier;
-                    _distanceCount = distanceCount;
-                    currentTime = time;
-                    arrow.OnParamChanged(currentTime, Mathf.Abs(_speedMultiplier) != 0 ? Mathf.Abs(_speedMultiplier) : 0.0001f, _distanceCount);
-                }
-            }
-        }
+        
         public void ArrowInit(ArrowMarkerTrackAsset arrowMarkerParent)
         {
             this.arrowMarkerParent = arrowMarkerParent;
@@ -74,8 +60,9 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             if (parent && arrow)
             {
                 ((ArrowMarkerTrackAsset)parent).RemoveMarker(this);
-                EditorApplication.update -= Update;   
+#if UNITY_EDITOR
                 Undo.ClearUndo(this);
+#endif
             }
         }
     }

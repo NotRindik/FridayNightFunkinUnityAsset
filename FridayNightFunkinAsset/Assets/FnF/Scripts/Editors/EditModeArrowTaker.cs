@@ -1,7 +1,5 @@
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
-using FridayNightFunkin.Settings;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +8,7 @@ namespace FridayNightFunkin.Editor
     [ExecuteInEditMode]
     public class EditModeArrowTaker : MonoBehaviour
     {
-
+#if UNITY_EDITOR
         [SerializeField] private float arrowDetectRadius = 0.8f;
 
         private Animator _animator;
@@ -75,7 +73,7 @@ namespace FridayNightFunkin.Editor
 
         private void VisualiseTakingArrow()
         {
-            foreach (var arrow in chartPlayBack.ChartContainer.arrowsList[arrowTaker.roadSide])
+            foreach (var arrow in chartPlayBack.chartContainer.arrowsList[arrowTaker.RoadSide])
             {
                 if (arrow)
                 {
@@ -90,10 +88,13 @@ namespace FridayNightFunkin.Editor
                         }
                         else
                         {
-                            if (arrow.distanceCount > 0 && arrow.tailDistanceToArrowTakerRaw > 0 && arrow.tailDistance > Mathf.Abs(arrow.tailDistanceToArrowTakerRaw))
+                            if (arrow.distanceCount > 0 && arrow.Tail)
                             {
-                                _image.sprite = activeState;
-                                break;
+                                if (arrow.TailDistanceToArrowTakerRaw > 0 && arrow.TailDistance > Mathf.Abs(arrow.TailDistanceToArrowTakerRaw))
+                                {
+                                    _image.sprite = activeState;
+                                    break;   
+                                }
                             }
 
                             _image.sprite = inactiveState;
@@ -106,5 +107,6 @@ namespace FridayNightFunkin.Editor
                 }
             }
         }
+#endif
     }
 }

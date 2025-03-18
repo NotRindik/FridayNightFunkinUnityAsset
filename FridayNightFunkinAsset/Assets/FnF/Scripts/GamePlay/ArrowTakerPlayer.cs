@@ -1,4 +1,5 @@
 using FnF.Scripts.Extensions;
+using FnF.Scripts.Settings;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
@@ -11,20 +12,21 @@ namespace FridayNightFunkin.GamePlay
 {
     public class ArrowTakerPlayer : ArrowTaker
     {
-        private FnfInput inputActions => InputManager.inputActions;
+        private FnfInput InputActions => InputManager.InputActions;
         private StatisticManager StatisticManager => G.Instance.Get<StatisticManager>();
-        private float distanceFromArrowToTaker;
-        public bool isHold { get; private set; }
+        private float _distanceFromArrowToTaker;
+        public bool IsHold { get; private set; }
 
-        private Arrow LastArrow;
+        private Arrow _lastArrow;
 
-        private bool isPause;
-        public override RoadSide roadSide => RoadSide.Player;
+        private bool _isPause;
+        public override RoadSide RoadSide => RoadSide.Player;
 
-        [FormerlySerializedAs("LevelInitializator")] public CharacterSpawner characterSpawner;
-        protected void Start()
+        public CharacterSpawner characterSpawner;
+        protected override void Start()
         {
-            inputActions.Enable();
+            base.Start();
+            InputActions.Enable();
             GetInputFromSide(arrowSide).performed += OnArrowPressed;
             GetInputFromSide(arrowSide).canceled += OnArrowUnPressed;
         }
@@ -33,26 +35,26 @@ namespace FridayNightFunkin.GamePlay
             base.OnDestroy();
             GetInputFromSide(arrowSide).performed -=  OnArrowPressed;
             GetInputFromSide(arrowSide).canceled -=  OnArrowUnPressed;
-            inputActions.Disable();
+            InputActions.Disable();
         }
         private void OnArrowPressed(InputAction.CallbackContext context)
         {
-            if (isPause)
+            if (_isPause)
                 return;
-            animator.CrossFade("Pressed", 0);
-            Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, arrowDetectRadiusCalcualted, chartPlayBack.arrowsLayer);
+            Animator.CrossFade("Pressed", 0);
+            Collider2D[] overlapCircle = Physics2D.OverlapCircleAll(transform.position, ArrowDetectRadiusCalcualted, chartPlayBack.arrowsLayer);
             if (overlapCircle.Length != 0)
             {
-                if (overlapCircle[overlapCircle.Length - 1 ].TryGetComponent(out Arrow arrow))
+                if (overlapCircle[^1 ].TryGetComponent(out Arrow arrow))
                 {
                     if (arrowSide == arrow.arrowSide)
                     {
-                        isHold = true;
+                        IsHold = true;
                         Vector2 x = Camera.main.WorldToScreenPoint(transform.position);
                         Vector2 y = Camera.main.WorldToScreenPoint(arrow.transform.position);
-                        distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
+                        _distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
 
-                        int accuracy = StatisticManager.CalculateAccuracy(distanceFromArrowToTaker);
+                        int accuracy = StatisticManager.CalculateAccuracy(_distanceFromArrowToTaker);
                         StatisticManager.CalculateTotalAccuracy(StatisticManager.accuracyList);
                         if (accuracy == 100)
                         {
@@ -63,24 +65,24 @@ namespace FridayNightFunkin.GamePlay
                         StatisticManager.AddScore((uint)(Mathf.Floor(scoreByAccuracy)));
                         StatisticManager.AddCombo();
                         OnArrowTake?.Invoke(arrowSide);
-                        LastArrow = arrow;
-                        G.Instance.Get<HealthBar>().ModifyValue(chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetPlayerForce());
+                        _lastArrow = arrow;
+                        G.Instance.Get<HealthBar>().ModifyValue(chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].GetPlayerForce());
                         ArrowMask.instance.ActivateMask((int)arrowSide);
-                        arrow.TakeArrow(isHold);
+                        arrow.TakeArrow(IsHold);
                     }
                 }
             }
             else
             {
-                animator.CrossFade("NoArrowPress", 0);
-                if(ChangesByGameSettings.instance.ghostTapping == 1) 
+                Animator.CrossFade("NoArrowPress", 0);
+                if(G.Instance.Get<SettingsManager>().activeGameSettings.GhostTapping == 0) 
                 { 
                     foreach (var currentPlayer in characterSpawner.currentPlayer)
                     {
                         if(currentPlayer.isActive)
                             currentPlayer.PlayMissAnimation(arrowSide);
                     }
-                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].GetMissForce());
+                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].GetMissForce());
                     StatisticManager.AddMiss();
                     StatisticManager.CalculateAccuracy(500);
                     AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");
@@ -91,13 +93,13 @@ namespace FridayNightFunkin.GamePlay
         }
         private void OnArrowUnPressed(InputAction.CallbackContext context)
         {
-            animator.CrossFade("Idle", 0);
+            Animator.CrossFade("Idle", 0);
             ArrowMask.instance.DisActivateMask((int)arrowSide);
-            if (isHold)
+            if (IsHold)
             {
-                isHold = false;
-                LastArrow.SetArrowHolding(isHold);
-                LastArrow = null;
+                IsHold = false;
+                _lastArrow.SetArrowHolding(IsHold);
+                _lastArrow = null;
                 OnArrowUnTake?.Invoke(arrowSide);
             }
         }
@@ -106,11 +108,11 @@ namespace FridayNightFunkin.GamePlay
             base.OnGameStateChange(gameState);
             if (gameState == GameState.GamePlay)
             {
-                isPause = false;
+                _isPause = false;
             }
             else
             {
-                isPause = true;
+                _isPause = true;
             }
         }
 
@@ -120,13 +122,13 @@ namespace FridayNightFunkin.GamePlay
             switch (arrowSide)
             {
                 case ArrowSide.LeftArrow:
-                    return inputActions.PlayableArrow.Left;
+                    return InputActions.PlayableArrow.Left;
                 case ArrowSide.UpArrow:
-                    return inputActions.PlayableArrow.Up;
+                    return InputActions.PlayableArrow.Up;
                 case ArrowSide.DownArrow:
-                    return inputActions.PlayableArrow.Down;
+                    return InputActions.PlayableArrow.Down;
                 case ArrowSide.RightArrow:
-                    return inputActions.PlayableArrow.Right;
+                    return InputActions.PlayableArrow.Right;
                 default:
                     Debug.LogError($"{arrowSide} this arrow is not taken into account, if you added a new one, then please add its code here");
                     return null;

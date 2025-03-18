@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using FnF.Scripts;
 using FnF.Scripts.Extensions;
 using FridayNightFunkin.CHARACTERS;
 namespace FridayNightFunkin.Editor.TimeLineEditor
@@ -19,7 +20,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             if (isTestStage)
             {
-                PlayerPrefs.SetInt(ChartPlayBack.STAGE_PLAYER_PREFS_NAME, testingStage);
+                PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, testingStage);
             }
             _mapSpawner = mapSpawner;
             _chartPlayback = chartPlayBack;
@@ -30,31 +31,31 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             currentPlayer = new List<Character_Fnf_PlayAble>();
             currentEnemy = new List<Character_Fnf_Enemy>();
             currentGirlFriend = new List<Character_Fnf_Girlfriend>();
-            for (int i = 0; i < _chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterLength(CharacterSide.Player); i++)
+            for (int i = 0; i < _chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterLength(CharacterSide.Player); i++)
             {
-                if (_chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Player, i))
+                if (_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Player, i))
                 {
-                    currentPlayer.Add((Character_Fnf_PlayAble)Instantiate(_chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Player, i), _mapSpawner.GetCharacterPos(CharacterSide.Player, i).position, Quaternion.identity));
+                    currentPlayer.Add((Character_Fnf_PlayAble)Instantiate(_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Player, i), _mapSpawner.GetCharacterPos(CharacterSide.Player, i).position, Quaternion.identity));
                     currentPlayer[i].transform.SetParent(_mapSpawner.GetCharacterPos(CharacterSide.Player, i));
                     currentPlayer[i].chartPlayBack = _chartPlayback;
                     currentPlayer[i].Init();
                 }
             }
-            for (int i = 0; i < _chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterLength(CharacterSide.Enemy); i++)
+            for (int i = 0; i < _chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterLength(CharacterSide.Enemy); i++)
             {
-                if (_chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Enemy, i))
+                if (_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Enemy, i))
                 {
-                    currentEnemy.Add((Character_Fnf_Enemy)Instantiate(_chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Enemy, i), _mapSpawner.GetCharacterPos(CharacterSide.Enemy, i).position, Quaternion.identity));
+                    currentEnemy.Add((Character_Fnf_Enemy)Instantiate(_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Enemy, i), _mapSpawner.GetCharacterPos(CharacterSide.Enemy, i).position, Quaternion.identity));
                     currentEnemy[i].transform.SetParent(_mapSpawner.GetCharacterPos(CharacterSide.Enemy, i));
                     currentEnemy[i].chartPlayBack = _chartPlayback;
                     currentEnemy[i].Init();
                 }
             }
-            for (int i = 0; i < _chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterLength(CharacterSide.Gf); i++)
+            for (int i = 0; i < _chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterLength(CharacterSide.Gf); i++)
             {
-                if (_chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Gf, i))
+                if (_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Gf, i))
                 {
-                    currentGirlFriend.Add((Character_Fnf_Girlfriend)Instantiate(_chartPlayback.levelData.stage[_chartPlayback.currentStageIndex].GetCharacterPrefab(CharacterSide.Gf, i), _mapSpawner.GetCharacterPos(CharacterSide.Gf, i).position, Quaternion.identity));
+                    currentGirlFriend.Add((Character_Fnf_Girlfriend)Instantiate(_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Gf, i), _mapSpawner.GetCharacterPos(CharacterSide.Gf, i).position, Quaternion.identity));
                     currentGirlFriend[i].transform.SetParent(_mapSpawner.GetCharacterPos(CharacterSide.Gf, i));
                     currentGirlFriend[i].chartPlayBack = _chartPlayback;
                     currentGirlFriend[i].Init();

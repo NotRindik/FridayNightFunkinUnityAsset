@@ -24,7 +24,7 @@ namespace FridayNightFunkin.UI
         public Image soundTraySprite;
         public Animator soundTrayAnim;
 
-        private FnfInput fnfInput => InputManager.inputActions;
+        private FnfInput fnfInput => InputManager.InputActions;
 
         private Sprite[] soundTraySprites;
 

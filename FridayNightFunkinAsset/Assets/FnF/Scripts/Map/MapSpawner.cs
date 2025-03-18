@@ -15,7 +15,7 @@ public class MapSpawner : MonoBehaviour,IService
     public MapData mapData = new MapData();
     public void Init(ChartPlayBack chartPlayBack)
     {
-        _maps = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].mapGameObjects;
+        _maps = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].mapGameObjects;
         _chartPlayBack = chartPlayBack;
         StartCoroutine(SpawnMap());
     }

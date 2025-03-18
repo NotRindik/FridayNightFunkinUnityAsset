@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
 namespace FridayNightFunkin.Settings
@@ -58,4 +58,4 @@ namespace FridayNightFunkin.Settings
         //    rectTransform.anchorMax = new Vector2(0.5f, 1);
         //}
     }
-}
+}*/

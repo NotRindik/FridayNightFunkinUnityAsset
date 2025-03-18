@@ -1,33 +1,42 @@
+using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using AYellowpaper.SerializedCollections;
+using UnityEditor;
+using UnityEngine.Serialization;
 
 public enum DifficultLevel
 {
     Easy,Normal,Hard,Erect,Nightmare
 }
 
+public interface IChangeDifficulty
+{
+    public void ChangeDifficult()
+    {
+    }
+}
+
 namespace FridayNightFunkin.UI
 {
-    public class StoryModeMenu : MenuBehaviour
+    public class StoryModeMenu : MenuBehaviour,IChangeDifficulty
     {
         [System.Serializable]
         public class LevelConfig
         {
-            public int levelScore;
             public string[] tracks;
             public string levelName;
-            public string sceneName;
+            public LevelData levelData;
+
             public Color backgroundColor = Color.white;
             public Sprite backGroundSpite;
 
             [SerializedDictionary("Id[-1;1]", "imageCharacters")]
             public SerializedDictionary<sbyte, GameObject> imageCharacters = new SerializedDictionary<sbyte, GameObject>();
         }
-
-        [SerializeField] private LevelConfig[] levelConfigs;
+        [SerializeField] public LevelConfig[] levelConfigs;
         [SerializeField] private DifficultLevel difficult;
         [SerializeField] private RectTransform TrackContainer;
         [SerializeField] private TextMeshProUGUI scoreText;
@@ -46,12 +55,8 @@ namespace FridayNightFunkin.UI
         public Button[] buttons { get; private set; }
 
         private int difficultIndex = 1;
-        private void Awake()
-        {
-            Initialize();
-        }
 
-        public void Initialize()
+        public void Init()
         {
             buttons = levelButtonContainer.GetComponentsInChildren<Button>(true);
             difficultIndex = 1;
@@ -110,7 +115,7 @@ namespace FridayNightFunkin.UI
                     if (levelConfigs.Length > i)
                     {
                         lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
-                        scoreText.text = $"Level Score: {PlayerPrefs.GetInt($"{levelConfigs[i].sceneName}Score")}";
+                        scoreText.text = $"Level Score: {PlayerPrefs.GetInt($"{levelConfigs[i].levelData.name}Score")}";
                         levelImageCharacter.color = levelConfigs[i].backgroundColor;
                         if (levelConfigs[i].backGroundSpite)
                         {

@@ -21,13 +21,11 @@ namespace FridayNightFunkin.GamePlay
     public class Arrow : MonoBehaviour
     {
         [SerializeField] internal ArrowSide arrowSide;
-        [SerializeField] internal uint distanceCount;
+        [SerializeField] internal uint distanceCount => markerRef.distanceCount;
         [SerializeField] SpriteRenderer holdTrack;
         [SerializeField] Sprite holdTrackSprite;
         [SerializeField] Sprite endHoldTrackSprie;
         List<SpriteRenderer> Tails = new List<SpriteRenderer>();
-        public float takerCheakRadius;
-        public LayerMask arrowTakerLayer;
         public SpriteRenderer spriteRendererOfArrow;
         public RoadSide roadSide;
         private bool isHold;
@@ -35,58 +33,45 @@ namespace FridayNightFunkin.GamePlay
         public bool isViewedOnce = false;
 
         public ArrowMarker markerRef;
+        
+        public Vector2 StartPos => new Vector3(arrowTaker.transform.position.x, arrowTaker.transform.position.y - ChartSpawnDistance * (camera.orthographicSize / 5), 0);
 
-        //It's should be public, cuz it's save info from editmode to playmode
-        public Vector2 startPos
-        {
-            get
-            {
-                
-                return new Vector3(arrowTaker.transform.position.x, arrowTaker.transform.position.y - _chartSpawnDistance * (camera.orthographicSize / 5), 0);
-            }
-        }
+        public Vector2 EndPos => arrowTaker.transform.position;
 
-        public Vector2 endPos => arrowTaker.transform.position;
+        public double StartTime => markerRef ? EndTime - ((10 / chartPlayback.levelData.stage[chartPlayback.levelData.selectedStageIndex].ChartSpeed) * (1 / markerRef.speedMultiplier)): 0;
 
-        public double startTime => markerRef ? endTime - ((10 / chartPlayback.levelData.stage[chartPlayback.levelData.selectedStageIndex].chartSpeed) * (1 / markerRef.speedMultiplier)): 0;
+        public double EndTime => markerRef ? markerRef.time : 0;
 
-        public double endTime => markerRef ? markerRef.time : 0;
-
-        private int arrowIndex;
+        private int _arrowIndex;
 
         public ChartPlayBack chartPlayback;
 
-        internal SpriteRenderer tail;
+        internal SpriteRenderer Tail;
 
-        [FormerlySerializedAs("_arrowTaker")] public Transform arrowTaker;
+        public Transform arrowTaker;
 
-        [SerializeField] private float _chartSpawnDistance;
-        public float tailDistanceToArrowTakerRaw { get; private set; }
-        public float tailDistance { get; private set; }
+        private bool _isPause;
+
+        private float ChartSpawnDistance => chartPlayback.chartSpawnDistance;
+        public float TailDistanceToArrowTakerRaw  => camera.WorldToScreenPoint(EndPos).y - camera.WorldToScreenPoint(Tail.transform.position).y * Mathf.Clamp(Mathf.Round(ChartSpawnDistance),-1,1);
+        public float TailDistance { get; private set; }
 
         public Camera camera;
 
-        public void Intialize(ArrowMarker arrowMarker,Transform arrowTaker,float chartSpawnDistance, ChartPlayBack chartPlayBack)
+        public void Intialize(ArrowMarker arrowMarker,Transform arrowTaker, ChartPlayBack chartPlayBack)
         {
             camera = Camera.main;
             isWork = true;
             isViewedOnce = false;
             spriteRendererOfArrow = GetComponent<SpriteRenderer>();
-            distanceCount = arrowMarker.distanceCount;
-            arrowIndex = arrowMarker.id;
-            spriteRendererOfArrow.sortingOrder += arrowIndex;
+            _arrowIndex = arrowMarker.id;
+            spriteRendererOfArrow.sortingOrder += _arrowIndex;
             this.arrowTaker = arrowTaker;
-            _chartSpawnDistance = chartSpawnDistance;
             this.chartPlayback = chartPlayBack;
             markerRef = arrowMarker;
             markerRef.arrow = this;
-        }
 
-        public void OnParamChanged(double time,float speedMultiplier,uint distanceCount)
-        {
-            this.distanceCount = distanceCount;
-            float speedSave = chartPlayback.levelData.stage[chartPlayback.levelData.selectedStageIndex].chartSpeed;
-            float speedCofency = 10 / speedSave;
+            GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
 
         private void Update()
@@ -98,24 +83,26 @@ namespace FridayNightFunkin.GamePlay
             if (!Application.isPlaying)
                 return;
 
-
-            if (tailDistanceToArrowTakerRaw < 50 && isHold && distanceCount > 0)
+            if (Tail)
             {
-                isWork = false;
-                gameObject.SetActive(false);
-            }
-            if (isHold)
-            {
-                foreach (var tail in Tails)
+                if (TailDistanceToArrowTakerRaw < 50 && isHold && distanceCount > 0)
                 {
-                    if (!tail.gameObject.activeInHierarchy)
-                        continue;
-                    var tailPos = Camera.main.WorldToScreenPoint(tail.transform.position).y;
-                    var arrowTakerPos = Camera.main.WorldToScreenPoint(endPos).y;
-                    var distance = arrowTakerPos - tailPos * Mathf.Clamp(Mathf.Round(chartPlayback.chartSpawnDistance), -1, 1);
-                    if(distance < -4 * Mathf.Clamp(Mathf.Round(chartPlayback.chartSpawnDistance), -1, 1))
+                    isWork = false;
+                    gameObject.SetActive(false);
+                }
+                if (isHold)
+                {
+                    foreach (var tail in Tails)
                     {
-                        tail.gameObject.SetActive(false);
+                        if (!tail.gameObject.activeInHierarchy)
+                            continue;
+                        var tailPos = camera.WorldToScreenPoint(tail.transform.position).y;
+                        var arrowTakerPos = camera.WorldToScreenPoint(EndPos).y;
+                        var distance = arrowTakerPos - tailPos * Mathf.Clamp(Mathf.Round(ChartSpawnDistance), -1, 1);
+                        if (distance < -4 * Mathf.Clamp(Mathf.Round(ChartSpawnDistance), -1, 1))
+                        {
+                            tail.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
@@ -123,7 +110,8 @@ namespace FridayNightFunkin.GamePlay
 
         public void OnDestroy()
         {
-            chartPlayback.ChartContainer.arrowsList[roadSide].Remove(this);
+            GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
+            chartPlayback.chartContainer.arrowsList[roadSide].Remove(this);
         }
 
         private void GenerateTail()
@@ -132,7 +120,7 @@ namespace FridayNightFunkin.GamePlay
             {
                 if (distanceCount > Tails.Count)
                 {
-                    var distance = -0.20f * Mathf.Clamp((int)chartPlayback.chartSpawnDistance, -1, 1);
+                    var distance = -0.20f * Mathf.Clamp((int)ChartSpawnDistance, -1, 1);
                     Tails = new List<SpriteRenderer>();
                     var baseChildCount = transform.childCount;
                     for (int i = 0; i < baseChildCount; i++)
@@ -145,7 +133,7 @@ namespace FridayNightFunkin.GamePlay
                         var instance = Instantiate(holdTrack, transform.position, Quaternion.identity, transform);
                         instance.transform.localPosition = new Vector2(0, distance);
                         instance.sprite = holdTrackSprite;
-                        distance -= 0.20f * Mathf.Clamp((int)chartPlayback.chartSpawnDistance, -1, 1);
+                        distance -= 0.20f * Mathf.Clamp((int)ChartSpawnDistance, -1, 1);
                         Tails.Add(instance);
                     }
                     spawnTail();
@@ -158,11 +146,11 @@ namespace FridayNightFunkin.GamePlay
                         Tails.RemoveAt(Tails.Count - 1);
                         DestroyImmediate(transform.GetChild(transform.childCount - 1).gameObject);
                     }
-                    tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
+                    Tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[^1].transform);
                     spawnTail();
                 }
-                tailDistanceToArrowTakerRaw = Camera.main.WorldToScreenPoint(endPos).y - Camera.main.WorldToScreenPoint(tail.transform.position).y * Mathf.Clamp(Mathf.Round(chartPlayback.chartSpawnDistance),-1,1);
-                tailDistance = Mathf.Abs(Camera.main.WorldToScreenPoint(tail.transform.position).y - Camera.main.WorldToScreenPoint(transform.position).y);
+                
+                TailDistance = Mathf.Abs(camera.WorldToScreenPoint(Tail.transform.position).y - camera.WorldToScreenPoint(transform.position).y);
             }
             else if (distanceCount == 0)
             {
@@ -177,30 +165,12 @@ namespace FridayNightFunkin.GamePlay
 
         private void spawnTail()
         {
-            tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[Tails.Count - 1].transform);
-            tail.transform.localPosition = new Vector2(0, -0.255f * Mathf.Clamp((int)chartPlayback.chartSpawnDistance, -1, 1));
-            tail.sprite = endHoldTrackSprie;
-            tail.flipY = Mathf.Clamp((int)chartPlayback.chartSpawnDistance, -1, 1) == 1 ? false : true;
+            Tail = Instantiate(holdTrack, transform.position, Quaternion.identity, Tails[^1].transform);
+            Tail.transform.localPosition = new Vector2(0, -0.255f * Mathf.Clamp((int)ChartSpawnDistance, -1, 1));
+            Tail.sprite = endHoldTrackSprie;
+            Tail.flipY = Mathf.Clamp((int)ChartSpawnDistance, -1, 1) != 1;
         }
-
-        private void OnDrawGizmos()
-        {
-            if (tail != null && transform != null)
-            {
-                switch (isHold)
-                {
-                    case true:
-                        Gizmos.color = Color.green;
-                        Gizmos.DrawLine(transform.position + new Vector3(0, 0.0001f, 0), tail.transform.position + new Vector3(0, -0.38f, 0));
-                        break;
-                    default:
-                        Gizmos.color = new Color(255, 0, 0);
-                        Gizmos.DrawLine(transform.position + new Vector3(0, 0.0001f, 0), tail.transform.position + new Vector3(0, -0.38f, 0));
-                        break;
-                }
-            }
-            Gizmos.color = Color.blue;
-        }
+        
         public void TakeArrow(bool isHold = false)
         {
             this.isHold = isHold;
@@ -222,14 +192,14 @@ namespace FridayNightFunkin.GamePlay
             if(!markerRef && gameObject)
                 DestroyImmediate(gameObject);
             
-            if (Math.Abs(endTime - startTime) < double.Epsilon)
+            if (Math.Abs(EndTime - StartTime) < double.Epsilon)
             {
                 Debug.LogError($"endTime or startTime equals to zero");
                 transform.position = Vector2.zero;
             }
-            double speed = (endPos.y - startPos.y) / (endTime - startTime);
+            double speed = (EndPos.y - StartPos.y) / (EndTime - StartTime);
 
-            Vector2 arrowPos = new Vector2(startPos.x, startPos.y + (float)(speed * (timelineTime - startTime)));
+            Vector2 arrowPos = new Vector2(StartPos.x, StartPos.y + (float)(speed * (timelineTime - StartTime)));
 
             transform.position = arrowPos;
         }
@@ -241,19 +211,27 @@ namespace FridayNightFunkin.GamePlay
 
         private IEnumerator GiveScoreByLongArrows()
         {
-            while (isHold || isWork)
+            while (isHold && isWork)
             {
                 yield return new WaitForSecondsRealtime(0.1f);
-                if (roadSide == RoadSide.Player)
+                if (!_isPause)
                 {
-                    G.Instance.Get<StatisticManager>().AddScore(chartPlayback.levelData.addMaxScoreInLongArrow);
-                    G.Instance.Get<HealthBar>().ModifyValue(chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetPlayerForce() / 2);
-                }
-                else
-                {
-                    G.Instance.Get<HealthBar>().ModifyValue(-chartPlayback.levelData.stage[chartPlayback.currentStageIndex].GetEnemyForce() / 2);
+                    if (roadSide == RoadSide.Player)
+                    {
+                        G.Instance.Get<StatisticManager>().AddScore(chartPlayback.levelData.addMaxScoreInLongArrow);
+                        G.Instance.Get<HealthBar>().ModifyValue(chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetPlayerForce() / 2);
+                    }
+                    else
+                    {
+                        G.Instance.Get<HealthBar>().ModifyValue(-chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetEnemyForce() / 2);
+                    }
                 }
             } 
+        }
+        
+        private void OnGameStateChanged(GameState currenState)
+        {
+            _isPause = currenState == GameState.Paused;
         }
     }
 }

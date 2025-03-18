@@ -7,23 +7,15 @@ namespace FridayNightFunkin.GamePlay
 {
     public class InputManager : MonoBehaviour
     {
-        public static FnfInput inputActions { get; private set; }
+        public static FnfInput InputActions;
 
         public static event Action rebindComplete;
         public static event Action rebindCanceled;
         public static event Action<InputAction, int> rebindStarted;
 
-        private void OnEnable()
-        {
-            if (inputActions == null)
-            {
-                inputActions = new FnfInput();
-            }
-        }
-
         public static void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText, Image overlay, bool excludeMouse)
         {
-            InputAction action = inputActions.asset.FindAction(actionName);
+            InputAction action = InputActions.asset.FindAction(actionName);
             if (action == null || action.bindings.Count <= bindingIndex)
             {
                 Debug.Log("Couldn't find action or binding");
@@ -90,10 +82,10 @@ namespace FridayNightFunkin.GamePlay
 
         public static string GetBindingName(string actionName, int bindingIndex)
         {
-            if (inputActions == null)
-                inputActions = new FnfInput();
+            if (InputActions == null)
+                InputActions = new FnfInput();
 
-            InputAction action = inputActions.asset.FindAction(actionName);
+            InputAction action = InputActions.asset.FindAction(actionName);
             return action.GetBindingDisplayString(bindingIndex);
         }
 
@@ -110,10 +102,10 @@ namespace FridayNightFunkin.GamePlay
             if (actionName == null)
                 return;
 
-            if (inputActions == null)
-                inputActions = new FnfInput();
+            if (InputActions == null)
+                InputActions = new FnfInput();
 
-            InputAction action = inputActions.asset.FindAction(actionName);
+            InputAction action = InputActions.asset.FindAction(actionName);
 
             for (int i = 0; i < action.bindings.Count; i++)
             {
@@ -124,7 +116,7 @@ namespace FridayNightFunkin.GamePlay
 
         public static void ResetBinding(string actionName, int bindingIndex)
         {
-            InputAction action = inputActions.asset.FindAction(actionName);
+            InputAction action = InputActions.asset.FindAction(actionName);
 
             if (action == null || action.bindings.Count <= bindingIndex)
             {

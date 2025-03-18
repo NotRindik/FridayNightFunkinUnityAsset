@@ -34,22 +34,22 @@ namespace FridayNightFunkin.UI
             {
                 if (value < -60)
                 {
-                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].playerIcon[IconProgressStatus.Losing];
+                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].playerIcon[IconProgressStatus.Losing];
                 }
                 else
                 {
-                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].playerIcon[IconProgressStatus.Mid];
+                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].playerIcon[IconProgressStatus.Mid];
                 }
             }
             else
             {
                 if (value > 60)
                 {
-                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].enemyIcon[IconProgressStatus.Mid];
+                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].enemyIcon[IconProgressStatus.Mid];
                 }
                 else
                 {
-                    image.sprite = chartPlayBack.levelData.stage[chartPlayBack.currentStageIndex].enemyIcon[IconProgressStatus.Losing];
+                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].enemyIcon[IconProgressStatus.Losing];
                 }
             }
         }
