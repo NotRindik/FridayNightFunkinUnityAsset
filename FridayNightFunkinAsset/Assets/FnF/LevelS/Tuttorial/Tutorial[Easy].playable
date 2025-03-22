@@ -51,7 +51,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-8643493722364583295
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,7 +70,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-8545921857072133436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,7 +89,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-8455292975800021341
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +108,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-8400652612100537022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,7 +127,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-8369924993955505764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +146,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-8130383847344543555
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,7 +165,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7983515513202497653
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +184,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7777117139088891801
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +219,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7572040371839226157
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,7 +238,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7422064433034999440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,7 +257,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7365747602425312922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,7 +276,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7307924069430064081
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,7 +295,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7163047023369102907
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,7 +314,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-7064005876447101337
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,6 +360,7 @@ MonoBehaviour:
     - {fileID: 7224435626041646136}
     - {fileID: -5324014463948276152}
     - {fileID: -5311872654865515311}
+    - {fileID: 7217388005370027366}
   roadSide: 1
   arrowMarkers:
   - {fileID: -6756795398631703579}
@@ -399,7 +386,8 @@ MonoBehaviour:
   - {fileID: 7224435626041646136}
   - {fileID: -5324014463948276152}
   - {fileID: -5311872654865515311}
-  arrowCurrentIndex: 23
+  - {fileID: 7217388005370027366}
+  arrowCurrentIndex: 24
   chartPlayBack: {fileID: 0}
 --- !u!114 &-7036306824736628072
 MonoBehaviour:
@@ -420,7 +408,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6937973759843780042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,7 +427,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6924596245712648109
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,7 +446,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6756795398631703579
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +465,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6705117785797438238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -500,7 +484,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6500093062012729374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -616,7 +599,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6256088175505315984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,7 +618,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6234795183828044625
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,7 +637,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6227119917068418873
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -676,7 +656,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6092506938502594820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,7 +675,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-6027941549448888218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -716,7 +694,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5459986833541758645
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -736,7 +713,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5338052348522148894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -756,7 +732,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5324014463948276152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -776,7 +751,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5311872654865515311
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -796,7 +770,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5291501052414167184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -816,7 +789,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5166744434285486558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -836,7 +808,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-5148616178134341261
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -856,7 +827,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-4927403906329742449
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -876,7 +846,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-4854390118756155543
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -896,7 +865,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-4089498349811181913
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -916,7 +884,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-4021008549877822403
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -936,7 +903,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-3950150604453992645
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -956,7 +922,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-3876172957171006130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -992,7 +957,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-3844124783889800230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1012,7 +976,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-3633466527180955155
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,7 +1065,7 @@ MonoBehaviour:
   - {fileID: 5676468774786318254}
   - {fileID: -8811750207665943888}
   - {fileID: -2908898310914259044}
-  arrowCurrentIndex: 32
+  arrowCurrentIndex: 34
   chartPlayBack: {fileID: 0}
 --- !u!114 &-3186277486034947823
 MonoBehaviour:
@@ -1123,7 +1086,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2936765329395628739
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,7 +1105,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2909901279441900095
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1186,7 +1147,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2856117128355077454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1206,7 +1166,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2847058484337220314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,25 +1224,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1310,49 +1251,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.41666666666666785
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1379,49 +1284,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5949184837751105
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1448,49 +1317,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5000000000000036
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1517,49 +1350,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5282518171084476
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1586,49 +1383,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.46666666666666856
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1655,49 +1416,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.7344148464190496
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1724,49 +1449,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.6000000000000014
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1793,49 +1482,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.3333333333333286
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1862,49 +1515,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5000000000000071
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1931,25 +1548,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1990,7 +1589,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2748724378440604669
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2010,7 +1608,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2533031705748591609
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2030,7 +1627,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2501180179057155660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2050,7 +1646,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2360924905187876564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2070,7 +1665,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2276388043334657725
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2090,7 +1684,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2271027183736927907
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2110,7 +1703,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-2110484515957574115
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2130,7 +1722,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-1797935223597562490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2150,7 +1741,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-1302800147122671870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2170,7 +1760,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-1219142374570518996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2190,7 +1779,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-1117255226654829986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2210,7 +1798,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-1039647363835986116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2230,7 +1817,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-926586255063121377
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2250,7 +1836,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-922054368368933817
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2270,7 +1855,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-858607005909931905
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2306,7 +1890,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-713436866008882987
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2326,7 +1909,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-479856288442452985
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2346,7 +1928,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-430381976792705213
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2366,7 +1947,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-336343119314465932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2386,7 +1966,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &-267398192680100028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2406,7 +1985,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2450,7 +2028,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &34694761714804592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2470,7 +2047,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &233945338712634843
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2490,7 +2066,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &979547641912088875
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2510,7 +2085,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &1439506298774662038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2530,7 +2104,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &1725980994256052053
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2550,7 +2123,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &1726739295962133080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2586,7 +2158,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &1897122909748098930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2606,7 +2177,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2122695616891890055
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2626,7 +2196,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2222413115956006575
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2646,7 +2215,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2267503470706866422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2666,7 +2234,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2276282157790247834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2686,7 +2253,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2481845686758124834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2706,7 +2272,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2564845082267340207
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2742,7 +2307,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2805977804144232473
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2762,7 +2326,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &2990547252775881593
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2782,7 +2345,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3158843744502078537
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2818,7 +2380,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3174888972360048603
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2838,7 +2399,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3349411750444014364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2858,7 +2418,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3369103231576962825
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2878,7 +2437,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3420902572609802332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2898,7 +2456,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3675388260419216310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2918,7 +2475,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3710473348153258087
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2938,7 +2494,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3832123619893342058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2958,7 +2513,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &3943356286202494619
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2975,7 +2529,7 @@ MonoBehaviour:
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 0.1
+    volume: 1
 --- !u!114 &4185689376360034759
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2995,7 +2549,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &4251072480358455754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3047,7 +2600,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &4897267625469848918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3067,7 +2619,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &5470183110297730182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3103,7 +2654,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &5676468774786318254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3123,7 +2673,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6034987079229275826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3143,7 +2692,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6069732475327274802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3163,7 +2711,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6150982972737618278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3183,7 +2730,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6283096051148891394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3203,7 +2749,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6294851990795291185
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3223,7 +2768,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6433208805861685604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3243,7 +2787,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6455600002812833031
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3263,7 +2806,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6486908983720905288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3283,7 +2825,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &6628298664923130236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3303,7 +2844,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &7205227203834914865
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3323,7 +2863,25 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
+--- !u!114 &7217388005370027366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 9.666666666666666
+  distanceCount: 0
+  id: 24
+  roadSide: 1
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
 --- !u!114 &7224435626041646136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3343,7 +2901,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &7335311265903077120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3363,7 +2920,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &7616258114089573503
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3383,7 +2939,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &7823199746552396036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3403,7 +2958,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &7827120300378198924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3423,7 +2977,6 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &7912955716360720122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3443,7 +2996,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &8064363628723060999
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3463,7 +3015,6 @@ MonoBehaviour:
   arrowSide: 3
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &8466655290094261892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3483,7 +3034,6 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &8838566802979947170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3503,7 +3053,6 @@ MonoBehaviour:
   arrowSide: 2
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}
 --- !u!114 &8966284645254837845
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3523,4 +3072,3 @@ MonoBehaviour:
   arrowSide: 0
   speedMultiplier: 1
   isInit: 1
-  arrow: {fileID: 0}

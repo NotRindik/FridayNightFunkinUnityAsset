@@ -3,7 +3,7 @@ using UnityEngine.Timeline;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
-    [DisplayName("down/Add Down")]
+    [DisplayName("Add Down")]
     [CustomStyle("DownArrow")]
     public class BlueDownArrowMarker : ArrowMarker
     {

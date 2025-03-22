@@ -170,6 +170,8 @@ namespace FnF.Scripts.Editors
             stage.name = EditorGUILayout.TextField("Stage Name",stage.name);
             stage.icon = (Sprite)EditorGUILayout.ObjectField("Stage Sprite", stage.icon, typeof(Sprite), false);
             
+            stage.ignoreInFreePlay = EditorGUILayout.Toggle("Ignore In FreePlay",stage.ignoreInFreePlay);
+            
             float newChartSpeed = EditorGUILayout.FloatField("Chart Speed", stage.ChartSpeed);
             if (!Mathf.Approximately(newChartSpeed, stage.ChartSpeed))
             {

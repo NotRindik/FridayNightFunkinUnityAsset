@@ -1,3 +1,4 @@
+using System;
 using FnF.Scripts.Extensions;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.Settings;
@@ -9,47 +10,62 @@ namespace FridayNightFunkin.UI
     public class IconInSlider : MonoBehaviour
     {
         private Image image;
-        public bool isPlayer = false;
-        public ChartPlayBack chartPlayBack;
-
-        private void OnValidate()
-        {
-            if(chartPlayBack == null)
-            {
-                chartPlayBack = FindAnyObjectByType<ChartPlayBack>();
-            }
-        }
-
+        [SerializeField] private RoadSide roadSide;
+        private ChartPlayBack chartPlayBack;
         private void Start()
         {
             image = GetComponent<Image>();
-            var healthBar = G.Instance.Get<HealthBar>().healthBarData.healthBar;
+            var healthBarData = G.Instance.Get<HealthBar>().healthBarData;
+            var healthBar = healthBarData.healthBar;
             healthBar.onValueChanged.AddListener(IconsChanging);
+            healthBarData.iconsInSlider.Add(this);
+            chartPlayBack = G.Instance.Get<ChartPlayBack>();
+            transform.parent.TryGetComponent(out PlayAnimPerBeat animator);
+            animator.ChangeBPM(chartPlayBack.levelData.stage[chartPlayBack.levelData.selectedStageIndex].BPM);
+            
             IconsChanging(healthBar.value);
         }
 
         private void IconsChanging(float value)
         {
-            if (isPlayer)
+            float percent = (value + 100) / 200f * 100f;
+
+            var stage = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex];
+
+            if (roadSide == RoadSide.Player)
             {
-                if (value < -60)
+                if (percent < 10)
                 {
-                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].playerIcon[IconProgressStatus.Losing];
+                    image.sprite = stage.playerIcon[IconProgressStatus.Losing];
+                }
+                else if (percent is >= 10 and <= 90)
+                {
+                    image.sprite = stage.playerIcon[IconProgressStatus.Mid];
                 }
                 else
                 {
-                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].playerIcon[IconProgressStatus.Mid];
+                    if (stage.playerIcon[IconProgressStatus.Winning] != null)
+                    {
+                        image.sprite = stage.playerIcon[IconProgressStatus.Winning];
+                    }
                 }
             }
             else
             {
-                if (value > 60)
+                if (percent > 90) 
                 {
-                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].enemyIcon[IconProgressStatus.Mid];
+                    image.sprite = stage.enemyIcon[IconProgressStatus.Losing];
+                }
+                else if (percent is >= 10 and <= 90)
+                {
+                    image.sprite = stage.enemyIcon[IconProgressStatus.Mid];
                 }
                 else
                 {
-                    image.sprite = chartPlayBack.levelData.stage[ChartPlayBack.CurrentStageIndex].enemyIcon[IconProgressStatus.Losing];
+                    if (stage.playerIcon[IconProgressStatus.Winning] != null)
+                    {
+                        image.sprite = stage.enemyIcon[IconProgressStatus.Winning];
+                    }
                 }
             }
         }

@@ -12,7 +12,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
     public class ArrowMarker : Marker
     {
         [SerializeField] public uint distanceCount;
-        private uint _distanceCount;
 
         public int id;
         public RoadSide roadSide = RoadSide.Player;
@@ -22,34 +21,31 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         public ArrowMarkerTrackAsset arrowMarkerParent { private set; get; }
 
         public float speedMultiplier = 1;
-        private float _speedMultiplier;
 
         private double currentTime;
 
         public bool isInit;
-
-        public Arrow arrow;
+        
 
         public override async void OnInitialize(TrackAsset aPent)
         {
             isInit = false;
-            await Task.Delay(100);
-            
-            if (!isInit)
-            {
-                if (aPent is ArrowMarkerTrackAsset)
-                {
-                    arrowMarkerParent = aPent as ArrowMarkerTrackAsset;
-                    id = arrowMarkerParent.arrowCurrentIndex;
-                    roadSide = arrowMarkerParent.roadSide;
-                    _speedMultiplier = speedMultiplier;
-                    _distanceCount = distanceCount;
-                    arrowMarkerParent.AddMarkersToList(this);
-                }
-                isInit = true;
-            }
+            _ = InitializeWithDelay(aPent);
         }
         
+        private async Task InitializeWithDelay(TrackAsset aPent)
+        {
+            await Task.Delay(100); // Ждём 100 мс
+
+            if (!isInit && aPent is ArrowMarkerTrackAsset trackAsset)
+            {
+                arrowMarkerParent = trackAsset;
+                id = trackAsset.arrowCurrentIndex;
+                roadSide = trackAsset.roadSide;
+                trackAsset.AddMarkersToList(this);
+            }
+            isInit = true;
+        }
         public void ArrowInit(ArrowMarkerTrackAsset arrowMarkerParent)
         {
             this.arrowMarkerParent = arrowMarkerParent;
@@ -57,7 +53,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         }
         protected void OnDestroy()
         {
-            if (parent && arrow)
+            if (parent)
             {
                 ((ArrowMarkerTrackAsset)parent).RemoveMarker(this);
 #if UNITY_EDITOR

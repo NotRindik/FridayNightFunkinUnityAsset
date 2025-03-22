@@ -41,4 +41,17 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 32329f40238faec4dbde4f04e6015615, type: 2}
     - {fileID: 11400000, guid: adcbf05dc9d205f4e95006dc234fa6cb, type: 2}
     - {fileID: 11400000, guid: 4fb8efdfb2af09c4ba52541cb0306ae2, type: 2}
+    playerIcon:
+      m_Keys: 000000000100000002000000
+      m_Values:
+      - {fileID: 494472614, guid: f74badc5083c145449cd36f8f924b9d0, type: 3}
+      - {fileID: -1141463514, guid: f74badc5083c145449cd36f8f924b9d0, type: 3}
+      - {fileID: -1141463514, guid: f74badc5083c145449cd36f8f924b9d0, type: 3}
+    enemyIcon:
+      m_Keys: 000000000100000002000000
+      m_Values:
+      - {fileID: -1278930148, guid: 6390dd88604a9d240bbeca8813dbf789, type: 3}
+      - {fileID: -1278930148, guid: 6390dd88604a9d240bbeca8813dbf789, type: 3}
+      - {fileID: -1278930148, guid: 6390dd88604a9d240bbeca8813dbf789, type: 3}
     backGroundPrefab: []
+    ignoreInFreePlay: 0

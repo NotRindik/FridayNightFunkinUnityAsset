@@ -3,6 +3,7 @@ using FridayNightFunkin.GamePlay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FridayNightFunkin.CHARACTERS
@@ -18,7 +19,7 @@ namespace FridayNightFunkin.CHARACTERS
 
         public override RoadSide roadSide => RoadSide.Enemy;
 
-        private IEnumerable<ArrowTaker> arrowTakers => chartPlayBack.arrowTakerEnemy;
+        private ArrowTaker[] arrowTakers => chartPlayBack.arrowTakerEnemy;
 
         public override void Init()
         {
@@ -50,8 +51,22 @@ namespace FridayNightFunkin.CHARACTERS
         private void PlayHitAnimation(ArrowSide arrowSide)
         {
             playAnimPerBeat.SetBlock(true);
-            animator.Play(SING_NOTES[(int)arrowSide]);
+            animator.CrossFade(SING_NOTES[(int)arrowSide], 0f, -1, 0f);
+            StartCoroutine(RepearHitAnim(arrowSide));
         }
+
+        public IEnumerator RepearHitAnim(ArrowSide arrowSide)
+        {
+            yield return new WaitForEndOfFrame();
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            float clipLength = stateInfo.length;
+            while(((ArrowTakerEnemy)arrowTakers[(int)arrowSide]).isHold)
+            {
+                animator.CrossFade(SING_NOTES[(int)arrowSide], 0f, -1, 0f);
+                yield return new WaitForSeconds(clipLength);
+            }
+        }
+        
         
         private void PlayIdle(ArrowSide arrowSide)
         {

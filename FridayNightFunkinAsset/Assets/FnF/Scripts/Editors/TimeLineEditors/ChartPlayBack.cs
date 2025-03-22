@@ -86,7 +86,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             _playerMissTaker = new PlayerMissTaker(this);
             chartSpawnDistance = settingsManager.activeGameSettings.Downscroll == 1 ? levelData.stage[levelData.selectedStageIndex].chartSpawnDistance * -1 : levelData.stage[levelData.selectedStageIndex].chartSpawnDistance;
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
-
+            ReloadChart();
             this.levelData = levelData;
         }
         public void ReloadChart()
@@ -226,11 +226,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                 else
                 {
                     PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, 0);
+                    
                     if(PlayerPrefs.GetInt($"{levelData.stage[levelData.selectedStageIndex].name}{ScoreManager.STAGE_PERSONAL_RECORD_PREFIX}") < score)
                         PlayerPrefs.SetInt($"{levelData.stage[levelData.selectedStageIndex].name}{ScoreManager.STAGE_PERSONAL_RECORD_PREFIX}", score);
+                    PlayerPrefs.SetInt("AfterLevel", 1);
+                    print($"{levelData.stage[levelData.selectedStageIndex].name}{ScoreManager.STAGE_PERSONAL_RECORD_PREFIX}");
                     
                     G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
-                    PlayerPrefs.SetInt(LevelManager.IS_FROM_FREE_PLAY,0);
                 }
             }
         }
@@ -252,8 +254,6 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             Vector3 arrowSpawnPos = new Vector3(arrowTakerTransform.position.x, arrowTakerTransform.position.y - chartSpawnDistance * (Camera.main.orthographicSize / 5), 0);
             Arrow arrow = Instantiate(arrowsPrefab[(int)arrowMarker.arrowSide], arrowSpawnPos, Quaternion.identity);
             arrow.roadSide = arrowMarker.roadSide;
-            arrowMarker.arrow = arrow;
-            
 
             arrow.transform.SetParent(chartContainer.transform);
             arrow.transform.localScale = new Vector3(1.77f, 1.77f, 1.77f);

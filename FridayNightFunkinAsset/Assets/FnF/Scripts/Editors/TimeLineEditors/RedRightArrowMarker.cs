@@ -2,7 +2,7 @@ using System.ComponentModel;
 using UnityEngine.Timeline;
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
-    [DisplayName("right/add right")]
+    [DisplayName("Add Right")]
     [CustomStyle("RightArrow")]
     public class RedRightArrowMarker : ArrowMarker
     {

@@ -2,11 +2,9 @@ using FnF.Scripts.Extensions;
 using FnF.Scripts.Settings;
 using FridayNightFunkin.Calculations;
 using FridayNightFunkin.Editor.TimeLineEditor;
-using FridayNightFunkin.Settings;
 using FridayNightFunkin.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace FridayNightFunkin.GamePlay
 {
@@ -17,7 +15,7 @@ namespace FridayNightFunkin.GamePlay
         private float _distanceFromArrowToTaker;
         public bool IsHold { get; private set; }
 
-        private Arrow _lastArrow;
+        internal Arrow _lastArrow;
 
         private bool _isPause;
         public override RoadSide RoadSide => RoadSide.Player;
@@ -50,9 +48,9 @@ namespace FridayNightFunkin.GamePlay
                     if (arrowSide == arrow.arrowSide)
                     {
                         IsHold = true;
-                        Vector2 x = Camera.main.WorldToScreenPoint(transform.position);
-                        Vector2 y = Camera.main.WorldToScreenPoint(arrow.transform.position);
-                        _distanceFromArrowToTaker = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(arrow.transform.position));
+                        Vector2 x = Camera.WorldToScreenPoint(transform.position);
+                        Vector2 y = Camera.WorldToScreenPoint(arrow.transform.position);
+                        _distanceFromArrowToTaker = Vector2.Distance(Camera.WorldToScreenPoint(transform.position), Camera.WorldToScreenPoint(arrow.transform.position));
 
                         int accuracy = StatisticManager.CalculateAccuracy(_distanceFromArrowToTaker);
                         StatisticManager.CalculateTotalAccuracy(StatisticManager.accuracyList);

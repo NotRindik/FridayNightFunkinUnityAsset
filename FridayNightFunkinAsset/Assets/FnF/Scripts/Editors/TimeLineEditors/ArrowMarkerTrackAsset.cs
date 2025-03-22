@@ -39,6 +39,7 @@ public class ArrowMarkerTrackAsset : MarkerTrack
     {
         if (!chartPlayBack)
         {
+            Debug.Log("The road miss chartPlayback, reload chart pls");
             return;
         }
 

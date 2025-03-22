@@ -21,7 +21,7 @@ namespace FridayNightFunkin.GamePlay
     public class Arrow : MonoBehaviour
     {
         [SerializeField] internal ArrowSide arrowSide;
-        [SerializeField] internal uint distanceCount => markerRef.distanceCount;
+        [SerializeField] internal uint distanceCount => markerRef != null ? markerRef.distanceCount : 0;
         [SerializeField] SpriteRenderer holdTrack;
         [SerializeField] Sprite holdTrackSprite;
         [SerializeField] Sprite endHoldTrackSprie;
@@ -69,7 +69,6 @@ namespace FridayNightFunkin.GamePlay
             this.arrowTaker = arrowTaker;
             this.chartPlayback = chartPlayBack;
             markerRef = arrowMarker;
-            markerRef.arrow = this;
 
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
         }
@@ -110,8 +109,8 @@ namespace FridayNightFunkin.GamePlay
 
         public void OnDestroy()
         {
-            GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
             chartPlayback.chartContainer.arrowsList[roadSide].Remove(this);
+            GameStateManager.instance.OnGameStateChanged -= OnGameStateChanged;
         }
 
         private void GenerateTail()
@@ -189,9 +188,15 @@ namespace FridayNightFunkin.GamePlay
 
         public void MoveArrowByTime(double timelineTime)
         {
-            if(!markerRef && gameObject)
+            if(!this)
+                return;
+
+            if (!markerRef && gameObject)
+            {
                 DestroyImmediate(gameObject);
-            
+                return;
+            }
+
             if (Math.Abs(EndTime - StartTime) < double.Epsilon)
             {
                 Debug.LogError($"endTime or startTime equals to zero");

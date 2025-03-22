@@ -24,13 +24,13 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
             _mapSpawner = mapSpawner;
             _chartPlayback = chartPlayBack;
-            SpawnCharacters();
-        }
-        public void SpawnCharacters()
-        {
+            
             currentPlayer = new List<Character_Fnf_PlayAble>();
             currentEnemy = new List<Character_Fnf_Enemy>();
             currentGirlFriend = new List<Character_Fnf_Girlfriend>();
+        }
+        public void SpawnCharacters()
+        {
             for (int i = 0; i < _chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterLength(CharacterSide.Player); i++)
             {
                 if (_chartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetCharacterPrefab(CharacterSide.Player, i))

@@ -21,7 +21,7 @@ namespace FridayNightFunkin.GamePlay
 
         public ChartPlayBack chartPlayBack;
 
-        protected Camera Camera => Camera.main;
+        protected Camera Camera;
         
         public Animator splashAnim;
 
@@ -48,6 +48,7 @@ namespace FridayNightFunkin.GamePlay
         protected virtual void Start()
         {
             chartPlayBack = G.Instance.Get<ChartPlayBack>();
+            Camera = Camera.main;
         }
 
         private void Update()

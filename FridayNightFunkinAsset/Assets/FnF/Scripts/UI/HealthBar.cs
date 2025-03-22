@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using FnF.Scripts.Extensions;
 using FridayNightFunkin.Editor.TimeLineEditor;
+using FridayNightFunkin.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,12 +33,12 @@ public class HealthBar : MonoBehaviour,IService
 
     private void ModifyProcess(float targetValue, float initialAdder)
     {
-        if (healthBarData.sliderMoveProcess != null)
+        if (healthBarData.SliderMoveProcess != null)
         {
-            StopCoroutine(healthBarData.sliderMoveProcess);
+            StopCoroutine(healthBarData.SliderMoveProcess);
         }
 
-        healthBarData.sliderMoveProcess = StartCoroutine(ModifyProcessCO(targetValue, initialAdder));
+        healthBarData.SliderMoveProcess = StartCoroutine(ModifyProcessCO(targetValue, initialAdder));
     }
 
     private IEnumerator ModifyProcessCO(float targetValue, float initialAdder)
@@ -59,5 +61,6 @@ public class HealthBar : MonoBehaviour,IService
 public class healthBarData
 {
     public Slider healthBar;
-    public Coroutine sliderMoveProcess;
+    public Coroutine SliderMoveProcess;
+    public List<IconInSlider> iconsInSlider;
 }

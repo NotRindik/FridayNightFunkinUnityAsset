@@ -1,12 +1,8 @@
-using FridayNightFunkin.Editor.TimeLineEditor;
 using FridayNightFunkin.GamePlay;
-using FridayNightFunkin.Settings;
-using FridayNightFunkin.UI;
 using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using FnF.Scripts.Extensions;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace FridayNightFunkin.CHARACTERS
@@ -36,7 +32,7 @@ namespace FridayNightFunkin.CHARACTERS
         private Coroutine startIdleDelay;
 
         public override RoadSide roadSide => RoadSide.Player;
-        private IEnumerable<ArrowTaker> arrowTakers => chartPlayBack.arrowTakerPlayer;
+        private ArrowTaker[] arrowTakers => chartPlayBack.arrowTakerPlayer;
 
         public void Activate()
         {
@@ -108,7 +104,24 @@ namespace FridayNightFunkin.CHARACTERS
             if (!isActive)
                 return;
             playAnimPerBeat.SetBlock(true);
-            animator.CrossFade(SING_NOTES[(int)arrowSide],0.1f);
+            animator.CrossFade(SING_NOTES[(int)arrowSide], 0f, -1, 0f);
+            StartCoroutine(RepearHitAnim(arrowSide));
+        }
+
+        public IEnumerator RepearHitAnim(ArrowSide arrowSide)
+        {
+            while (((ArrowTakerPlayer)arrowTakers[(int)arrowSide])._lastArrow == null)
+            {
+                yield return null;
+            }
+            yield return new WaitForEndOfFrame();
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            float clipLength = stateInfo.length;
+            while(((ArrowTakerPlayer)arrowTakers[(int)arrowSide]).IsHold && ((ArrowTakerPlayer)arrowTakers[(int)arrowSide])._lastArrow.distanceCount > 0 && ((ArrowTakerPlayer)arrowTakers[(int)arrowSide])._lastArrow.isWork)
+            {
+                animator.CrossFade(SING_NOTES[(int)arrowSide], 0f, -1, 0f);
+                yield return new WaitForSeconds(clipLength);
+            }
         }
 
         private void ReloadAnim()
@@ -148,24 +161,6 @@ namespace FridayNightFunkin.CHARACTERS
             playAnimPerBeat.SetBlock(false);
             animator.CrossFade(IDLE, 0.1f);
         }
-        public void PlayMissAnimation(Arrow arrow)
-        {
-            var healthBar = G.Instance.Get<HealthBar>().healthBarData.healthBar;
-            if (healthBar.value == healthBar.minValue)
-            {
-                playAnimPerBeat.SetPause(true);
-                isDead = true;
-                animator.CrossFade("Dead", 0);
-                StartCoroutine(DeathAnimationEnd(2.1f));
-                playerDeath.OnPlayerDead?.Invoke();
-                return;
-            }
-
-            animator.CrossFade(MiSS_ANIMATION[(int)arrow.arrowSide], 0);
-            playAnimPerBeat.SetBlock(true);
-            playAnimPerBeat.SetBlockTimer(false, 0.2f);
-        }
-
         public void PlayMissAnimation(ArrowSide arrowSide)
         {
             var healthBar = G.Instance.Get<HealthBar>().healthBarData.healthBar;

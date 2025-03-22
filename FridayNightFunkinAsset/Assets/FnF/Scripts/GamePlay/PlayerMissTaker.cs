@@ -40,6 +40,11 @@ namespace FridayNightFunkin.GamePlay
                         }
                         arrow.isWork = false;
                         arrow.gameObject.SetActive(false);
+                        foreach (var currentPlayer in G.Instance.Get<CharacterSpawner>().currentPlayer)
+                        {
+                            if(currentPlayer.isActive)
+                                currentPlayer.PlayMissAnimation(arrow.arrowSide);
+                        }
                         G.Instance.Get<HealthBar>().ModifyValue(-ChartPlayback.levelData.stage[ChartPlayBack.CurrentStageIndex].GetMissForce());
                         StatisticManager.AddMiss();
                         AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}missnote{Random.Range(1, 4)}");

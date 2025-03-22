@@ -3,7 +3,7 @@ using UnityEngine.Timeline;
 
 namespace FridayNightFunkin.Editor.TimeLineEditor
 {
-    [DisplayName("left/add left")]
+    [DisplayName("Add Left")]
     [CustomStyle("LeftArrow")]
     public class PurpleLeftArrowMarker : ArrowMarker
     {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using FnF.Scripts;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
@@ -25,11 +26,6 @@ public class LevelData : ScriptableObject
     public LayerMask arrowLayer;
 
     public LevelStage[] stage;
-
-    private void OnValidate()
-    {
-        LevelManager.RegisterLevel(this.name,this);
-    }
     public void AddArrow(CharacterSide side, Arrow arrow)
     {
         if (!arrows.ContainsKey(side))
@@ -103,10 +99,12 @@ public class LevelStage
 
     [SerializeField] public TimelineAsset[] chartVariants;
 
-    public Dictionary<IconProgressStatus, Sprite> playerIcon = new Dictionary<IconProgressStatus, Sprite>();
-    public Dictionary<IconProgressStatus, Sprite> enemyIcon = new Dictionary<IconProgressStatus, Sprite>();
+    public SerializedDictionary<IconProgressStatus, Sprite> playerIcon = new SerializedDictionary<IconProgressStatus, Sprite>();
+    public SerializedDictionary<IconProgressStatus, Sprite> enemyIcon = new SerializedDictionary<IconProgressStatus, Sprite>();
 
     [SerializeField] public GameObject[] backGroundPrefab;
+
+    public bool ignoreInFreePlay;
 
     public float GetPlayerForce()
     {

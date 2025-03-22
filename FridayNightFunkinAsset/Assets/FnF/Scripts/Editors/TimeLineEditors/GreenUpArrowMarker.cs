@@ -4,7 +4,7 @@ using UnityEngine.Timeline;
 
 namespace FnF.Editors.TimeLineEditors
 {
-    [DisplayName("up/Add up")]
+    [DisplayName("Add Up")]
     [CustomStyle("UpArrow")]
     public class GreenUpArrowMarker : ArrowMarker
     {

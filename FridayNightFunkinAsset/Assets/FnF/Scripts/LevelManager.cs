@@ -25,26 +25,6 @@ namespace FnF.Scripts
                 _currentLevelData = value;
             }
         }
-        
-        public static Dictionary<string, LevelData> levels = new Dictionary<string, LevelData>();
-
-        public static void RegisterLevel(string key, LevelData levelData)
-        {
-            if (!levels.ContainsKey(key))
-            {
-                levels[key] = levelData;
-            }
-        }
-
-        public static LevelData GetLevel(string key)
-        {
-            if (levels.TryGetValue(key, out LevelData level))
-            {
-                return level;
-            }
-            Debug.LogError($"Level '{key}' not found!");
-            return null;
-        }
     }
     
     

@@ -612,10 +612,11 @@ MonoBehaviour:
     - {fileID: 7538962874967324797}
     - {fileID: -5240227401723672834}
     - {fileID: 1742188963730673132}
-    - {fileID: -1830911317146447683}
+    - {fileID: -3688899472134776172}
+    - {fileID: 6092545749009437670}
+    - {fileID: -6163609974702698759}
   roadSide: 1
   arrowMarkers:
-  - {fileID: -6431949979405669813}
   - {fileID: 5199670700317144933}
   - {fileID: -57477154485677587}
   - {fileID: -3154070944072512455}
@@ -637,7 +638,9 @@ MonoBehaviour:
   - {fileID: 7538962874967324797}
   - {fileID: -5240227401723672834}
   - {fileID: 1742188963730673132}
-  - {fileID: -1830911317146447683}
+  - {fileID: -3688899472134776172}
+  - {fileID: 6092545749009437670}
+  - {fileID: -6163609974702698759}
   arrowCurrentIndex: 25
   chartPlayBack: {fileID: 0}
 --- !u!114 &-6256088175505315984
@@ -679,6 +682,26 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &-6163609974702698759
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 12.066666666666666
+  distanceCount: 0
+  id: 24
+  roadSide: 1
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
   arrow: {fileID: 0}
 --- !u!114 &-6027941549448888218
 MonoBehaviour:
@@ -952,6 +975,26 @@ MonoBehaviour:
   speedMultiplier: 1
   isInit: 1
   arrow: {fileID: 0}
+--- !u!114 &-3688899472134776172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078066d044ea2c048beac2c573fc639f, type: 3}
+  m_Name: left/add left
+  m_EditorClassIdentifier: 
+  m_Time: 9.7
+  distanceCount: 0
+  id: 22
+  roadSide: 1
+  arrowSide: 0
+  speedMultiplier: 1
+  isInit: 1
+  arrow: {fileID: 0}
 --- !u!114 &-3301349541271617521
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1173,13 +1216,49 @@ MonoBehaviour:
     m_BlendOutDuration: 0.7333333333333307
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1648,26 +1727,6 @@ MonoBehaviour:
   m_Time: 23.083333333333336
   distanceCount: 0
   id: 6
-  roadSide: 1
-  arrowSide: 1
-  speedMultiplier: 1
-  isInit: 1
-  arrow: {fileID: 0}
---- !u!114 &-1830911317146447683
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d6ffedb765187a4e9264ab6c3a84801, type: 3}
-  m_Name: down
-  m_EditorClassIdentifier: 
-  m_Time: 11.683333333333334
-  distanceCount: 0
-  id: 24
   roadSide: 1
   arrowSide: 1
   speedMultiplier: 1
@@ -2696,6 +2755,26 @@ MonoBehaviour:
   arrowSide: 1
   speedMultiplier: 1
   isInit: 0
+  arrow: {fileID: 0}
+--- !u!114 &6092545749009437670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fcc1a635217c44b5f519eb8dff833, type: 3}
+  m_Name: right/add right
+  m_EditorClassIdentifier: 
+  m_Time: 11.05
+  distanceCount: 0
+  id: 23
+  roadSide: 1
+  arrowSide: 3
+  speedMultiplier: 1
+  isInit: 1
   arrow: {fileID: 0}
 --- !u!114 &6283096051148891394
 MonoBehaviour:

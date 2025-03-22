@@ -21,8 +21,8 @@ namespace FridayNightFunkin.GamePlay
 
         private int isDownScroll;
         public override RoadSide RoadSide => RoadSide.Enemy;
-        
 
+        public Arrow lastArrow;
         protected override void Start()
         {
             base.Start();
@@ -35,21 +35,29 @@ namespace FridayNightFunkin.GamePlay
             {
                 foreach (var arrow in chartPlayBack.chartContainer.arrowsList[RoadSide])
                 {
+                    if(!arrow)
+                        return;
+                    
                     if (arrow.arrowSide != arrowSide || !arrow.isWork || !arrow.isActiveAndEnabled || arrow == null)
                         continue;
 
                     var distance = (Camera.WorldToScreenPoint(arrow.EndPos).y - Camera.WorldToScreenPoint(arrow.transform.position).y) * (isDownScroll == 1 ? -1 : 1);
                     if (distance < 0)
                     {
+                        if (arrow == lastArrow)
+                        {
+                            return;
+                        }
+                        lastArrow = arrow;
                         Animator.CrossFade("Pressed", 0);
 
                         isHold = false;
-                        OnArrowTake?.Invoke(arrowSide);
                         if (arrow.TailDistance > 0)
                         {
                             isHold = true;
                             ArrowMask.instance.ActivateMask((int)arrowSide, CharacterSide.Enemy);
                             arrow.TakeArrow(isHold);
+                            OnArrowTake?.Invoke(arrowSide);
                             StartCoroutine(PlayAnimWithDelayWithCondition("Idle", timeToIdle, arrow));
                             break;
                         }
@@ -57,6 +65,7 @@ namespace FridayNightFunkin.GamePlay
                         StartCoroutine(PlayAnimWithDelay("Idle", timeToIdle));
                         arrow.isWork = false;
                         arrow.TakeArrow(isHold);
+                        OnArrowTake?.Invoke(arrowSide);
                     }
                 }   
             }

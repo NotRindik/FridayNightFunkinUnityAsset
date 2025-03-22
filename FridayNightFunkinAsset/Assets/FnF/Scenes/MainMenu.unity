@@ -548,10 +548,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8139d887292ca4b49b78840fb7ee063d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAfterLevel:
+  OnAfterLevelStoryMode:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1951083314}
+      - m_Target: {fileID: 1055457387}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -563,7 +563,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1055457387}
+  OnAfterLevelFreePlay:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1393866433}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1581,6 +1584,7 @@ GameObject:
   - component: {fileID: 170669902}
   - component: {fileID: 170669906}
   - component: {fileID: 170669907}
+  - component: {fileID: 170669908}
   m_Layer: 5
   m_Name: TEXT
   m_TagString: Untagged
@@ -1793,7 +1797,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 170669904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 170669908}
+        m_TargetAssemblyTypeName: FridayNightFunkin.Settings.Links, Assembly-CSharp
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://www.youtube.com/@Rindik
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &170669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1810,6 +1826,18 @@ MonoBehaviour:
   descriptionText: So, I made this Asset so that people can make their own FNF on
     Unity, and so that such people can freely add new gameplay and other things to
     their FNF.
+--- !u!114 &170669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170669900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a982ec558fd4974c86d8e4159fdea84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170915783
 GameObject:
   m_ObjectHideFlags: 0
@@ -10448,6 +10476,7 @@ GameObject:
   - component: {fileID: 935912258}
   - component: {fileID: 935912257}
   - component: {fileID: 935912256}
+  - component: {fileID: 935912262}
   m_Layer: 5
   m_Name: TEXT
   m_TagString: Untagged
@@ -10532,7 +10561,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 935912260}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 935912262}
+        m_TargetAssemblyTypeName: FridayNightFunkin.Settings.Links, Assembly-CSharp
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://www.youtube.com/@kitket427
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &935912258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10676,6 +10717,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935912254}
   m_CullTransparentMesh: 1
+--- !u!114 &935912262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935912254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a982ec558fd4974c86d8e4159fdea84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939733956
 GameObject:
   m_ObjectHideFlags: 0
@@ -15626,9 +15679,12 @@ MonoBehaviour:
         m_CallState: 2
   container: {fileID: 1050976852}
   freePlayLevelButtonPrefab: {fileID: 6086093213096118374, guid: 1be5d976d62ac7a4ebb411c0429616c5, type: 3}
+  buttons: []
   personalBestText: {fileID: 421336158}
   difficultyText: {fileID: 265989203}
   difficult: 1
+  levels:
+  - {fileID: 11400000, guid: 834da221a2371a146b6ad72a31ba187c, type: 2}
 --- !u!1 &1409133548
 GameObject:
   m_ObjectHideFlags: 0
@@ -17502,6 +17558,7 @@ GameObject:
   - component: {fileID: 1546446637}
   - component: {fileID: 1546446641}
   - component: {fileID: 1546446642}
+  - component: {fileID: 1546446643}
   m_Layer: 5
   m_Name: TEXT
   m_TagString: Untagged
@@ -17714,7 +17771,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1546446639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1546446643}
+        m_TargetAssemblyTypeName: FridayNightFunkin.Settings.Links, Assembly-CSharp
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://www.youtube.com/@AslonGoodFNF
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1546446642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17734,6 +17803,18 @@ MonoBehaviour:
     make a fully working Asset for general use. And I will not hide on this I want
     to make some money, but in fact anyone can use Asset practically for free and
     at most new versions will be released for a fee until a newer version is released.
+--- !u!114 &1546446643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546446635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a982ec558fd4974c86d8e4159fdea84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1552662756
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,11 +56,13 @@ namespace FnF.Scripts
             
             mapSpawner.OnSpawnMapEnd += InitAfterMapSpawn;
             mapSpawner.Init(chartPlayBack);
+            
+            characterSpawner.Init(chartPlayBack,mapSpawner);
         }
 
         private void InitAfterMapSpawn()
         {
-            characterSpawner.Init(chartPlayBack,mapSpawner);
+            characterSpawner.SpawnCharacters();
             playerDeath.Init();
             foreach (var cam in characterCameras)
             {
