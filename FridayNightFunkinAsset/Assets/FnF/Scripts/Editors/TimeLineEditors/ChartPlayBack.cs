@@ -32,8 +32,8 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public bool reloadChart;
         [SerializeField] private bool turnOfArrows = true;
-        public static int CurrentStageIndex => PlayerPrefs.GetInt(LevelManager.STAGE_PLAYERPREFS_NAME);
-        public static int CurrentDifficult => PlayerPrefs.GetInt(LevelManager.DIFFICULTY_PLAYERPREFS_NAME);
+        public static int CurrentStageIndex => PlayerPrefs.GetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME);
+        public static int CurrentDifficult => PlayerPrefs.GetInt(LevelSaveConst.DIFFICULTY_PLAYERPREFS_NAME);
 
         private ArrowSwitch _arrowSwitch;
         private PlayerMissTaker _playerMissTaker;
@@ -111,7 +111,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
 
         public void StartLevel()
         {
-            if (PlayerPrefs.HasKey(LevelManager.DIFFICULTY_PLAYERPREFS_NAME))
+            if (PlayerPrefs.HasKey(LevelSaveConst.DIFFICULTY_PLAYERPREFS_NAME))
             {
                 playableDirector.playableAsset = levelData.stage[levelData.selectedStageIndex].chartVariants[CurrentDifficult];
                 ReloadChart();
@@ -199,7 +199,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             {
                 playableDirector.time = 0;
                 var score = G.Instance.Get<StatisticManager>().score;
-                if (PlayerPrefs.GetInt(LevelManager.IS_FROM_FREE_PLAY) == 0)
+                if (PlayerPrefs.GetInt(LevelSaveConst.IS_FROM_FREE_PLAY) == 0)
                 {
                     if (CurrentStageIndex == 0)
                         PlayerPrefs.SetInt($"{levelData.name}Score.temp", score);
@@ -214,20 +214,20 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
                         {
                             PlayerPrefs.SetInt($"{levelData.name}Score",PlayerPrefs.GetInt($"{levelData.name}Score.temp"));
                         }
-                        PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, 0);
+                        PlayerPrefs.SetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME, 0);
                         PlayerPrefs.SetInt("AfterLevel", 1);
                         PlayerPrefs.SetInt($"{levelData.name}Score.temp", 0);
                         G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
                     }
                     else
                     {
-                        PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, CurrentStageIndex + 1);
+                        PlayerPrefs.SetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME, CurrentStageIndex + 1);
                         G.Instance.Get<SceneLoad>().StartLoad(SceneManager.GetActiveScene().name);
                     }
                 }
                 else
                 {
-                    PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, 0);
+                    PlayerPrefs.SetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME, 0);
                     
                     if(PlayerPrefs.GetInt($"{levelData.stage[levelData.selectedStageIndex].name}{ScoreManager.STAGE_PERSONAL_RECORD_PREFIX}") < score)
                         PlayerPrefs.SetInt($"{levelData.stage[levelData.selectedStageIndex].name}{ScoreManager.STAGE_PERSONAL_RECORD_PREFIX}", score);

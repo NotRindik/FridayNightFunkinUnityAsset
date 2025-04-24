@@ -921,7 +921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E"
+  m_text: J
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410"
+  m_text: F
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -4923,7 +4923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u04E8"
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -12805,7 +12805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041B"
+  m_text: K
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -13612,7 +13612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u049A"
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -14393,7 +14393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingTarget: {fileID: 1987992887}
   parallaxStrenghtOnX: 0.25
-  parallaxStrenghtOnY: 0.3
+  parallaxStrenghtOnY: 0.24
 --- !u!1 &1327228432
 GameObject:
   m_ObjectHideFlags: 0
@@ -18467,7 +18467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u04BA"
+  m_text: =
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
@@ -21483,7 +21483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412"
+  m_text: D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}
   m_sharedMaterial: {fileID: 2302107383510694409, guid: 1df4caadd8e92384e8699440626ce43d, type: 2}

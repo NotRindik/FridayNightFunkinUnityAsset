@@ -16,7 +16,7 @@ public enum IconProgressStatus{
 
 public class LevelData : ScriptableObject
 {
-
+    [SerializeField] public SceneAsset levelSceneAsset;
     [SerializeField] public uint addMaxScore = 20;
     [SerializeField] public uint addMaxScoreInLongArrow = 10;
     public int selectedStageIndex { get; set; }

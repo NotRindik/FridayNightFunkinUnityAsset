@@ -95,7 +95,7 @@ namespace FridayNightFunkin.UI
         public void ExitToMenu()
         {
             GameStateManager.instance.SetState(GameState.GamePlay);
-            PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, 0);
+            PlayerPrefs.SetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME, 0);
             PlayerPrefs.SetInt("AfterLevel", 1);
             G.Instance.Get<SceneLoad>().StartLoad("MainMenu");
         }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301da263daea6dc448b790e683248eb5, type: 3}
   m_Name: Tuttorial
   m_EditorClassIdentifier: 
+  levelSceneAsset: {fileID: 102900000, guid: 853b6709bf42c4c4a9ebb9ed59ce03f9, type: 3}
   addMaxScore: 24
   addMaxScoreInLongArrow: 14
   arrowLayer:

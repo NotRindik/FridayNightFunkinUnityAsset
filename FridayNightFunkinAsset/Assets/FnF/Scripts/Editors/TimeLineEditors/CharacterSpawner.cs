@@ -20,7 +20,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             if (isTestStage)
             {
-                PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME, testingStage);
+                PlayerPrefs.SetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME, testingStage);
             }
             _mapSpawner = mapSpawner;
             _chartPlayback = chartPlayBack;

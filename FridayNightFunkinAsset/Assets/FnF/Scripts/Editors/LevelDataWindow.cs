@@ -128,6 +128,8 @@ namespace FnF.Scripts.Editors
             headerStyle.fontSize = 16;
             GUILayout.Label("LEVEL DATA BASE SETTINGS", headerStyle);
 
+            levelData.levelSceneAsset = (SceneAsset)EditorGUILayout.ObjectField("Level Scene Asset",levelData.levelSceneAsset, typeof(SceneAsset),false);
+            
             levelData.addMaxScore = (uint)EditorGUILayout.IntField("Add Max Score", (int)levelData.addMaxScore);
 
             levelData.addMaxScoreInLongArrow = (uint)EditorGUILayout.IntField("Add Max Score In Long Arrow", (int)levelData.addMaxScoreInLongArrow);

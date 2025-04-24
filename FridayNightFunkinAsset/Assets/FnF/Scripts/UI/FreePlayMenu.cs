@@ -80,7 +80,7 @@ public class FreePlayMenu : MenuBehaviour,IChangeDifficulty
         if ((int)difficult != _difficultIndex)
         {
             difficult = (DifficultLevel)_difficultIndex;
-            PlayerPrefs.SetInt(LevelManager.DIFFICULTY_PLAYERPREFS_NAME, _difficultIndex);
+            PlayerPrefs.SetInt(LevelSaveConst.DIFFICULTY_PLAYERPREFS_NAME, _difficultIndex);
             difficultyText.text = difficult.ToString();
             AudioManager.instance.PlaySoundEffect($"{FilePaths.resources_sfx}scrollMenu");
         }
