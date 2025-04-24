@@ -47,7 +47,7 @@ namespace FnF.Scripts
             accuracyCombo.Init(statManager);
             settingsManager.Init();
             
-            chartPlayBack.InitOnGameMode(settingsManager,LevelManager.CurrentLevelData);
+            chartPlayBack.InitOnGameMode(settingsManager);
             healthBar.Init(chartPlayBack);
             foreach (var takerSettings in arrowTakerSettings)
             {

@@ -10,6 +10,7 @@ public class MapSpawner : MonoBehaviour,IService
 {
     private GameObject[] _maps;
     public Action OnSpawnMapEnd;
+    public Transform mapSpawnParent;
     private ChartPlayBack _chartPlayBack;
 
     public MapData mapData = new MapData();
@@ -25,9 +26,10 @@ public class MapSpawner : MonoBehaviour,IService
         foreach (var map in _maps)
         {
             var inst = Instantiate(map, Vector2.zero, Quaternion.identity);
+            inst.transform.SetParent(mapSpawnParent);
             yield return null;
 
-            yield return StartCoroutine(ProcessObject(inst.transform));
+            yield return ProcessObject(inst.transform);
         }
     
         OnSpawnMapEnd?.Invoke();

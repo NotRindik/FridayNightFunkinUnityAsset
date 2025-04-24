@@ -81,13 +81,12 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
             }
         }
 
-        public void InitOnGameMode(SettingsManager settingsManager,LevelData levelData)
+        public void InitOnGameMode(SettingsManager settingsManager)
         {
             _playerMissTaker = new PlayerMissTaker(this);
             chartSpawnDistance = settingsManager.activeGameSettings.Downscroll == 1 ? levelData.stage[levelData.selectedStageIndex].chartSpawnDistance * -1 : levelData.stage[levelData.selectedStageIndex].chartSpawnDistance;
             GameStateManager.instance.OnGameStateChanged += OnGameStateChanged;
             ReloadChart();
-            this.levelData = levelData;
         }
         public void ReloadChart()
         {
@@ -143,18 +142,21 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         {
             chartSpawnDistance = levelData.stage[levelData.selectedStageIndex].chartSpawnDistance;
             var currStage = levelData.stage[levelData.selectedStageIndex];
-            if (playableDirector.playableAsset != currStage.chartVariants[levelData.selectedChartVar])
+            if (levelData.stage[levelData.selectedStageIndex].chartVariants.Length > 0)
             {
-                playableDirector.playableAsset = currStage.chartVariants[levelData.selectedChartVar];
-                reloadChart = true;
+                if (playableDirector.playableAsset != currStage.chartVariants[levelData.selectedChartVar])
+                {
+                    playableDirector.playableAsset = currStage.chartVariants[levelData.selectedChartVar];
+                    reloadChart = true;
+                }
+                if (reloadChart)
+                {
+                    ReloadChart();
+                }
+                SaveArrowsOnSpeedChange();
+                _arrowSwitch.SwitchAllArrows(turnOfArrows);
+                _arrowSwitch.OnUpdate();   
             }
-            if (reloadChart)
-            {
-                ReloadChart();
-            }
-            SaveArrowsOnSpeedChange();
-            _arrowSwitch.SwitchAllArrows(turnOfArrows);
-            _arrowSwitch.OnUpdate();
         }
 
         private void OnBothUpdates()

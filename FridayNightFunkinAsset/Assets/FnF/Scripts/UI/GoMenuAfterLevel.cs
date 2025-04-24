@@ -16,7 +16,7 @@ namespace FridayNightFunkin.UI
         {
             if (PlayerPrefs.GetInt("AfterLevel") == 1)
             {
-                if (PlayerPrefs.GetInt(LevelManager.IS_FROM_FREE_PLAY) == 0)
+                if (PlayerPrefs.GetInt(LevelSaveConst.IS_FROM_FREE_PLAY) == 0)
                 {
                     storyModeMenu.Init();
                     EventSystem.current.SetSelectedGameObject(storyModeMenu.buttons[0].gameObject);
@@ -25,7 +25,7 @@ namespace FridayNightFunkin.UI
                 else
                 {
                     EventSystem.current.SetSelectedGameObject(G.Instance.Get<FreePlayMenu>().buttons[0].gameObject);
-                    PlayerPrefs.SetInt(LevelManager.IS_FROM_FREE_PLAY, 0);
+                    PlayerPrefs.SetInt(LevelSaveConst.IS_FROM_FREE_PLAY, 0);
                     OnAfterLevelFreePlay?.Invoke();
                 }
                 PlayerPrefs.SetInt("AfterLevel", 0);

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using AYellowpaper.SerializedCollections;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public enum DifficultLevel
@@ -28,7 +29,7 @@ namespace FridayNightFunkin.UI
         {
             public string[] tracks;
             public string levelName;
-            public LevelData levelData;
+            public SceneAsset levelScene;
 
             public Color backgroundColor = Color.white;
             public Sprite backGroundSpite;
@@ -115,7 +116,7 @@ namespace FridayNightFunkin.UI
                     if (levelConfigs.Length > i)
                     {
                         lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
-                        scoreText.text = $"Level Score: {PlayerPrefs.GetInt($"{levelConfigs[i].levelData.name}Score")}";
+                        scoreText.text = $"Level Score: {PlayerPrefs.GetInt($"{levelConfigs[i].levelScene.name}Score")}";
                         levelImageCharacter.color = levelConfigs[i].backgroundColor;
                         if (levelConfigs[i].backGroundSpite)
                         {

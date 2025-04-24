@@ -19,10 +19,9 @@ namespace FnF.Scripts.UI
                 if (storyModeMenu.levelConfigs == null) throw new NullReferenceException("levelConfigs is null");
                 if (Index >= storyModeMenu.levelConfigs.Length) throw new IndexOutOfRangeException("Index out of range");
                 if (storyModeMenu.levelConfigs[Index] == null) throw new NullReferenceException($"levelConfigs[{Index}] is null");
-                if (storyModeMenu.levelConfigs[Index].levelData == null) throw new NullReferenceException($"levelConfigs[{Index}].levelData is null");
-            
-                LevelManager.CurrentLevelData = storyModeMenu.levelConfigs[Index].levelData;
-                SceneManager.LoadScene("LevelsScene");
+                if (storyModeMenu.levelConfigs[Index].levelScene == null) throw new NullReferenceException($"levelConfigs[{Index}].levelData is null");
+                
+                SceneManager.LoadScene(storyModeMenu.levelConfigs[Index].levelScene.name);
             }
             catch (Exception e)
             {

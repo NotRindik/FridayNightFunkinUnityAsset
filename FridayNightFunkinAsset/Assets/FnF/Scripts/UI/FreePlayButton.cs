@@ -21,7 +21,6 @@ namespace FnF.Scripts.UI
             try
             {
                 if (LevelData == null) throw new NullReferenceException($"levelConfigs[{Index}].levelData is null");
-                LevelManager.CurrentLevelData = LevelData;
                 PlayerPrefs.SetInt(LevelManager.STAGE_PLAYERPREFS_NAME,stageIndex);
                 PlayerPrefs.SetInt(LevelManager.IS_FROM_FREE_PLAY,1);
                 SceneManager.LoadScene("LevelsScene");
