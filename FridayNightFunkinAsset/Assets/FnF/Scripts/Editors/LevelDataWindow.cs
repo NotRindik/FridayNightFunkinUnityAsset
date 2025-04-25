@@ -23,7 +23,7 @@ namespace FnF.Scripts.Editors
 
         public Action OnGUIUpdate;
 
-        [MenuItem("Window/FNF Level Data Editor")]
+        [MenuItem("FNFMaker/FNF Level Data Editor")]
         public static void ShowWindow()
         {
             var window = GetWindow<LevelDataWindow>("FNF Level Data Editor");
