@@ -3,6 +3,13 @@
 
 ---
 
+## 🎮 Demo Game  
+Want to see the framework in action?  
+Check out a game made using an earlier version of this framework:  
+👉 [Night in Restaurant on itch.io](https://rindik.itch.io/night-in-restaurant)
+
+---
+
 ## 🔧 Setup Instructions
 
 Follow these steps to set up the asset correctly:
