@@ -1,16 +1,10 @@
 # **Friday Night Funkin UnityAsset**
  <h3>This asset was created so that anyone can make their own Friday night funkin on unity, for free.</h3>
-# Dependencies
-## You can download all Dependencies in Unity Package Manager
-### Universal Renderer Pipline (URP)
-### Timeline
-### Input System
-### Cinemachine
-
-# Download Pakage
-## You can download package and just open it in unity, but you will need to download all Dependencies
-### [**Google Disk**](https://drive.google.com/file/d/15jRPxyGE1gxGu_fFBvNtzltO6EAVcLxr/view?usp=sharing)
-## also u can download all unity project from git
+ <h2>  Dependencies </h2>
+<h3> You can download all Dependencies in Unity Package Manager </h3>
+<h3> Universal Renderer Pipline (URP) </h3>
+<h3> Timeline </h3>
+<h3> Cinemachine </h3>
 
 # Features
 ## 1. Editor
