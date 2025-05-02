@@ -1,12 +1,9 @@
-using System;
 using FridayNightFunkin.CHARACTERS;
 using FridayNightFunkin.GamePlay;
 using System.Collections.Generic;
-using FnF.Scripts;
+using AYellowpaper.SerializedCollections;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 public enum IconProgressStatus{
@@ -99,8 +96,8 @@ public class LevelStage
 
     [SerializeField] public TimelineAsset[] chartVariants;
 
-    public SerializedDictionary<IconProgressStatus, Sprite> playerIcon = new SerializedDictionary<IconProgressStatus, Sprite>();
-    public SerializedDictionary<IconProgressStatus, Sprite> enemyIcon = new SerializedDictionary<IconProgressStatus, Sprite>();
+    [SerializedDictionary]public SerializedDictionary<IconProgressStatus, Sprite> playerIcon = new SerializedDictionary<IconProgressStatus, Sprite>();
+    [SerializedDictionary]public SerializedDictionary<IconProgressStatus, Sprite> enemyIcon = new SerializedDictionary<IconProgressStatus, Sprite>();
 
     [SerializeField] public GameObject[] backGroundPrefab;
 

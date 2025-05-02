@@ -34,7 +34,7 @@ namespace FridayNightFunkin.Editor
         }
         public virtual void OnUpdate()
         {
-            if (!canvasPosition) return;
+            if (!canvasPosition || ChartPlayback.turnOfArrows == false) return;
 
             float camHeight = 2f * mainCamera.orthographicSize;
             float camWidth = camHeight * mainCamera.aspect;

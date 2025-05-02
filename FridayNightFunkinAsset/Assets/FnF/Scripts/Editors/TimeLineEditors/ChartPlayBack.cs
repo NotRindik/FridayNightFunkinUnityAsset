@@ -31,7 +31,7 @@ namespace FridayNightFunkin.Editor.TimeLineEditor
         public bool playOnStart = true;
 
         public bool reloadChart;
-        [SerializeField] private bool turnOfArrows = true;
+        [SerializeField] public bool turnOfArrows = true;
         public static int CurrentStageIndex => PlayerPrefs.GetInt(LevelSaveConst.STAGE_PLAYERPREFS_NAME);
         public static int CurrentDifficult => PlayerPrefs.GetInt(LevelSaveConst.DIFFICULTY_PLAYERPREFS_NAME);
 
