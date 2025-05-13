@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using FridayNightFunkin.Editor.TimeLineEditor;
 using UnityEditor;
 using UnityEngine;
@@ -362,7 +363,7 @@ namespace FnF.Scripts.Editors
             }
         }
 
-        private void DrawIconsField(Dictionary<IconProgressStatus, Sprite> icons)
+        private void DrawIconsField(SerializedDictionary<IconProgressStatus, Sprite> icons)
         {
             GUILayout.BeginVertical("Box");
             int labelWidth = 100;
