@@ -6,6 +6,7 @@ using FnF.Scripts.Editors;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Timeline;
 
 [TrackColor(1f, 0.5f, 0f)]
@@ -21,13 +22,7 @@ public class ArrowMarkerTrackAsset : MarkerTrack
 
     public int arrowCurrentIndex = 0;
 
-    public ChartPlayBack chartPlayBack;
-
-    private void OnDisable()
-    {
-
-    }
-
+    public Observable<(ArrowMarker,ArrowMarkerTrackAsset)> onAddArrow;
     private void OnEnable()
     {
         foreach (ArrowMarker item in GetMarkers())
@@ -37,22 +32,7 @@ public class ArrowMarkerTrackAsset : MarkerTrack
     }
     public void AddMarkersToList(ArrowMarker arrowMarker)
     {
-        if (!chartPlayBack)
-        {
-            Debug.Log("The road miss chartPlayback, reload chart pls");
-            return;
-        }
-
         AddMarker(arrowMarker);
-        chartPlayBack.SaveArrows(arrowMarker, this);
-    }
-    public void AddMarker(ArrowMarker marker)
-    {
-        if (!arrowMarkers.Contains(marker))
-        {
-            arrowCurrentIndex++;
-            arrowMarkers.Add(marker);
-        }
     }
 
     public void RemoveMarker(ArrowMarker marker)
@@ -75,9 +55,15 @@ public class ArrowMarkerTrackAsset : MarkerTrack
             }
         }
     }
-    private void OnDestroy()
+
+    public void AddMarker(ArrowMarker marker)
     {
-       
+        if (!arrowMarkers.Contains(marker))
+        {
+            arrowCurrentIndex++;
+            arrowMarkers.Add(marker);
+            onAddArrow.Invoke((marker,this));
+        }
     }
 }
 public enum RoadSide

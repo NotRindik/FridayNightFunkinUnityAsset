@@ -75,10 +75,16 @@ namespace FridayNightFunkin.GamePlay
 
         private void Update()
         {
-            if(!markerRef && gameObject)
+            if (!markerRef && gameObject)
+            {
                 DestroyImmediate(gameObject);
+                return;
+            }
             GenerateTail();
 
+            if (chartPlayback)
+                MoveArrows();
+            
             if (!Application.isPlaying)
                 return;
 
@@ -106,7 +112,17 @@ namespace FridayNightFunkin.GamePlay
                 }
             }
         }
-
+        private void MoveArrows()
+        {
+            if (StartTime <= chartPlayback.Time && EndTime + 5 + distanceCount >= chartPlayback.Time)
+            {
+                MoveArrowByTime(chartPlayback.Time);
+            }
+            else
+            {
+                transform.position = StartPos;
+            }
+        }
         public void OnDestroy()
         {
             chartPlayback.chartContainer.arrowsList[roadSide].Remove(this);
